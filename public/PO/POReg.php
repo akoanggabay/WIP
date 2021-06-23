@@ -110,4 +110,10 @@
         
         
     });
+
+    $("#btnCancel").click(function() {
+        $("input[type=text]").val('');
+        $("input[type=number]").val('');
+        $("select").val('');
+    });
 </script>

@@ -11,6 +11,7 @@ class PO {
     private $lastupdate;
 	private $lastupdatedby;
     private $active;
+	private $id;
 	
 
 
@@ -64,6 +65,11 @@ class PO {
 	{
 		$this->lastupdatedby = $lastupdatedby;
 	}
+
+	public function setid($id)
+	{
+		$this->id = $id;
+	}
 	
 
 	//Getter
@@ -110,6 +116,11 @@ class PO {
     public function getlastupdatedby()
 	{
 		return $this->lastupdatedby;
+	}
+
+	public function getid()
+	{
+		return $this->id;
 	}
 
     public static function checkExist($custcode,$pono)
@@ -164,24 +175,25 @@ class PO {
 		return $result;
 	}
 
-    public static function GetAllDocs()
+    public static function GetAllPO()
 	{
 		$conn = new Connection();
 		$result = array();
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM document where active = 1");
+			$dataset =  $conn->query("SELECT * FROM dbo.PO where active = 1");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
-				$Select = new Doc();
+				$Select = new PO();
 
-				$Select->setdocid($reader["docid"]);
-				$Select->settitle($reader["title"]);
-                $Select->setdtype($reader["dtype"]);
-                $Select->setfilename($reader["filename"]);
-                $Select->setfile($reader["file"]);
-                $Select->setuploadedby($reader["uploadedby"]);
+				$Select->setid($reader["id"]);
+				$Select->setpono($reader["pono"]);
+                $Select->setcustcode($reader["custcode"]);
+                $Select->setqty($reader["qty"]);
+                $Select->setprocesscat($reader["processcat"]);
+                $Select->setsubprocesscat($reader["subprocesscat"]);
+				$Select->setstatus($reader["status"]);
 				$result[$counter] = $Select;
 				$counter++;
 			}
