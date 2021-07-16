@@ -1,13 +1,13 @@
 CUSTOMER CODE,CUSTOMER LOT NO,DEVICE NO,QUANTITY,WAFER QUANTITY,DATE START,SHIP BACK DATE,WAFER THICKNESS,REQUIRED THICKNESS,PROCESS CATEGORY,LOTT TYPE
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-custcode,custlotno,deviceno,qty,waferqty,2021-06-17 0:00,2021-06-18 0:00,1,2,processcat,lottype
-tester,coom,jup,24,67,2021-06-18 0:00,2021-06-19 0:00,23,56,saw,engg
-SECOND TEST,KOOM,ASD,26,68,2021-06-18 0:00,2021-06-19 0:00,32,56,SAW,ENGG
- dsad, jkfdsl, gfndjgdfq    ,88,56,2021-06-18 0:00,2021-06-19 0:00,43,65,      Backgrind,Prod
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+custcode,custlotno,deviceno,qty,waferqty,17/06/2021 0:00,18/06/2021 0:00,1,2,processcat,lottype
+tester,coom,jup,24,67,18/06/2021 0:00,19/06/2021 0:00,23,56,saw,engg
+SECOND TEST,KOOM,ASD,26,68,18/06/2021 0:00,19/06/2021 0:00,32,56,SAW,ENGG
+ dsad, jkfdsl, gfndjgdfq    ,88,56,18/06/2021 0:00,19/06/2021 0:00,43,65,      Backgrind,Prod
 wrongformat,wrong,deviceno,fds,fdsl,fdsl,fdsl,fdflksd,fds,fds,fds
