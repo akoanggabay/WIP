@@ -11,10 +11,10 @@ class Connection{
 		$conn_array = array (
     	"UID" => "",
     	"PWD" => "",
-    	"Database" => "ISS",
+    	"Database" => "WIP",
 		);
 
-		$this->link = sqlsrv_connect('localhost\SQLEXPRESS', $conn_array);
+		$this->link = sqlsrv_connect('KKMWIP\SQLWIP', $conn_array);
 	
 	}
 
