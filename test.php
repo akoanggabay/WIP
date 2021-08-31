@@ -70,7 +70,7 @@ class Connection{
 $conn = new Connection;
 $conn->open();
 
-$dataset =  $conn->query("SELECT * FROM USERINFO");
+$dataset =  $conn->query("SELECT * FROM dbo.usertype");
 print_r($conn->fetch_array($dataset));
 
 ?>
