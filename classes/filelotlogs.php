@@ -109,7 +109,7 @@ class FileLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM dbo.filelogs");
+			$dataset =  $conn->query("SELECT top (200) * FROM dbo.filelogs order by lastupdate desc");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new FileLotLogs();

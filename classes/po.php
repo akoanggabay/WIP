@@ -145,35 +145,6 @@ class PO {
 		return $result;
 	}
 
-    public static function ViewDocument($docid)
-	{
-		$conn = new Connection();
-		$result = array();
-
-		try{
-			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM document where docid ='".$docid."' and active = 1");
-
-            foreach($dataset as $row)
-            {
-            $result[] = array(
-            'docid'   => $row["docid"],
-            'title'   => $row["title"],
-			'dtype'   => $row["dtype"],
-            'active'   => $row["active"],
-            'filename'   => $row["filename"],
-			'file' => $row["file"],
-			'uploadedby' => $row["uploadedby"]
-            );
-            }
-					
-			$conn->close();
-			
-		}catch(Exception $e){
-			echo $e;
-		}
-		return $result;
-	}
 
     public static function GetAllPO()
 	{
@@ -183,6 +154,37 @@ class PO {
 		try{
 			$conn->open();
 			$dataset =  $conn->query("SELECT * FROM dbo.PO where active = 1");
+			$counter = 0;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new PO();
+
+				$Select->setid($reader["id"]);
+				$Select->setpono($reader["pono"]);
+                $Select->setcustcode($reader["custcode"]);
+                $Select->setqty($reader["qty"]);
+                $Select->setprocesscat($reader["processcat"]);
+                $Select->setsubprocesscat($reader["subprocesscat"]);
+				$Select->setstatus($reader["status"]);
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function GetAllOpenPO($custcode)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * FROM dbo.PO where status = 'OPEN' and active = 1 and custcode = '".$custcode."'");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new PO();

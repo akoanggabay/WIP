@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['idno']))
+{
+    header("location:../index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +27,6 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">
 
@@ -79,7 +86,9 @@
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Lot number Forms:</h6>
-                        <a class="collapse-item" href="?form=LN&path=custupload">File upload</a>
+                        <a class="collapse-item" href="?form=LN&path=intlot">Internal Lot Number</a>
+                        <a class="collapse-item" href="?form=LN&path=custupload">Customer Lot Number</a>
+                        <a class="collapse-item" href="?form=LN&path=custlotlogs">Upload Customer Lot Logs</a>
                     </div>
                 </div>
             </li>
@@ -122,7 +131,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Test user</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['fname']; ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="../img/undraw_profile.svg">
                             </a>
@@ -188,7 +197,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" type="submit" name="logout" href="../php/logout.php?logout">Logout</a>
                 </div>
             </div>
         </div>

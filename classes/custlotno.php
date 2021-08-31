@@ -1,7 +1,7 @@
 <?php
 include_once("connection.php");
 
-class Upload {
+class CustLotno {
     private $custcode;
 	private $custlotno;
     private $deviceno;
@@ -189,66 +189,6 @@ class Upload {
 		return $result;
 	}
 
-    public static function ViewDocument($docid)
-	{
-		$conn = new Connection();
-		$result = array();
-
-		try{
-			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM document where docid ='".$docid."' and active = 1");
-
-            foreach($dataset as $row)
-            {
-            $result[] = array(
-            'docid'   => $row["docid"],
-            'title'   => $row["title"],
-			'dtype'   => $row["dtype"],
-            'active'   => $row["active"],
-            'filename'   => $row["filename"],
-			'file' => $row["file"],
-			'uploadedby' => $row["uploadedby"]
-            );
-            }
-					
-			$conn->close();
-			
-		}catch(Exception $e){
-			echo $e;
-		}
-		return $result;
-	}
-
-    public static function GetAllDocs()
-	{
-		$conn = new Connection();
-		$result = array();
-
-		try{
-			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM document where active = 1");
-			$counter = 0;
-			while($reader = $conn->fetch_array($dataset)){
-				$Select = new Doc();
-
-				$Select->setdocid($reader["docid"]);
-				$Select->settitle($reader["title"]);
-                $Select->setdtype($reader["dtype"]);
-                $Select->setfilename($reader["filename"]);
-                $Select->setfile($reader["file"]);
-                $Select->setuploadedby($reader["uploadedby"]);
-				$result[$counter] = $Select;
-				$counter++;
-			}
-					
-			$conn->close();
-			
-		}catch(Exception $e){
-			echo $e;
-		}
-		return $result;
-	}
-
     public function AddCustlotno(){
 		$conn = new Connection();
         $success = true;
@@ -275,6 +215,65 @@ class Upload {
             $success = false;
 		}
         return $success;	
+	}
+
+	public static function GetAllCustLotno($custcode)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * FROM dbo.custlotno where custcode = '".$custcode."' and status = 'UPLOAD'");
+			$counter = 0;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new CustLotno();
+
+				$Select->setcustlotno($reader["custlotno"]);
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function GetDetails($custlotno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * FROM dbo.custlotno where custlotno ='".$custlotno."'");
+			if ($conn->has_rows($dataset)) {
+				$row = $conn->fetch_array($dataset);
+				$result[] = array(
+				'deviceno'   => $row["deviceno"],
+				'qty'   => $row["qty"],
+				'waferqty'   => $row["waferqty"],
+				'datestart'   => $row["datestart"]->format('F j, Y'),
+				'shipbackdate' => $row["shipbackdate"]->format('F j, Y'),
+				'waferthickness' => $row["waferthickness"],
+				'requiredthickness' => $row["requiredthickness"],
+				'processcat' => $row["processcat"],
+				'lottype' => $row["lottype"]
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
 	}
 
 

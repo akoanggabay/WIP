@@ -67,7 +67,7 @@
     </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
 <script>
     $("#btnReg").click(function() {
       

@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4 text-gray-900">Customer Lot no Upload</h1>
+<h1 class="h3 mb-4 text-gray-900">Customer Lot number</h1>
 <div class="col-lg-6">
     <div class="row">
     <div class="col-lg-12">
@@ -39,7 +39,7 @@
     </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
 <script>
     function validateForm() {
   var att = document.forms["import"]["uploadfile"].value;

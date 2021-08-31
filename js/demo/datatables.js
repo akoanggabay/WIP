@@ -1,7 +1,8 @@
 // Call the dataTables jQuery plugin
-$(document).ready(function() {
+
   $('#dataTable').DataTable({
     dom: 'Bfrtip',
+    "pageLength": 25,
     lengthMenu: [
         [ 10, 25, 50, -1 ],
         [ '10 rows', '25 rows', '50 rows', 'Show all' ]
@@ -13,7 +14,7 @@ $(document).ready(function() {
             text: 'Export to Excel',
             exportOptions: {
                 modifier: {
-                    page: 'current'
+                
                 }
             }
         },
@@ -21,4 +22,4 @@ $(document).ready(function() {
     ],
     "order": [[ 0, "desc" ]]
 });
-});
+
