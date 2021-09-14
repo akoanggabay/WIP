@@ -16,7 +16,7 @@
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Customer:</label><br/>
+                                        <label class="text-gray-900" for="">Customer: *</label><br/>
                                         <select class="form-control" id="custcode" name="custcode">
                                             <option selected></option>
                                             <?php 
@@ -31,24 +31,31 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Purchase Order Number:</label><br/>
-                                        <input class="form-control" type="text" name="pono" id="pono" placeholder="Purchase Order Number">
+                                        <label class="text-gray-900" for="">Purchase Order Number: *</label><br/>
+                                        <input class="form-control" type="text" name="pono" id="pono" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Qty:</label><br/>
+                                        <label class="text-gray-900" for="">Qty: *</label><br/>
                                         <input class="form-control" type="number" name="poqty" id="poqty">
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Process Category:</label><br/>
+                                        <label class="text-gray-900" for="">Process Category: *</label><br/>
                                         <select class="form-control" id="processcat" name="processcat">
-                                            <option selected></option>
-                                            <option value="backgrind">Backgrind</option>
-                                            <option value="saw">Saw</option>
+                                            <option value=""></option>
+                                            <?php 
+                                            include_once("../classes/processcat.php");
+                                            $ProcessType = ProcessCat::GetAllProcessType();
+                                            for($i=0;$i<count($ProcessType);$i++){
+                                            ?>
+                                                    <option value ='<?php echo $ProcessType[$i]->getprocess(); ?>' ><?php echo $ProcessType[$i]->getprocess(); ?></option>
+                                            <?php 
+                                                }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-gray-900" for="">Sub Category:</label><br/>
-                                        <input class="form-control" type="text" name="subprocesscat" id="subprocesscat" placeholder="Sub Process Category" value="Test" readonly>
+                                        <input class="form-control" type="text" name="subprocesscat" id="subprocesscat" placeholder="" value="" readonly>
                                     </div>
                                     <div class="form-group">
                                         <button type="button" class="btn btn-outline-success" id="btnReg">Add Purchase Order</button>
@@ -71,7 +78,7 @@
 <script>
     $("#btnReg").click(function() {
       
-    if(document.getElementById('pono').value == '' || document.getElementById("custcode").value == '')
+    if(document.getElementById('pono').value == '' || document.getElementById("custcode").value == '' || document.getElementById("poqty").value == '' || document.getElementById("processcat").value == '' || document.getElementById("subprocesscat").value == '')
     {
         alert('Kindly complete details!');
     }
@@ -109,6 +116,40 @@
     }
         
         
+    });
+
+    $('#processcat').change(function (){
+        
+        if(document.getElementById('processcat').value == '')
+        {
+            return;
+        }
+        else
+        {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        //alert(this.readyState + ' ' + this.status);
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            var result = this.responseText;
+            //alert(result);
+            if(result == 'false')
+            {
+                document.getElementById("subprocesscat").value = res.subprocesscat;
+                alert('No available Sub process!');
+            }
+            else
+            {
+                var res = JSON.parse(result)[0];
+                document.getElementById("subprocesscat").value = res.subprocesscat;
+            }
+        }
+        };
+
+        xmlhttp.open("GET", "../php/getsubprocess.php?processcat=" + document.getElementById("processcat").value, true);
+        xmlhttp.send();
+
+        }
     });
 
     $("#btnCancel").click(function() {

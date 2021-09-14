@@ -188,7 +188,7 @@ class PO {
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new PO();
-
+				
 				$Select->setid($reader["id"]);
 				$Select->setpono($reader["pono"]);
                 $Select->setcustcode($reader["custcode"]);
@@ -232,6 +232,52 @@ class PO {
             $success = false;
 		}
         return $success;	
+	}
+
+	public static function GetDetails($pono,$custcode)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * FROM dbo.PO where custcode ='".$custcode."' and pono = '".$pono."'");
+			if ($conn->has_rows($dataset)) {
+				$row = $conn->fetch_array($dataset);
+				$result[] = array(
+				'pono'   => $row["pono"],
+				'custcode'   => $row["custcode"],
+				'qty'   => $row["qty"],
+				'processcat'   => $row["processcat"],
+				'subprocesscat' => $row["subprocesscat"],
+				'status' => $row["status"],
+				'lastupdate' => $row["lastupdate"]->format('F j, Y'),
+				'lastupdatedby' => $row["lastupdatedby"]
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public function ClosePO(){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.PO SET status = '".$this->getstatus()."',lastupdate = GETDATE() where pono ='".$this->getpono()."' and active = 1");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
 	}
 
 

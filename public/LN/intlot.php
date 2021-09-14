@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4 text-gray-900">Internal Lot Number</h1>
+<h1 class="h3 mb-4 text-gray-900">Generation of Internal Lot Number</h1>
 <div class="row">
     <div class="col-lg-6">
         <div class="row">
@@ -21,7 +21,7 @@
                                         
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <label>Customer:</label>
+                                                <label>Customer: *</label>
                                             </div>
                                             <div class="col-md-7">
                                                 <select class="form-control" id="custcode" name="custcode">
@@ -41,7 +41,7 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <label>Customer Lot no:</label>
+                                                <label>Customer Lot no: *</label>
                                             </div>
                                             <div class="col-md-7">
                                                 <select class="form-control" id="custlotno" name="custlotno">
@@ -52,7 +52,16 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <label>Purchase Order No:</label>
+                                                <label>Wafer size: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <input type="number" id="wafersize" name="wafersize"  class="form-control input-sm">
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Purchase Order No: *</label>
                                             </div>
                                             <div class="col-md-7">
                                                 <select class="form-control" id="pono" name="pono">
@@ -62,7 +71,7 @@
                                         </div>
                                         <br/>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-success" id="btnGenerate" name = "btnGenerate">Generate ILN</button>
+                                            <button type="button" class="btn btn-outline-success" id="btnGenerate" name = "btnGenerate" disabled>Generate ILN</button>
                                         </div>
                                         </form>
                                     </div>
@@ -186,6 +195,9 @@ $(document).ready(function(){
         $("input[type=text]").val('');
         $("#custlotno").empty();
         $("#pono").empty();
+        document.getElementById("btnGenerate").disabled = true;
+        document.getElementById("success").hidden = true;
+        document.getElementById("error").hidden = true;
         if(document.getElementById('custcode').value == '')
         {
             return;
@@ -232,7 +244,7 @@ $(document).ready(function(){
         else
         {
            
-            $('#pono').focus();
+            $('#wafersize').focus();
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
             //alert(this.readyState + ' ' + this.status);
@@ -255,13 +267,120 @@ $(document).ready(function(){
             };
             xmlhttp.open("GET", "../php/getcustlotnodetails.php?custlotno=" + document.getElementById("custlotno").value, true);
             xmlhttp.send();
+
+            var xmlhttp2 = new XMLHttpRequest();
+            xmlhttp2.onreadystatechange = function() {
+            //alert(this.readyState + ' ' + this.status);
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                var result = this.responseText;
+                var res = result.split("_");
+                alert(result);
+                
+                var x1 = document.getElementById("pono");
+                var option1 = document.createElement("option");
+                option1.text = '';
+                x1.add(option1);
+                for (i = 0; i < res.length - 1; i++) 
+                { 
+                        // alert(res[i]);
+                        var x = document.getElementById("pono");
+                        var option = document.createElement("option");
+                        option.text = res[i];
+                        x.add(option);
+                }
+                    
+            }
+            };
+            xmlhttp2.open("GET", "../php/getcustpo.php?custcode=" + document.getElementById("custcode").value, true);
+            xmlhttp2.send();
         }
         
 
     });
 
+    $('#pono').change(function (){
+        if(document.getElementById('pono').value == '')
+        {
+            return;
+        }
+        else
+        {
+        $('#pono').focus();
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        //alert(this.readyState + ' ' + this.status);
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            var result = this.responseText;
+            var res = result.split("_");
+            alert(result);
+            if(res[0] == 'success')
+            {
+                document.getElementById("success").innerHTML = res[1];
+                document.getElementById("success").hidden = false;
+                document.getElementById("error").hidden = true;
+                document.getElementById("btnGenerate").disabled = false;
+            }
+            else
+            {
+                document.getElementById("error").innerHTML = res[1];
+                document.getElementById("error").hidden = false;
+                document.getElementById("success").hidden = true;
+                document.getElementById("btnGenerate").disabled = true;
+            }
+            
+        }
+        };
+
+        xmlhttp.open("GET", "../php/checkpo.php?custcode=" + document.getElementById("custcode").value+"&pono="+document.getElementById("pono").value+"&custlotno="+document.getElementById("custlotno").value, true);
+        xmlhttp.send();
+
+        }
+    });
+
     $("#btnGenerate").click(function() {
-        window.open('http://localhost/wip/public/test.php')
+        //window.open('http://localhost/wip/public/test.php');
+        if(document.getElementById("wafersize").value == '')
+        {
+            document.getElementById("error").innerHTML = 'Please enter Wafer size!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
+            return false;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        //alert(this.readyState + ' ' + this.status);
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            var result = this.responseText;
+            var res = result.split("_");
+            alert(result);
+            if(res[0] == 'success')
+            {
+                window.open('http://localhost/wip/print/intlot.php?intlotno='+res[2]);
+                document.getElementById("success").innerHTML = res[1];
+                document.getElementById("success").hidden = false;
+                document.getElementById("error").hidden = true;
+                document.getElementById("btnGenerate").disabled = true;
+                document.getElementById("custcode").value = '';
+                document.getElementById("wafersize").value = '';
+                $("input[type=text]").val('');
+                $("#custlotno").empty();
+                $("#pono").empty();
+            }
+            else
+            {
+                document.getElementById("error").innerHTML = res[1];
+                document.getElementById("error").hidden = false;
+                document.getElementById("success").hidden = true;
+                document.getElementById("btnGenerate").disabled = true;
+            }
+            
+        }
+        };
+        xmlhttp.open("GET", "../php/generateiln.php?custcode=" + document.getElementById("custcode").value+"&pono="+document.getElementById("pono").value+"&custlotno="+document.getElementById("custlotno").value+"&wafersize="+document.getElementById("wafersize").value, true);
+        xmlhttp.send();
     });
 });
 </script>

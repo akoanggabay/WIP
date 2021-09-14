@@ -56,29 +56,31 @@ if(!isset($_SESSION['idno']))
             <hr class="sidebar-divider d-none d-md-block">
 
             <div class="sidebar-heading">
-                Registration
+                Forms
             </div>
 
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#POcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-inbox"></i>
                     <span>Purchase Order</span>
                 </a>
                 <div id="POcollapsePages" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Purchase Order Forms:</h6>
-                        <a class="collapse-item" href="?form=PO&path=POReg">Registration</a>
-                        <a class="collapse-item" href="?form=PO&path=POView">Reports</a>
+                        <a class="collapse-item" href="?form=PO&path=POReg">PO Registration</a>
+                        <!-- <a class="collapse-item" href="?form=PO&path=POView">Reports</a> -->
                     </div>
                 </div>
             </li>
 
+            <hr class="sidebar-divider d-none d-md-block">
+
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#LNcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-box-open"></i>
                     <span>Lot number</span>
                 </a>
                 <div id="LNcollapsePages" class="collapse" aria-labelledby="headingPages"
@@ -88,7 +90,98 @@ if(!isset($_SESSION['idno']))
                         <h6 class="collapse-header">Lot number Forms:</h6>
                         <a class="collapse-item" href="?form=LN&path=intlot">Internal Lot Number</a>
                         <a class="collapse-item" href="?form=LN&path=custupload">Customer Lot Number</a>
-                        <a class="collapse-item" href="?form=LN&path=custlotlogs">Upload Customer Lot Logs</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#PFcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Process Flow</span>
+                </a>
+                <div id="PFcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Process Flow Forms:</h6>
+                        <a class="collapse-item" href="?form=PF&path=vi">Visual Inspection</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#RLcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Release Lot number</span>
+                </a>
+                <div id="RLcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Release Lot number:</h6>
+                        <a class="collapse-item" href="?form=RL&path=releaselot">Release Lot number</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#IQcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-search"></i>
+                    <span>Inquiries</span>
+                </a>
+                <div id="IQcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Inquiries:</h6>
+                        <a class="collapse-item" href="?form=IQ&path=iqintlot">Internal Lot number</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#EDcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-download"></i>
+                    <span>Export Data and Reports</span>
+                </a>
+                <div id="EDcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Data and Reports:</h6>
+                        <a class="collapse-item" href="?form=ED&path=po">PO number</a>
+                        <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot number Logs</a>
+                        <a class="collapse-item" href="?form=ED&path=custlotlogs">File upload Logs</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#PCcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-boxes"></i>
+                    <span>Packing</span>
+                </a>
+                <div id="PCcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Packing:</h6>
+                        <a class="collapse-item" href="?form=PC&path=packing">Packing</a>
                     </div>
                 </div>
             </li>

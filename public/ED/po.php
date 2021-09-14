@@ -4,8 +4,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Purchase Order Reports</h6>
+            <h6 class="m-0 font-weight-bold text-gray-800">Purchase Order Reports</h6>
         </div>
+        
         <div id = "success" class="alert alert-success alert-dismissible" role="alert" hidden>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
@@ -142,38 +143,41 @@
     <div class="modal-dialog" role="document" style="max-width: 90%;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="">List of Internal Lot number</h5>
+                <h5 class="modal-title" id=""></h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
+            <div class="card-header py-3">
+                <h6 id="po"></h6>
+            </div>
             <div class="modal-body">
 
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="ListPOTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th>Internal Lot number</th>
-                                <th>Customer Lot number</th>
-                                <th>PO number</th>
-                                <th>Original Wafer quantity</th>
-                                <th>Current Wafer quantity</th>
-                                <th>Wafer size</th>
-                                <th>Status</th>
-                                <th>Start time</th>
-                                <th>Current station</th>
-                                <th>Last date processed</th>
-                                <th>Last processed by</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="ListPOTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Internal Lot number</th>
+                                    <th>Customer Lot number</th>
+                                    <th>PO number</th>
+                                    <th>Original Wafer quantity</th>
+                                    <th>Current Wafer quantity</th>
+                                    <th>Wafer size</th>
+                                    <th>Status</th>
+                                    <th>Start time</th>
+                                    <th>Current station</th>
+                                    <th>Last date processed</th>
+                                    <th>Last processed by</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
             </div>
             <div class="modal-footer">
@@ -191,7 +195,7 @@
         //alert(value);
         $('#ListPOTable').DataTable().destroy();
         $("#ListPOTable > tbody").empty();
-        
+        document.getElementById("po").innerHTML = 'List of Internal Lot number for PO number: <b>' + value;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -241,10 +245,6 @@
                             page: 'current'
                         }
                     }
-                },
-                {
-                    extend: 'pdfHtml5',
-                    text: 'Save as PDF'
                 },
                 'print'
             ]

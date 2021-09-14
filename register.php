@@ -41,35 +41,49 @@
                                 </div>
                                 <br/>
                                 <form name="reguser" onsubmit="return validateForm()" action="./php/userreg.php" method="post">
+                                    
+                                    
+                                    <div id="error" class="alert alert-danger alert-dismissible" role="alert" <?php if(@$_GET['Error'] == false){ echo 'hidden'; } ?>>
                                     <?php if(@$_GET['Error'] == true){ ?>
-                                        <div id="error" class="alert alert-danger alert-dismissible" role="alert">
-                                        <strong>Error!</strong>  <?php echo $_GET['Error']; ?>
-                                        </div>
+                                        <strong>Error!</strong>  <?php echo @$_GET['Error']; ?>
                                     <?php } ?>
+                                    </div>
+                                    
+                                
+                                    <div id="error2" class="alert alert-danger alert-dismissible" role="alert" hidden>
+                                        <strong>Error!</strong>  
+                                    </div>
 
+                                    <div id="success2" class="alert alert-success alert-dismissible" role="alert" hidden>
+                                        <strong>Success!</strong>  
+                                    </div>
+
+                                    
+                                    <div id="success" class="alert alert-success alert-dismissible" role="alert" <?php if(@$_GET['Success'] == false){ echo 'hidden'; } ?>>
                                     <?php if(@$_GET['Success'] == true){ ?>
-                                        <div id="success" class="alert alert-success alert-dismissible" role="alert">
-                                        <strong>Success!</strong>  <?php echo $_GET['Success']; ?>
-                                        </div>
+                                        <strong>Success!</strong>  <?php echo @$_GET['Success']; ?>
                                     <?php } ?>
+                                    </div>
+                                    
+                                    
                                     <div class="form-group">
                                         <input type="text" class="form-control"
                                             id="idno" name="idno"
-                                            placeholder="ID Number">
+                                            placeholder="ID number *">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <input type="text" class="form-control" id="fname" name="fname"
-                                                placeholder="First Name">
+                                                placeholder="First name *">
                                         </div>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" id="lname" name="lname"
-                                                placeholder="Last Name">
+                                                placeholder="Last name *">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-6">
-                                            <label for="bday">Birth date:</label>
+                                            <label for="bday">Birth date: *</label>
                                         </div>
                                         <div class="col-sm-6">
                                             <input type="date" class="form-control" id="bday" name="bday"
@@ -78,7 +92,7 @@
                                     </div>
                                     <div class="form-group">
                                         <select name="usertype" class="form-control" id="usertype" name="usertype">
-                                            <option value="">User Type</option>
+                                            <option value="">User Type *</option>
                                             <?php 
                                             include_once("./classes/usertype.php");
                                             $SelectUserType = UserType::GetAllUserType();
@@ -91,13 +105,16 @@
                                             
                                         </select>
                                     </div>
+
+                                    
+
                                     <div class="form-group">
                                         <input type="password" class="form-control"
-                                            id="pass" name="pass" placeholder="Password">
+                                            id="pass" name="pass" placeholder="Password *">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control"
-                                            id="cpass" name="cpass" placeholder=" Confirm Password">
+                                            id="cpass" name="cpass" placeholder=" Confirm password *">
                                     </div>
                                     <button type="submit" class="btn btn-outline-success" id="btnReg" name="btnReg">Register</button>
                                     <button class="btn btn-outline-primary float-right"><a href="index.php">Sign In</a></button>
@@ -127,7 +144,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <script>
-
+        
         function validateForm() {
             var idno = document.forms["reguser"]["idno"].value;
             var fname = document.forms["reguser"]["fname"].value;
@@ -138,28 +155,33 @@
             var bday = document.forms["reguser"]["bday"].value;
             
             if (idno == "" || fname == "" || lname == "" || pass == "" || cpass == "" || usertype == "" || bday == "") {
-                /* document.getElementById("error").innerHTML = 'Kindly complete details!';
-                document.getElementById("error").hidden = false;
-                document.getElementById("success").hidden = true; */
-                alert('Kindly complete details!');
+                document.getElementById("error2").innerHTML = '<b>Error!</b> Kindly complete details!';
+                document.getElementById("error2").hidden = false;
+                document.getElementById("success2").hidden = true;
                 document.getElementById("error").hidden = true;
+                document.getElementById("success").hidden = true;
+                //alert('Kindly complete details!');
+                //document.getElementById("error").hidden = true;
                 return false;
             }
             else if(pass != cpass)
             {
-                /* document.getElementById("error").innerHTML = 'Password did not match!';
-                document.getElementById("error").hidden = false;
-                document.getElementById("success").hidden = true; */
-                alert('Password did not match!');
+                document.getElementById("error2").innerHTML = '<b>Error!</b> Password did not match!';
+                document.getElementById("error2").hidden = false;
+                document.getElementById("success2").hidden = true;
                 document.getElementById("error").hidden = true;
+                document.getElementById("success").hidden = true;
+                /* alert('Password did not match!');
+                document.getElementById("error").hidden = true; */
                 return false;
-            }
-            else
-            {
-                document.getElementById("error").hidden = false;
             }
             
         }
+
+        $(document).ready(function(){
+            
+
+        });
 
     </script>
 

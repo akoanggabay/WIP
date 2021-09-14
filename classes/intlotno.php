@@ -2,18 +2,18 @@
 include_once("connection.php");
 
 class IntLotno {
+	private $custcode;
     private $intlotno;
 	private $custlotno;
-    private $po;
+    private $pono;
+	private $origqty;
     private $currqty;
     private $station;
     private $status;
     private $starttime;
     private $lastupdate;
     private $lastupdatedby;
-
-	
-
+	private $wafersize;
 
 	function __construct(){
 
@@ -26,69 +26,59 @@ class IntLotno {
 		$this->custcode = $custcode;
 	}
 
+	public function setintlotno($intlotno)
+	{
+		$this->intlotno = $intlotno;
+	}
+
 	public function setcustlotno($custlotno)
 	{
 		$this->custlotno = $custlotno;
 	}
 
-    public function setdeviceno($deviceno)
+    public function setpono($pono)
 	{
-		$this->deviceno = $deviceno;
+		$this->pono = $pono;
 	}
 
-    public function setqty($qty)
+    public function setorigqty($origqty)
 	{
-		$this->qty = $qty;
+		$this->origqty = $origqty;
 	}
 
-    public function setwaferqty($waferqty)
+    public function setcurrqty($currqty)
 	{
-		$this->waferqty = $waferqty;
+		$this->currqty = $currqty;
 	}
 
-    public function setdatestart($datestart)
+	public function setstation($station)
 	{
-		$this->datestart = $datestart;
-	}
-
-	public function setshipbackdate($shipbackdate)
-	{
-		$this->shipbackdate = $shipbackdate;
-	}
-
-    public function setwaferthickness($waferthickness)
-	{
-		$this->waferthickness = $waferthickness;
-	}
-
-    public function setrequiredthickness($requiredthickness)
-	{
-		$this->requiredthickness = $requiredthickness;
-	}
-
-    public function setprocesscat($processcat)
-	{
-		$this->processcat = $processcat;
-	}
-
-    public function setlottype($lottype)
-	{
-		$this->lottype = $lottype;
-	}
-
-    public function setdateupload($dateupload)
-	{
-		$this->dateupload = $dateupload;
-	}
-
-    public function setuploadby($uploadby)
-	{
-		$this->uploadby = $uploadby;
+		$this->station = $station;
 	}
 
     public function setstatus($status)
 	{
 		$this->status = $status;
+	}
+
+    public function setstarttime($starttime)
+	{
+		$this->starttime = $starttime;
+	}
+
+    public function setlastupdate($lastupdate)
+	{
+		$this->lastupdate = $lastupdate;
+	}
+
+    public function setlastupdatedby($lastupdatedby)
+	{
+		$this->lastupdatedby = $lastupdatedby;
+	}
+
+	public function setwafersize($wafersize)
+	{
+		$this->wafersize = $wafersize;
 	}
 	
 
@@ -98,64 +88,34 @@ class IntLotno {
 		return $this->custcode;
 	}
 
+	public function getintlotno()
+	{
+		return $this->intlotno;
+	}
+
 	public function getcustlotno()
 	{
 		return $this->custlotno;
 	}
 
-    public function getdeviceno()
+    public function getpono()
 	{
-		return $this->deviceno;
+		return $this->pono;
 	}
 
-    public function getqty()
+    public function getorigqty()
 	{
-		return $this->qty;
+		return $this->origqty;
 	}
 
-    public function getwaferqty()
+    public function getcurrqty()
 	{
-		return $this->waferqty;
+		return $this->currqty;
 	}
 
-    public function getdatestart()
+	public function getstation()
 	{
-		return $this->datestart;
-	}
-
-	public function getshipbackdate()
-	{
-		return $this->shipbackdate;
-	}
-
-    public function getwaferthickness()
-	{
-		return $this->waferthickness;
-	}
-
-    public function getrequiredthickness()
-	{
-		return $this->requiredthickness;
-	}
-
-    public function getprocesscat()
-	{
-		return $this->processcat;
-	}
-
-    public function getlottype()
-	{
-		return $this->lottype;
-	}
-
-    public function getdateupload()
-	{
-		return $this->dateupload;
-	}
-
-    public function getuploadby()
-	{
-		return $this->uploadby;
+		return $this->station;
 	}
 
     public function getstatus()
@@ -163,20 +123,40 @@ class IntLotno {
 		return $this->status;
 	}
 
-    public static function TicketNumber($date)
+    public function getstarttime()
+	{
+		return $this->starttime;
+	}
+
+    public function getlastupdate()
+	{
+		return $this->lastupdate;
+	}
+
+    public function getlastupdatedby()
+	{
+		return $this->lastupdatedby;
+	}
+
+	public function getwafersize()
+	{
+		return $this->wafersize;
+	}
+
+    public static function IntLotNo($date)
 	{
 		$conn = new Connection();
 		$result = '';
 
 		try {
 			$conn->open();
-			$dataset = $conn->query("SELECT * FROM ticket where ticketno like '".$date."%' order by ticketno desc");
+			$dataset = $conn->query("SELECT * FROM dbo.intlotno where intlot like '".$date."%' order by intlot desc");
 
 			if ($conn->has_rows($dataset)) {
 
 				$reader = $conn->fetch_array($dataset);
-				$ticketno = explode("-",$reader["ticketno"]);
-				$result = sprintf("%04d",$ticketno[1]+1);
+				$intlot = explode("-",$reader["intlot"]);
+				$result = sprintf("%04d",$intlot[1]+1);
 			} else {
 				$result = sprintf("%04d",1);
 			}
@@ -186,4 +166,280 @@ class IntLotno {
 		}
 		return $result;
 	}
+
+	public static function getcountbyPO($code,$po) 
+	{
+		$conn = new Connection();
+		$result = 0;
+
+		try
+		{
+			$conn->open();
+			$dataset = $conn->query("SELECT sum(origqty) as total FROM intlotno WHERE custcode ='".$code."' and pono = '".$po."'");
+			$counter = 0;
+
+			if ($conn->has_rows($dataset)){
+			$reader = $conn->fetch_array($dataset);
+			$result = $reader["total"];	
+			}else{
+			$result = 0;
+			}
+
+			$conn->close();
+		}
+		catch(Exception $e)
+		{
+
+		}
+		return $result;
+	}
+
+	public static function getcountbyPOShipped($code,$po) 
+	{
+		$conn = new Connection();
+		$result = 0;
+
+		try
+		{
+			$conn->open();
+			$dataset = $conn->query("SELECT sum(origqty) as total FROM intlotno WHERE custcode ='".$code."' and pono = '".$po."' and status = 'SHIPPED'");
+			$counter = 0;
+
+			if ($conn->has_rows($dataset)){
+			$reader = $conn->fetch_array($dataset);
+			$result = $reader["total"];	
+			}else{
+			$result = 0;
+			}
+
+			$conn->close();
+		}
+		catch(Exception $e)
+		{
+
+		}
+		return $result;
+	}
+
+	public function AddIntLotno(){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+            $sql = "INSERT INTO dbo.intlotno (custcode,intlot,custlot,pono,origqty,currqty,status,starttime,station,lastupdate,lastupdatedby,wafersize) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getcustcode(),$this->getintlotno(),$this->getcustlotno(),$this->getpono(),$this->getorigqty(),$this->getcurrqty(),$this->getstatus(),date("Y-m-d h:i:sa"),$this->getstation(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),$this->getwafersize());
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+			$success = $row;
+            /* if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            } */
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
+	}
+
+	public static function GetDetails($intlot)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno where a.intlot = '".$intlot."'");
+			if ($conn->has_rows($dataset)) {
+				$row = $conn->fetch_array($dataset);
+				$result[] = array(
+				'custcode'   => $row["custcode"],
+				'custlot'   => $row["custlot"],
+				'deviceno'   => $row["deviceno"],
+				'qty'   => $row["qty"],
+				'waferqty'   => $row["waferqty"],
+				'datestart'   => $row["datestart"]->format('F j, Y'),
+				'shipbackdate' => $row["shipbackdate"]->format('F j, Y'),
+				'waferthickness' => $row["waferthickness"],
+				'requiredthickness' => $row["requiredthickness"],
+				'processcat' => $row["processcat"],
+				'lottype' => $row["lottype"],
+				'status' => $row["status"],
+				'station' => $row["station"],
+				'wafersize' => $row["wafersize"],
+				'currqty' => $row["currqty"],
+				'pono' => $row["pono"],
+				'intlot' => $row["intlot"]
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function GetAllIntLotno($custcode,$processcat)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("select intlot from intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode where a.custcode = '".$custcode."' and a.status in ('PROCESSED','ON PROCESS') and b.processcat = '".$processcat."' order by b.datestart");
+			$counter = 0;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new IntLotNo();
+
+				$Select->setintlotno($reader["intlot"]);
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public function updateStatus(){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.intlotno SET status = '".$this->getstatus()."' where custcode ='".$this->getcustcode()."' and intlot = '".$this->getintlotno()."'");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+	}
+
+	public function updateCurrqty($qty){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.intlotno SET currqty = '".$qty."', status ='".$this->getstatus()."',lastupdate = GETDATE() where custcode ='".$this->getcustcode()."' and intlot = '".$this->getintlotno()."'");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+	}
+
+	public function DoneInspect(){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.intlotno SET status = '".$this->getstatus()."',lastupdate = GETDATE(), lastupdatedby = '".$this->getlastupdatedby()."' ,station = '".$this->getstation()."' where custcode ='".$this->getcustcode()."' and intlot = '".$this->getintlotno()."'");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+	}
+
+	public static function GetAllHoldLot()
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * FROM dbo.intlotno where status = 'HOLD'");
+			$counter = 0;
+			include_once("user.php");
+			$user = new User;
+
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new IntLotno();
+				$user->UserData($reader["lastupdatedby"]);
+				$Select->setcustcode($reader["custcode"]);
+				$Select->setintlotno($reader["intlot"]);
+                $Select->setcustlotno($reader["custlot"]);
+                $Select->setpono($reader["pono"]);
+                $Select->setorigqty($reader["origqty"]);
+                $Select->setcurrqty($reader["currqty"]);
+				$Select->setstatus($reader["status"]);
+				$Select->setstarttime($reader["starttime"]->format('F j, Y g:i:m a'));
+				$Select->setstation($reader["station"]);
+				$Select->setlastupdatedby($user->getfname().' '.$user->getlname());
+				$Select->setwafersize($reader["wafersize"]);
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function GetAllPOLotno($pono)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT *  from dbo.intlotno where pono = '".$pono."' order by starttime desc");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+				include_once("customer.php");
+				include_once("station.php");
+				
+				$user = new User;
+				$cust = new Customer;
+				$station = new Station;
+				while ($row = $conn->fetch_array($dataset)) {
+				
+				$user->UserData($row["lastupdatedby"]);
+				$cust->CustomerDetails($row["custcode"]);
+				$station->StationDetails($row["station"]);
+				$result[] = array(
+				'custcode'   => $cust->getcustname(),
+				'intlot'   => $row["intlot"],
+				'custlot' => $row["custlot"],
+				'pono' => $row["pono"],
+				'origqty' => $row["origqty"],
+				'currqty' => $row["currqty"],
+				'status' => $row["status"],
+				'starttime' => $row["starttime"]->format('F j, Y g:i:m a'),
+				'station' => $row["station"].':'.$station->getdescription(),
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:m a'),
+				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
+				'wafersize' => $row["wafersize"]
+				);
+				}
+			}
+			else
+			{
+				$result = 'false';
+			}
+		
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+}
 ?>

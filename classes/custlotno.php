@@ -261,7 +261,8 @@ class CustLotno {
 				'waferthickness' => $row["waferthickness"],
 				'requiredthickness' => $row["requiredthickness"],
 				'processcat' => $row["processcat"],
-				'lottype' => $row["lottype"]
+				'lottype' => $row["lottype"],
+				'status' => $row["status"]
 				);
 			}
 			else
@@ -274,6 +275,19 @@ class CustLotno {
 			echo $e;
 		}
 		return $result;
+	}
+
+	public function updateStatus(){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.custlotno SET status = '".$this->getstatus()."' where custcode ='".$this->getcustcode()."' and custlotno = '".$this->getcustlotno()."'");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
 	}
 
 
