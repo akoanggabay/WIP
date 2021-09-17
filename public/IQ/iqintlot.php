@@ -335,12 +335,17 @@ $(document).ready(function(){
         $("#tblrlogs > tbody").empty();
         $("#tbltlogs > tbody").empty();
         $('#intlotno').focus();
+        document.getElementById("success").hidden = true;
+        document.getElementById("error").hidden = true;
     });
     $("#btnView").click(function() {
         
         //window.open('http://localhost/wip/public/test.php');
         if(document.getElementById("intlotno").value == '')
         {
+            document.getElementById("error").innerHTML = 'Please input Internal Lot number!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
             return false;
         }
         var xmlhttp = new XMLHttpRequest();
@@ -350,7 +355,7 @@ $(document).ready(function(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            alert(result);
+            //alert(result);
             if(res[0] == '"false"')
             {
                 document.getElementById("error").innerHTML = 'No Data available for Internal Lot number: <b>'+document.getElementById("intlotno").value;
@@ -368,7 +373,7 @@ $(document).ready(function(){
                 var rlogs = JSON.parse(res[2]);
                 var tlogs = JSON.parse(res[3]);
                 var rejlogs = JSON.parse(res[4]);
-                alert(result);
+                //alert(result);
                 document.getElementById("nstation").value = lotno.nstation;
                 document.getElementById("cstation").value = lotno.cstation;
                 document.getElementById("custlotno").value = lotno.custlot;
