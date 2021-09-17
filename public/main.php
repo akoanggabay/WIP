@@ -213,13 +213,13 @@ if(!isset($_SESSION['idno']))
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#RGcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Registration</span>
+                    <span>User Maintenance</span>
                 </a>
                 <div id="RGcollapsePages" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
 
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Registration:</h6>
+                        <h6 class="collapse-header">User:</h6>
                         <a class="collapse-item" href="?form=RG&path=register">Add User</a>
                     </div>
                 </div>
