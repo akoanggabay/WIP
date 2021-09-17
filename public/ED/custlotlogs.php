@@ -11,9 +11,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Tracking no</th>
                             <th>Filename</th>
-                            <th>Customer Code</th>
+                            <th>Customer name</th>
                             <th>Customer Lot number</th>
                             <th>Status</th>
                             <th>Remarks</th>

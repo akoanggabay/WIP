@@ -256,8 +256,30 @@ class IntLotno {
 		try{
 			$conn->open();
 			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno where a.intlot = '".$intlot."'");
+			include_once("station.php");
+			include_once("processroute.php");
+			$station = new Station;
+			$process = new ProcessRoute;
 			if ($conn->has_rows($dataset)) {
 				$row = $conn->fetch_array($dataset);
+				$station->StationDetails($row["station"]);
+
+				$process->setstation($row["station"]);
+				$process->setprocess($row["processcat"]);
+				$process->getStationDetails();
+				$cstation  = $row["station"].':'.$station->getdescription();
+				$nextstage = ProcessRoute::getnextstage($process->getprocess(),$process->getflowsequence());
+
+				$station->StationDetails($nextstage);
+				if($nextstage == '')
+				{
+					$nstation = '';
+				}
+				else
+				{
+					$nstation = $nextstage.':'.$station->getdescription();
+				}
+				
 				$result[] = array(
 				'custcode'   => $row["custcode"],
 				'custlot'   => $row["custlot"],
@@ -275,6 +297,8 @@ class IntLotno {
 				'wafersize' => $row["wafersize"],
 				'currqty' => $row["currqty"],
 				'pono' => $row["pono"],
+				'cstation' => $cstation,
+				'nstation' => $nstation,
 				'intlot' => $row["intlot"]
 				);
 			}
@@ -438,6 +462,28 @@ class IntLotno {
 			
 		}catch(Exception $e){
 			echo $e;
+		}
+		return $result;
+	}
+
+	public static function checkExist($intlotno)
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM dbo.intlotno WHERE intlot ='" .$intlotno."'");
+
+			if ($conn->has_rows($dataset)) {
+
+				$result = 'true';
+			} else {
+				$result = 'false';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
 		}
 		return $result;
 	}

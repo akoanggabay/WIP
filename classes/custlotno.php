@@ -167,14 +167,14 @@ class CustLotno {
 		return $this->status;
 	}
 
-    public static function checkExist($custcode,$custlono)
+    public static function checkExist($custcode,$custlotno)
 	{
 		$conn = new Connection();
 		$result = 'false';
 
 		try {
 			$conn->open();
-			$dataset = $conn->query("SELECT * FROM custlotno WHERE custcode ='" . $custcode . "' and custlotno = '".$custlono."'");
+			$dataset = $conn->query("SELECT * FROM dbo.custlotno WHERE custcode ='".$custcode."' and custlotno = '".$custlotno."'");
 
 			if ($conn->has_rows($dataset)) {
 
@@ -188,6 +188,28 @@ class CustLotno {
 		}
 		return $result;
 	}
+
+	/* public static function checkExist($custcode,$custlotno)
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM dbo.custlotno WHERE custcode ='" .$custcode."'");
+
+			if ($conn->has_rows($dataset)) {
+
+				$result = 'true';
+			} else {
+				$result = 'false';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
+		}
+		return $result;
+	} */
 
     public function AddCustlotno(){
 		$conn = new Connection();
@@ -242,14 +264,14 @@ class CustLotno {
 		return $result;
 	}
 
-	public static function GetDetails($custlotno)
+	public static function GetDetails($custlotno,$custcode)
 	{
 		$conn = new Connection();
 		$result = array();
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM dbo.custlotno where custlotno ='".$custlotno."'");
+			$dataset =  $conn->query("SELECT * FROM dbo.custlotno where custlotno ='".$custlotno."' and custcode = '".$custcode."'");
 			if ($conn->has_rows($dataset)) {
 				$row = $conn->fetch_array($dataset);
 				$result[] = array(

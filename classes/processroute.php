@@ -194,6 +194,26 @@ class ProcessRoute {
 		return $result;
 	}
 
+	public static function getpackingprocess($process){
+		$conn = new Connection();
+		$station = '';
+		try{
+			$conn->open();
+
+			$dataset = $conn->query("SELECT * from dbo.processroute where process = '".$process."' and forpacking = 1");
+
+				if($conn->has_rows($dataset)){
+					$reader = $conn->fetch_array($dataset);
+					$station = $reader['station'];
+				}
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+		return $station;
+	}
+
 
 }
 

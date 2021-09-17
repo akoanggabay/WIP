@@ -11,7 +11,7 @@ $pono = $_GET['pono'];
 $result = "";
 
 
-$custlot = CustLotno::GetDetails($custlotno);
+$custlot = CustLotno::GetDetails($custlotno,$custcode);
 $data = json_encode($custlot[0]);
 $data2 = json_decode($data);
 
@@ -41,7 +41,7 @@ if($podata2->status == 'OPEN')
             }
             else
             {
-                echo 'success_PO number has <b>'.$avail.'</b> available Wafer quantity!';
+                echo 'success_PO number: <b>'.$pono.'</b> has <b>'.$avail.'</b> available Wafer quantity!';
             }
             
         }

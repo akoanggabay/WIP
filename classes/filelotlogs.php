@@ -111,17 +111,23 @@ class FileLotLogs {
 			$conn->open();
 			$dataset =  $conn->query("SELECT top (200) * FROM dbo.filelogs order by lastupdate desc");
 			$counter = 0;
+			include_once("user.php");
+			include_once("customer.php");
+			
+			$user = new User;
+			$cust = new Customer;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new FileLotLogs();
-
+				$user->UserData($reader["lastupdatedby"]);
+				$cust->CustomerDetails($reader["custcode"]);
 				$Select->setid($reader["id"]);
 				$Select->setfilename($reader["filename"]);
-                $Select->setcustcode($reader["custcode"]);
+                $Select->setcustcode($cust->getcustname());
                 $Select->setcustlotno($reader["custlotno"]);
                 $Select->setstatus($reader["status"]);
                 $Select->setremarks($reader["remarks"]);
                 $Select->setlastupdate($reader["lastupdate"]);
-                $Select->setlastupdatedby($reader["lastupdatedby"]);
+                $Select->setlastupdatedby($user->getfname().' '.$user->getlname());
 				$result[$counter] = $Select;
 				$counter++;
 			}

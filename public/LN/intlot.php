@@ -193,6 +193,7 @@
 $(document).ready(function(){
     $('#custcode').change(function (){
         $("input[type=text]").val('');
+        $("input[type=number]").val('');
         $("#custlotno").empty();
         $("#pono").empty();
         document.getElementById("btnGenerate").disabled = true;
@@ -212,7 +213,7 @@ $(document).ready(function(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            alert(result);
+            //alert(result);
             
             var x1 = document.getElementById("custlotno");
             var option1 = document.createElement("option");
@@ -265,7 +266,7 @@ $(document).ready(function(){
                 
             }
             };
-            xmlhttp.open("GET", "../php/getcustlotnodetails.php?custlotno=" + document.getElementById("custlotno").value, true);
+            xmlhttp.open("GET", "../php/getcustlotnodetails.php?custlotno=" + document.getElementById("custlotno").value+"&custcode="+document.getElementById("custcode").value, true);
             xmlhttp.send();
 
             var xmlhttp2 = new XMLHttpRequest();
@@ -275,20 +276,31 @@ $(document).ready(function(){
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                alert(result);
-                
-                var x1 = document.getElementById("pono");
-                var option1 = document.createElement("option");
-                option1.text = '';
-                x1.add(option1);
-                for (i = 0; i < res.length - 1; i++) 
-                { 
-                        // alert(res[i]);
-                        var x = document.getElementById("pono");
-                        var option = document.createElement("option");
-                        option.text = res[i];
-                        x.add(option);
+                //alert(result);
+                //alert(res.length)
+                if(res.length > 1)
+                {
+                    var x1 = document.getElementById("pono");
+                    var option1 = document.createElement("option");
+                    option1.text = '';
+                    x1.add(option1);
+                    for (i = 0; i < res.length - 1; i++) 
+                    { 
+                            // alert(res[i]);
+                            var x = document.getElementById("pono");
+                            var option = document.createElement("option");
+                            option.text = res[i];
+                            x.add(option);
+                    }
                 }
+                else
+                {
+                    document.getElementById("error").innerHTML = '<b>Error!</b> No available PO number for <b> ' + $( "#custcode option:selected" ).text();
+                    document.getElementById("error").hidden = false;
+                    document.getElementById("success").hidden = true;
+                    document.getElementById("btnGenerate").disabled = true;
+                }
+                
                     
             }
             };
@@ -314,7 +326,7 @@ $(document).ready(function(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            alert(result);
+            //alert(result);
             if(res[0] == 'success')
             {
                 document.getElementById("success").innerHTML = res[1];
@@ -340,7 +352,7 @@ $(document).ready(function(){
     });
 
     $("#btnGenerate").click(function() {
-        //window.open('http://localhost/wip/public/test.php');
+        //window.open('http://localhost/wip/print/test.php');
         if(document.getElementById("wafersize").value == '')
         {
             document.getElementById("error").innerHTML = 'Please enter Wafer size!';
@@ -355,7 +367,7 @@ $(document).ready(function(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            alert(result);
+            //alert(result);
             if(res[0] == 'success')
             {
                 window.open('http://localhost/wip/print/intlot.php?intlotno='+res[2]);

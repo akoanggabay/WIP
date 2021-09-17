@@ -83,7 +83,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Select File(csv file) *:</label><br/>
+                                        <label class="text-gray-900" for="">Select File(CSV file) *:</label><br/>
                                         <input class="form-control" type="file" name="uploadfile" id="uploadfile" accept=".csv" />
                                     </div>
                                     <div class="form-group">
@@ -124,24 +124,32 @@
     return false;
     }
 
+    if(custcode == '' || startdate == '' || shipbackdate == '' || lottype == '' || processcat == '')
+    {
+        //alert('Kindly complete necessary details!');
+        document.getElementById("error").innerHTML = 'Kindly complete necessary details!';
+        document.getElementById("error").hidden = false;
+        return false;
+    }
+
     if(file.split(".").pop() == 'csv' || file.split(".").pop() == 'CSV')
     {
         if(checkForSpecialChar(file.split('.')[0])){
-        alert("Filename is not valid. Kindly check and remove special characters.");
+        //alert("Filename is not valid. Kindly check and remove special characters.");
+        document.getElementById("error").innerHTML = 'Filename is not valid. Kindly check and remove <b>special characters</b>.';
+        document.getElementById("error").hidden = false;
         return false;
         }
     }
     else
     {
-        alert('Selected File is not csv format!');
+        document.getElementById("error").innerHTML = 'Selected File is not <b>CSV</b> format!';
+        document.getElementById("error").hidden = false;
+        //alert('Selected File is not CSV format!');
         return false;
     }
 
-    if(custcode == '' || startdate == '' || shipbackdate == '' || lottype == '' || processcat == '')
-    {
-        alert('Kindly complete necessary details!');
-        return false;
-    }
+    
         
   
 }

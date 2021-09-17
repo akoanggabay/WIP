@@ -1,3 +1,9 @@
+<?php 
+
+if($_SESSION['usertype'] == 'Super Administrator' || $_SESSION['usertype'] == 'Administrator')
+{
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,10 +43,10 @@
                         <div>
                             <div class="p-15">
                                 <div id="logo" style="margin: 15px">
-                                    <img src="img/logo.png" style="display: block;margin-left: auto;margin-right: auto;margin-top: -12px;max-width: 100%;max-height: 100%;width: 80px;height: 74px;margin-top: auto;" alt="KKM">
+                                    <img src="../img/logo.png" style="display: block;margin-left: auto;margin-right: auto;margin-top: -12px;max-width: 100%;max-height: 100%;width: 80px;height: 74px;margin-top: auto;" alt="KKM">
                                 </div>
                                 <br/>
-                                <form name="reguser" onsubmit="return validateForm()" action="./php/userreg.php" method="post">
+                                <form name="reguser" onsubmit="return validateForm()" action="../php/userreg.php" method="post">
                                     
                                     
                                     <div id="error" class="alert alert-danger alert-dismissible" role="alert" <?php if(@$_GET['Error'] == false){ echo 'hidden'; } ?>>
@@ -94,7 +100,7 @@
                                         <select name="usertype" class="form-control" id="usertype" name="usertype">
                                             <option value="">User Type *</option>
                                             <?php 
-                                            include_once("./classes/usertype.php");
+                                            include_once("../classes/usertype.php");
                                             $SelectUserType = UserType::GetAllUserType();
                                             for($i=0;$i<count($SelectUserType);$i++){
                                             ?>
@@ -117,7 +123,7 @@
                                             id="cpass" name="cpass" placeholder=" Confirm password *">
                                     </div>
                                     <button type="submit" class="btn btn-outline-success" id="btnReg" name="btnReg">Register</button>
-                                    <button class="btn btn-outline-primary float-right"><a href="index.php">Sign In</a></button>
+                                    <!-- <button class="btn btn-outline-primary float-right"><a href="index.php">Sign In</a></button> -->
                                     
                                 </form>
                             </div>
@@ -144,7 +150,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <script>
-        
+        document.getElementById("bday").defaultValue = "2000-01-01";
         function validateForm() {
             var idno = document.forms["reguser"]["idno"].value;
             var fname = document.forms["reguser"]["fname"].value;
@@ -189,3 +195,9 @@
 
 </html>
 
+<?php 
+} 
+else{
+    echo strtoupper('<h1>User not authenticated to access this form!</h1>');
+}
+?>

@@ -18,7 +18,7 @@ if(isset($_POST['btnReg']))
 {
     if($exist == 'true')
     {
-        header("location:../register.php?Error=".$_POST['idno']." already registered!");
+        header("location:../public/main.php?form=RG&path=register&Error=".$_POST['idno']." already registered!");
     }
     else
     {
@@ -33,12 +33,12 @@ if(isset($_POST['btnReg']))
 
         if($success == true)
         {
-            header("location:../index.php?Success=$idno is successfully registered!");
+            header("location:../public/main.php?form=RG&path=register&Success=$idno is successfully registered!");
         }
         else
         {
             //echo "error_Can't Connect to Database!";
-            header("location:../register.php?Error=Can't Connect to Database!");
+            header("location:../public/main.php?form=RG&path=register&Error=Can't Connect to Database!");
         }
 
     }

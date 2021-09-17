@@ -68,18 +68,18 @@ if(isset($_SESSION['idno']))
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="idno" name="idno" aria-describedby="emailHelp"
-                                                placeholder="ID Number">
+                                                placeholder="ID Number *">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Password">
+                                                id="password" name="password" placeholder="Password *">
                                         </div>
                                         
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-outline-success" id="btnSignin" name="btnSignin">Login</button>
-                                            <a href="register.php" style="margin-bottom: 15px;" class="btn btn-outline-primary float-right">
+                                            <!-- <a href="register.php" style="margin-bottom: 15px;" class="btn btn-outline-primary float-right">
                                                 Register
-                                            </a>
+                                            </a> -->
                                         </div>
                                     </form>
                                 </div>

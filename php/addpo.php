@@ -12,30 +12,38 @@ $subprocesscat = $_GET['subprocesscat'];
 
 $exist = PO::checkExist($custcode,$pono);
 
-if($exist == 'true')
+if($_SESSION['idno'])
 {
-    echo 'error_<b>Error!</b> '.$_GET['pono'].' is already exist on our Database!';
-}
-else
-{
-    $PO = new PO();
-    $PO->setpono($pono);
-    $PO->setcustcode($custcode);
-    $PO->setqty($qty);
-    $PO->setprocesscat($processcat);
-    $PO->setsubprocesscat($subprocesscat);
-    $PO->setstatus('OPEN');
-    $PO->setlastupdatedby('test');
-    $success = $PO->addPO();
-
-    if($success == true)
+    if($exist == 'true')
     {
-        echo 'success_<b>Success!</b> '.$pono.' is successfully added!';
+        echo 'error_<b>Error!</b> '.$_GET['pono'].' already exist on our Database!';
     }
     else
     {
-        echo "error_Can't Connect to Database!";
-    }
+        $PO = new PO();
+        $PO->setpono($pono);
+        $PO->setcustcode($custcode);
+        $PO->setqty($qty);
+        $PO->setprocesscat($processcat);
+        $PO->setsubprocesscat($subprocesscat);
+        $PO->setstatus('OPEN');
+        $PO->setlastupdatedby($_SESSION['idno']);
+        $success = $PO->addPO();
 
+        if($success == true)
+        {
+            echo 'success_<b>Success!</b> '.$pono.' successfully added!';
+        }
+        else
+        {
+            echo "error_Can't Connect to Database!";
+        }
+
+    }
 }
+else
+{
+    echo 'session_Login session timeout!';
+}
+
 ?>

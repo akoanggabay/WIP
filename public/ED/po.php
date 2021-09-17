@@ -106,7 +106,7 @@
                             <td><?php echo $po[$i]->getqty(); ?></td>
                             <td>
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $progress; ?>%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round($progress,2); ?>%</div>
                                 </div>
                                 <div class="progress progress-sm mr-2">
                                     <div class="progress-bar bg-<?php echo $progcolor; ?>" role="progressbar"
@@ -116,7 +116,7 @@
                             </td>
                             <td>
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $progressshipped; ?>%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round($progressshipped,2); ?>%</div>
                                 </div>
                                 <div class="progress progress-sm mr-2">
                                     <div class="progress-bar bg-<?php echo $progcolorshipped; ?>" role="progressbar"

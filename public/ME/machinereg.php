@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4 text-gray-900">Purchase Order Registration</h1>
+<h1 class="h3 mb-4 text-gray-900">Machine Registration</h1>
 <div class="col-lg-6">
     <div class="row">
     <div class="col-lg-12">
@@ -16,49 +16,50 @@
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Customer: *</label><br/>
-                                        <select class="form-control" id="custcode" name="custcode">
-                                            <option selected></option>
-                                            <?php 
-                                            include_once("../classes/customer.php");
-                                            $SelectCustomer = Customer::GetAllCustomer();
-                                            for($i=0;$i<count($SelectCustomer);$i++){
-                                            ?>
-                                                    <option value ='<?php echo $SelectCustomer[$i]->getcustcode(); ?>' ><?php echo $SelectCustomer[$i]->getcustname(); ?></option>
-                                            <?php 
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-gray-900" for="">Purchase Order Number: *</label><br/>
-                                        <input class="form-control" type="text" name="pono" id="pono" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-gray-900" for="">Qty: *</label><br/>
-                                        <input class="form-control" type="number" name="poqty" id="poqty">
-                                    </div>
-                                    <div class="form-group">
                                         <label class="text-gray-900" for="">Process Category: *</label><br/>
                                         <select class="form-control" id="processcat" name="processcat">
-                                            <option value=""></option>
+                                            <option selected></option>
                                             <?php 
                                             include_once("../classes/processcat.php");
-                                            $ProcessType = ProcessCat::GetAllProcessType();
-                                            for($i=0;$i<count($ProcessType);$i++){
+                                            $SelectProcess = ProcessCat::GetAllProcessType();
+                                            for($i=0;$i<count($SelectProcess);$i++){
                                             ?>
-                                                    <option value ='<?php echo $ProcessType[$i]->getprocess(); ?>' ><?php echo $ProcessType[$i]->getprocess(); ?></option>
+                                                    <option value ='<?php echo $SelectProcess[$i]->getprocess(); ?>' ><?php echo $SelectProcess[$i]->getprocess(); ?></option>
                                             <?php 
                                                 }
                                             ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Sub Category:</label><br/>
-                                        <input class="form-control" type="text" name="subprocesscat" id="subprocesscat" placeholder="" value="" readonly>
+                                        <label class="text-gray-900" for="">Process: *</label><br/>
+                                        <select class="form-control" id="station" name="station">
+                                            <option selected></option>
+                                            
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-outline-success" id="btnReg">Add Purchase Order</button>
+                                        <label class="text-gray-900" for="">Machine type: *</label><br/>
+                                        <select class="form-control" id="type" name="type">
+                                            <option selected></option>
+                                            <?php 
+                                            include_once("../classes/machinetype.php");
+                                            $SelectType = MachineType::GetAllMachineType();
+                                            for($i=0;$i<count($SelectType);$i++){
+                                            ?>
+                                                    <option value ='<?php echo $SelectType[$i]->gettype(); ?>' ><?php echo $SelectType[$i]->gettype(); ?></option>
+                                            <?php 
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-gray-900" for="">Machine ID: *</label><br/>
+                                        <input class="form-control" type="text" name="machineid" id="machineid" placeholder="">
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-outline-success" id="btnReg">Register Machine</button>
                                         <button type="button" class="btn btn-outline-warning float-right" id="btnCancel">Cancel</button>
                                     </div>
                                 </div>
@@ -78,9 +79,12 @@
 <script>
     $("#btnReg").click(function() {
       
-    if(document.getElementById('pono').value == '' || document.getElementById("custcode").value == '' || document.getElementById("poqty").value == '' || document.getElementById("processcat").value == '' || document.getElementById("subprocesscat").value == '')
+    if(document.getElementById('processcat').value == '' || document.getElementById("station").value == '' || document.getElementById("type").value == '' || document.getElementById("machineid").value == '')
     {
-        alert('Kindly complete details!');
+        document.getElementById("error").innerHTML = 'Kindly complete necessary details!';
+        document.getElementById("error").hidden = false;
+        document.getElementById("success").hidden = true;
+        return false;
     }
     else
     {
@@ -98,8 +102,8 @@
                         document.getElementById("success").hidden = false;
                         document.getElementById("error").hidden = true;
                         $("input[type=text]").val('');
-                        $("input[type=number]").val('');
                         $("select").val('');
+                        ("#station").focus();
                     }
                     else if(res[0] == 'error')
                     {
@@ -119,7 +123,7 @@
                 }   
                 };
 
-        xmlhttp.open("GET", '../php/addpo.php?pono='+document.getElementById('pono').value+'&custcode='+document.getElementById('custcode').value+'&qty='+document.getElementById('poqty').value+'&processcat='+document.getElementById('processcat').value+'&subprocesscat='+document.getElementById('subprocesscat').value,true);
+        xmlhttp.open("GET", '../php/addmachine.php?processcat='+document.getElementById('processcat').value+'&station='+document.getElementById('station').value.split(":")[0]+'&type='+document.getElementById('type').value+'&machineid='+document.getElementById('machineid').value,true);
         xmlhttp.send();
         /* $('#LoadingModal').modal('hide'); */
     }
@@ -127,7 +131,7 @@
         
     });
 
-    $('#processcat').change(function (){
+    /* $('#processcat').change(function (){
         
         if(document.getElementById('processcat').value == '')
         {
@@ -156,6 +160,47 @@
         };
 
         xmlhttp.open("GET", "../php/getsubprocess.php?processcat=" + document.getElementById("processcat").value, true);
+        xmlhttp.send();
+
+        }
+    }); */
+
+    $('#processcat').change(function (){
+        $("input[type=text]").val('');
+        
+        if(document.getElementById('processcat').value == '')
+        {
+            return;
+        }
+        else
+        {
+        $("#station").empty();
+        $("#station").focus();
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        //alert(this.readyState + ' ' + this.status);
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            var result = this.responseText;
+            var res = result.split("_");
+            //alert(result);
+            
+            var x1 = document.getElementById("station");
+            var option1 = document.createElement("option");
+            option1.text = '';
+            x1.add(option1);
+            for (i = 0; i < res.length - 1; i++) 
+            { 
+                    // alert(res[i]);
+                    var x = document.getElementById("station");
+                    var option = document.createElement("option");
+                    option.text = res[i];
+                    x.add(option);
+            }
+        }
+        };
+
+        xmlhttp.open("GET", "../php/getstationroute.php?processcat=" + document.getElementById("processcat").value, true);
         xmlhttp.send();
 
         }

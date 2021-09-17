@@ -73,6 +73,22 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Current station:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="cstation" name="cstation"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Next station:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="nstation" name="nstation"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Status:</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -334,7 +350,7 @@ $(document).ready(function(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            //alert(result);
+            alert(result);
             if(res[0] == '"false"')
             {
                 document.getElementById("error").innerHTML = 'No Data available for Internal Lot number: <b>'+document.getElementById("intlotno").value;
@@ -352,7 +368,9 @@ $(document).ready(function(){
                 var rlogs = JSON.parse(res[2]);
                 var tlogs = JSON.parse(res[3]);
                 var rejlogs = JSON.parse(res[4]);
-                //alert(result);
+                alert(result);
+                document.getElementById("nstation").value = lotno.nstation;
+                document.getElementById("cstation").value = lotno.cstation;
                 document.getElementById("custlotno").value = lotno.custlot;
                 document.getElementById("deviceno").value = lotno.deviceno;
                 document.getElementById("status").value = lotno.status;

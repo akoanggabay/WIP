@@ -97,6 +97,24 @@ if(!isset($_SESSION['idno']))
             <hr class="sidebar-divider d-none d-md-block">
 
             <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#MEcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Machine</span>
+                </a>
+                <div id="MEcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Machine:</h6>
+                        <a class="collapse-item" href="?form=ME&path=machinereg">Machine registration</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PFcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-cog"></i>
@@ -173,7 +191,7 @@ if(!isset($_SESSION['idno']))
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PCcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-boxes"></i>
+                    <i class="fas fa-fw fa-truck-loading"></i>
                     <span>Packing</span>
                 </a>
                 <div id="PCcollapsePages" class="collapse" aria-labelledby="headingPages"
@@ -187,7 +205,28 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
+            <?php 
+                if($_SESSION['usertype'] == 'Super Administrator' || $_SESSION['usertype'] == 'Administrator') 
+                {
+            ?>
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#RGcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Registration</span>
+                </a>
+                <div id="RGcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
 
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Registration:</h6>
+                        <a class="collapse-item" href="?form=RG&path=register">Add User</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+            <?php } ?>
 
 
             <!-- Sidebar Toggler (Sidebar) -->

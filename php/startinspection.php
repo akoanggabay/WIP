@@ -62,7 +62,7 @@ if($_SESSION['idno'])
 
             $ilot->updateStatus();
 
-            echo 'success_Start date Inspection of Internal Lot number: <b>'.$intlotno.'</b> is at <b>'.date('F j, Y, g:i a');
+            echo 'success_Start date Inspection of Internal Lot number: <b>'.$intlotno.'</b> <b>'.date('F j, Y, g:i a');
         }
         else if($intlotdata2->status == 'HOLD')
         {

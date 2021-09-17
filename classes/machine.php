@@ -127,32 +127,6 @@ class Machine {
 
     }
 
-    public function AddIntLotno(){
-		$conn = new Connection();
-        $success = true;
-		try{
-			//$conn->open();
-			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
-			$con = $conn->open();
-            $sql = "INSERT INTO dbo.intlotno (custcode,intlot,custlot,pono,origqty,currqty,status,starttime,station,lastupdate,lastupdatedby,wafersize) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlotno(),$this->getcustlotno(),$this->getpono(),$this->getorigqty(),$this->getcurrqty(),$this->getstatus(),date("Y-m-d h:i:sa"),$this->getstation(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),$this->getwafersize());
-            $stmt = sqlsrv_query( $con, $sql, $params);
-            $row = sqlsrv_rows_affected($stmt);
-            if($row == true)
-            {
-                $success = true;
-            }
-            else
-            {
-                $success = false;
-            }
-			//$conn->close();
-		}catch(Exception $e){
-            $success = false;
-		}
-        return $success;	
-	}
-
 	public static function GetMachineStation($processcat,$station)
 	{
 		$conn = new Connection();
@@ -176,6 +150,54 @@ class Machine {
 			echo $e;
 		}
 		return $result;
+	}
+
+	public static function checkExist($machineid)
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM dbo.machine WHERE machineid ='" .$machineid."'");
+
+			if ($conn->has_rows($dataset)) {
+
+				$result = 'true';
+			} else {
+				$result = 'false';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
+		}
+		return $result;
+	}
+
+	public function AddMachine(){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+            $sql = "INSERT INTO dbo.machine (machineid,processcat,station,machinetype,status,lastupdate,lastupdatedby,active) VALUES(?,?,?,?,?,?,?,?)";
+            $params = array($this->getmachineid(),$this->getprocesscat(),$this->getstation(),$this->getmachinetype(),$this->getstatus(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),1);
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+            if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            }
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
 	}
 
 

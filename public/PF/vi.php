@@ -530,7 +530,7 @@ $(document).ready(function(){
 
 function Thickness(){
 
-    if(document.getElementById("station").value == '003:SINGULATION')
+    if(document.getElementById("station").value == '003:BACKGRIND')
     {
         if(document.getElementById("twaferno").value == '' || document.getElementById("tpoint1").value == ''|| document.getElementById("tpoint2").value == '' || document.getElementById("tpoint3").value == '' || document.getElementById("tpoint4").value == '' || document.getElementById("tpoint5").value == '')
         {
@@ -640,7 +640,7 @@ function RoughnessAve(){
                 var result = this.responseText;
                 var resdata = result.split("_");
                 var res = JSON.parse(result.split("_")[1])[0];
-                alert(result);
+                //alert(result);
                 document.getElementById("deviceno").value = res.deviceno;
                 document.getElementById("status").value = res.status;
                 document.getElementById("wqty").value = res.currqty;
@@ -692,7 +692,7 @@ function RoughnessAve(){
                     document.getElementById("rpoint3").disabled = false;
                     document.getElementById("rpoint4").disabled = false;
                     document.getElementById("rpoint5").disabled = false;
-                    if(resdata[4] == '003:SINGULATION')
+                    if(resdata[4] == '003:BACKGRIND')
                     {
                         document.getElementById("twaferno").disabled = false;
                         document.getElementById("tpoint1").disabled = false;
@@ -723,6 +723,7 @@ function RoughnessAve(){
         $("#tblreject > tbody").empty();
         document.getElementById("custcode").value ='';
         //disabled
+        document.getElementById("station").disabled = true;
         document.getElementById("intlotno").disabled = true;
         document.getElementById("machine").disabled = true;
         document.getElementById("waferno").disabled = true;
@@ -956,7 +957,7 @@ function RoughnessAve(){
             document.getElementById("rpoint3").disabled = false;
             document.getElementById("rpoint4").disabled = false;
             document.getElementById("rpoint5").disabled = false;
-            if(document.getElementById("station").value == '003:SINGULATION')
+            if(document.getElementById("station").value == '003:BACKGRIND')
             {
                 document.getElementById("twaferno").disabled = false;
                 document.getElementById("tpoint1").disabled = false;

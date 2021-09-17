@@ -68,8 +68,6 @@
     </div>
 </div>
 
-</div>
-
 <script src="../vendor/jquery/jquery.min.js"></script>
 
 <script>
@@ -140,12 +138,9 @@
                             }
                         }
                     },
-                    {
-                        extend: 'pdfHtml5',
-                        text: 'Save as PDF'
-                    },
                     'print'
-                ]
+                ],
+                "order": [[ 2, "desc" ],[ 10, "desc" ]]
             });
             }
         };

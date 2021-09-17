@@ -13,7 +13,7 @@ $wafersize = $_GET['wafersize'];
 $result = "";
 
 //echo $wafersize;
-$custlot = CustLotno::GetDetails($custlotno);
+$custlot = CustLotno::GetDetails($custlotno,$custcode);
 $data = json_encode($custlot[0]);
 $data2 = json_decode($data);
 
