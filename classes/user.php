@@ -205,6 +205,44 @@ class User {
 		return $result;
 	}
 
+	public static function GetAllUser()
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * FROM dbo.users");
+			$counter = 0;
+			$active = '';
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new User();
+				if($reader["active"] == 1)
+				{
+					$active = 'Active';
+				}
+				else
+				{
+					$active = 'Inactive';
+				}
+				$Select->setidno($reader["idno"]);
+				$Select->setfname($reader["fname"]);
+                $Select->setlname($reader["lname"]);
+                $Select->setbirthday($reader["birthday"]->format('F j, Y'));
+                $Select->setusertype($reader["usertype"]);
+                $Select->setactive($active);
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
 
 
 }

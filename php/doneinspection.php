@@ -55,7 +55,7 @@ $intlotlogs = new IntLotLogs;
 $ilot = new IntLotno;
 $stationdetails->StationDetails($nextstage);
 
-if($_SESSION['idno'])
+if(@$_SESSION['idno'])
 {
    
     if($intlotdata2->status == 'ON PROCESS')

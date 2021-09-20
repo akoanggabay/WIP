@@ -221,6 +221,7 @@ if(!isset($_SESSION['idno']))
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">User:</h6>
                         <a class="collapse-item" href="?form=RG&path=register">Add User</a>
+                        <a class="collapse-item" href="?form=RG&path=edituser">Edit User</a>
                     </div>
                 </div>
             </li>

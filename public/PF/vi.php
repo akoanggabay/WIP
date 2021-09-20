@@ -672,8 +672,24 @@ function RoughnessAve(){
                     document.getElementById("btnStart").disabled = false;
                 }
 
-                if(resdata[3] == '<?php echo $_SESSION['idno']; ?>')
+                
+                if(resdata[0] == 'onprosucc')
                 {
+
+                    document.getElementById("success").innerHTML = resdata[2];
+                    document.getElementById("error").hidden = true;
+                    document.getElementById("success").hidden = false;
+                    document.getElementById("btnStart").disabled = true;
+                    document.getElementById("waferno").disabled = true;
+                    document.getElementById("waferrun").disabled = true;
+                    document.getElementById("station").disabled = true;
+                    document.getElementById("processcat").disabled = true;
+                    document.getElementById("custcode").disabled = true;
+                    document.getElementById("intlotno").disabled = true;
+
+                    document.getElementById("waferno").value = '';
+                    document.getElementById("waferrun").value = '';
+
                     document.getElementById("derror").hidden = true;
                     document.getElementById("dsuccess").hidden = true;
                     document.getElementById("rerror").hidden = true;
@@ -1038,6 +1054,18 @@ function RoughnessAve(){
 
             else if(res[0] == 'error')
             {
+                $("input[type=text]").val('');
+                $("input[type=number]").val('');
+                $("select").val('');
+                $("input").attr('disabled','disabled');
+                $("number").attr('disabled','disabled');
+                $("select").attr('disabled','disabled');
+                $("button").attr('disabled','disabled');
+                $(".alert").attr('hidden','hidden');
+                $("#tblreject > tbody").empty();
+                document.getElementById("btnClear").disabled = false;
+                document.getElementById("processcat").disabled = false;
+                $('#processcat').focus();
                 document.getElementById("error").innerHTML = res[1];
                 document.getElementById("success").hidden = true;
                 document.getElementById("error").hidden = false;

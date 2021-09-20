@@ -32,7 +32,14 @@ if($intlotdata2->status == 'PROCESSED')
 }
 else if($intlotdata2->status == 'ON PROCESS')
 {
-    echo 'error_'.json_encode($lotdata).'_Internal Lot number: <b>'.$intlotdata2->intlot.'</b> is still on process at <b>'.$stationdetails->getstation().':'.$stationdetails->getdescription().'</b><br/>Date In: <b>'.@$intlogsdata2->datein.'</b><br/>Quantity In: <b>'.@$intlogsdata2->qtyin.'</b><br/>Wafer number: <b>'.@$intlogsdata2->waferno.'</b><br/>Wafer run: <b>'.@$intlogsdata2->waferrun.'</b><br/>Inspected By: <b>'.@$intlogsdata2->name.'_'.@$intlogsdata2->lastupdatedby.'_'.$stationdetails->getstation().':'.$stationdetails->getdescription();
+    if(@$intlogsdata2->lastupdatedby == $_SESSION['idno'])
+    {
+        echo 'onprosucc_'.json_encode($lotdata).'_Internal Lot number: <b>'.$intlotdata2->intlot.'</b> is still on process at <b>'.$stationdetails->getstation().':'.$stationdetails->getdescription().'</b><br/>Date In: <b>'.@$intlogsdata2->datein.'</b><br/>Quantity In: <b>'.@$intlogsdata2->qtyin.'</b><br/>Wafer number: <b>'.@$intlogsdata2->waferno.'</b><br/>Wafer run: <b>'.@$intlogsdata2->waferrun.'</b><br/>Inspected By: <b>'.@$intlogsdata2->name.'_'.@$intlogsdata2->lastupdatedby.'_'.$stationdetails->getstation().':'.$stationdetails->getdescription();
+    }
+    else
+    {
+        echo 'error_'.json_encode($lotdata).'_Internal Lot number: <b>'.$intlotdata2->intlot.'</b> is still on process at <b>'.$stationdetails->getstation().':'.$stationdetails->getdescription().'</b><br/>Date In: <b>'.@$intlogsdata2->datein.'</b><br/>Quantity In: <b>'.@$intlogsdata2->qtyin.'</b><br/>Wafer number: <b>'.@$intlogsdata2->waferno.'</b><br/>Wafer run: <b>'.@$intlogsdata2->waferrun.'</b><br/>Inspected By: <b>'.@$intlogsdata2->name.'_'.@$intlogsdata2->lastupdatedby.'_'.$stationdetails->getstation().':'.$stationdetails->getdescription();
+    }
 }
 
 
