@@ -206,7 +206,7 @@ if(!isset($_SESSION['idno']))
 
             <hr class="sidebar-divider d-none d-md-block">
             <?php 
-                if($_SESSION['usertype'] == 'Super Administrator' || $_SESSION['usertype'] == 'Administrator') 
+                if(@$_SESSION['usertype'] == 'Super Administrator' || @$_SESSION['usertype'] == 'Administrator') 
                 {
             ?>
             <li class="nav-item active">

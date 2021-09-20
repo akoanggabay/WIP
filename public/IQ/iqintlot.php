@@ -358,9 +358,16 @@ $(document).ready(function(){
             //alert(result);
             if(res[0] == '"false"')
             {
+                
+                $("#tblintlogs > tbody").empty();
+                $("#tblintrejlogs > tbody").empty();
+                $("#tblrlogs > tbody").empty();
+                $("#tbltlogs > tbody").empty();
+                $('#intlotno').focus();
                 document.getElementById("error").innerHTML = 'No Data available for Internal Lot number: <b>'+document.getElementById("intlotno").value;
                 document.getElementById("error").hidden = false;
                 document.getElementById("success").hidden = true;
+                $("input[type=text]").val('');
             }
             else
             {
