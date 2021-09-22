@@ -10,14 +10,18 @@ session_start();
 
 
 $intlotno = $_GET['intlotno'];
-$twaferno = $_GET['twaferno'];
-$tpoint1 = $_GET['tpoint1'];
-$tpoint5 = $_GET['tpoint5'];
-$tpoint2 = $_GET['tpoint2'];
-$tpoint3 = $_GET['tpoint3'];
-$tpoint4 = $_GET['tpoint4'];
-$ttv = $_GET['ttv'];
-$pave = $_GET['pave'];
+
+
+$stwaferno = json_decode($_GET['stwaferno']);
+$stpoint1 = json_decode($_GET['stpoint1']);
+$stpoint5 = json_decode($_GET['stpoint5']);
+$stpoint2 = json_decode($_GET['stpoint2']);
+$stpoint3 = json_decode($_GET['stpoint3']);
+$stpoint4 = json_decode($_GET['stpoint4']);
+$sttv = json_decode($_GET['sttv']);
+$spave = json_decode($_GET['spave']);
+
+
 $rpoint1 = $_GET['rpoint1'];
 $rpoint2 = $_GET['rpoint2'];
 $rpoint3 = $_GET['rpoint3'];
@@ -25,6 +29,7 @@ $rpoint4 = $_GET['rpoint4'];
 $rpoint5 = $_GET['rpoint5'];
 $rave = $_GET['rave'];
 $btnStat = $_GET['btnStat'];
+$remarks = $_GET['remarks'];
 $status = '';
 $total = 0;
 
@@ -82,23 +87,38 @@ if(@$_SESSION['idno'])
 
             }
             //echo $total;
-            if((intval($intlotdata2->currqty) - intval($total)) == 0)
+            
+            
+            
+            $ilot->setintlotno($intlotno);
+            $ilot->setcustcode($intlotdata2->custcode);
+            if($intlotdata2->processcat == 'BACKGRIND')
             {
-                $status = 'EMPTY';
-                $ilot->setstatus('EMPTY');
+                $status = 'DONE';
+                $ilot->setstatus('DONE');
+                $ilot->updateCurrqty(intval($intlotdata2->currqty));
             }
             else
             {
-                $status = 'REJECT';
-                $ilot->setstatus('PROCESSED');
+                if((intval($intlotdata2->currqty) - intval($total)) == 0)
+                {
+                    $status = 'EMPTY';
+                    $ilot->setstatus('EMPTY');
+                }
+                else
+                {
+                    $status = 'REJECT';
+                    $ilot->setstatus('DONE');
+                }
+                $ilot->updateCurrqty(intval($intlotdata2->currqty) - intval($total));
             }
-            $ilot->setintlotno($intlotno);
-            $ilot->setcustcode($intlotdata2->custcode);
-            $ilot->updateCurrqty(intval($intlotdata2->currqty) - intval($total));
+            
+            
+            
         }
         else
         {
-            $status = 'PROCESSED';
+            $status = 'DONE';
         }
         if($rave)
         {
@@ -118,24 +138,26 @@ if(@$_SESSION['idno'])
             $roughness->AddRoughness();
         }
 
-        if($pave)
+        if(count($stwaferno) > 0)
         {
             $thickness = new Thickness;
 
-            $thickness->setintlotno($intlotno);
-            $thickness->setcustcode($intlotdata2->custcode);
-            $thickness->setwaferno($twaferno);
-            $thickness->setstation($nextstage);
-            $thickness->setp1($tpoint1);
-            $thickness->setp2($tpoint2);
-            $thickness->setp3($tpoint3);
-            $thickness->setp4($tpoint4);
-            $thickness->setp5($tpoint5);
-            $thickness->setpave($pave);
-            $thickness->setttv($ttv);
-            $thickness->setlastupdate(date("Y-m-d h:i:sa"));
-            $thickness->setlastupdatedby($_SESSION['idno']);
-            $thickness->AddThickness();
+            for($x=0;$x<count($stwaferno);$x++){
+                $thickness->setintlotno($intlotno);
+                $thickness->setcustcode($intlotdata2->custcode);
+                $thickness->setwaferno($stwaferno[$x]);
+                $thickness->setstation($nextstage);
+                $thickness->setp1($stpoint1[$x]);
+                $thickness->setp2($stpoint2[$x]);
+                $thickness->setp3($stpoint3[$x]);
+                $thickness->setp4($stpoint4[$x]);
+                $thickness->setp5($stpoint5[$x]);
+                $thickness->setpave($spave[$x]);
+                $thickness->setttv($sttv[$x]);
+                $thickness->setlastupdate(date("Y-m-d h:i:sa"));
+                $thickness->setlastupdatedby($_SESSION['idno']);
+                $thickness->AddThickness();
+            }
 
 
         }
@@ -148,22 +170,39 @@ if(@$_SESSION['idno'])
         
         if($btnStat == 'hold')
         {
-            $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage);
+            if($intlotdata2->processcat == 'BACKGRIND')
+            {
+                $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+            }
+            else
+            {
+                $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+            }
+            
             $ilot->setstation($intlotdata2->station);
             $ilot->setstatus('HOLD');
         }
         else
         {
-            $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage);
-            $ilot->setstation($nextstage);
-            if((intval($intlotdata2->currqty) - intval($total)) == 0)
+            if($intlotdata2->processcat == 'BACKGRIND')
             {
-                $ilot->setstatus('EMPTY');
+                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+                if((intval($intlotdata2->currqty) - intval($total)) == 0)
+                {
+                    $ilot->setstatus('EMPTY');
+                }
+                else
+                {
+                    $ilot->setstatus('DONE');
+                }
             }
             else
             {
-                $ilot->setstatus('PROCESSED');
+                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+                $ilot->setstatus('DONE');
             }
+            $ilot->setstation($nextstage);
+            
             
         }
         $ilot->DoneInspect();
@@ -175,7 +214,7 @@ if(@$_SESSION['idno'])
     {
         echo 'error_<b>Error! '.$intlotno.' is at HOLD status </b>';
     }
-    else if($intlotdata2->status == 'PROCESSED')
+    else if($intlotdata2->status == 'DONE')
     {
         echo 'error_<b>Error! '.$intlotno.' is not yet ON PROCESS at '.$nextstage.':'.$stationdetails->getdescription().' station';
     }

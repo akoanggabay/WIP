@@ -33,7 +33,7 @@ if($_SESSION['idno'])
         $stationdetails->StationDetails($nextstage);
         if($nextstage == $station || $intlotdata2->station == $station)
         {
-            if($intlotdata2->status == 'PROCESSED')
+            if($intlotdata2->status == 'DONE')
             {
                 $intlotlogs = new IntLotLogs;
                 

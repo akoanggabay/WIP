@@ -105,7 +105,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer original quantity:</label>
+                                                        <label>Original quantity:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="oqty" name=oqty"  class="form-control input-sm" value="" readonly><br>
@@ -113,7 +113,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer current quantity:</label>
+                                                        <label>Current quantity:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="cqty" name="cqty"  class="form-control input-sm" value="" readonly><br>
@@ -207,6 +207,7 @@
                             <th>Wafer run</th>
                             <th>Qty In</th>
                             <th>Qty Out</th>
+                            <th>Remarks</th>
                             <th>Date In</th>
                             <th>Date Out</th>
                             <th>Processed By</th>
@@ -372,6 +373,12 @@ $(document).ready(function(){
             else
             {
                 $("#tblintlogs > tbody").empty();
+                $("#tblintrejlogs > tbody").empty();
+                $("#tblrlogs > tbody").empty();
+                $("#tbltlogs > tbody").empty();
+                $('#intlotno').focus();
+                document.getElementById("success").hidden = true;
+                document.getElementById("error").hidden = true;
                 document.getElementById("success").innerHTML = 'Internal Lot number: <b>'+document.getElementById("intlotno").value;
                 document.getElementById("error").hidden = false;
                 document.getElementById("error").hidden = true;
@@ -407,6 +414,7 @@ $(document).ready(function(){
                     '<td>'+lotlogs[i].waferrun+'</td>'+
                     '<td>'+lotlogs[i].qtyin+'</td>'+
                     '<td>'+lotlogs[i].qtyout+'</td>'+
+                    '<td>'+lotlogs[i].remarks+'</td>'+
                     '<td>'+lotlogs[i].datein+'</td>'+
                     '<td>'+lotlogs[i].dateout+'</td>'+
                     '<td>'+lotlogs[i].lastupdatedby+'</td>'+

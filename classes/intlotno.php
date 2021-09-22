@@ -175,7 +175,7 @@ class IntLotno {
 		try
 		{
 			$conn->open();
-			$dataset = $conn->query("SELECT sum(origqty) as total FROM intlotno WHERE custcode ='".$code."' and pono = '".$po."'");
+			$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."'");
 			$counter = 0;
 
 			if ($conn->has_rows($dataset)){
@@ -321,7 +321,7 @@ class IntLotno {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("select intlot from intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode where a.custcode = '".$custcode."' and a.status in ('PROCESSED','ON PROCESS') and b.processcat = '".$processcat."' order by b.datestart");
+			$dataset =  $conn->query("select intlot from intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode where a.custcode = '".$custcode."' and a.status in ('DONE','ON PROCESS') and b.processcat = '".$processcat."' order by b.datestart");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new IntLotNo();

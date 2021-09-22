@@ -11,7 +11,7 @@ $custlotno = $_GET['custlotno'];
 $pono = $_GET['pono'];
 $wafersize = $_GET['wafersize'];
 $result = "";
-
+$qty = "";
 //echo $wafersize;
 $custlot = CustLotno::GetDetails($custlotno,$custcode);
 $data = json_encode($custlot[0]);
@@ -26,6 +26,14 @@ $count = IntLotno::getcountbyPO($custcode,$pono);
 
 $total = intval($count) + intval($data2->waferqty);
 
+if($data2->processcat == 'BACKGRIND')
+{
+    $qty = $data2->waferqty;
+}
+else
+{
+    $qty = $data2->qty;
+}
 if($podata2->status == 'OPEN')
 {
     $avail = intval($podata2->qty) - intval($count);
@@ -35,17 +43,17 @@ if($podata2->status == 'OPEN')
         {
             $intlot = new IntLotno;
             
-            $prefix = IntLotNo::IntLotNo($custcode.date("Y").sprintf("%02d",date("W")));
+            $prefix = IntLotNo::IntLotNo(date("Y").sprintf("%02d",date("W")));
 
-            $intlotno = $custcode.date("Y").sprintf("%02d",date("W")).'-'.$prefix;
+            $intlotno = date("Y").sprintf("%02d",date("W")).'-'.$prefix;
             //echo $intlotno;
             $intlot->setcustcode($custcode);
             $intlot->setintlotno($intlotno);
             $intlot->setcustlotno($custlotno);
             $intlot->setpono($pono);
-            $intlot->setorigqty($data2->waferqty);
-            $intlot->setcurrqty($data2->waferqty);
-            $intlot->setstatus('PROCESSED');
+            $intlot->setorigqty($qty);
+            $intlot->setcurrqty($qty);
+            $intlot->setstatus('DONE');
             $intlot->setstation('REG');
             $intlot->setwafersize($wafersize);
             $intlot->setlastupdatedby($_SESSION['idno']);
@@ -61,10 +69,10 @@ if($podata2->status == 'OPEN')
                 $intlotlogs->setintlot($intlotno);
                 $intlotlogs->setstation('REG');
                 $intlotlogs->setmachine('');
-                $intlotlogs->setqtyin($data2->waferqty);
+                $intlotlogs->setqtyin($qty);
                 $intlotlogs->setdatein(date("Y-m-d h:i:sa"));
                 $intlotlogs->setlastupdatedby($_SESSION['idno']);
-                $intlotlogs->setstatus('PROCESSED');
+                $intlotlogs->setstatus('DONE');
                 $intlotlogs->setwaferno('');
                 $intlotlogs->setwaferrun('');
 

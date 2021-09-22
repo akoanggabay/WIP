@@ -15,6 +15,7 @@ class IntLotLogs {
     private $status;
 	private $waferno;
 	private $waferrun;
+	private $remarks;
 	
 
 
@@ -88,6 +89,11 @@ class IntLotLogs {
 	{
 		$this->waferrun = $waferrun;
 	}
+
+	public function setremarks($remarks)
+	{
+		$this->remarks = $remarks;
+	}
 	
 
 	//Getter
@@ -154,6 +160,11 @@ class IntLotLogs {
 	public function getwaferrun()
 	{
 		return $this->waferrun;
+	}
+
+	public function getremarks()
+	{
+		return $this->remarks;
 	}
 
 
@@ -225,12 +236,12 @@ class IntLotLogs {
 		return $result;
 	}
 
-	public function DoneInspect($status,$qtyout,$custcode,$intlotno,$station){
+	public function DoneInspect($status,$qtyout,$custcode,$intlotno,$station,$remarks){
 		$conn = new Connection();
 
 		try{
 			$conn->open();
-			$conn->query("UPDATE dbo.intlotlogs SET status = '".$status."',qtyout='".$qtyout."',dateout= GETDATE() where custcode ='".$custcode."' and intlot = '".$intlotno."' and station = '".$station."' and status = 'ON PROCESS'");
+			$conn->query("UPDATE dbo.intlotlogs SET status = '".$status."',qtyout='".$qtyout."',dateout= GETDATE(),remarks='".$remarks."' where custcode ='".$custcode."' and intlot = '".$intlotno."' and station = '".$station."' and status = 'ON PROCESS'");
 
 			$conn->close();
 		}catch(Exception $e){
@@ -245,11 +256,12 @@ class IntLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' order by datein desc");
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' order by datein desc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
 				$do;
 				$qo;
+				$remarks = '';
 				$user = new User;
 				
 				while ($row = $conn->fetch_array($dataset)) {
@@ -270,6 +282,15 @@ class IntLotLogs {
 				{
 					$qo = '';
 				}
+
+				if($row["remarks"] != '' || !empty($row["remarks"]))
+				{
+					$remarks = @$row["remarks"];
+				}
+				else
+				{
+					$remarks = '';
+				}
 				$user->UserData($row["lastupdatedby"]);
 				$result[] = array(
 				'trackingno'   => $row["trackingno"],
@@ -284,6 +305,7 @@ class IntLotLogs {
 				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
 				'status' => $row["status"],
 				'waferno' => $row["waferno"],
+				'remarks' => $remarks,
 				'waferrun' => $row["waferrun"]
 				);
 				}

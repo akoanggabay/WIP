@@ -22,11 +22,13 @@
                             <th>PO Number</th>
                             <th>Customer</th>
                             <th>PO Quantity</th>
+                            <th>Current Quantity</th>
                             <th>Tagged Lot number</th>
                             <th>Shipped Lot number</th>
                             <th>Process Category</th>
                             <th>Sub Process Category</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,6 +106,7 @@
                             <td><?php echo $po[$i]->getpono(); ?></td>
                             <td><?php echo $cust->getcustname(); ?></td>
                             <td><?php echo $po[$i]->getqty(); ?></td>
+                            <td><?php echo $countpo; ?></td>
                             <td>
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round($progress,2); ?>%</div>
@@ -126,7 +129,11 @@
                             </td>
                             <td><?php echo $po[$i]->getprocesscat(); ?></td>
                             <td><?php echo $po[$i]->getsubprocesscat(); ?></td>
-                            <td><button type="button" class="btn btn-outline-<?php echo $stat; ?>"  value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)"><?php echo $po[$i]->getstatus(); ?></button></td>
+                            <td><span class="text-<?php echo $stat; ?>"><?php echo $po[$i]->getstatus(); ?></span></td>
+                            <td>
+                                <button class="btn btn-success btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Edit"><i class="fas fa-eye" alt="Edit"></i></button>
+                                <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
+                            </td>
     
                 
                         <?php } ?>

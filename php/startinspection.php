@@ -30,14 +30,19 @@ $processroute->setprocess($processcat);
 $processroute->getStationDetails();
 
 $nextstage = ProcessRoute::getnextstage($processcat,$processroute->getflowsequence());
-$stationdetails = new Station;
 
+$processroute->setstation($nextstage);
+$processroute->setprocess($processcat);
+
+$processroute->getStationDetails();
+$stationdetails = new Station;
+//echo $processroute->getforbackgrind();
 $stationdetails->StationDetails($nextstage);
 if($_SESSION['idno'])
 {
     if($nextstage == $station)
     {
-        if($intlotdata2->status == 'PROCESSED')
+        if($intlotdata2->status == 'DONE')
         {
             $intlotlogs = new IntLotLogs;
             
@@ -62,7 +67,7 @@ if($_SESSION['idno'])
 
             $ilot->updateStatus();
 
-            echo 'success_Start date Inspection of Internal Lot number: <b>'.$intlotno.'</b> <b>'.date('F j, Y, g:i a');
+            echo 'success_Start date Inspection of Internal Lot number: <b>'.$intlotno.'</b> <b>'.date('F j, Y, g:i a').'_'.$processroute->getforbackgrind();
         }
         else if($intlotdata2->status == 'HOLD')
         {

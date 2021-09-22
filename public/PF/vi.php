@@ -109,6 +109,15 @@
                                             </div>
                                         </div>
                                         <br/>
+                                        <div class="row" hidden>
+                                            <div class="col-md-5">
+                                                <label>BG: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <input type="number" id="bg" name="bg" value=0 class="form-control input-sm" disabled>
+                                            </div>
+                                        </div>
+                                        <br/>
                                         <div class="form-group">
                                             <button type="button" class="btn btn-outline-info" id="btnStart" name = "btnStart" disabled>Start Inspection</button>
                                             <button type="button" class="btn btn-outline-warning float-right" id="btnClear" name = "btnClear">Clear</button>
@@ -160,7 +169,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer current quantity:</label>
+                                                        <label>Current quantity:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wqty" name="wqty"  class="form-control input-sm" value="" readonly><br>
@@ -297,7 +306,7 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <h5>Final Thickness (Backgrind process)</h5>
+        <h5>Final Thickness ( μm/Micron )</h5>
         <div class="row">
             <div class="col-lg-12">
                 <div>
@@ -385,6 +394,9 @@
                                                 </div>
                                             </div>
                                             <br/>
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-outline-info" id="btnAddThick" name = "btnAddThick" disabled>Add Final Thickness</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -396,7 +408,7 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <h5>Roughness</h5>
+        <h5>Roughness( μm/Micron )</h5>
         <div class="row">
             <div class="col-lg-12">
                 <div>
@@ -479,6 +491,36 @@
 </div><br/><br/>
 
 <div class="row"> 
+    <h5>List of Final Thickness</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters">
+                <table class="table table-bordered" id="tblthickness" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Wafer number</th>
+                            <th>Point 1</th>
+                            <th>Point 2</th>
+                            <th>Point 3</th>
+                            <th>Point 4</th>
+                            <th>Point 5</th>
+                            <th>Point average</th>
+                            <th>TTV</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
+<div class="row"> 
     <h5>List of Reject Details</h5>
     <div class="col-lg-12">
         <div class="card border-left-danger">
@@ -512,10 +554,18 @@
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
 var tblcount = 0;
+var tblcount2 = 0;
 function removeRow(row){
     
     $("#tr"+row).remove();
     tblcount = $('#tblreject > tbody tr').length;
+    checkRow(tblcount);
+}
+
+function removeRow2(row){
+    
+    $("#tr"+row).remove();
+    tblcount = $('#tblthickness > tbody tr').length;
     checkRow(tblcount);
 }
 
@@ -530,9 +580,9 @@ $(document).ready(function(){
 
 function Thickness(){
 
-    if(document.getElementById("station").value == '003:BACKGRIND')
+    if(document.getElementById("bg").value == 1)
     {
-        if(document.getElementById("twaferno").value == '' || document.getElementById("tpoint1").value == ''|| document.getElementById("tpoint2").value == '' || document.getElementById("tpoint3").value == '' || document.getElementById("tpoint4").value == '' || document.getElementById("tpoint5").value == '')
+        if(document.getElementById("twaferno").value == '' || document.getElementById("tpoint1").value == '' || document.getElementById("tpoint2").value == '' || document.getElementById("tpoint3").value == '' || document.getElementById("tpoint4").value == '' || document.getElementById("tpoint5").value == '')
         {
             return false;
         }
@@ -650,7 +700,7 @@ function RoughnessAve(){
                 document.getElementById("rthick").value = res.requiredthickness;
                 document.getElementById("wsize").value = res.wafersize;
                 document.getElementById("ltype").value = res.lottype;
-                //alert(resdata[0]);
+                //alert(resdata[5]);
                 if(resdata[0] == 'error')
                 {
                     document.getElementById("error").innerHTML = resdata[2];
@@ -708,7 +758,7 @@ function RoughnessAve(){
                     document.getElementById("rpoint3").disabled = false;
                     document.getElementById("rpoint4").disabled = false;
                     document.getElementById("rpoint5").disabled = false;
-                    if(resdata[4] == '003:BACKGRIND')
+                    if(resdata[5] == 1)
                     {
                         document.getElementById("twaferno").disabled = false;
                         document.getElementById("tpoint1").disabled = false;
@@ -716,6 +766,8 @@ function RoughnessAve(){
                         document.getElementById("tpoint4").disabled = false;
                         document.getElementById("tpoint5").disabled = false;
                         document.getElementById("tpoint3").disabled = false;
+                        document.getElementById("btnAddThick").disabled = false;
+                        document.getElementById("bg").value = 1;
                         
                     }
                     document.getElementById("btnDone").disabled = false;
@@ -732,11 +784,13 @@ function RoughnessAve(){
     });
 
     $('#processcat').change(function (){
+        document.getElementById("bg").value = 0;
         $("input[type=text]").val('');
         $("input[type=number]").val('');
         $("input").attr('disabled','disabled');
         $("number").attr('disabled','disabled');
         $("#tblreject > tbody").empty();
+        $("#tblthickness > tbody").empty();
         document.getElementById("custcode").value ='';
         //disabled
         document.getElementById("station").disabled = true;
@@ -896,6 +950,51 @@ function RoughnessAve(){
 
     });
 
+    $( "#btnAddThick" ).click(function() {
+
+        
+        
+        if(Thickness() == false)
+        {
+            alert('Please complete Final thickness details!');
+            document.getElementById("terror").innerHTML = "Please complete necessary details!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+        else
+        {
+            $('#tblthickness > tbody').append('<tr id="tr'+tblcount2+'">'+
+                                        '<td><input type="hidden" id = "stwaferno[]"  name="stwaferno[]" value="'+$('#twaferno').val()+'">'+$('#twaferno').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint1[]"  name="stpoint1[]" value="'+$('#tpoint1').val()+'">'+$('#tpoint1').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint2[]"  name="stpoint2[]" value="'+$('#tpoint2').val()+'">'+$('#tpoint2').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint3[]"  name="stpoint3[]" value="'+$('#tpoint3').val()+'">'+$('#tpoint3').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint4[]"  name="stpoint4[]" value="'+$('#tpoint4').val()+'">'+$('#tpoint4').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint5[]"  name="stpoint5[]" value="'+$('#tpoint5').val()+'">'+$('#tpoint5').val()+'</td>'+
+                                        '<td><input type="hidden" id = "spave[]"  name="spave[]" value="'+$('#pave').val()+'">'+$('#pave').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sttv[]"  name="sttv[]" value="'+$('#ttv').val()+'">'+$('#ttv').val()+'</td>'+
+                                        '<td><button type="button" onclick="removeRow2('+tblcount2+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                        '</tr>');
+
+            tblcount2++;
+            $('#twaferno').val("");
+            $('#tpoint1').val("");
+            $('#tpoint2').val("");
+            $('#tpoint3').val("");
+            $('#tpoint4').val("");
+            $('#tpoint5').val("");
+            $('#pave').val("");
+            $('#ttv').val("");
+            $('#twaferno').focus();
+            //checkRow(tblcount);
+            
+            document.getElementById("tsuccess").innerHTML = "Final Thickness details successfully added!";
+            document.getElementById("terror").hidden = true;
+            document.getElementById("tsuccess").hidden = false;
+        }
+
+    });
+
     $("#btnStart").click(function() {
 
         var station = document.getElementById("station").value.split(":")[0];
@@ -954,7 +1053,7 @@ function RoughnessAve(){
                 location.reload();
                 return false;
             }
-
+            document.getElementById("bg").value = 0;
             document.getElementById("derror").hidden = true;
             document.getElementById("dsuccess").hidden = true;
             document.getElementById("rerror").hidden = true;
@@ -973,7 +1072,7 @@ function RoughnessAve(){
             document.getElementById("rpoint3").disabled = false;
             document.getElementById("rpoint4").disabled = false;
             document.getElementById("rpoint5").disabled = false;
-            if(document.getElementById("station").value == '003:BACKGRIND')
+            if(res[2] == 1)
             {
                 document.getElementById("twaferno").disabled = false;
                 document.getElementById("tpoint1").disabled = false;
@@ -981,6 +1080,8 @@ function RoughnessAve(){
                 document.getElementById("tpoint4").disabled = false;
                 document.getElementById("tpoint5").disabled = false;
                 document.getElementById("tpoint3").disabled = false;
+                document.getElementById("btnAddThick").disabled = false;
+                document.getElementById("bg").value = 1;
                 
             }
             
@@ -1005,12 +1106,36 @@ function RoughnessAve(){
 
         var sdremarks = $('input[name="sdremarks[]"]').map(function () {
         return this.value; }).get();
+
+        var stwaferno = $('input[name="stwaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint1 = $('input[name="stpoint1[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint2 = $('input[name="stpoint2[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint3 = $('input[name="stpoint3[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint4 = $('input[name="stpoint4[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint5 = $('input[name="stpoint5[]"]').map(function () {
+        return this.value; }).get();
+
+        var spave = $('input[name="spave[]"]').map(function () {
+        return this.value; }).get();
+
+        var sttv = $('input[name="sttv[]"]').map(function () {
+        return this.value; }).get();
         
-        //alert(document.getElementsByName("btnStat"));
-        if(Thickness() == false)
+        //alert(JSON.stringify(stwaferno))
+        if(tblcount2 <= 0 && document.getElementById("bg").value == 1)
         {
-            alert('Please complete Final thickness details!');
-            document.getElementById("terror").innerHTML = "Please complete necessary details!";
+            alert('Please Input Final thickness details!');
+            document.getElementById("terror").innerHTML = "Please Input Final thickness details!";
             document.getElementById("terror").hidden = false;
             document.getElementById("tsuccess").hidden = true;
             return false;
@@ -1023,6 +1148,21 @@ function RoughnessAve(){
             document.getElementById("rerror").hidden = false;
             document.getElementById("rsuccess").hidden = true;
             return false;
+        }
+
+        if(tblcount > 0 )
+        {
+            var remarks ='';
+
+            remarks = prompt("Reject found. Kindly input Remarks/Summary:");
+            if(remarks === null)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            remarks ='';
         }
 
         var xmlhttp = new XMLHttpRequest();
@@ -1043,6 +1183,7 @@ function RoughnessAve(){
                 $("button").attr('disabled','disabled');
                 $(".alert").attr('hidden','hidden');
                 $("#tblreject > tbody").empty();
+                $("#tblthickness > tbody").empty();
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
 
@@ -1063,6 +1204,7 @@ function RoughnessAve(){
                 $("button").attr('disabled','disabled');
                 $(".alert").attr('hidden','hidden');
                 $("#tblreject > tbody").empty();
+                $("#tblthickness > tbody").empty();
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
                 $('#processcat').focus();
@@ -1079,7 +1221,7 @@ function RoughnessAve(){
         }
         };
 
-        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&twaferno="+document.getElementById("twaferno").value+"&tpoint1="+ document.getElementById("tpoint1").value+"&tpoint2="+ document.getElementById("tpoint2").value+"&tpoint3="+ document.getElementById("tpoint3").value+"&tpoint4="+ document.getElementById("tpoint4").value+"&tpoint5="+ document.getElementById("tpoint5").value+"&pave="+ document.getElementById("pave").value+"&ttv="+ document.getElementById("ttv").value+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=done", true);
+        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=done"+"&remarks="+remarks, true);
         xmlhttp.send();
     });
 
@@ -1096,6 +1238,38 @@ function RoughnessAve(){
 
         var sdremarks = $('input[name="sdremarks[]"]').map(function () {
         return this.value; }).get();
+
+        var stwaferno = $('input[name="stwaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint1 = $('input[name="stpoint1[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint2 = $('input[name="stpoint2[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint3 = $('input[name="stpoint3[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint4 = $('input[name="stpoint4[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint5 = $('input[name="stpoint5[]"]').map(function () {
+        return this.value; }).get();
+
+        var spave = $('input[name="spave[]"]').map(function () {
+        return this.value; }).get();
+
+        var sttv = $('input[name="sttv[]"]').map(function () {
+        return this.value; }).get();
+
+        var remarks ='';
+
+            remarks = prompt("Lot number: "+ document.getElementById("intlotno").value + " for HOLD. Kindly input Remarks/Summary:");
+            if(remarks === null)
+            {
+                return false;
+            }
         
         //alert(document.getElementsByName("btnStat"));
         if(Thickness() == false)
@@ -1134,6 +1308,7 @@ function RoughnessAve(){
                 $("button").attr('disabled','disabled');
                 $(".alert").attr('hidden','hidden');
                 $("#tblreject > tbody").empty();
+                $("#tblthickness > tbody").empty();
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
 
@@ -1158,7 +1333,7 @@ function RoughnessAve(){
         }
         };
 
-        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&twaferno="+document.getElementById("twaferno").value+"&tpoint1="+ document.getElementById("tpoint1").value+"&tpoint2="+ document.getElementById("tpoint2").value+"&tpoint3="+ document.getElementById("tpoint3").value+"&tpoint4="+ document.getElementById("tpoint4").value+"&tpoint5="+ document.getElementById("tpoint5").value+"&pave="+ document.getElementById("pave").value+"&ttv="+ document.getElementById("ttv").value+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=hold", true);
+        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=hold"+"&remarks="+remarks, true);
         xmlhttp.send();
     });
 
@@ -1177,7 +1352,7 @@ function RoughnessAve(){
         total = (parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3) + parseFloat(rpoint4) + parseFloat(rpoint5));
         if(Roughness() == true)
         {
-            document.getElementById("rave").value = parseFloat(total / 5).toFixed(2);
+            document.getElementById("rave").value = parseFloat(total / 5).toFixed(5);
             //document.getElementById("rsuccess").innerHTML = "<b>Success!<b/> Roughness Average has been automatically calculated!";
             document.getElementById("rerror").hidden = true;
             document.getElementById("rsuccess").hidden = true;
@@ -1225,6 +1400,7 @@ function RoughnessAve(){
     });
 
     $("#btnClear").click(function() {
+        
         $("input[type=text]").val('');
         $("input[type=number]").val('');
         $("select").val('');
@@ -1234,6 +1410,7 @@ function RoughnessAve(){
         $("button").attr('disabled','disabled');
         $(".alert").attr('hidden','hidden');
         $("#tblreject > tbody").empty();
+        $("#tblthickness > tbody").empty();
         document.getElementById("btnClear").disabled = false;
         document.getElementById("processcat").disabled = false;
         $('#processcat').focus();

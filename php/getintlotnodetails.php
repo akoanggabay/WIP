@@ -18,6 +18,9 @@ $processroute->getStationDetails();
 
 $nextstage = ProcessRoute::getnextstage($intlotdata2->processcat,$processroute->getflowsequence());
 
+$processroute->setstation($nextstage);
+$processroute->setprocess($intlotdata2->processcat);
+$processroute->getStationDetails();
 $stationdetails = new Station;
 
 $stationdetails->StationDetails($nextstage);
@@ -26,7 +29,7 @@ $logsdata = IntLotLogs::GetDetails($_GET['intlotno'],$nextstage);
 $intlogsdata = json_encode($logsdata[0]);
 $intlogsdata2 = json_decode($intlogsdata);
 
-if($intlotdata2->status == 'PROCESSED')
+if($intlotdata2->status == 'DONE')
 {
     echo 'success_'.json_encode($lotdata);
 }
@@ -34,11 +37,11 @@ else if($intlotdata2->status == 'ON PROCESS')
 {
     if(@$intlogsdata2->lastupdatedby == $_SESSION['idno'])
     {
-        echo 'onprosucc_'.json_encode($lotdata).'_Internal Lot number: <b>'.$intlotdata2->intlot.'</b> is still on process at <b>'.$stationdetails->getstation().':'.$stationdetails->getdescription().'</b><br/>Date In: <b>'.@$intlogsdata2->datein.'</b><br/>Quantity In: <b>'.@$intlogsdata2->qtyin.'</b><br/>Wafer number: <b>'.@$intlogsdata2->waferno.'</b><br/>Wafer run: <b>'.@$intlogsdata2->waferrun.'</b><br/>Inspected By: <b>'.@$intlogsdata2->name.'_'.@$intlogsdata2->lastupdatedby.'_'.$stationdetails->getstation().':'.$stationdetails->getdescription();
+        echo 'onprosucc_'.json_encode($lotdata).'_Internal Lot number: <b>'.$intlotdata2->intlot.'</b> is still on process at <b>'.$stationdetails->getstation().':'.$stationdetails->getdescription().'</b><br/>Date In: <b>'.@$intlogsdata2->datein.'</b><br/>Quantity In: <b>'.@$intlogsdata2->qtyin.'</b><br/>Wafer number: <b>'.@$intlogsdata2->waferno.'</b><br/>Wafer run: <b>'.@$intlogsdata2->waferrun.'</b><br/>Inspected By: <b>'.@$intlogsdata2->name.'_'.@$intlogsdata2->lastupdatedby.'_'.$stationdetails->getstation().':'.$stationdetails->getdescription().'_'.$processroute->getforbackgrind();
     }
     else
     {
-        echo 'error_'.json_encode($lotdata).'_Internal Lot number: <b>'.$intlotdata2->intlot.'</b> is still on process at <b>'.$stationdetails->getstation().':'.$stationdetails->getdescription().'</b><br/>Date In: <b>'.@$intlogsdata2->datein.'</b><br/>Quantity In: <b>'.@$intlogsdata2->qtyin.'</b><br/>Wafer number: <b>'.@$intlogsdata2->waferno.'</b><br/>Wafer run: <b>'.@$intlogsdata2->waferrun.'</b><br/>Inspected By: <b>'.@$intlogsdata2->name.'_'.@$intlogsdata2->lastupdatedby.'_'.$stationdetails->getstation().':'.$stationdetails->getdescription();
+        echo 'error_'.json_encode($lotdata).'_Internal Lot number: <b>'.$intlotdata2->intlot.'</b> is still on process at <b>'.$stationdetails->getstation().':'.$stationdetails->getdescription().'</b><br/>Date In: <b>'.@$intlogsdata2->datein.'</b><br/>Quantity In: <b>'.@$intlogsdata2->qtyin.'</b><br/>Wafer number: <b>'.@$intlogsdata2->waferno.'</b><br/>Wafer run: <b>'.@$intlogsdata2->waferrun.'</b><br/>Inspected By: <b>'.@$intlogsdata2->name.'_'.@$intlogsdata2->lastupdatedby.'_'.$stationdetails->getstation().':'.$stationdetails->getdescription().'_'.$processroute->getforbackgrind();
     }
 }
 

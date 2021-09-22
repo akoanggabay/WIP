@@ -125,7 +125,9 @@
                             </td>
                             <td><?php echo $po[$i]->getprocesscat(); ?></td>
                             <td><?php echo $po[$i]->getsubprocesscat(); ?></td>
-                            <td><button type="button" class="btn btn-outline-<?php echo $stat; ?>"  value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)"><?php echo $po[$i]->getstatus(); ?></button></td>
+                            <td>
+                                <button type="button" class="btn btn-outline-<?php echo $stat; ?>"  value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)"><?php echo $po[$i]->getstatus(); ?></button>
+                            </td>
     
                 
                         <?php } ?>
