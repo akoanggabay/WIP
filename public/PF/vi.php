@@ -1053,7 +1053,7 @@ function RoughnessAve(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            //alert(result);
+            alert(result);
             if(document.getElementById("waferno").value == '' && document.getElementById("inc").value == 1)
             {
                 document.getElementById("error").innerHTML = 'Kindly input Wafer number!';
