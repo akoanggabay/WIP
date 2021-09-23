@@ -7,7 +7,7 @@ class ProcessRoute {
     private $station;
 	private $active;
 	private $forpacking;
-    private $machine;
+    private $forincoming;
     private $forbackgrind;
 
 
@@ -42,9 +42,9 @@ class ProcessRoute {
 		$this->forpacking = $forpacking;
 	}
 
-    public function setmachine($machine)
+    public function setforincoming($forincoming)
 	{
-		$this->machine = $machine;
+		$this->forincoming = $forincoming;
 	}
 
     public function setforbackgrind($forbackgrind)
@@ -79,9 +79,9 @@ class ProcessRoute {
 		return $this->forpacking;
 	}
 
-    public function getmachine()
+    public function getforincoming()
 	{
-		return $this->machine;
+		return $this->forincoming;
 	}
 
     public function getforbackgrind()
@@ -132,7 +132,7 @@ class ProcessRoute {
                 $this->setstation($reader['station']);
                 $this->setactive($reader['active']);
                 $this->setforpacking($reader['forpacking']);
-                $this->setmachine($reader['machine']);
+                $this->setforincoming($reader['forincoming']);
                 $this->setforbackgrind($reader['forbackgrind']);
 
             }
@@ -201,6 +201,26 @@ class ProcessRoute {
 			$conn->open();
 
 			$dataset = $conn->query("SELECT * from dbo.processroute where process = '".$process."' and forpacking = 1");
+
+				if($conn->has_rows($dataset)){
+					$reader = $conn->fetch_array($dataset);
+					$station = $reader['station'];
+				}
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+		return $station;
+	}
+
+	public static function getincomingprocess($process){
+		$conn = new Connection();
+		$station = '';
+		try{
+			$conn->open();
+
+			$dataset = $conn->query("SELECT * from dbo.processroute where process = '".$process."' and forincoming = 1");
 
 				if($conn->has_rows($dataset)){
 					$reader = $conn->fetch_array($dataset);

@@ -16,6 +16,7 @@ class IntLotLogs {
 	private $waferno;
 	private $waferrun;
 	private $remarks;
+	private $cassno;
 	
 
 
@@ -94,6 +95,11 @@ class IntLotLogs {
 	{
 		$this->remarks = $remarks;
 	}
+
+	public function setcassno($cassno)
+	{
+		$this->cassno = $cassno;
+	}
 	
 
 	//Getter
@@ -165,6 +171,11 @@ class IntLotLogs {
 	public function getremarks()
 	{
 		return $this->remarks;
+	}
+
+	public function getcassno()
+	{
+		return $this->cassno;
 	}
 
 

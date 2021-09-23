@@ -28,7 +28,7 @@ $stationdetails->StationDetails($nextstage);
 $logsdata = IntLotLogs::GetDetails($_GET['intlotno'],$nextstage);
 $intlogsdata = json_encode($logsdata[0]);
 $intlogsdata2 = json_decode($intlogsdata);
-
+//echo $intlotdata2->status;
 if($intlotdata2->status == 'DONE')
 {
     echo 'success_'.json_encode($lotdata);

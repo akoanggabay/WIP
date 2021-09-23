@@ -71,6 +71,17 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
+                                                <label>Process: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <select class="form-control" id="station" name="station" disabled>
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
                                                 <label>Wafer no: *</label>
                                             </div>
                                             <div class="col-md-7">
@@ -87,17 +98,7 @@
                                             </div>
                                         </div>
                                         <br/>
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <label>Process: *</label>
-                                            </div>
-                                            <div class="col-md-7">
-                                                <select class="form-control" id="station" name="station" disabled>
-                                                    <option value=""></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <br/>
+                                        
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <label>Machine: </label>
@@ -115,6 +116,15 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <input type="number" id="bg" name="bg" value=0 class="form-control input-sm" disabled>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row" hidden>
+                                            <div class="col-md-5">
+                                                <label>INC: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <input type="number" id="inc" name="inc" value=0 class="form-control input-sm" disabled>
                                             </div>
                                         </div>
                                         <br/>
@@ -678,10 +688,8 @@ function RoughnessAve(){
         else
         {
 
-            document.getElementById("waferno").disabled = false;
-            document.getElementById("waferrun").disabled = false;
             document.getElementById("station").disabled = false;
-            $('#waferno').focus();
+            //$('#waferno').focus();
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
             //alert(this.readyState + ' ' + this.status);
@@ -690,7 +698,7 @@ function RoughnessAve(){
                 var result = this.responseText;
                 var resdata = result.split("_");
                 var res = JSON.parse(result.split("_")[1])[0];
-                //alert(result);
+                alert(result);
                 document.getElementById("deviceno").value = res.deviceno;
                 document.getElementById("status").value = res.status;
                 document.getElementById("wqty").value = res.currqty;
@@ -785,6 +793,7 @@ function RoughnessAve(){
 
     $('#processcat').change(function (){
         document.getElementById("bg").value = 0;
+        document.getElementById("inc").value = 0;
         $("input[type=text]").val('');
         $("input[type=number]").val('');
         $("input").attr('disabled','disabled');
@@ -898,6 +907,35 @@ function RoughnessAve(){
         xmlhttp.open("GET", "../php/getmachine.php?processcat=" + document.getElementById("processcat").value+"&station="+station, true);
         xmlhttp.send();
 
+        var xmlhttp2 = new XMLHttpRequest();
+        xmlhttp2.onreadystatechange = function() {
+        //alert(this.readyState + ' ' + this.status);
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            var result = this.responseText;
+            var res = result.split("_");
+            //alert(result);
+            document.getElementById("inc").value = result;
+            if(result == 1)
+            {
+                document.getElementById("waferno").disabled = false;
+                document.getElementById("waferrun").disabled = false;
+            }
+            else
+            {
+                document.getElementById("waferno").disabled = true;
+                document.getElementById("waferrun").disabled = true;
+
+                document.getElementById("waferno").value = '';
+                document.getElementById("waferrun").value = '';
+            }
+            
+        }
+        };
+
+        xmlhttp2.open("GET", "../php/getinc.php?processcat=" + document.getElementById("processcat").value+"&station="+station, true);
+        xmlhttp2.send();
+
         }
     });
 
@@ -996,7 +1034,17 @@ function RoughnessAve(){
     });
 
     $("#btnStart").click(function() {
-
+        /* if(document.getElementById("inc").value == 1)
+        {
+            if(document.getElementById("waferno").value == '' || document.getElementById("waferrun").value == '')
+            {
+                document.getElementById("error").innerHTML = "Please Input Wafer no and Wafer run details!";
+                document.getElementById("error").hidden = false;
+                document.getElementById("success").hidden = true;
+                return false;
+            }
+            
+        } */
         var station = document.getElementById("station").value.split(":")[0];
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -1006,7 +1054,7 @@ function RoughnessAve(){
             var result = this.responseText;
             var res = result.split("_");
             //alert(result);
-            if(document.getElementById("waferno").value == '')
+            if(document.getElementById("waferno").value == '' && document.getElementById("inc").value == 1)
             {
                 document.getElementById("error").innerHTML = 'Kindly input Wafer number!';
                 document.getElementById("error").hidden = false;
@@ -1014,7 +1062,7 @@ function RoughnessAve(){
                 return false;
             }
 
-            if(document.getElementById("waferrun").value == '')
+            if(document.getElementById("waferrun").value == '' && document.getElementById("inc").value == 1)
             {
                 document.getElementById("error").innerHTML = 'Kindly input Wafer run!';
                 document.getElementById("error").hidden = false;
@@ -1054,6 +1102,7 @@ function RoughnessAve(){
                 return false;
             }
             document.getElementById("bg").value = 0;
+            document.getElementById("inc").value = 0;
             document.getElementById("derror").hidden = true;
             document.getElementById("dsuccess").hidden = true;
             document.getElementById("rerror").hidden = true;
