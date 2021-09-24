@@ -17,6 +17,7 @@
 </style>
 <style type="text/css">
 body {
+  margin-top: 10px;
   margin-left: 25px;
 }
 #label{
@@ -233,9 +234,9 @@ $cust->CustomerDetails($intlotdata2->custcode);
     {
     ?>
     <tr style="font-size:12px;">
-        <td style="text-align:center;"><?php echo $intlotWI2[$i]->station; ?></td>
-        <td style="text-align:center;"><?php echo $intlotWI2[$i]->instruction; ?></td>
-        <td style="text-align:center;"><?php echo $intlotWI2[$i]->condition; ?></td>
+        <td style="text-align:center;"><?php echo @$intlotWI2[$i]->station; ?></td>
+        <td style="text-align:center;"><?php echo @$intlotWI2[$i]->instruction; ?></td>
+        <td style="text-align:center;"><?php echo @$intlotWI2[$i]->condition; ?></td>
       </tr>
 
     <?php } ?>

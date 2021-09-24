@@ -34,6 +34,10 @@
                                             <button type="button" class="btn btn-outline-success" id="btnView" name = "btnView" onkeypress="if (event.keyCode == 13)  return false;">View Details</button>
                                             <button type="button" class="btn btn-outline-warning float-right" id="btnClear" name = "btnClear">Clear details</button>
                                         </div>
+
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-outline-info" id="btnPrint" name = "btnPrint" onkeypress="if (event.keyCode == 13)  return false;" disabled>Re-print</button>
+                                        </div>
                                         
                                     </div>
                                     
@@ -329,14 +333,17 @@ $(document).ready(function(){
 
     $('#intlotno').focus();
     $("#btnClear").click(function() {
+        document.getElementById("intlotno").disabled = false;
         $("input[type=text]").val('');
         $("#tblintlogs > tbody").empty();
         $("#tblintrejlogs > tbody").empty();
         $("#tblrlogs > tbody").empty();
         $("#tbltlogs > tbody").empty();
-        $('#intlotno').focus();
+        document.getElementById("btnPrint").disabled = true;
+        
         document.getElementById("success").hidden = true;
         document.getElementById("error").hidden = true;
+        $('#intlotno').focus();
     });
     $("#btnView").click(function() {
         
@@ -371,6 +378,8 @@ $(document).ready(function(){
             }
             else
             {
+                document.getElementById("intlotno").disabled = true;
+                document.getElementById("btnPrint").disabled = false;
                 $("#tblintlogs > tbody").empty();
                 $("#tblintrejlogs > tbody").empty();
                 $("#tblrlogs > tbody").empty();
@@ -484,6 +493,10 @@ $(document).ready(function(){
         };
         xmlhttp.open("GET", "../php/viewiln.php?intlotno=" + document.getElementById("intlotno").value, true);
         xmlhttp.send();
+    });
+
+    $("#btnPrint").click(function() {
+        window.open('http://10.168.5.15/wip/print/intlot.php?intlotno='+document.getElementById("intlotno").value);
     });
 });
 </script>
