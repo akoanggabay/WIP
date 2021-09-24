@@ -46,7 +46,7 @@
                             <td><?php echo $CustLogs[$i]->getcustlotno(); ?></td>
                             <td><button type="button" class="btn btn-outline-<?php echo $stat; ?>"><?php echo $CustLogs[$i]->getstatus(); ?></button></td>
                             <td><?php echo $CustLogs[$i]->getremarks(); ?></td>
-                            <td><?php echo $CustLogs[$i]->getlastupdate()->format('F j, Y, g:i a'); ?></td>
+                            <td><?php echo $CustLogs[$i]->getlastupdate()->format('F j, Y, g:i:s a'); ?></td>
                             <td><?php echo $CustLogs[$i]->getlastupdatedby(); ?></td>
                             
     

@@ -219,7 +219,7 @@ class Roughness {
 				'r4' => $row["r4"],
 				'r5' => $row["r5"],
 				'rave' => $row["rave"],
-				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i a'),
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
 				'lastupdatedby' => $user->getfname().' '.$user->getlname()
             );
             }

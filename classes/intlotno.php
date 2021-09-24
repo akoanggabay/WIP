@@ -428,7 +428,7 @@ class IntLotno {
                 $Select->setorigqty($reader["origqty"]);
                 $Select->setcurrqty($reader["currqty"]);
 				$Select->setstatus($reader["status"]);
-				$Select->setstarttime($reader["starttime"]->format('F j, Y g:i:m a'));
+				$Select->setstarttime($reader["starttime"]->format('F j, Y g:i:s a'));
 				$Select->setstation($reader["station"]);
 				$Select->setlastupdatedby($user->getfname().' '.$user->getlname());
 				$Select->setwafersize($reader["wafersize"]);
@@ -473,9 +473,9 @@ class IntLotno {
 				'origqty' => $row["origqty"],
 				'currqty' => $row["currqty"],
 				'status' => $row["status"],
-				'starttime' => $row["starttime"]->format('F j, Y g:i:m a'),
+				'starttime' => $row["starttime"]->format('F j, Y g:i:s a'),
 				'station' => $row["station"].':'.$station->getdescription(),
-				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:m a'),
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
 				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
 				'wafersize' => $row["wafersize"]
 				);

@@ -207,7 +207,7 @@ class Reject {
 				'ddetails' => $row["ddetails"],
 				'dqty' => $row["dqty"],
 				'remarks' => $row["remarks"],
-				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i a'),
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
 				'lastupdatedby' => $user->getfname().' '.$user->getlname()
             );
             }

@@ -187,7 +187,7 @@ class WI {
 				'station' => $row["station"],
 				'instruction' => $row["instruction"],
 				'condition' => $con,
-				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:m a'),
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
 				'lastupdatedby' => $user->getfname().' '.$user->getlname()
 				);
 				}

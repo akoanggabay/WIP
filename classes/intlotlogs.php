@@ -224,7 +224,7 @@ class IntLotLogs {
 				'machine'   => $row["machine"],
 				'qtyin'   => $row["qtyin"],
 				//'qtyout'   => $row["qtyout"],
-				'datein'   => $row["datein"]->format('F j, Y, g:i:m a'),
+				'datein'   => $row["datein"]->format('F j, Y, g:i:s a'),
 				//'dateout'   => $row["dateout"]->format('F j, Y, g:i a'),
 				'lastupdatedby'   => $row["lastupdatedby"],
 				'status'   => $row["status"],
@@ -280,7 +280,7 @@ class IntLotLogs {
 				while ($row = $conn->fetch_array($dataset)) {
 				if($row["dateout"] != '' || !empty($row["dateout"]))
 				{
-					$do = @$row["dateout"]->format('F j, Y g:i:m a');
+					$do = @$row["dateout"]->format('F j, Y g:i:s a');
 				}
 				else
 				{
@@ -322,7 +322,7 @@ class IntLotLogs {
 				'machine' => $row["machine"],
 				'qtyin' => $row["qtyin"],
 				'qtyout' => $qo,
-				'datein' => $row["datein"]->format('F j, Y g:i:m a'),
+				'datein' => $row["datein"]->format('F j, Y g:i:s a'),
 				'dateout' => $do,
 				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
 				'status' => $row["status"],
@@ -364,7 +364,7 @@ class IntLotLogs {
 				while ($row = $conn->fetch_array($dataset)) {
 				if($row["dateout"] != '' || !empty($row["dateout"]))
 				{
-					$do = @$row["dateout"]->format('F j, Y g:i:m a');
+					$do = @$row["dateout"]->format('F j, Y g:i:s a');
 				}
 				else
 				{
@@ -397,7 +397,7 @@ class IntLotLogs {
 				'machine' => $row["machine"],
 				'qtyin' => $row["qtyin"],
 				'qtyout' => $qo,
-				'datein' => $row["datein"]->format('F j, Y g:i:m a'),
+				'datein' => $row["datein"]->format('F j, Y g:i:s a'),
 				'dateout' => $do,
 				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
 				'status' => $row["status"],
@@ -461,7 +461,7 @@ class IntLotLogs {
 				while ($row = $conn->fetch_array($dataset)) {
 				if($row["dateout"] != '' || !empty($row["dateout"]))
 				{
-					$do = @$row["dateout"]->format('F j, Y g:i:m a');
+					$do = @$row["dateout"]->format('F j, Y g:i:s a');
 				}
 				else
 				{
@@ -512,7 +512,7 @@ class IntLotLogs {
 				'machine' => $machine,
 				'qtyin' => $row["qtyin"],
 				'qtyout' => $qo,
-				'datein' => $row["datein"]->format('F j, Y g:i:m a'),
+				'datein' => $row["datein"]->format('F j, Y g:i:s a'),
 				'dateout' => $do,
 				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
 				'status' => $row["status"],

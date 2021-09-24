@@ -243,7 +243,7 @@ class Thickness {
 				'pave' => $row["pave"],
 				'ttv' => $row["ttv"],
 				'waferno' => $row["waferno"],
-				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i a'),
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
 				'lastupdatedby' => $user->getfname().' '.$user->getlname()
             );
             }
