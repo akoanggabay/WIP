@@ -82,6 +82,15 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
+                                                <label>Cassette No: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <input type="text" id="cassno" name="cassno"  class="form-control input-sm" disabled>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
                                                 <label>Wafer no: *</label>
                                             </div>
                                             <div class="col-md-7">
@@ -248,6 +257,42 @@
 </div>
 <br/>
 <br/>
+<!-- ---------------------------------------------------------------------------------------- -->
+<h4>Backgrind Response Measurement</h4>
+<div class="row">
+    
+    <div class="col-lg-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="checkbox" id ="setup" value="setup" onclick="BRM(value)" disabled> Set up
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="checkbox" id ="monitoring" value="monitoring" onclick="BRM(value)" disabled> Monitoring
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="checkbox" id ="psc" value="psc" onclick="BRM(value)" disabled> PSC
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="checkbox" id ="cr" value="cr" onclick="BRM(value)" disabled> Customer Requirement
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<!-- ---------------------------------------------------------------------------------------- -->
 <div class="row"> 
     <div class="col-lg-4">
         <h5>Reject Details</h5>
@@ -565,6 +610,7 @@
 <script>
 var tblcount = 0;
 var tblcount2 = 0;
+var brm ='';
 function removeRow(row){
     
     $("#tr"+row).remove();
@@ -583,7 +629,28 @@ function checkRow(row){
 
 }
 
-
+function BRM(value)
+{
+    if(document.getElementById(value).checked == true)
+    {
+        brm = value;
+        document.getElementById('setup').checked = false;
+        document.getElementById('psc').checked = false;
+        document.getElementById('monitoring').checked = false;
+        document.getElementById('cr').checked = false;
+        document.getElementById(value).checked = true;
+        
+    }
+    else
+    {
+        document.getElementById('setup').checked = false;
+        document.getElementById('psc').checked = false;
+        document.getElementById('monitoring').checked = false;
+        document.getElementById('cr').checked = false;
+        brm = '';
+    }
+    //alert(brm);
+}
 
 
 $(document).ready(function(){
@@ -598,6 +665,8 @@ function Thickness(){
         }
     }
     return true;
+
+
 }
 
 function Roughness(){
@@ -626,6 +695,7 @@ function RoughnessAve(){
         document.getElementById("waferrun").disabled = true;
         document.getElementById("station").disabled = true;
         document.getElementById("machine").disabled = true;
+        document.getElementById("cassno").disabled = true;
         document.getElementById("station").value = '';
         document.getElementById("machine").value = '';
         if(document.getElementById('custcode').value == '')
@@ -688,7 +758,7 @@ function RoughnessAve(){
         else
         {
 
-            document.getElementById("station").disabled = false;
+            
             //$('#waferno').focus();
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -698,7 +768,7 @@ function RoughnessAve(){
                 var result = this.responseText;
                 var resdata = result.split("_");
                 var res = JSON.parse(result.split("_")[1])[0];
-                alert(result);
+                //alert(result);
                 document.getElementById("deviceno").value = res.deviceno;
                 document.getElementById("status").value = res.status;
                 document.getElementById("wqty").value = res.currqty;
@@ -725,6 +795,7 @@ function RoughnessAve(){
 
                 if(resdata[0] == 'success')
                 {
+                    document.getElementById("station").disabled = false;
                     document.getElementById("error").hidden = true;
                     document.getElementById("success").hidden = true;
                     document.getElementById("btnStart").disabled = false;
@@ -766,6 +837,7 @@ function RoughnessAve(){
                     document.getElementById("rpoint3").disabled = false;
                     document.getElementById("rpoint4").disabled = false;
                     document.getElementById("rpoint5").disabled = false;
+                
                     if(resdata[5] == 1)
                     {
                         document.getElementById("twaferno").disabled = false;
@@ -776,6 +848,7 @@ function RoughnessAve(){
                         document.getElementById("tpoint3").disabled = false;
                         document.getElementById("btnAddThick").disabled = false;
                         document.getElementById("bg").value = 1;
+                        $("#setup,#monitoring,#psc,#cr").removeAttr('disabled');
                         
                     }
                     document.getElementById("btnDone").disabled = false;
@@ -918,11 +991,13 @@ function RoughnessAve(){
             document.getElementById("inc").value = result;
             if(result == 1)
             {
+                document.getElementById("cassno").disabled = false;
                 document.getElementById("waferno").disabled = false;
                 document.getElementById("waferrun").disabled = false;
             }
             else
             {
+                document.getElementById("cassno").disabled = false;
                 document.getElementById("waferno").disabled = true;
                 document.getElementById("waferrun").disabled = true;
 
@@ -1034,7 +1109,7 @@ function RoughnessAve(){
     });
 
     $("#btnStart").click(function() {
-        /* if(document.getElementById("inc").value == 1)
+        if(document.getElementById("inc").value == 1)
         {
             if(document.getElementById("waferno").value == '' || document.getElementById("waferrun").value == '')
             {
@@ -1044,7 +1119,14 @@ function RoughnessAve(){
                 return false;
             }
             
-        } */
+        }
+        if(document.getElementById("cassno").value == '')
+        {
+            document.getElementById("error").innerHTML = 'Kindly Input Cassette No!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
+            return false;
+        }
         var station = document.getElementById("station").value.split(":")[0];
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -1053,7 +1135,7 @@ function RoughnessAve(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            alert(result);
+            //alert(result);
             if(document.getElementById("waferno").value == '' && document.getElementById("inc").value == 1)
             {
                 document.getElementById("error").innerHTML = 'Kindly input Wafer number!';
@@ -1069,6 +1151,7 @@ function RoughnessAve(){
                 document.getElementById("success").hidden = true;
                 return false;
             }
+            
             if(document.getElementById("station").value == '')
             {
                 document.getElementById("error").innerHTML = 'Kindly select station!';
@@ -1086,6 +1169,7 @@ function RoughnessAve(){
                 $("input").attr('disabled','disabled');
                 $("number").attr('disabled','disabled');
                 $("select").attr('disabled','disabled');
+                $("checkbox").attr('disabled','enabled');
                 document.getElementById("btnStart").disabled = true;
             }
             else if(res[0] == 'error')
@@ -1131,12 +1215,13 @@ function RoughnessAve(){
                 document.getElementById("tpoint3").disabled = false;
                 document.getElementById("btnAddThick").disabled = false;
                 document.getElementById("bg").value = 1;
+                $("#setup,#monitoring,#psc,#cr").removeAttr('disabled');
                 
             }
             
         }
         };
-        xmlhttp.open("GET", "../php/startinspection.php?intlotno=" + document.getElementById("intlotno").value+"&station="+station+"&waferno="+document.getElementById("waferno").value+"&waferrun="+document.getElementById("waferrun").value+"&machine="+document.getElementById("machine").value+"&processcat="+document.getElementById("processcat").value, true);
+        xmlhttp.open("GET", "../php/startinspection.php?intlotno=" + document.getElementById("intlotno").value+"&station="+station+"&waferno="+document.getElementById("waferno").value+"&waferrun="+document.getElementById("waferrun").value+"&machine="+document.getElementById("machine").value+"&processcat="+document.getElementById("processcat").value+"&inc="+document.getElementById("inc").value+"&cassno="+document.getElementById("cassno").value, true);
         xmlhttp.send();
 
         
@@ -1203,7 +1288,7 @@ function RoughnessAve(){
         {
             var remarks ='';
 
-            remarks = prompt("Reject found. Kindly input Remarks/Summary:");
+            remarks = prompt("Reject found. Kindly input additional information:");
             if(remarks === null)
             {
                 return false;
@@ -1212,6 +1297,12 @@ function RoughnessAve(){
         else
         {
             remarks ='';
+        }
+
+        if(brm == '' && document.getElementById("bg").value == 1)
+        {
+            alert('Kindly select Backgrind Response Measurement!');
+            return false;
         }
 
         var xmlhttp = new XMLHttpRequest();
@@ -1226,6 +1317,7 @@ function RoughnessAve(){
                 $("input[type=text]").val('');
                 $("input[type=number]").val('');
                 $("select").val('');
+                $("#setup,#monitoring,#psc,#cr").prop('checked', false);
                 $("input").attr('disabled','disabled');
                 $("number").attr('disabled','disabled');
                 $("select").attr('disabled','disabled');
@@ -1233,9 +1325,12 @@ function RoughnessAve(){
                 $(".alert").attr('hidden','hidden');
                 $("#tblreject > tbody").empty();
                 $("#tblthickness > tbody").empty();
+                
+                brm = '';
+                tblcount = 0;
+                tblcount2 = 0;
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
-
                 document.getElementById("success").innerHTML = res[1];
                 document.getElementById("error").hidden = true;
                 document.getElementById("success").hidden = false;
@@ -1270,7 +1365,7 @@ function RoughnessAve(){
         }
         };
 
-        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=done"+"&remarks="+remarks, true);
+        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=done"+"&remarks="+remarks+"&brm="+brm, true);
         xmlhttp.send();
     });
 
@@ -1348,6 +1443,7 @@ function RoughnessAve(){
 
             if(res[0] == 'success')
             {
+                $("#setup,#monitoring,#psc,#cr").prop('checked', false);
                 $("input[type=text]").val('');
                 $("input[type=number]").val('');
                 $("select").val('');
@@ -1360,7 +1456,9 @@ function RoughnessAve(){
                 $("#tblthickness > tbody").empty();
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
-
+                brm = '';
+                tblcount = 0;
+                tblcount2 = 0;
                 document.getElementById("success").innerHTML = res[1];
                 document.getElementById("error").hidden = true;
                 document.getElementById("success").hidden = false;
@@ -1382,7 +1480,7 @@ function RoughnessAve(){
         }
         };
 
-        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=hold"+"&remarks="+remarks, true);
+        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=hold"+"&remarks="+remarks+"&brm="+brm, true);
         xmlhttp.send();
     });
 
@@ -1453,6 +1551,7 @@ function RoughnessAve(){
         $("input[type=text]").val('');
         $("input[type=number]").val('');
         $("select").val('');
+        $("#setup,#monitoring,#psc,#cr").prop('checked', false);
         $("input").attr('disabled','disabled');
         $("number").attr('disabled','disabled');
         $("select").attr('disabled','disabled');
@@ -1460,6 +1559,10 @@ function RoughnessAve(){
         $(".alert").attr('hidden','hidden');
         $("#tblreject > tbody").empty();
         $("#tblthickness > tbody").empty();
+        tblcount = 0;
+        tblcount2 = 0;
+        brm = '';
+        
         document.getElementById("btnClear").disabled = false;
         document.getElementById("processcat").disabled = false;
         $('#processcat').focus();

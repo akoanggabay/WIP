@@ -186,8 +186,8 @@ class IntLotLogs {
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
-            $sql = "INSERT INTO dbo.intlotlogs (custcode,intlot,station,machine,qtyin,datein,lastupdatedby,status,waferno,waferrun) VALUES(?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlot(),$this->getstation(),$this->getmachine(),$this->getqtyin(),$this->getdatein(),$this->getlastupdatedby(),$this->getstatus(),$this->getwaferno(),$this->getwaferrun());
+            $sql = "INSERT INTO dbo.intlotlogs (custcode,intlot,station,machine,qtyin,datein,lastupdatedby,status,cassno) VALUES(?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getcustcode(),$this->getintlot(),$this->getstation(),$this->getmachine(),$this->getqtyin(),$this->getdatein(),$this->getlastupdatedby(),$this->getstatus(),$this->getcassno());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)
@@ -267,12 +267,13 @@ class IntLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' order by datein desc");
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' order by datein desc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
 				$do;
 				$qo;
 				$remarks = '';
+				$cassno;
 				$user = new User;
 				
 				while ($row = $conn->fetch_array($dataset)) {
@@ -302,6 +303,15 @@ class IntLotLogs {
 				{
 					$remarks = '';
 				}
+
+				if($row["cassno"] != '' || !empty($row["cassno"]))
+				{
+					$cassno = @$row["cassno"];
+				}
+				else
+				{
+					$cassno = '';
+				}
 				$user->UserData($row["lastupdatedby"]);
 				$result[] = array(
 				'trackingno'   => $row["trackingno"],
@@ -317,6 +327,7 @@ class IntLotLogs {
 				'status' => $row["status"],
 				'waferno' => $row["waferno"],
 				'remarks' => $remarks,
+				'cassno' => $cassno,
 				'waferrun' => $row["waferrun"]
 				);
 				}
@@ -341,11 +352,12 @@ class IntLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.datein between '".$start."' and '".$end."' order by intlot,datein desc");
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.datein between '".$start."' and '".$end."' order by intlot,datein desc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
 				$do;
 				$qo;
+				$cassno;
 				$user = new User;
 				
 				while ($row = $conn->fetch_array($dataset)) {
@@ -366,6 +378,15 @@ class IntLotLogs {
 				{
 					$qo = '';
 				}
+
+				if($row["cassno"] != '' || !empty($row["cassno"]))
+				{
+					$cassno = $row["cassno"];
+				}
+				else
+				{
+					$cassno = '';
+				}
 				$user->UserData($row["lastupdatedby"]);
 				$result[] = array(
 				'trackingno'   => $row["trackingno"],
@@ -380,6 +401,114 @@ class IntLotLogs {
 				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
 				'status' => $row["status"],
 				'waferno' => $row["waferno"],
+				'cassno' => $cassno,
+				'waferrun' => $row["waferrun"]
+				);
+				}
+			}
+			else
+			{
+				$result = 'false';
+			}
+		
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function checkExist($intlotno)
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM dbo.intlotlogs WHERE intlot ='" .$intlotno."' and status = 'ON PROCESS'");
+
+			if ($conn->has_rows($dataset)) {
+
+				$result = 'true';
+			} else {
+				$result = 'false';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
+		}
+		return $result;
+	}
+
+	public static function GetAllIntLogsDone($intlotno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' and a.status = 'DONE' and a.station !='REG' order by datein asc");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+				$do;
+				$qo;
+				$remarks = '';
+				$cassno;
+				$user = new User;
+				
+				while ($row = $conn->fetch_array($dataset)) {
+				if($row["dateout"] != '' || !empty($row["dateout"]))
+				{
+					$do = @$row["dateout"]->format('F j, Y g:i:m a');
+				}
+				else
+				{
+					$do = '';
+				}
+
+				if($row["qtyout"] != '' || !empty($row["qtyout"]))
+				{
+					$qo = $row["qtyout"];
+				}
+				else
+				{
+					$qo = '';
+				}
+
+				if($row["remarks"] != '' || !empty($row["remarks"]))
+				{
+					$remarks = @$row["remarks"];
+				}
+				else
+				{
+					$remarks = '';
+				}
+
+				if($row["cassno"] != '' || !empty($row["cassno"]))
+				{
+					$cassno = @$row["cassno"];
+				}
+				else
+				{
+					$cassno = '';
+				}
+				$user->UserData($row["lastupdatedby"]);
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'custcode'   => $row["custcode"],
+				'intlot'   => $row["intlot"],
+				'station' => $row["station"].':'.$row["description"],
+				'machine' => $row["machine"],
+				'qtyin' => $row["qtyin"],
+				'qtyout' => $qo,
+				'datein' => $row["datein"]->format('F j, Y g:i:m a'),
+				'dateout' => $do,
+				'lastupdatedby' => $user->getfname().' '.$user->getlname(),
+				'status' => $row["status"],
+				'waferno' => $row["waferno"],
+				'remarks' => $remarks,
+				'cassno' => $cassno,
 				'waferrun' => $row["waferrun"]
 				);
 				}

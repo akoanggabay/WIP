@@ -44,11 +44,11 @@ if($_SESSION['idno'])
             else
             {
                 try {
-                    $exist = $upload->checkExist($custcode,trim($csv[0]));
+                    $exist = $upload->checkExist($custcode,trim(preg_replace('/[\t|\s{2,}]/', '', $csv[0])));
                     if($exist == 'false')
                     {
                         $upload->setcustcode(trim($custcode));
-                        $upload->setcustlotno(trim($csv[0]));
+                        $upload->setcustlotno(trim(preg_replace('/[\t|\s{2,}]/', '', $csv[0])));
                         $upload->setdeviceno(trim($csv[1]));
                         $upload->setqty(trim($csv[2]));
                         $upload->setwaferqty(trim($csv[3]));

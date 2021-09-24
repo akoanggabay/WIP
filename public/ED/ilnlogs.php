@@ -49,8 +49,7 @@
                             <th>Internal Lot number</th>
                             <th>Status</th>
                             <th>Station</th>
-                            <th>Wafer no</th>
-                            <th>Wafer run</th>
+                            <th>Cassette no</th>
                             <th>Machine</th>
                             <th>Qty In</th>
                             <th>Qty out</th>
@@ -110,8 +109,7 @@
                 '<td><input type="hidden">'+res[i].intlot+'</td>'+
                 '<td><input type="hidden">'+res[i].status+'</td>'+
                 '<td><input type="hidden">'+res[i].station+'</td>'+
-                '<td><input type="hidden">'+res[i].waferno+'</td>'+
-                '<td><input type="hidden">'+res[i].waferrun+'</td>'+
+                '<td><input type="hidden">'+res[i].cassno+'</td>'+
                 '<td><input type="hidden">'+res[i].machine+'</td>'+
                 '<td><input type="hidden">'+res[i].qtyin+'</td>'+
                 '<td><input type="hidden">'+res[i].qtyout+'</td>'+

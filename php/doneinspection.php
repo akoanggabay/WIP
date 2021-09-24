@@ -32,6 +32,7 @@ $btnStat = $_GET['btnStat'];
 $remarks = $_GET['remarks'];
 $status = '';
 $total = 0;
+$brm = $_GET['brm'];
 
 $sdwaferno = json_decode($_GET['sdwaferno']);
 $sddetails = json_decode($_GET['sddetails']);
@@ -50,6 +51,11 @@ $processroute->setprocess($intlotdata2->processcat);
 $processroute->getStationDetails();
 
 $nextstage = ProcessRoute::getnextstage($intlotdata2->processcat,$processroute->getflowsequence());
+
+$processroute->setstation($nextstage);
+$processroute->setprocess($intlotdata2->processcat);
+
+$processroute->getStationDetails();
 
 $logsdata = IntLotLogs::GetDetails($_GET['intlotno'],$nextstage);
 $intlogsdata = json_encode($logsdata[0]);
@@ -107,7 +113,7 @@ if(@$_SESSION['idno'])
                 }
                 else
                 {
-                    $status = 'REJECT';
+                    $status = 'DONE';
                     $ilot->setstatus('DONE');
                 }
                 $ilot->updateCurrqty(intval($intlotdata2->currqty) - intval($total));
@@ -187,6 +193,11 @@ if(@$_SESSION['idno'])
             if($intlotdata2->processcat == 'BACKGRIND')
             {
                 $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+                if($processroute->getforbackgrind() == 1)
+                {
+                    $ilot->updateBRM($intlotno,$intlotdata2->custcode,$brm);
+                }
+                
                 if((intval($intlotdata2->currqty) - intval($total)) == 0)
                 {
                     $ilot->setstatus('EMPTY');

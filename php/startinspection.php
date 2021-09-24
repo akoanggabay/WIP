@@ -12,6 +12,8 @@ $waferno = $_GET['waferno'];
 $waferrun = $_GET['waferrun'];
 $machine = $_GET['machine'];
 $processcat = $_GET['processcat'];
+$inc = $_GET['inc'];
+$cassno = $_GET['cassno'];
 
 
 
@@ -38,36 +40,52 @@ $processroute->getStationDetails();
 $stationdetails = new Station;
 //echo $processroute->getforbackgrind();
 $stationdetails->StationDetails($nextstage);
+
+$exist = IntLotLogs::checkExist($intlotno);
 if($_SESSION['idno'])
 {
     if($nextstage == $station)
     {
         if($intlotdata2->status == 'DONE')
         {
-            $intlotlogs = new IntLotLogs;
+            if($exist == 'false')
+            {
+                $intlotlogs = new IntLotLogs;
             
-            $intlotlogs->setcustcode($intlotdata2->custcode);
-            $intlotlogs->setintlot($intlotno);
-            $intlotlogs->setstation($station);
-            $intlotlogs->setmachine($machine);
-            $intlotlogs->setqtyin($intlotdata2->currqty);
-            $intlotlogs->setdatein(date("Y-m-d h:i:sa"));
-            $intlotlogs->setlastupdatedby($_SESSION['idno']);
-            $intlotlogs->setstatus('ON PROCESS');
-            $intlotlogs->setwaferno($waferno);
-            $intlotlogs->setwaferrun($waferrun);
+                $intlotlogs->setcustcode($intlotdata2->custcode);
+                $intlotlogs->setintlot($intlotno);
+                $intlotlogs->setstation($station);
+                $intlotlogs->setmachine($machine);
+                $intlotlogs->setqtyin($intlotdata2->currqty);
+                $intlotlogs->setdatein(date("Y-m-d h:i:sa"));
+                $intlotlogs->setlastupdatedby($_SESSION['idno']);
+                $intlotlogs->setstatus('ON PROCESS');
+                $intlotlogs->setcassno($cassno);
+                //$intlotlogs->setwaferrun($waferrun);
 
-            $success = $intlotlogs->AddIntLotLogs();
+                $success = $intlotlogs->AddIntLotLogs();
 
-            $ilot = new IntLotno;
+                $ilot = new IntLotno;
+                //echo $inc;
+                if($inc == 1)
+                {
+                    $ilot->updateWafer($intlotno,$intlotdata2->custcode,$waferno,$waferrun);
+                }
+                
 
-            $ilot->setstatus('ON PROCESS');
-            $ilot->setcustcode($intlotdata2->custcode);
-            $ilot->setintlotno($intlotno);
+                $ilot->setstatus('ON PROCESS');
+                $ilot->setcustcode($intlotdata2->custcode);
+                $ilot->setintlotno($intlotno);
 
-            $ilot->updateStatus();
+                $ilot->updateStatus();
 
-            echo 'success_Start date Inspection of Internal Lot number: <b>'.$intlotno.'</b> <b>'.date('F j, Y, g:i a').'_'.$processroute->getforbackgrind();
+                echo 'success_Start date Inspection of Internal Lot number: <b>'.$intlotno.'</b> <b>'.date('F j, Y, g:i a').'_'.$processroute->getforbackgrind();
+            }
+            else
+            {
+                echo 'error_<b>Error! '.$intlotno.'</b> has <b>ON PROCESS</b> logs. Kindly inquire lot number and check.';
+            }
+            
         }
         else if($intlotdata2->status == 'HOLD')
         {

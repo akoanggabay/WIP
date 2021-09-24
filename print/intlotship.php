@@ -16,6 +16,18 @@
     }
 </style>
 <style type="text/css">
+body{
+  margin-left: 25px;
+  margin-top: 10px;
+}
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 30px;
+  text-align: left;
+}
 #label{
     -webkit-print-color-adjust: exact;
     font-family: verdana;
@@ -123,19 +135,30 @@ include_once("../classes/custlotno.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/intlotlogs.php");
 include_once("../classes/customer.php");
+include_once("../classes/thickness.php");
+include_once("../classes/roughness.php");
 
 $data = IntLotno::GetDetails($_GET['intlotno']);
 $intlotdata = json_encode($data[0]);
 $intlotdata2 = json_decode($intlotdata);
 
-$data2 = IntLotLogs::GetAllIntLogs($_GET['intlotno']);
+$data2 = IntLotLogs::GetAllIntLogsDone($_GET['intlotno']);
 $intlotlogs = json_encode($data2);
 $intlotlogs2 = json_decode($intlotlogs);
+
+$data3 = Thickness::GetAllThicknessLogs($_GET['intlotno']);
+$thicklogs = json_encode($data3);
+$thicklogs2 = json_decode($thicklogs);
+
+$data4 = Roughness::GetAllRoughnessLogs($_GET['intlotno']);
+$roughlogs = json_encode($data4);
+$roughlogs2 = json_decode($roughlogs);
+
 $cust = new Customer;
 
 $cust->CustomerDetails($intlotdata2->custcode);
 ?>
-
+<input type="text" id ="brm" value="<?php echo $intlotdata2->brm; ?>" hidden>
 </head>
 <body>
   <table>
@@ -203,9 +226,20 @@ $cust->CustomerDetails($intlotdata2->custcode);
       <td style="font-weight:bold;">Lot Qty : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->qty;; ?></td>
       
+    </tr>
+
+    <tr>
+      <td style="font-weight:bold;">Wafer no : </td>
+      <td style="text-align:center;"><?php echo $intlotdata2->waferno; ?></td>
+      <td style="font-weight:bold;">Wafer run : </td>
+      <td style="text-align:center;"><?php echo $intlotdata2->waferrun; ?></td>
       
     </tr>
-     
+    <tr>
+      <td style="font-weight:bold;">Device type : </td>
+      <td style="text-align:center;"><?php echo $intlotdata2->devicetype; ?></td>
+      
+    </tr>
   </table>
   <br/><br/>
 
@@ -216,8 +250,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
   <tr rowspan = "3">
       <th>Process</th>
       <th>Machine No</th>
-      <th>Wafer no</th>
-      <th>Wafer run</th>
+      <th>Cassette no</th>
       <th>Qty In</th>
       <th>Qty Out</th>
       <th>Date In</th>
@@ -233,8 +266,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
     <tr style="font-size:12px;">
         <td style="text-align:center;"><?php echo $intlotlogs2[$i]->station; ?></td>
         <td style="text-align:center;"><?php echo $intlotlogs2[$i]->machine; ?></td>
-        <td style="text-align:center;"><?php echo $intlotlogs2[$i]->waferno; ?></td>
-        <td style="text-align:center;"><?php echo $intlotlogs2[$i]->waferrun;?></td>
+        <td style="text-align:center;"><?php echo $intlotlogs2[$i]->cassno; ?></td>
         <td style="text-align:center;"><?php echo $intlotlogs2[$i]->qtyin; ?></td>
         <td style="text-align:center;"><?php echo $intlotlogs2[$i]->qtyout;?></td>
         <td style="text-align:center;"><?php echo $intlotlogs2[$i]->datein; ?></td>
@@ -243,7 +275,88 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </tr>
     <?php } ?>
   </table>
+  <h3>Backgrind Response Measurement</h3>
+  <br/>
+  <div>
+    <input type="checkbox" id ="setup" value="setup"  disabled> <span style="margin-right: 15%">Set-up</span>
+    <input type="checkbox" id ="monitoring" value="monitoring"  disabled> <span style="margin-right: 15%">Monitoring</span>
+    <input type="checkbox" id ="psc" value="psc"  disabled> <span style="margin-right: 15%">PSC</span>
+    <input type="checkbox" id ="cr" value="cr"  disabled> <span>Customer requirement</span>
+ </div>
+  <table>
+  <tr>
+      <td colspan="10" style="text-align:center;font-size:18px;font-weight:bolder;">Final Thickness</td>
+    </tr>
+  <tr rowspan = "3">
+      <th>Process</th>
+      <th>Wafer no</th>
+      <th>Point 1</th>
+      <th>Point 2</th>
+      <th>Point 3</th>
+      <th>Point 4</th>
+      <th>Point 5</th>
+      <th>Point average</th>
+      <th>TTV</th>
+    </tr>
+    <?php
+    for($i=0; $i < count($thicklogs2); $i++)
+    {
+    ?>
+        
+    
+    <tr style="font-size:12px;">
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->station; ?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->waferno; ?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->p1; ?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->p2; ?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->p3;?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->p4; ?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->p5; ?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->pave; ?></td>
+        <td style="text-align:center;"><?php echo $thicklogs2[$i]->ttv; ?></td>
+    </tr>
+    <?php } ?>
+    <br/>
+    
+  </table>
+  <br/><br/>
+  <table>
+  <tr>
+      <td colspan="7" style="text-align:center;font-size:18px;font-weight:bolder;">Roughness</td>
+    </tr>
+  <tr rowspan = "3">
+      <th>Process</th>
+      <th>Point 1</th>
+      <th>Point 2</th>
+      <th>Point 3</th>
+      <th>Point 4</th>
+      <th>Point 5</th>
+      <th>Point average</th>
+    </tr>
+    <?php
+    for($i=0; $i < count($roughlogs2); $i++)
+    {
+    ?>
+        
+    
+    <tr style="font-size:12px;">
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->station; ?></td>
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->r1; ?></td>
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->r2; ?></td>
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->r3;?></td>
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->r4; ?></td>
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->r5; ?></td>
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->rave; ?></td>
 
+    </tr>
+    <?php } ?>
+  </table>
+  
+  <div id="footer">
+    Form No: K0001-0034-01<br/>
+    Form Rev: 02
+  </div>
+  
   <!-- <div style="break-after: page;"></div>
     Test page 2 -->
   <?php $partcode = 'testbarcode'; ?>
@@ -263,7 +376,14 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </script>
   </body>
 
-<script type="text/javascript" > 
+<script>
+  $("#setup,#monitoring,#psc,#cr").prop('checked', false);
+  value = document.getElementById("brm").value;
+  //alert(value);
+  document.getElementById(value).checked = true;
+</script>
+<script type="text/javascript" >
+    
     window.print();
     setTimeout(function(){ window.close(); }, 300);
     

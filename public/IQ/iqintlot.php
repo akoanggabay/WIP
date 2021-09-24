@@ -203,8 +203,7 @@
                             <th>Process</th>
                             <th>Status</th>
                             <th>Machine</th>
-                            <th>Wafer no</th>
-                            <th>Wafer run</th>
+                            <th>Cassette no</th>
                             <th>Qty In</th>
                             <th>Qty Out</th>
                             <th>Remarks</th>
@@ -410,8 +409,7 @@ $(document).ready(function(){
                     '<td>'+lotlogs[i].station+'</td>'+
                     '<td>'+lotlogs[i].status+'</td>'+
                     '<td>'+lotlogs[i].machine+'</td>'+
-                    '<td>'+lotlogs[i].waferno+'</td>'+
-                    '<td>'+lotlogs[i].waferrun+'</td>'+
+                    '<td>'+lotlogs[i].cassno+'</td>'+
                     '<td>'+lotlogs[i].qtyin+'</td>'+
                     '<td>'+lotlogs[i].qtyout+'</td>'+
                     '<td>'+lotlogs[i].remarks+'</td>'+

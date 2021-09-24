@@ -1,7 +1,7 @@
 <?php
 include_once("connection.php");
 
-class MachineType {
+class DeviceType {
     private $type;
 	private $active;
 	
@@ -36,17 +36,17 @@ class MachineType {
 	}
 
 
-	public static function GetAllMachineType()
+	public static function GetAllDeviceType()
 	{
 		$conn = new Connection();
 		$result = array();
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT distinct(type) FROM dbo.machinetype where active = 1");
+			$dataset =  $conn->query("SELECT distinct(type) FROM dbo.devicetype where active = 1");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
-				$Select = new MachineType();
+				$Select = new DeviceType();
 
 				$Select->settype($reader["type"]);
 				//$Select->setactive($reader["active"]);

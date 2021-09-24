@@ -45,7 +45,7 @@ if($_SESSION['idno'])
 
         $ilot = new IntLotno;
 
-        $ilot->setstatus('PROCESSED');
+        $ilot->setstatus('DONE');
         $ilot->setcustcode($intlotdata2->custcode);
         $ilot->setintlotno($intlotno);
 
@@ -61,7 +61,7 @@ if($_SESSION['idno'])
     {
         echo 'error_<b>Error! '.$intlotno.' is already empty! </b>';
     }
-    else if($intlotdata2->status == 'PROCESSED')
+    else if($intlotdata2->status == 'DONE')
     {
         echo 'error_<b>Error! '.$intlotno.' is not on HOLD status! </b>';
     }

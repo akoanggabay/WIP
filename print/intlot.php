@@ -16,6 +16,9 @@
     }
 </style>
 <style type="text/css">
+body {
+  margin-left: 25px;
+}
 #label{
     -webkit-print-color-adjust: exact;
     font-family: verdana;
@@ -122,10 +125,15 @@
 include_once("../classes/custlotno.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/customer.php");
+include_once("../classes/wi.php");
 
 $data = IntLotno::GetDetails($_GET['intlotno']);
 $intlotdata = json_encode($data[0]);
 $intlotdata2 = json_decode($intlotdata);
+
+$data2 = WI::GetAllWI($_GET['intlotno']);
+$intlotWI = json_encode($data2);
+$intlotWI2 = json_decode($intlotWI);
 $cust = new Customer;
 
 $cust->CustomerDetails($intlotdata2->custcode);
@@ -200,179 +208,38 @@ $cust->CustomerDetails($intlotdata2->custcode);
       
       
     </tr>
+
+    <tr>
+      <td style="font-weight:bold;">Device type : </td>
+      <td style="text-align:center;"><?php echo $intlotdata2->devicetype; ?></td>
+      
+    </tr>
      
   </table>
   <br/><br/>
-
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  <br/><br/><br/>
 
   <table>
-    <tr class="noborder">
-        <td colspan="2" style="text-align:left;width:33%"><div class="barcodeParts"></div></td>
-        <td colspan="2" style="text-align:left;font-size:18px;font-weight:bolder;"><?php echo 'LOT TRAVELLER CARD'; ?></td>
-        <td colspan="2"style="text-align:right;"><img src="../img/image002.png" style="width: 100px;height: 96px;" alt=""></td>
-    </tr>
-  </table>
-  <table style="">
-    <tr>
-      <td colspan="6" style="text-align:center;font-size:18px;font-weight:bolder;">Lot Number Details</td>
-    </tr>
-    <tr>
-      <td style="font-weight:bold;">Customer Code : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->custcode; ?></td>
-      <td style="font-weight:bold;">Wafer Size(inch/mm) : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->wafersize; ?></td>
-      
-    </tr>
-    <tr>
-      <td style="font-weight:bold;">Customer Name : </td>
-      <td style="text-align:center;"><?php echo $cust->getcustname(); ?></td>
-      <td style="font-weight:bold;">Lot type : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->lottype; ?></td>
-      
-    </tr>
-    <tr>
-      <td style="font-weight:bold;">Device No : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->deviceno; ?></td>
-      <td style="font-weight:bold;">Wafer Thickness(mils/um) : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->waferthickness; ?></td>
-      
-      
-    </tr>
-
-    <tr>
-      <td style="font-weight:bold;">Internal Lot No : </td>
-      <td style="text-align:center;"><?php echo $_GET['intlotno']; ?></td>
-      <td style="font-weight:bold;">PO No : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->pono; ?></td>
-      
-    </tr>
-
-    <tr>
-      
-      <td style="font-weight:bold;">Required Thickness(mils/um) : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->requiredthickness; ?></td>
-      <td style="font-weight:bold;">Start Date : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->datestart; ?></td>
-      
-    </tr>
-
-    <tr>
-      <td style="font-weight:bold;">Customer Lot No : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->custlot; ?></td>
-      <td style="font-weight:bold;">Ship Back Date : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->shipbackdate;; ?></td>
-      
-    </tr>
-
-    <tr>
-      <td style="font-weight:bold;">Wafer Qty : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->waferqty; ?></td>
-      <td style="font-weight:bold;">Lot Qty : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->qty;; ?></td>
-      
-      
-    </tr>
-     
-  </table>
-  <br/><br/>
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  <br/><br/><br/>
-
-  <table>
-    <tr class="noborder">
-        <td colspan="2" style="text-align:left;width:33%"><div class="barcodeParts"></div></td>
-        <td colspan="2" style="text-align:left;font-size:18px;font-weight:bolder;"><?php echo 'LOT TRAVELLER CARD'; ?></td>
-        <td colspan="2"style="text-align:right;"><img src="../img/image002.png" style="width: 100px;height: 96px;" alt=""></td>
-    </tr>
-  </table>
-  <table style="">
-    <tr>
-      <td colspan="6" style="text-align:center;font-size:18px;font-weight:bolder;">Lot Number Details</td>
-    </tr>
-    <tr>
-      <td style="font-weight:bold;">Customer Code : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->custcode; ?></td>
-      <td style="font-weight:bold;">Wafer Size(inch/mm) : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->wafersize; ?></td>
-      
-    </tr>
-    <tr>
-      <td style="font-weight:bold;">Customer Name : </td>
-      <td style="text-align:center;"><?php echo $cust->getcustname(); ?></td>
-      <td style="font-weight:bold;">Lot type : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->lottype; ?></td>
-      
-    </tr>
-    <tr>
-      <td style="font-weight:bold;">Device No : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->deviceno; ?></td>
-      <td style="font-weight:bold;">Wafer Thickness(mils/um) : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->waferthickness; ?></td>
-      
-      
-    </tr>
-
-    <tr>
-      <td style="font-weight:bold;">Internal Lot No : </td>
-      <td style="text-align:center;"><?php echo $_GET['intlotno']; ?></td>
-      <td style="font-weight:bold;">PO No : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->pono; ?></td>
-      
-    </tr>
-
-    <tr>
-      
-      <td style="font-weight:bold;">Required Thickness(mils/um) : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->requiredthickness; ?></td>
-      <td style="font-weight:bold;">Start Date : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->datestart; ?></td>
-      
-    </tr>
-
-    <tr>
-      <td style="font-weight:bold;">Customer Lot No : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->custlot; ?></td>
-      <td style="font-weight:bold;">Ship Back Date : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->shipbackdate;; ?></td>
-      
-    </tr>
-
-    <tr>
-      <td style="font-weight:bold;">Wafer Qty : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->waferqty; ?></td>
-      <td style="font-weight:bold;">Lot Qty : </td>
-      <td style="text-align:center;"><?php echo $intlotdata2->qty;; ?></td>
-      
-      
-    </tr>
-     
-  </table>
-  <br/><br/>
-  <!-- <table>
   <tr>
-      <td colspan="7" style="text-align:center;font-size:18px;font-weight:bolder;">Lot Number Logs</td>
+      <td colspan="3" style="text-align:center;font-size:18px;font-weight:bolder;">Work Instruction</td>
     </tr>
   <tr rowspan = "3">
       <th>Process</th>
-      <th>Machine No</th>
-      <th>Qty In</th>
-      <th>Qty Out</th>
-      <th>Date In</th>
-      <th>Date Out</th>
-      <th>Processed By</th>
+      <th>Special Instruction</th>
+      <th>Condition</th>
     </tr>
+
+    <?php
+    for($i=0; $i < count($intlotWI2); $i++)
+    {
+    ?>
     <tr style="font-size:12px;">
-        <td style="text-align:center;"><?php echo strtoupper('INCOMING'); ?></td>
-        <td style="text-align:center;"><?php echo 'MC0001'; ?></td>
-        <td style="text-align:center;"><?php echo '16'; ?></td>
-        <td style="text-align:center;"><?php echo '14'; ?></td>
-        <td style="text-align:center;"><?php echo 'June 10, 2021 17:17';?></td>
-        <td style="text-align:center;"><?php echo 'June 10, 2021 18:55';?></td>
-        <td style="text-align:center;"><?php echo strtoupper('Duane'); ?></td>
+        <td style="text-align:center;"><?php echo $intlotWI2[$i]->station; ?></td>
+        <td style="text-align:center;"><?php echo $intlotWI2[$i]->instruction; ?></td>
+        <td style="text-align:center;"><?php echo $intlotWI2[$i]->condition; ?></td>
       </tr>
-  </table> -->
+
+    <?php } ?>
+  </table>
 
   <!-- <div style="break-after: page;"></div>
     Test page 2 -->

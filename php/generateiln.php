@@ -3,6 +3,7 @@ include_once("../classes/po.php");
 include_once("../classes/custlotno.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/intlotlogs.php");
+include_once("../classes/wi.php");
 
 session_start();
 	//$account = trim($_SESSION['account']);
@@ -10,6 +11,7 @@ $custcode = $_GET['custcode'];
 $custlotno = $_GET['custlotno'];
 $pono = $_GET['pono'];
 $wafersize = $_GET['wafersize'];
+$devicetype = $_GET['devicetype'];
 $result = "";
 $qty = "";
 //echo $wafersize;
@@ -21,6 +23,9 @@ $po = PO::GetDetails($pono,$custcode);
 $podata = json_encode($po[0]);
 $podata2 = json_decode($podata);
 
+$sstation = json_decode($_GET['sstation']);
+$sinstruction = json_decode($_GET['sinstruction']);
+$scondition = json_decode($_GET['scondition']);
 
 $count = IntLotno::getcountbyPO($custcode,$pono);
 
@@ -56,6 +61,7 @@ if($podata2->status == 'OPEN')
             $intlot->setstatus('DONE');
             $intlot->setstation('REG');
             $intlot->setwafersize($wafersize);
+            $intlot->setdevicetype($devicetype);
             $intlot->setlastupdatedby($_SESSION['idno']);
 
             $success = $intlot->AddIntLotno();
@@ -63,6 +69,19 @@ if($podata2->status == 'OPEN')
 
             if($success == true)
             {
+                $wi = new WI;
+                for($x=0;$x<count($sstation);$x++){
+
+                    $wi->setintlotno($intlotno);
+                    $wi->setstation($sstation[$x]);
+                    $wi->setinstruction($sinstruction[$x]);
+                    $wi->setcondition($scondition[$x]);
+                    $wi->setlastupdatedby($_SESSION['idno']);
+
+                    $wi->AddWI();
+
+                }
+
                 $intlotlogs = new IntLotLogs;
                 
                 $intlotlogs->setcustcode($custcode);

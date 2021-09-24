@@ -221,7 +221,7 @@
         
         if(res[0] == 'success')
         {
-            window.open('http://localhost/wip/print/intlotship.php?intlotno='+document.getElementById("intlotno").value);
+            window.open('http://10.168.5.15/wip/print/intlotship.php?intlotno='+document.getElementById("intlotno").value);
             document.getElementById("success").innerHTML = res[1];
             document.getElementById("success").hidden = false;
             document.getElementById("error").hidden = true;

@@ -61,6 +61,26 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
+                                                <label>Device type: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <select class="form-control" id="devicetype" name="devicetype">
+                                                    <option selected></option>
+                                                    <?php 
+                                                    include_once("../classes/devicetype.php");
+                                                    $SelectDeviceType = DeviceType::GetAllDeviceType();
+                                                    for($i=0;$i<count($SelectDeviceType);$i++){
+                                                    ?>
+                                                            <option value ='<?php echo $SelectDeviceType[$i]->gettype(); ?>' ><?php echo $SelectDeviceType[$i]->gettype(); ?></option>
+                                                    <?php 
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
                                                 <label>Purchase Order No: *</label>
                                             </div>
                                             <div class="col-md-7">
@@ -70,8 +90,44 @@
                                             </div>
                                         </div>
                                         <br/>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h5 style="align:center;">Work Instruction</h5>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Process: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <select class="form-control" id="station" name="station">
+                                                    <option selected></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Instruction: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <textarea class="form-control" name="instruction" id="instruction" rows="3" onkeyup="this.value = this.value.replace(/[''&*<>]/g, '')"></textarea>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Condition: </label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <textarea class="form-control" name="condition" id="condition" rows="3" onkeyup="this.value = this.value.replace(/[''&*<>]/g, '')"></textarea>
+                                            </div>
+                                        </div>
+                                        <br/>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-success" id="btnGenerate" name = "btnGenerate" disabled>Generate ILN</button>
+                                            <button type="button" class="btn btn-outline-success" id="btnAddWI" name = "btnAddWI" >Add Work Instruction</button>
                                         </div>
                                         </form>
                                     </div>
@@ -188,8 +244,56 @@
     </div>
 </div>
 <br/>
+<div class="row"> 
+    <h5>List of Work Instruction</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters">
+                <table class="table table-bordered" id="tblwi" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>PROCESS</th>
+                            <th>SPECIAL INSTRUCTION</th>
+                            <th>DESCRIPTION</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
+<div class="form-group">
+    <button type="button" class="btn btn-outline-success" id="btnGenerate" name = "btnGenerate" disabled>Generate ILN</button>
+</div>
+<br/>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
+var tblcount = 0;
+function removeRow(row){
+    
+    $("#tr"+row).remove();
+    tblcount = $('#tblwi > tbody tr').length;
+    checkRow(tblcount);
+}
+
+function checkRow(row){
+    if(row > 0)
+    {
+        document.getElementById("btnGenerate").disabled = false;
+    }
+    else
+    {
+        document.getElementById("btnGenerate").disabled = true;
+    }
+}
+
 $(document).ready(function(){
     $('#custcode').change(function (){
         $("input[type=text]").val('');
@@ -238,6 +342,7 @@ $(document).ready(function(){
 
     $('#custlotno').change(function () {
         $("#pono").empty();
+        $("#station").empty();
         if(document.getElementById('custlotno').value == '')
         {
             return;
@@ -252,17 +357,43 @@ $(document).ready(function(){
             if (this.readyState == 4 && this.status == 200) 
             {
                 var result = this.responseText;
-                var res = JSON.parse(result)[0];
+                //alert(result);
+                var res = result.split('`');
+                var resstation = res[1].split("_");
+                var rescust = JSON.parse(res[0])[0];
                 //alert(res.deviceno);
-                document.getElementById("deviceno").value = res.deviceno;
-                document.getElementById("qty").value = res.qty;
-                document.getElementById("wqty").value = res.waferqty;
-                document.getElementById("datestart").value = res.datestart;
-                document.getElementById("shipbackdate").value = res.shipbackdate;
-                document.getElementById("wthick").value = res.waferthickness;
-                document.getElementById("rthick").value = res.requiredthickness;
-                document.getElementById("pcat").value = res.processcat;
-                document.getElementById("ltype").value = res.lottype;
+                document.getElementById("deviceno").value = rescust.deviceno;
+                document.getElementById("qty").value = rescust.qty;
+                document.getElementById("wqty").value = rescust.waferqty;
+                document.getElementById("datestart").value = rescust.datestart;
+                document.getElementById("shipbackdate").value = rescust.shipbackdate;
+                document.getElementById("wthick").value = rescust.waferthickness;
+                document.getElementById("rthick").value = rescust.requiredthickness;
+                document.getElementById("pcat").value = rescust.processcat;
+                document.getElementById("ltype").value = rescust.lottype;
+
+                if(resstation.length > 1)
+                {
+                    var x1 = document.getElementById("station");
+                    var option1 = document.createElement("option");
+                    option1.text = '';
+                    x1.add(option1);
+                    for (i = 0; i < resstation.length - 1; i++) 
+                    { 
+                            // alert(res[i]);
+                            var x = document.getElementById("station");
+                            var option = document.createElement("option");
+                            option.text = resstation[i];
+                            x.add(option);
+                    }
+                }
+                else
+                {
+                    document.getElementById("error").innerHTML = '<b>Error!</b> No available Process for <b> ' + $( "#custlotno option:selected" ).text();
+                    document.getElementById("error").hidden = false;
+                    document.getElementById("success").hidden = true;
+                    document.getElementById("btnGenerate").disabled = true;
+                }
                 
             }
             };
@@ -332,7 +463,7 @@ $(document).ready(function(){
                 document.getElementById("success").innerHTML = res[1];
                 document.getElementById("success").hidden = false;
                 document.getElementById("error").hidden = true;
-                document.getElementById("btnGenerate").disabled = false;
+                document.getElementById("btnGenerate").disabled = true;
             }
             else
             {
@@ -360,6 +491,32 @@ $(document).ready(function(){
             document.getElementById("success").hidden = true;
             return false;
         }
+        if(tblcount  <=0 )
+        {
+            document.getElementById("error").innerHTML = 'Please Input Work Instruction!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
+            return false;
+        }
+
+        if(document.getElementById("devicetype").value == '')
+        {
+            document.getElementById("error").innerHTML = 'Please select Device type!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
+            return false;
+        }
+
+        var sstation = $('input[name="sstation[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinstruction = $('input[name="sinstruction[]"]').map(function () {
+        return this.value; }).get();
+
+        var scondition = $('input[name="scondition[]"]').map(function () {
+        return this.value; }).get();
+
+
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
         //alert(this.readyState + ' ' + this.status);
@@ -370,16 +527,18 @@ $(document).ready(function(){
             //alert(result);
             if(res[0] == 'success')
             {
-                window.open('http://localhost/wip/print/intlot.php?intlotno='+res[2]);
+                window.open('http://10.168.5.15/wip/print/intlot.php?intlotno='+res[2]);
                 document.getElementById("success").innerHTML = res[1];
                 document.getElementById("success").hidden = false;
                 document.getElementById("error").hidden = true;
                 document.getElementById("btnGenerate").disabled = true;
                 document.getElementById("custcode").value = '';
                 document.getElementById("wafersize").value = '';
+                document.getElementById("devicetype").value = '';
                 $("input[type=text]").val('');
                 $("#custlotno").empty();
                 $("#pono").empty();
+                $("#tblwi > tbody").empty();
             }
             else
             {
@@ -391,8 +550,38 @@ $(document).ready(function(){
             
         }
         };
-        xmlhttp.open("GET", "../php/generateiln.php?custcode=" + document.getElementById("custcode").value+"&pono="+document.getElementById("pono").value+"&custlotno="+document.getElementById("custlotno").value+"&wafersize="+document.getElementById("wafersize").value, true);
+        xmlhttp.open("GET", "../php/generateiln.php?custcode=" + document.getElementById("custcode").value+"&pono="+document.getElementById("pono").value+"&custlotno="+document.getElementById("custlotno").value+"&wafersize="+document.getElementById("wafersize").value+"&sstation="+JSON.stringify(sstation)+"&sinstruction="+JSON.stringify(sinstruction)+"&scondition="+JSON.stringify(scondition)+"&devicetype="+document.getElementById("devicetype").value, true);
         xmlhttp.send();
+    });
+
+
+    $("#btnAddWI").click(function() {
+        //alert(document.getElementById("instruction").value)
+
+        if($('#station').val()== "" ||  $('#instruction').val()== "")
+        {
+            document.getElementById("error").innerHTML = 'Please complete Work Instruction details!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
+            return false;
+        }
+        else
+        {
+            $('#tblwi > tbody').append('<tr id="tr'+tblcount+'">'+
+                                        '<td><input type="hidden" id = "sstation[]"  name="sstation[]" value="'+$('#station').val()+'">'+$('#station').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sinstruction[]"  name="sinstruction[]" value="'+$('#instruction').val()+'">'+$('#instruction').val()+'</td>'+
+                                        '<td><input type="hidden" id = "scondition[]"  name="scondition[]" value="'+$('#condition').val()+'">'+$('#condition').val()+'</td>'+
+                                        '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                        '</tr>');
+
+            tblcount++;
+            $('#station').val("");
+            $('#instruction').val("");
+            $('#condition').val("");
+    
+            checkRow(tblcount);
+            
+        }
     });
 });
 </script>
