@@ -449,7 +449,7 @@ class IntLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' and a.status = 'DONE' and a.station !='REG' order by datein asc");
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' and a.status in ('DONE','SHIPPED') and a.station !='REG' order by datein asc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
 				$do;

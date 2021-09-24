@@ -277,10 +277,10 @@ $cust->CustomerDetails($intlotdata2->custcode);
   </table>
   <h3>Backgrind Response Measurement</h3>
   <br/>
-  <div>
-    <input type="checkbox" id ="setup" value="setup"  disabled> <span style="margin-right: 15%">Set-up</span>
-    <input type="checkbox" id ="monitoring" value="monitoring"  disabled> <span style="margin-right: 15%">Monitoring</span>
-    <input type="checkbox" id ="psc" value="psc"  disabled> <span style="margin-right: 15%">PSC</span>
+  <div style="width:100%;">
+    <input type="checkbox" id ="setup" value="setup"  disabled> <span style="margin-right: 140px">Set-up</span>
+    <input type="checkbox" id ="monitoring" value="monitoring"  disabled> <span style="margin-right: 140px">Monitoring</span>
+    <input type="checkbox" id ="psc" value="psc"  disabled> <span style="margin-right: 140px">PSC</span>
     <input type="checkbox" id ="cr" value="cr"  disabled> <span>Customer requirement</span>
  </div>
   <table>
