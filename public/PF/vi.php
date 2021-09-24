@@ -936,6 +936,7 @@ function RoughnessAve(){
     });
 
     $('#station').change(function (){
+        
         document.getElementById("machine").disabled = true;
         $("#machine").empty();
         if(document.getElementById('station').value == '')
@@ -974,6 +975,7 @@ function RoughnessAve(){
                     option.text = res[i];
                     x.add(option);
             }
+            //alert(document.getElementById("machine").options.length);
         }
         };
 
@@ -1125,7 +1127,19 @@ function RoughnessAve(){
             document.getElementById("error").innerHTML = 'Kindly Input Cassette No!';
             document.getElementById("error").hidden = false;
             document.getElementById("success").hidden = true;
+            $('#cassno').focus();
             return false;
+        }
+        if(document.getElementById("machine").options.length > 1)
+        {
+            if(document.getElementById("machine").value == '')
+            {
+                document.getElementById("error").innerHTML = 'Kindly select machine No!';
+                document.getElementById("error").hidden = false;
+                document.getElementById("success").hidden = true;
+                $('#machine').focus();
+                return false;
+            }
         }
         var station = document.getElementById("station").value.split(":")[0];
         var xmlhttp = new XMLHttpRequest();

@@ -494,13 +494,22 @@ class IntLotLogs {
 				{
 					$cassno = '';
 				}
+
+				if($row["machine"] != '' || !empty($row["machine"]))
+				{
+					$machine = @$row["machine"];
+				}
+				else
+				{
+					$machine = 'NA';
+				}
 				$user->UserData($row["lastupdatedby"]);
 				$result[] = array(
 				'trackingno'   => $row["trackingno"],
 				'custcode'   => $row["custcode"],
 				'intlot'   => $row["intlot"],
 				'station' => $row["station"].':'.$row["description"],
-				'machine' => $row["machine"],
+				'machine' => $machine,
 				'qtyin' => $row["qtyin"],
 				'qtyout' => $qo,
 				'datein' => $row["datein"]->format('F j, Y g:i:m a'),
