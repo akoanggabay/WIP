@@ -176,7 +176,7 @@ class ProcessRoute {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT b.station,b.description from processroute a inner join station b on a.station = b.station where a.process = '".$process."' and a.active = 1 and a.forpacking = 0 and a.station != 'REG' order by a.flowsequence");
+			$dataset =  $conn->query("SELECT b.station,b.description from processroute a inner join station b on a.station = b.station where a.process = '".$process."' and a.active = 1 and a.station != 'REG' order by a.flowsequence");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new ProcessRoute();
