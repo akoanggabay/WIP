@@ -212,7 +212,7 @@ class IntLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,b.fname,b.lname 
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,b.fname,b.lname,a.cassno 
 			from intlotlogs a inner join users b on a.lastupdatedby = b.idno where a.intlot = '".$intlot."' and a.station = '".$station."' and a.status = 'ON PROCESS'");
 			if ($conn->has_rows($dataset)) {
 				$row = $conn->fetch_array($dataset);
@@ -230,6 +230,7 @@ class IntLotLogs {
 				'status'   => $row["status"],
 				'waferno'   => $row["waferno"],
 				'waferrun'   => $row["waferrun"],
+				'cassno'   => $row["cassno"],
 				'name'   => $row["fname"].' '.$row["lname"]
 				
 				);
