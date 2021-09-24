@@ -194,6 +194,31 @@ class ProcessRoute {
 		return $result;
 	}
 
+	public static function GetProcessRoute2($process)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT b.station,b.description from processroute a inner join station b on a.station = b.station where a.process = '".$process."' and a.active = 1 and a.station != 'REG' order by a.flowsequence");
+			$counter = 0;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new ProcessRoute();
+
+				$Select->setstation($reader["station"].':'.$reader["description"]);
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
 	public static function getpackingprocess($process){
 		$conn = new Connection();
 		$station = '';

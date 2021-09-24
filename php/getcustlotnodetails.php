@@ -10,7 +10,7 @@ $custlotdata2 = json_decode($custlotdata);
 $result = "";
 
 	//$Module = new Module;
-	$route = ProcessRoute::GetProcessRoute($custlotdata2->processcat);
+	$route = ProcessRoute::GetProcessRoute2($custlotdata2->processcat);
     //echo $Modules[0];
 	for($i=0;$i<count($route);$i++){
 		
