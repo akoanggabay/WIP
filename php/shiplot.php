@@ -33,7 +33,7 @@ if($_SESSION['idno'])
         $stationdetails->StationDetails($nextstage);
         if($nextstage == $station || $intlotdata2->station == $station)
         {
-            if($intlotdata2->status == 'DONE')
+            if($intlotdata2->status == 'DONE' && $intlotdata2->station != $station)
             {
                 $intlotlogs = new IntLotLogs;
                 
@@ -48,7 +48,7 @@ if($_SESSION['idno'])
                 $intlotlogs->setwaferno('');
                 $intlotlogs->setwaferrun('');
 
-                $success = $intlotlogs->AddIntLotLogs();
+                //$success = $intlotlogs->AddIntLotLogs();
 
                 $ilot = new IntLotno;
 
@@ -58,9 +58,13 @@ if($_SESSION['idno'])
                 $ilot->setlastupdatedby($_SESSION['idno']);
                 $ilot->setintlotno($intlotno);
 
-                $ilot->DoneInspect();
+                //$ilot->DoneInspect();
 
-                echo 'success_Internal Lot number: <b>'.$intlotno.'</b> has been SHIPPED in <b>'.date('F j, Y, g:i a').'_'.json_encode($data[0]);
+                //echo 'success_Internal Lot number: <b>'.$intlotno.'</b> has been SHIPPED in <b>'.date('F j, Y, g:i a').'_'.json_encode($data[0]);
+            }
+            else if($intlotdata2->status == 'DONE' && $intlotdata2->station == $station)
+            {
+                echo 'shipped_Internal Lot number: <b>'.$intlotno.'</b> already at SHIPPED status. Re-print function enabled!<b>'.'_'.json_encode($data[0]);
             }
             else if($intlotdata2->status == 'SHIPPED')
             {
