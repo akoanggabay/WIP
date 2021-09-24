@@ -43,7 +43,7 @@ class Customer {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM customer where active = 1");
+			$dataset =  $conn->query("SELECT * FROM customer where active = 1 order by custname asc");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new Customer();
