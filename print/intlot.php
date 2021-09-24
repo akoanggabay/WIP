@@ -221,7 +221,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
 
   <table>
   <tr>
-      <td colspan="3" style="text-align:center;font-size:18px;font-weight:bolder;">Work Instruction</td>
+      <td colspan="3" style="text-align:center;font-size:18px;font-weight:bolder;">Process Flow</td>
     </tr>
   <tr rowspan = "3">
       <th>Process</th>

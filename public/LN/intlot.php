@@ -564,7 +564,7 @@ $(document).ready(function(){
     $("#btnAddWI").click(function() {
         //alert(document.getElementById("instruction").value)
 
-        if($('#station').val()== "" ||  $('#instruction').val()== "")
+        if($('#station').val()== "")
         {
             document.getElementById("error").innerHTML = 'Please complete Work Instruction details!';
             document.getElementById("error").hidden = false;
