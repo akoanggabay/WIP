@@ -464,6 +464,11 @@ $(document).ready(function(){
                 document.getElementById("success").hidden = false;
                 document.getElementById("error").hidden = true;
                 document.getElementById("btnGenerate").disabled = true;
+                if(tblcount > 0)
+                {
+                    document.getElementById("btnGenerate").disabled = false;
+                }
+                
             }
             else
             {
@@ -535,6 +540,7 @@ $(document).ready(function(){
                 document.getElementById("custcode").value = '';
                 document.getElementById("wafersize").value = '';
                 document.getElementById("devicetype").value = '';
+                tblcount = 0;
                 $("input[type=text]").val('');
                 $("#custlotno").empty();
                 $("#pono").empty();
