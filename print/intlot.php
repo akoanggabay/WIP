@@ -213,7 +213,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
     <tr>
       <td style="font-weight:bold;">Device type : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->devicetype; ?></td>
-      <td style="font-weight:bold;">Wheel requirement : </td>
+      <td style="font-weight:bold;">Z2 Wheel requirement : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->wr; ?></td>
     </tr>
      

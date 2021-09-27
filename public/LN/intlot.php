@@ -61,7 +61,7 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <label>Wheel requirement: *</label>
+                                                <label>Z2 Wheel requirement: *</label>
                                             </div>
                                             <div class="col-md-7">
                                                 <select class="form-control" id="wr" name="wr">
