@@ -15,6 +15,7 @@ class IntLotno {
     private $lastupdatedby;
 	private $wafersize;
 	private $devicetype;
+	private $wr;
 
 	function __construct(){
 
@@ -86,6 +87,11 @@ class IntLotno {
 	{
 		$this->devicetype = $devicetype;
 	}
+
+	public function setwr($wr)
+	{
+		$this->wr = $wr;
+	}
 	
 
 	//Getter
@@ -152,6 +158,11 @@ class IntLotno {
 	public function getdevicetype()
 	{
 		return $this->devicetype;
+	}
+
+	public function getwr()
+	{
+		return $this->wr;
 	}
 
     public static function IntLotNo($date)
@@ -239,8 +250,8 @@ class IntLotno {
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
-            $sql = "INSERT INTO dbo.intlotno (custcode,intlot,custlot,pono,origqty,currqty,status,starttime,station,lastupdate,lastupdatedby,wafersize,devicetype) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlotno(),$this->getcustlotno(),$this->getpono(),$this->getorigqty(),$this->getcurrqty(),$this->getstatus(),date("Y-m-d h:i:sa"),$this->getstation(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),$this->getwafersize(),$this->getdevicetype());
+            $sql = "INSERT INTO dbo.intlotno (custcode,intlot,custlot,pono,origqty,currqty,status,starttime,station,lastupdate,lastupdatedby,wafersize,devicetype,wr) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getcustcode(),$this->getintlotno(),$this->getcustlotno(),$this->getpono(),$this->getorigqty(),$this->getcurrqty(),$this->getstatus(),date("Y-m-d h:i:sa"),$this->getstation(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),$this->getwafersize(),$this->getdevicetype(),$this->getwr());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
 			$success = $row;
@@ -266,7 +277,7 @@ class IntLotno {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty,a.waferno,a.waferrun,a.brm,a.devicetype FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno where a.intlot = '".$intlot."'");
+			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty,a.waferno,a.waferrun,a.brm,a.devicetype,a.wr FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno where a.intlot = '".$intlot."'");
 			include_once("station.php");
 			include_once("processroute.php");
 			$station = new Station;
@@ -314,6 +325,7 @@ class IntLotno {
 				'waferrun' => $row["waferrun"],
 				'brm' => $row["brm"],
 				'devicetype' => $row["devicetype"],
+				'wr' => $row["wr"],
 				'intlot' => $row["intlot"]
 				);
 			}

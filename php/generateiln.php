@@ -12,6 +12,7 @@ $custlotno = $_GET['custlotno'];
 $pono = $_GET['pono'];
 $wafersize = $_GET['wafersize'];
 $devicetype = $_GET['devicetype'];
+$wr = $_GET['wr'];
 $result = "";
 $qty = "";
 //echo $wafersize;
@@ -62,6 +63,7 @@ if($podata2->status == 'OPEN')
             $intlot->setstation('REG');
             $intlot->setwafersize($wafersize);
             $intlot->setdevicetype($devicetype);
+            $intlot->setwr($wr);
             $intlot->setlastupdatedby($_SESSION['idno']);
 
             $success = $intlot->AddIntLotno();

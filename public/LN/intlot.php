@@ -61,6 +61,26 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
+                                                <label>Wheel requirement: *</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <select class="form-control" id="wr" name="wr">
+                                                    <option selected></option>
+                                                    <?php 
+                                                    include_once("../classes/wr.php");
+                                                    $SelectWR = WR::GetAllWR();
+                                                    for($i=0;$i<count($SelectWR);$i++){
+                                                    ?>
+                                                            <option value ='<?php echo $SelectWR[$i]->getwr(); ?>' ><?php echo $SelectWR[$i]->getwr(); ?></option>
+                                                    <?php 
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-5">
                                                 <label>Device type: *</label>
                                             </div>
                                             <div class="col-md-7">
@@ -512,6 +532,14 @@ $(document).ready(function(){
             return false;
         }
 
+        if(document.getElementById("wr").value == '')
+        {
+            document.getElementById("error").innerHTML = 'Please select Wheel requirement!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
+            return false;
+        }
+
         var sstation = $('input[name="sstation[]"]').map(function () {
         return this.value; }).get();
 
@@ -556,7 +584,7 @@ $(document).ready(function(){
             
         }
         };
-        xmlhttp.open("GET", "../php/generateiln.php?custcode=" + document.getElementById("custcode").value+"&pono="+document.getElementById("pono").value+"&custlotno="+document.getElementById("custlotno").value+"&wafersize="+document.getElementById("wafersize").value+"&sstation="+JSON.stringify(sstation)+"&sinstruction="+JSON.stringify(sinstruction)+"&scondition="+JSON.stringify(scondition)+"&devicetype="+document.getElementById("devicetype").value, true);
+        xmlhttp.open("GET", "../php/generateiln.php?custcode=" + document.getElementById("custcode").value+"&pono="+document.getElementById("pono").value+"&custlotno="+document.getElementById("custlotno").value+"&wafersize="+document.getElementById("wafersize").value+"&sstation="+JSON.stringify(sstation)+"&sinstruction="+JSON.stringify(sinstruction)+"&scondition="+JSON.stringify(scondition)+"&devicetype="+document.getElementById("devicetype").value+"&wr="+document.getElementById("wr").value, true);
         xmlhttp.send();
     });
 

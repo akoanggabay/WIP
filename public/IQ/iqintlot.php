@@ -157,6 +157,22 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Wafer no:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="wno" name="wno"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer run:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="wrun" name="wrun"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Required thickness:</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -407,6 +423,8 @@ $(document).ready(function(){
                 document.getElementById("shipbackdate").value = lotno.shipbackdate;
                 document.getElementById("wthick").value = lotno.waferthickness;
                 document.getElementById("wsize").value = lotno.wafersize;
+                document.getElementById("wno").value = lotno.waferno;
+                document.getElementById("wrun").value = lotno.waferrun;
                 document.getElementById("rthick").value = lotno.requiredthickness;
                 document.getElementById("pcat").value = lotno.processcat;
                 document.getElementById("ltype").value = lotno.lottype;
