@@ -382,6 +382,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
   value = document.getElementById("brm").value;
   //alert(value);
   document.getElementById(value).checked = true;
+  document.getElementById(value).disabled = false;
 </script>
 <script type="text/javascript" >
     
