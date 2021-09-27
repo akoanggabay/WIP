@@ -133,7 +133,7 @@
                                                 <label>Instruction: *</label>
                                             </div>
                                             <div class="col-md-7">
-                                                <textarea class="form-control" name="instruction" id="instruction" rows="3" onkeyup="this.value = this.value.replace(/[''&*<>]/g, '')"></textarea>
+                                                <textarea class="form-control" name="instruction" id="instruction" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
                                             </div>
                                         </div>
                                         <br/>
@@ -142,7 +142,7 @@
                                                 <label>Condition: </label>
                                             </div>
                                             <div class="col-md-7">
-                                                <textarea class="form-control" name="condition" id="condition" rows="3" onkeyup="this.value = this.value.replace(/[''&*<>]/g, '')"></textarea>
+                                                <textarea class="form-control" name="condition" id="condition" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
                                             </div>
                                         </div>
                                         <br/>
