@@ -125,7 +125,7 @@ if(!isset($_SESSION['idno']))
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Process Flow Forms:</h6>
-                        <a class="collapse-item" href="?form=PF&path=vi">Visual Inspection</a>
+                        <a class="collapse-item" href="?form=PF&path=vi">Process Station Log</a>
                     </div>
                 </div>
             </li>

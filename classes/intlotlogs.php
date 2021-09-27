@@ -356,10 +356,12 @@ class IntLotLogs {
 			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.datein between '".$start."' and '".$end."' order by intlot,datein desc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
+				include_once("customer.php");
 				$do;
 				$qo;
 				$cassno;
 				$user = new User;
+				$cust = new Customer;
 				
 				while ($row = $conn->fetch_array($dataset)) {
 				if($row["dateout"] != '' || !empty($row["dateout"]))
@@ -389,9 +391,10 @@ class IntLotLogs {
 					$cassno = '';
 				}
 				$user->UserData($row["lastupdatedby"]);
+				$cust->CustomerDetails($row["custcode"]);
 				$result[] = array(
 				'trackingno'   => $row["trackingno"],
-				'custcode'   => $row["custcode"],
+				'custcode'   => $cust->getcustname(),
 				'intlot'   => $row["intlot"],
 				'station' => $row["station"].':'.$row["description"],
 				'machine' => $row["machine"],

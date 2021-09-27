@@ -17,7 +17,7 @@
 </style>
 <style type="text/css">
 body{
-  margin-left: 25px;
+  margin-left: 15px;
   margin-top: 10px;
 }
 #footer {

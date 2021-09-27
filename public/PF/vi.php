@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4 text-gray-900">Visual Inspection</h1>
+<h1 class="h3 mb-4 text-gray-900">Process Station Log</h1>
 <div class="row">
     <div class="col-lg-6">
         <div class="row">
@@ -138,7 +138,7 @@
                                         </div>
                                         <br/>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-info" id="btnStart" name = "btnStart" disabled>Start Inspection</button>
+                                            <button type="button" class="btn btn-outline-info" id="btnStart" name = "btnStart" disabled>Start</button>
                                             <button type="button" class="btn btn-outline-warning float-right" id="btnClear" name = "btnClear">Clear</button>
                                         </div>
                                         </form>
@@ -602,7 +602,7 @@
 </div>
 </br><br/>
 <div class="form-group">
-    <button type="button" class="btn btn-outline-success" id="btnDone" name = "btnStat" value="done" disabled>Done Inspection</button>
+    <button type="button" class="btn btn-outline-success" id="btnDone" name = "btnStat" value="done" disabled>Done</button>
     <button type="button" class="btn btn-outline-info float-right" id="btnHold" name = "btnStat" value="hold" disabled>Hold Lot number</button>
 </div>
 

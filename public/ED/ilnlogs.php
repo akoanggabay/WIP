@@ -88,8 +88,9 @@
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
-            var res = JSON.parse(result);
             //alert(result);
+            var res = JSON.parse(result);
+            
             
             if(result == '"false"')
             {
