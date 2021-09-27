@@ -48,7 +48,7 @@ if($podata2->status == 'OPEN')
         {
             $intlot = new IntLotno;
             
-            $prefix = IntLotNo::IntLotNo(date("Y").sprintf("%02d",date("W")));
+            $prefix = IntLotNo::IntLotNo(date("Y"));
 
             $intlotno = date("Y").sprintf("%02d",date("W")).'-'.$prefix;
             //echo $intlotno;
