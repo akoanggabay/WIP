@@ -210,7 +210,7 @@
         document.getElementById("status").value = resdata.status;
         document.getElementById("deviceno").value = resdata.deviceno;
         document.getElementById("oqty").value = resdata.waferqty;
-        document.getElementById("cqty").value = resdata.qty;
+        document.getElementById("cqty").value = resdata.currqty;
         document.getElementById("datestart").value = resdata.datestart;
         document.getElementById("shipbackdate").value = resdata.shipbackdate;
         document.getElementById("wsize").value = resdata.wafersize;
