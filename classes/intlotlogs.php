@@ -248,12 +248,12 @@ class IntLotLogs {
 		return $result;
 	}
 
-	public function DoneInspect($status,$qtyout,$custcode,$intlotno,$station,$remarks){
+	public function DoneInspect($status,$qtyout,$custcode,$intlotno,$station,$remarks,$idno){
 		$conn = new Connection();
 
 		try{
 			$conn->open();
-			$conn->query("UPDATE dbo.intlotlogs SET status = '".$status."',qtyout='".$qtyout."',dateout= GETDATE(),remarks='".$remarks."' where custcode ='".$custcode."' and intlot = '".$intlotno."' and station = '".$station."' and status = 'ON PROCESS'");
+			$conn->query("UPDATE dbo.intlotlogs SET status = '".$status."',qtyout='".$qtyout."',dateout= GETDATE(),remarks='".$remarks."',lastupdatedby = '".$idno."' where custcode ='".$custcode."' and intlot = '".$intlotno."' and station = '".$station."' and status = 'ON PROCESS'");
 
 			$conn->close();
 		}catch(Exception $e){

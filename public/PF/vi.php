@@ -257,7 +257,141 @@
 </div>
 <br/>
 <br/>
-<!-- ---------------------------------------------------------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------------LOGS -->
+<div class="row"> 
+    <h5>Internal Lot number Logs</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters">
+                <table class="table table-bordered" id="tblintlogs" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tracking no</th>
+                            <th>Process</th>
+                            <th>Status</th>
+                            <th>Machine</th>
+                            <th>Cassette no</th>
+                            <th>Qty In</th>
+                            <th>Qty Out</th>
+                            <th>Remarks</th>
+                            <th>Date In</th>
+                            <th>Date Out</th>
+                            <th>Processed By</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
+
+<div class="row"> 
+    <h5>Internal Lot number Reject Logs</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters">
+                <table class="table table-bordered" id="tblintrejlogs" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tracking no</th>
+                            <th>Process</th>
+                            <th>Machine</th>
+                            <th>Wafer no</th>
+                            <th>Defect details</th>
+                            <th>Defect quantity</th>
+                            <th>Remarks</th>
+                            <th>Date Input</th>
+                            <th>Rejected By</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
+
+<div class="row"> 
+    <h5>Internal Lot number Roughness Logs</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters">
+                <table class="table table-bordered" id="tblrlogs" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tracking no</th>
+                            <th>Process</th>
+                            <th>Roughness 1</th>
+                            <th>Roughness 2</th>
+                            <th>Roughness 3</th>
+                            <th>Roughness 4</th>
+                            <th>Roughness 5</th>
+                            <th>Roughness average</th>
+                            <th>Date Input</th>
+                            <th>Processed By</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
+
+<div class="row"> 
+    <h5>Internal Lot number Thickness Logs</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters">
+                <table class="table table-bordered" id="tbltlogs" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tracking no</th>
+                            <th>Process</th>
+                            <th>Wafer no</th>
+                            <th>Point 1</th>
+                            <th>Point 2</th>
+                            <th>Point 3</th>
+                            <th>Point 4</th>
+                            <th>Point 5</th>
+                            <th>Point average</th>
+                            <th>Total Thickness Variation</th>
+                            <th>Date Input</th>
+                            <th>Processed By</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
+<!-- ----------------------------------------------------------------------------------------BRM -->
 <h4>Backgrind Response Measurement</h4>
 <div class="row">
     
@@ -629,6 +763,12 @@ function checkRow(row){
 
 }
 
+function countDecimals(value) {
+    var char_array = value.toString().split(""); // split every single char
+    var not_decimal = char_array.lastIndexOf(".");
+    return (not_decimal<0)?0:(char_array.length - not_decimal) - 1;
+}
+
 function BRM(value)
 {
     if(document.getElementById(value).checked == true)
@@ -656,7 +796,6 @@ function BRM(value)
 $(document).ready(function(){
 
 function Thickness(){
-
     if(document.getElementById("bg").value == 1)
     {
         if(document.getElementById("twaferno").value == '' || document.getElementById("tpoint1").value == '' || document.getElementById("tpoint2").value == '' || document.getElementById("tpoint3").value == '' || document.getElementById("tpoint4").value == '' || document.getElementById("tpoint5").value == '')
@@ -673,7 +812,7 @@ function Roughness(){
 
     if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
     {
-        if(document.getElementById("rpoint1").value == '' || document.getElementById("rpoint2").value == '' || document.getElementById("rpoint3").value == '' || document.getElementById("rpoint4").value == '' || document.getElementById("rpoint5").value == '')
+        if(document.getElementById("rpoint1").value == '' || document.getElementById("rpoint2").value == '' || document.getElementById("rpoint3").value == '' || document.getElementById("rpoint4").value == '' || document.getElementById("rpoint5").value == '' )
         {
             return false;
         }
@@ -745,12 +884,17 @@ function RoughnessAve(){
     });
 
     $('#intlotno').change(function () {
+        $("#tblintlogs > tbody").empty();
+        $("#tblintrejlogs > tbody").empty();
+        $("#tbltlogs > tbody").empty();
+        $("#tblrlogs > tbody").empty();
         $("input").attr('disabled','disabled');
         $("number").attr('disabled','disabled');
         $("#ddetails").attr('disabled','disabled');
         $("#btnDone").attr('disabled','disabled');
         $("#btnHold").attr('disabled','disabled');
         $("input[type=text]").val('');
+        document.getElementById("station").value ='';
         if(document.getElementById('intlotno').value == '')
         {
             return;
@@ -767,8 +911,9 @@ function RoughnessAve(){
             {
                 var result = this.responseText;
                 var resdata = result.split("_");
-                var res = JSON.parse(result.split("_")[1])[0];
                 //alert(result);
+                var res = JSON.parse(result.split("_")[1])[0];
+                
                 document.getElementById("deviceno").value = res.deviceno;
                 document.getElementById("status").value = res.status;
                 document.getElementById("wqty").value = res.currqty;
@@ -778,7 +923,7 @@ function RoughnessAve(){
                 document.getElementById("rthick").value = res.requiredthickness;
                 document.getElementById("wsize").value = res.wafersize;
                 document.getElementById("ltype").value = res.lottype;
-                //alert(resdata[5]);
+                
                 if(resdata[0] == 'error')
                 {
                     document.getElementById("error").innerHTML = resdata[2];
@@ -795,6 +940,74 @@ function RoughnessAve(){
 
                 if(resdata[0] == 'success')
                 {
+                    var lotlogs = JSON.parse(result.split("_")[2]);
+                    var rejlogs = JSON.parse(result.split("_")[5]);
+                    var rlogs = JSON.parse(result.split("_")[3]);
+                    var tlogs = JSON.parse(result.split("_")[4]);
+                    for(var i = 0;i<lotlogs.length;i++)
+                    {
+                        $('#tblintlogs > tbody').append('<tr id="tr'+lotlogs[i].trackingno+'">'+
+                        '<td>'+lotlogs[i].trackingno+'</td>'+
+                        '<td>'+lotlogs[i].station+'</td>'+
+                        '<td>'+lotlogs[i].status+'</td>'+
+                        '<td>'+lotlogs[i].machine+'</td>'+
+                        '<td>'+lotlogs[i].cassno+'</td>'+
+                        '<td>'+lotlogs[i].qtyin+'</td>'+
+                        '<td>'+lotlogs[i].qtyout+'</td>'+
+                        '<td>'+lotlogs[i].remarks+'</td>'+
+                        '<td>'+lotlogs[i].datein+'</td>'+
+                        '<td>'+lotlogs[i].dateout+'</td>'+
+                        '<td>'+lotlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
+                    for(var i = 0;i<rejlogs.length;i++)
+                    {
+                        $('#tblintrejlogs > tbody').append('<tr id="tr'+rejlogs[i].trackingno+'">'+
+                        '<td>'+rejlogs[i].trackingno+'</td>'+
+                        '<td>'+rejlogs[i].station+'</td>'+
+                        '<td>'+rejlogs[i].machine+'</td>'+
+                        '<td>'+rejlogs[i].waferno+'</td>'+
+                        '<td>'+rejlogs[i].ddetails+'</td>'+
+                        '<td>'+rejlogs[i].dqty+'</td>'+
+                        '<td>'+rejlogs[i].remarks+'</td>'+
+                        '<td>'+rejlogs[i].lastupdate+'</td>'+
+                        '<td>'+rejlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
+
+                    for(var i = 0;i<rlogs.length;i++)
+                    {
+                        $('#tblrlogs > tbody').append('<tr id="tr'+rlogs[i].trackingno+'">'+
+                        '<td>'+rlogs[i].trackingno+'</td>'+
+                        '<td>'+rlogs[i].station+'</td>'+
+                        '<td>'+rlogs[i].r1+'</td>'+
+                        '<td>'+rlogs[i].r2+'</td>'+
+                        '<td>'+rlogs[i].r3+'</td>'+
+                        '<td>'+rlogs[i].r4+'</td>'+
+                        '<td>'+rlogs[i].r5+'</td>'+
+                        '<td>'+rlogs[i].rave+'</td>'+
+                        '<td>'+rlogs[i].lastupdate+'</td>'+
+                        '<td>'+rlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
+
+                    for(var i = 0;i<tlogs.length;i++)
+                    {
+                        $('#tbltlogs > tbody').append('<tr id="tr'+tlogs[i].trackingno+'">'+
+                        '<td>'+tlogs[i].trackingno+'</td>'+
+                        '<td>'+tlogs[i].station+'</td>'+
+                        '<td>'+tlogs[i].waferno+'</td>'+
+                        '<td>'+tlogs[i].p1+'</td>'+
+                        '<td>'+tlogs[i].p2+'</td>'+
+                        '<td>'+tlogs[i].p3+'</td>'+
+                        '<td>'+tlogs[i].p4+'</td>'+
+                        '<td>'+tlogs[i].p5+'</td>'+
+                        '<td>'+tlogs[i].pave+'</td>'+
+                        '<td>'+tlogs[i].ttv+'</td>'+
+                        '<td>'+tlogs[i].lastupdate+'</td>'+
+                        '<td>'+tlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
                     document.getElementById("station").disabled = false;
                     document.getElementById("error").hidden = true;
                     document.getElementById("success").hidden = true;
@@ -804,6 +1017,74 @@ function RoughnessAve(){
                 
                 if(resdata[0] == 'onprosucc')
                 {
+                    var lotlogs = JSON.parse(result.split("_")[6]);
+                    var rejlogs = JSON.parse(result.split("_")[9]);
+                    var rlogs = JSON.parse(result.split("_")[7]);
+                    var tlogs = JSON.parse(result.split("_")[8]);
+                    for(var i = 0;i<lotlogs.length;i++)
+                    {
+                        $('#tblintlogs > tbody').append('<tr id="tr'+lotlogs[i].trackingno+'">'+
+                        '<td>'+lotlogs[i].trackingno+'</td>'+
+                        '<td>'+lotlogs[i].station+'</td>'+
+                        '<td>'+lotlogs[i].status+'</td>'+
+                        '<td>'+lotlogs[i].machine+'</td>'+
+                        '<td>'+lotlogs[i].cassno+'</td>'+
+                        '<td>'+lotlogs[i].qtyin+'</td>'+
+                        '<td>'+lotlogs[i].qtyout+'</td>'+
+                        '<td>'+lotlogs[i].remarks+'</td>'+
+                        '<td>'+lotlogs[i].datein+'</td>'+
+                        '<td>'+lotlogs[i].dateout+'</td>'+
+                        '<td>'+lotlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
+                    for(var i = 0;i<rejlogs.length;i++)
+                    {
+                        $('#tblintrejlogs > tbody').append('<tr id="tr'+rejlogs[i].trackingno+'">'+
+                        '<td>'+rejlogs[i].trackingno+'</td>'+
+                        '<td>'+rejlogs[i].station+'</td>'+
+                        '<td>'+rejlogs[i].machine+'</td>'+
+                        '<td>'+rejlogs[i].waferno+'</td>'+
+                        '<td>'+rejlogs[i].ddetails+'</td>'+
+                        '<td>'+rejlogs[i].dqty+'</td>'+
+                        '<td>'+rejlogs[i].remarks+'</td>'+
+                        '<td>'+rejlogs[i].lastupdate+'</td>'+
+                        '<td>'+rejlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
+
+                    for(var i = 0;i<rlogs.length;i++)
+                    {
+                        $('#tblrlogs > tbody').append('<tr id="tr'+rlogs[i].trackingno+'">'+
+                        '<td>'+rlogs[i].trackingno+'</td>'+
+                        '<td>'+rlogs[i].station+'</td>'+
+                        '<td>'+rlogs[i].r1+'</td>'+
+                        '<td>'+rlogs[i].r2+'</td>'+
+                        '<td>'+rlogs[i].r3+'</td>'+
+                        '<td>'+rlogs[i].r4+'</td>'+
+                        '<td>'+rlogs[i].r5+'</td>'+
+                        '<td>'+rlogs[i].rave+'</td>'+
+                        '<td>'+rlogs[i].lastupdate+'</td>'+
+                        '<td>'+rlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
+
+                    for(var i = 0;i<tlogs.length;i++)
+                    {
+                        $('#tbltlogs > tbody').append('<tr id="tr'+tlogs[i].trackingno+'">'+
+                        '<td>'+tlogs[i].trackingno+'</td>'+
+                        '<td>'+tlogs[i].station+'</td>'+
+                        '<td>'+tlogs[i].waferno+'</td>'+
+                        '<td>'+tlogs[i].p1+'</td>'+
+                        '<td>'+tlogs[i].p2+'</td>'+
+                        '<td>'+tlogs[i].p3+'</td>'+
+                        '<td>'+tlogs[i].p4+'</td>'+
+                        '<td>'+tlogs[i].p5+'</td>'+
+                        '<td>'+tlogs[i].pave+'</td>'+
+                        '<td>'+tlogs[i].ttv+'</td>'+
+                        '<td>'+tlogs[i].lastupdate+'</td>'+
+                        '<td>'+tlogs[i].lastupdatedby+'</td>'+
+                        '</tr>');
+                    }
 
                     document.getElementById("success").innerHTML = resdata[2];
                     document.getElementById("error").hidden = true;
@@ -1067,12 +1348,27 @@ function RoughnessAve(){
 
     $( "#btnAddThick" ).click(function() {
 
-        
-        
+        //alert(countDecimals(document.getElementById("tpoint1").value))
         if(Thickness() == false)
         {
             alert('Please complete Final thickness details!');
             document.getElementById("terror").innerHTML = "Please complete necessary details!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+        if(document.getElementById("ttv").value == '')
+        {
+            alert('Please complete Final thickness details!');
+            document.getElementById("terror").innerHTML = "Please complete necessary details!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+        if(countDecimals(document.getElementById("tpoint1").value) != 1 || countDecimals(document.getElementById("tpoint2").value) != 1 || countDecimals(document.getElementById("tpoint3").value) != 1 || countDecimals(document.getElementById("tpoint4").value) != 1 || countDecimals(document.getElementById("tpoint5").value) != 1)
+        {
+            alert('You have input Thickness with more than or less than 1 decimal');
+            document.getElementById("terror").innerHTML = "You have input Thickness with more than or less than 1 decimal!";
             document.getElementById("terror").hidden = false;
             document.getElementById("tsuccess").hidden = true;
             return false;
@@ -1298,6 +1594,15 @@ function RoughnessAve(){
             return false;
         }
 
+        if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
+        {
+            if(countDecimals(document.getElementById("rpoint1").value) != 5 || countDecimals(document.getElementById("rpoint2").value) != 5 || countDecimals(document.getElementById("rpoint3").value) != 5 || countDecimals(document.getElementById("rpoint4").value) != 5 || countDecimals(document.getElementById("rpoint5").value) != 5)
+            {
+                alert('You have input Roughness with more than or less than 5 decimal');
+                return false;
+            }
+        }
+
         if(tblcount > 0 )
         {
             var remarks ='';
@@ -1339,6 +1644,10 @@ function RoughnessAve(){
                 $(".alert").attr('hidden','hidden');
                 $("#tblreject > tbody").empty();
                 $("#tblthickness > tbody").empty();
+                $("#tblintlogs > tbody").empty();
+                $("#tblintrejlogs > tbody").empty();
+                $("#tbltlogs > tbody").empty();
+                $("#tblrlogs > tbody").empty();
                 
                 brm = '';
                 tblcount = 0;
@@ -1423,14 +1732,10 @@ function RoughnessAve(){
 
         var remarks ='';
 
-            remarks = prompt("Lot number: "+ document.getElementById("intlotno").value + " for HOLD. Kindly input Remarks/Summary:");
-            if(remarks === null)
-            {
-                return false;
-            }
+            
         
         //alert(document.getElementsByName("btnStat"));
-        if(Thickness() == false)
+        if(tblcount2 <= 0 && document.getElementById("bg").value == 1)
         {
             alert('Please complete Final thickness details!');
             document.getElementById("terror").innerHTML = "Please complete necessary details!";
@@ -1445,6 +1750,28 @@ function RoughnessAve(){
             document.getElementById("rerror").innerHTML = "Please complete necessary details!";
             document.getElementById("rerror").hidden = false;
             document.getElementById("rsuccess").hidden = true;
+            return false;
+        }
+
+        if(brm == '' && document.getElementById("bg").value == 1)
+        {
+            alert('Kindly select Backgrind Response Measurement!');
+            return false;
+        }
+        if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
+        {
+            if(countDecimals(document.getElementById("rpoint1").value) != 5 || countDecimals(document.getElementById("rpoint2").value) != 5 || countDecimals(document.getElementById("rpoint3").value) != 5 || countDecimals(document.getElementById("rpoint4").value) != 5 || countDecimals(document.getElementById("rpoint5").value) != 5)
+            {
+                alert('You have input Roughness with more than or less than 5 decimal');
+                return false;
+            }
+        }
+
+        
+
+        remarks = prompt("Lot number: "+ document.getElementById("intlotno").value + " for HOLD. Kindly input Remarks/Summary:");
+        if(remarks === null)
+        {
             return false;
         }
 
@@ -1468,6 +1795,10 @@ function RoughnessAve(){
                 $(".alert").attr('hidden','hidden');
                 $("#tblreject > tbody").empty();
                 $("#tblthickness > tbody").empty();
+                $("#tblintlogs > tbody").empty();
+                $("#tblintrejlogs > tbody").empty();
+                $("#tbltlogs > tbody").empty();
+                $("#tblrlogs > tbody").empty();
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
                 brm = '';
@@ -1509,7 +1840,6 @@ function RoughnessAve(){
         //alert(parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3));
 
         var total;
-
         total = (parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3) + parseFloat(rpoint4) + parseFloat(rpoint5));
         if(Roughness() == true)
         {
@@ -1535,20 +1865,22 @@ function RoughnessAve(){
         var tpoint3 = document.getElementById("tpoint3").value;
         var tpoint4 = document.getElementById("tpoint4").value;
         var tpoint5 = document.getElementById("tpoint5").value;
-
+        
         //alert(parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3));
         var total;
+        //alert(tpoint1.toString().split(".").length);
         
-        total = (parseFloat(tpoint1) + parseFloat(tpoint2) + parseFloat(tpoint3) + parseFloat(tpoint4) + parseFloat(tpoint5));
         if(Thickness() == true)
         {
             //document.getElementById("tsuccess").innerHTML = "<b>Success!<b/> Total Thickness Variation has been automatically calculated!";
+        
+            total = (parseFloat(tpoint1) + parseFloat(tpoint2) + parseFloat(tpoint3) + parseFloat(tpoint4) + parseFloat(tpoint5));
             document.getElementById("terror").hidden = true;
             document.getElementById("tsuccess").hidden = true;
             var high = Math.max(tpoint1,tpoint2,tpoint3,tpoint4,tpoint5);
             var low = Math.min(tpoint1,tpoint2,tpoint3,tpoint4,tpoint5);
-            document.getElementById("pave").value = parseFloat(total / 5).toFixed(2);
-            document.getElementById("ttv").value = parseFloat(high - low).toFixed(2);
+            document.getElementById("pave").value = parseFloat(total / 5).toFixed(1);
+            document.getElementById("ttv").value = parseFloat(high - low).toFixed(1);
         }
         else
         {
@@ -1573,6 +1905,10 @@ function RoughnessAve(){
         $(".alert").attr('hidden','hidden');
         $("#tblreject > tbody").empty();
         $("#tblthickness > tbody").empty();
+        $("#tblintlogs > tbody").empty();
+        $("#tblintrejlogs > tbody").empty();
+        $("#tbltlogs > tbody").empty();
+        $("#tblrlogs > tbody").empty();
         tblcount = 0;
         tblcount2 = 0;
         brm = '';

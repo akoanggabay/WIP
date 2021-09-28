@@ -178,11 +178,11 @@ if(@$_SESSION['idno'])
         {
             if($intlotdata2->processcat == 'BACKGRIND')
             {
-                $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+                $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,$remarks,$_SESSION['idno']);
             }
             else
             {
-                $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+                $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks,$_SESSION['idno']);
             }
             
             $ilot->setstation($intlotdata2->station);
@@ -192,7 +192,7 @@ if(@$_SESSION['idno'])
         {
             if($intlotdata2->processcat == 'BACKGRIND')
             {
-                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,$remarks,$_SESSION['idno']);
                 if($processroute->getforbackgrind() == 1)
                 {
                     $ilot->updateBRM($intlotno,$intlotdata2->custcode,$brm);
@@ -209,7 +209,7 @@ if(@$_SESSION['idno'])
             }
             else
             {
-                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks);
+                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks,$_SESSION['idno']);
                 $ilot->setstatus('DONE');
             }
             $ilot->setstation($nextstage);
