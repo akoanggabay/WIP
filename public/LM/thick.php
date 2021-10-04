@@ -245,7 +245,7 @@
             document.getElementById("tsuccess").hidden = true;
             return false;
         }
-        if(countDecimals(document.getElementById("p1").value) != 1 || countDecimals(document.getElementById("p1").value) != 1 || countDecimals(document.getElementById("p1").value) != 1 || countDecimals(document.getElementById("p1").value) != 1 || countDecimals(document.getElementById("p1").value) != 1)
+        if(countDecimals(document.getElementById("p1").value) != 1 || countDecimals(document.getElementById("p2").value) != 1 || countDecimals(document.getElementById("p3").value) != 1 || countDecimals(document.getElementById("p4").value) != 1 || countDecimals(document.getElementById("p5").value) != 1)
         {
             //alert('You have input Thickness with more or less than 1 decimal');
             document.getElementById("terror").innerHTML = "You have input Thickness with more or less than 1 decimal!";
