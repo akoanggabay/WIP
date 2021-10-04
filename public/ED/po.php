@@ -22,7 +22,7 @@
                             <th>PO Number</th>
                             <th>Customer</th>
                             <th>PO Quantity</th>
-                            <th>Current Quantity</th>
+                            <th>Used Quantity</th>
                             <th>Available Quantity</th>
                             <th>Tagged Lot number</th>
                             <th>Shipped Lot number</th>
