@@ -23,6 +23,7 @@
                             <th>Customer</th>
                             <th>PO Quantity</th>
                             <th>Current Quantity</th>
+                            <th>Available Quantity</th>
                             <th>Tagged Lot number</th>
                             <th>Shipped Lot number</th>
                             <th>Process Category</th>
@@ -107,6 +108,7 @@
                             <td><?php echo $cust->getcustname(); ?></td>
                             <td><?php echo $po[$i]->getqty(); ?></td>
                             <td><?php echo $countpo; ?></td>
+                            <td><?php echo intval($po[$i]->getqty()) - intval($countpo); ?></td>
                             <td>
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round($progress,2); ?>%</div>
