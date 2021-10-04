@@ -117,7 +117,7 @@ if(!isset($_SESSION['idno']))
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PFcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-retweet"></i>
                     <span>Process Flow</span>
                 </a>
                 <div id="PFcollapsePages" class="collapse" aria-labelledby="headingPages"
@@ -222,6 +222,27 @@ if(!isset($_SESSION['idno']))
                         <h6 class="collapse-header">User:</h6>
                         <a class="collapse-item" href="?form=RG&path=register">Add User</a>
                         <a class="collapse-item" href="?form=RG&path=edituser">Edit User</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#LMcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Logs Maintenance</span>
+                </a>
+                <div id="LMcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">List of Logs:</h6>
+                        <!-- <a class="collapse-item" href="?form=LM&path=iln">Internal Lot Logs</a> -->
+                        <a class="collapse-item" href="?form=LM&path=thick">Thickness Logs</a>
+                        <a class="collapse-item" href="?form=LM&path=rej">Reject Logs</a>
+                        <a class="collapse-item" href="?form=LM&path=rough">Roughness Logs</a>
                     </div>
                 </div>
             </li>

@@ -220,6 +220,118 @@ class Reject {
 		return $result;
 	}
 
+	public static function GetAllLogs()
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.reject order by lastupdate desc");
+			$counter = 0;
+			include_once("station.php");
+			include_once("user.php");
+			$station = new Station;
+			$user = new User;
+			$do;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new Reject();
+				
+				$user->UserData($reader["lastupdatedby"]);
+				$station->StationDetails($reader["station"]);
+				$Select->settrackingno($reader["trackingno"]);
+				$Select->setcustcode($reader["custcode"]);
+				$Select->setwaferno($reader["waferno"]);
+                $Select->setintlotno($reader["intlotno"]);
+				$Select->setstation($station->getstation().':'.$station->getdescription());
+				$Select->setmachine($reader["machine"]);
+                $Select->setddetails($reader["ddetails"]);
+				$Select->setdqty($reader["dqty"]);
+				$Select->setremarks($reader["remarks"]);
+				$Select->setlastupdate($reader["lastupdate"]->format('F j, Y g:i:s a'));
+				$Select->setlastupdatedby($user->getfname().' '.$user->getlname());
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function TrackGetDetails($trackingno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.reject where trackingno = '".$trackingno."'");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+				include_once("station.php");
+				$user = new User;
+				$station = new Station;
+				$row = $conn->fetch_array($dataset);
+				$user->UserData($row["lastupdatedby"]);
+				$station->StationDetails($row["station"]);
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'custcode'   => $row["custcode"],
+				'intlotno'   => $row["intlotno"],
+				'station'   => $station->getstation().':'.$station->getdescription(),
+				'machine'   => $row["machine"],
+				'waferno'   => $row["waferno"],
+				'ddetails'   => $row["ddetails"],
+				'lastupdate'   => $row["lastupdate"]->format('F j, Y, g:i:s a'),
+				'lastupdatedby'   => $user->getfname().' '.$user->getlname(),
+				'dqty'   => $row["dqty"],
+				'remarks'   => $row["remarks"]
+				
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			$result = 'false';
+			echo $e;
+		}
+		return $result;
+	}
+
+	public function UpdateReject($trackingno){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+            $sql = "UPDATE dbo.reject set waferno = ?, ddetails = ?, dqty = ?, remarks = ? WHERE trackingno = ?";
+            $params = array($this->getwaferno(),$this->getddetails(),$this->getdqty(),$this->getremarks(),$trackingno);
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+            if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            }
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
+	}
+
 
 }
 

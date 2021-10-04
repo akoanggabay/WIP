@@ -197,7 +197,7 @@ class IntLotno {
 		try
 		{
 			$conn->open();
-			$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."'");
+			$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode WHERE a.custcode ='".$code."' and a.pono = '".$po."'");
 			$counter = 0;
 
 			if ($conn->has_rows($dataset)){
@@ -224,7 +224,7 @@ class IntLotno {
 		try
 		{
 			$conn->open();
-			$dataset = $conn->query("SELECT sum(origqty) as total FROM intlotno WHERE custcode ='".$code."' and pono = '".$po."' and status = 'SHIPPED'");
+			$dataset = $conn->query("SELECT sum(origqty) as total FROM intlotno a inner join custlotno b  on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."' and a.station = (SELECT top (1) [station] from processroute where forpacking = 1 and process = b.processcat)");
 			$counter = 0;
 
 			if ($conn->has_rows($dataset)){
@@ -277,7 +277,7 @@ class IntLotno {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty,a.waferno,a.waferrun,a.brm,a.devicetype,a.wr FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno where a.intlot = '".$intlot."'");
+			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty,a.waferno,a.waferrun,a.brm,a.devicetype,a.wr FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno and a.custcode = b.custcode where a.intlot = '".$intlot."'");
 			include_once("station.php");
 			include_once("processroute.php");
 			$station = new Station;
@@ -348,7 +348,7 @@ class IntLotno {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("select intlot from intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode where a.custcode = '".$custcode."' and a.status in ('DONE','ON PROCESS','REG') and b.processcat = '".$processcat."' order by b.datestart");
+			$dataset =  $conn->query("select intlot from intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode where a.custcode = '".$custcode."' and a.status in ('DONE','ON PROCESS','REG') and b.processcat = '".$processcat."' AND a.station != (SELECT station from processroute where forpacking = 1 and process = b.processcat) order by b.datestart");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new IntLotNo();

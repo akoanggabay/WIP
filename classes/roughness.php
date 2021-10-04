@@ -232,6 +232,120 @@ class Roughness {
 		return $result;
 	}
 
+	public static function TrackGetDetails($trackingno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.roughness where trackingno = '".$trackingno."'");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+				include_once("station.php");
+				$user = new User;
+				$station = new Station;
+				$row = $conn->fetch_array($dataset);
+				$user->UserData($row["lastupdatedby"]);
+				$station->StationDetails($row["station"]);
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'custcode'   => $row["custcode"],
+				'intlotno'   => $row["intlotno"],
+				'station'   => $station->getstation().':'.$station->getdescription(),
+				'r1'   => $row["r1"],
+				'r2'   => $row["r2"],
+				'r3'   => $row["r3"],
+				'r4'   => $row["r4"],
+				'r5'   => $row["r5"],
+				'rave'   => $row["rave"],
+				'lastupdate'   => $row["lastupdate"]->format('F j, Y, g:i:s a'),
+				'lastupdatedby'   => $user->getfname().' '.$user->getlname()
+				
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			$result = 'false';
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function GetAllLogs()
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.roughness order by lastupdate desc");
+			$counter = 0;
+			include_once("station.php");
+			include_once("user.php");
+			$station = new Station;
+			$user = new User;
+			$do;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new Roughness();
+				
+				$user->UserData($reader["lastupdatedby"]);
+				$station->StationDetails($reader["station"]);
+				$Select->settrackingno($reader["trackingno"]);
+				$Select->setcustcode($reader["custcode"]);
+                $Select->setintlotno($reader["intlotno"]);
+				$Select->setstation($station->getstation().':'.$station->getdescription());
+				$Select->setr1($reader["r1"]);
+                $Select->setr2($reader["r2"]);
+				$Select->setr3($reader["r3"]);
+				$Select->setr4($reader["r4"]);
+				$Select->setr5($reader["r5"]);
+				$Select->setrave($reader["rave"]);
+				$Select->setlastupdate($reader["lastupdate"]->format('F j, Y g:i:s a'));
+				$Select->setlastupdatedby($user->getfname().' '.$user->getlname());
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public function UpdateRough($trackingno){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+            $sql = "UPDATE dbo.roughness set r1 = ?, r2 = ?, r3 = ?, r4 = ?, r5 = ?, rave = ? WHERE trackingno = ?";
+            $params = array($this->getr1(),$this->getr2(),$this->getr3(),$this->getr4(),$this->getr5(),$this->getrave(),$trackingno);
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+            if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            }
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
+	}
+
 
 }
 

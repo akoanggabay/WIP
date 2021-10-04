@@ -256,6 +256,124 @@ class Thickness {
 		return $result;
 	}
 
+	public static function GetAllLogs()
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.thickness order by lastupdate desc");
+			$counter = 0;
+			include_once("station.php");
+			include_once("user.php");
+			$station = new Station;
+			$user = new User;
+			$do;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new Thickness();
+				
+				$user->UserData($reader["lastupdatedby"]);
+				$station->StationDetails($reader["station"]);
+				$Select->settrackingno($reader["trackingno"]);
+				$Select->setcustcode($reader["custcode"]);
+                $Select->setintlotno($reader["intlotno"]);
+				$Select->setstation($station->getstation().':'.$station->getdescription());
+				$Select->setp1($reader["p1"]);
+                $Select->setp2($reader["p2"]);
+				$Select->setp3($reader["p3"]);
+				$Select->setp4($reader["p4"]);
+				$Select->setp5($reader["p5"]);
+				$Select->setpave($reader["pave"]);
+				$Select->setttv($reader["ttv"]);
+				$Select->setwaferno($reader["waferno"]);
+				$Select->setlastupdate($reader["lastupdate"]->format('F j, Y g:i:s a'));
+				$Select->setlastupdatedby($user->getfname().' '.$user->getlname());
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public function UpdateThick($trackingno){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+            $sql = "UPDATE dbo.thickness set waferno = ?, p1 = ?, p2 = ?, p3 = ?, p4 = ?, p5 = ?, pave = ?, ttv = ? WHERE trackingno = ?";
+            $params = array($this->getwaferno(),$this->getp1(),$this->getp2(),$this->getp3(),$this->getp4(),$this->getp5(),$this->getpave(),$this->getttv(),$trackingno);
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+            if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            }
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
+	}
+
+	public static function TrackGetDetails($trackingno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.thickness where trackingno = '".$trackingno."'");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+				include_once("station.php");
+				$user = new User;
+				$station = new Station;
+				$row = $conn->fetch_array($dataset);
+				$user->UserData($row["lastupdatedby"]);
+				$station->StationDetails($row["station"]);
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'custcode'   => $row["custcode"],
+				'intlotno'   => $row["intlotno"],
+				'station'   => $station->getstation().':'.$station->getdescription(),
+				'waferno'   => $row["waferno"],
+				'p1'   => $row["p1"],
+				'p2'   => $row["p2"],
+				'p3'   => $row["p3"],
+				'p4'   => $row["p4"],
+				'p5'   => $row["p5"],
+				'pave'   => $row["pave"],
+				'ttv'   => $row["ttv"],
+				'lastupdate'   => $row["lastupdate"]->format('F j, Y, g:i:s a'),
+				'lastupdatedby'   => $user->getfname().' '.$user->getlname()
+				
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			$result = 'false';
+			echo $e;
+		}
+		return $result;
+	}
+
 
 }
 

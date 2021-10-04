@@ -1008,6 +1008,8 @@ function RoughnessAve(){
                         '<td>'+tlogs[i].lastupdatedby+'</td>'+
                         '</tr>');
                     }
+                    document.getElementById("machine").value = '';
+                    document.getElementById("machine").disabled = false;
                     document.getElementById("station").disabled = false;
                     document.getElementById("error").hidden = true;
                     document.getElementById("success").hidden = true;
@@ -1367,8 +1369,8 @@ function RoughnessAve(){
         }
         if(countDecimals(document.getElementById("tpoint1").value) != 1 || countDecimals(document.getElementById("tpoint2").value) != 1 || countDecimals(document.getElementById("tpoint3").value) != 1 || countDecimals(document.getElementById("tpoint4").value) != 1 || countDecimals(document.getElementById("tpoint5").value) != 1)
         {
-            alert('You have input Thickness with more than or less than 1 decimal');
-            document.getElementById("terror").innerHTML = "You have input Thickness with more than or less than 1 decimal!";
+            alert('You have input Thickness with more or less than 1 decimal');
+            document.getElementById("terror").innerHTML = "You have input Thickness with more or less than 1 decimal!";
             document.getElementById("terror").hidden = false;
             document.getElementById("tsuccess").hidden = true;
             return false;
@@ -1598,7 +1600,7 @@ function RoughnessAve(){
         {
             if(countDecimals(document.getElementById("rpoint1").value) != 5 || countDecimals(document.getElementById("rpoint2").value) != 5 || countDecimals(document.getElementById("rpoint3").value) != 5 || countDecimals(document.getElementById("rpoint4").value) != 5 || countDecimals(document.getElementById("rpoint5").value) != 5)
             {
-                alert('You have input Roughness with more than or less than 5 decimal');
+                alert('You have input Roughness with more or less than 5 decimal');
                 return false;
             }
         }
@@ -1762,7 +1764,7 @@ function RoughnessAve(){
         {
             if(countDecimals(document.getElementById("rpoint1").value) != 5 || countDecimals(document.getElementById("rpoint2").value) != 5 || countDecimals(document.getElementById("rpoint3").value) != 5 || countDecimals(document.getElementById("rpoint4").value) != 5 || countDecimals(document.getElementById("rpoint5").value) != 5)
             {
-                alert('You have input Roughness with more than or less than 5 decimal');
+                alert('You have input Roughness with more or less than 5 decimal');
                 return false;
             }
         }

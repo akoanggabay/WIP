@@ -216,7 +216,7 @@
         <div class="card border-left-danger">
             <div class="card-body">
                 <div class="row no-gutters">
-                <table class="table table-bordered" id="tblintlogs" width="100%" cellspacing="0">
+                <table class="table table-bordered"  id="tblintlogs" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Tracking no</th>

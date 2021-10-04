@@ -568,6 +568,7 @@ $(document).ready(function(){
                 document.getElementById("custcode").value = '';
                 document.getElementById("wafersize").value = '';
                 document.getElementById("devicetype").value = '';
+                document.getElementById("wr").value = '';
                 tblcount = 0;
                 $("input[type=text]").val('');
                 $("#custlotno").empty();

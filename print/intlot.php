@@ -18,7 +18,7 @@
 <style type="text/css">
 body {
   margin-top: 10px;
-  margin-left: 25px;
+  margin-left: 15px;
 }
 #label{
     -webkit-print-color-adjust: exact;

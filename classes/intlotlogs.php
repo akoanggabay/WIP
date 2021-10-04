@@ -539,6 +539,109 @@ class IntLotLogs {
 		return $result;
 	}
 
+	public static function GetAllLogs()
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.intlotlogs order by intlot,datein");
+			$counter = 0;
+			include_once("station.php");
+			include_once("user.php");
+			$station = new Station;
+			$user = new User;
+			$do;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new IntLotLogs();
+				if($reader["dateout"] != '' || !empty($reader["dateout"]))
+				{
+					$do = @$reader["dateout"]->format('F j, Y g:i:s a');
+				}
+				else
+				{
+					$do = '';
+				}
+				$user->UserData($reader["lastupdatedby"]);
+				$station->StationDetails($reader["station"]);
+				$Select->settrackingno($reader["trackingno"]);
+				$Select->setcustcode($reader["custcode"]);
+                $Select->setintlot($reader["intlot"]);
+				$Select->setstation($station->getstation().':'.$station->getdescription());
+				$Select->setqtyin($reader["qtyin"]);
+				$Select->setqtyout($reader["qtyout"]);
+				$Select->setmachine($reader["machine"]);
+                $Select->setdatein($reader["datein"]->format('F j, Y g:i:s a'));
+				$Select->setdateout($do);
+                $Select->setcassno($reader["cassno"]);
+                $Select->setstatus($reader["status"]);
+				$Select->setremarks($reader["remarks"]);
+				$Select->setlastupdatedby($user->getfname().' '.$user->getlname());
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public static function TrackGetDetails($trackingno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,b.fname,b.lname,a.cassno 
+			from intlotlogs a inner join users b on a.lastupdatedby = b.idno where a.trackingno = '".$trackingno."'");
+			if ($conn->has_rows($dataset)) {
+				$do;
+				$row = $conn->fetch_array($dataset);
+				if($row["dateout"] != '' || !empty($row["dateout"]))
+				{
+					$do = @$row["dateout"]->format('F j, Y g:i:s a');
+				}
+				else
+				{
+					$do = '';
+				}
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'custcode'   => $row["custcode"],
+				'intlot'   => $row["intlot"],
+				'station'   => $row["station"],
+				'machine'   => $row["machine"],
+				'qtyin'   => $row["qtyin"],
+				'qtyout'   => $row["qtyout"],
+				'datein'   => $row["datein"]->format('F j, Y, g:i:s a'),
+				'dateout'   => $do,
+				'lastupdatedby'   => $row["lastupdatedby"],
+				'status'   => $row["status"],
+				'waferno'   => $row["waferno"],
+				'waferrun'   => $row["waferrun"],
+				'cassno'   => $row["cassno"],
+				'name'   => $row["fname"].' '.$row["lname"]
+				
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			$result = 'false';
+			echo $e;
+		}
+		return $result;
+	}
+
 
 
 }
