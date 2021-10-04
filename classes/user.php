@@ -212,7 +212,7 @@ class User {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM dbo.users");
+			$dataset =  $conn->query("SELECT * FROM dbo.users where usertype not in ('Administrator','Super Administrator')");
 			$counter = 0;
 			$active = '';
 			while($reader = $conn->fetch_array($dataset)){
@@ -241,6 +241,75 @@ class User {
 			echo $e;
 		}
 		return $result;
+	}
+
+	public static function UserDetails($idno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.users where idno = '".$idno."'");
+			if ($conn->has_rows($dataset)) {
+				
+				$row = $conn->fetch_array($dataset);
+				$result[] = array(
+				'idno'   => $row["idno"],
+				'fname'   => $row["fname"],
+				'lname'   => $row["lname"],
+				'usertype'   => $row["usertype"],
+				'birthday'   => $row["birthday"]->format('Y-m-d'),
+				'dateregistered'   => $row["dateregistered"]->format('F j, Y, g:i:s a')
+				
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			$result = 'false';
+			echo $e;
+		}
+		return $result;
+	}
+
+	public function UpdateUser($idno){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+			if($this->getpassword() != '')
+			{
+				$sql = "UPDATE dbo.users set fname = ?, lname = ?, birthday = ?, usertype = ?, password = ? WHERE idno = ?";
+            	$params = array($this->getfname(),$this->getlname(),$this->getbirthday(),$this->getusertype(),password_hash($this->getpassword(), PASSWORD_DEFAULT),$idno);
+			}
+			else
+			{
+				$sql = "UPDATE dbo.users set fname = ?, lname = ?, birthday = ?, usertype = ? WHERE idno = ?";
+            	$params = array($this->getfname(),$this->getlname(),$this->getbirthday(),$this->getusertype(),$idno);
+			}
+            
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+            if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            }
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
 	}
 
 

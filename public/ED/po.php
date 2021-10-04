@@ -101,7 +101,7 @@
 
                         ?>
                         
-                        <tr>
+                        <tr id="tr<?php echo $po[$i]->getpono(); ?>">
                             <td><?php echo $po[$i]->getid(); ?></td>
                             <td><?php echo $po[$i]->getpono(); ?></td>
                             <td><?php echo $cust->getcustname(); ?></td>
@@ -132,7 +132,7 @@
                             <td><span class="text-<?php echo $stat; ?>"><?php echo $po[$i]->getstatus(); ?></span></td>
                             <td>
                                 <button class="btn btn-success btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Edit"><i class="fas fa-eye" alt="Edit"></i></button>
-                                <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
+                                <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="FClosePO(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
                             </td>
     
                 
@@ -268,6 +268,52 @@
 
         
 
+         
+    }
+
+    function FClosePO(value)
+    {
+
+        remarks = prompt("Close PO number: "+ value + ". Kindly input Remarks/Summary:");
+        if(remarks === null)
+        {
+            return false;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        var result = this.responseText;
+        var res = result.split("_");
+
+        //alert(result);
+        if(res[0] == 'success')
+        {
+            document.getElementById("success").innerHTML = res[1];
+            document.getElementById("success").hidden = false;
+            document.getElementById("error").hidden = true;
+            //$("#tr"+value).remove();
+        }
+        else if(res[0] == 'session')
+        {
+            alert(res[1]);
+            location.reload();
+            document.getElementById("success").hidden = true;
+            document.getElementById("error").hidden = true;
+        }
+        else
+        {
+            document.getElementById("error").innerHTML = 'Error! Connecting to database!';
+            document.getElementById("error").hidden = false;
+            document.getElementById("success").hidden = true;
+        }
+        
+
+            
+        }   
+        };
+
+        xmlhttp.open("GET", '../php/closepo.php?pono='+value+'&remarks='+remarks,true);
+        xmlhttp.send();
          
     }
 </script>

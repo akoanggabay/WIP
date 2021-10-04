@@ -102,8 +102,8 @@ body {
   }
 
   th{
-    background-color: #000;
-    color:#fff;
+    background-color: #fff;
+    color:#000;
   }
 
   td{

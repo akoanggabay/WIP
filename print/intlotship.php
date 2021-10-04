@@ -18,7 +18,7 @@
 <style type="text/css">
 body{
   margin-left: 15px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 #footer {
   position: fixed;
@@ -110,8 +110,8 @@ body{
   }
 
   th{
-    background-color: #000;
-    color:#fff;
+    background-color: #fff;
+    color:#000;
   }
 
   td{

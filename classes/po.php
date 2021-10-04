@@ -12,6 +12,7 @@ class PO {
 	private $lastupdatedby;
     private $active;
 	private $id;
+	private $remarks;
 	
 
 
@@ -70,6 +71,11 @@ class PO {
 	{
 		$this->id = $id;
 	}
+
+	public function setremarks($remarks)
+	{
+		$this->remarks = $remarks;
+	}
 	
 
 	//Getter
@@ -121,6 +127,11 @@ class PO {
 	public function getid()
 	{
 		return $this->id;
+	}
+
+	public function getremarks()
+	{
+		return $this->remarks;
 	}
 
     public static function checkExist($custcode,$pono)
@@ -273,6 +284,19 @@ class PO {
 		try{
 			$conn->open();
 			$conn->query("UPDATE dbo.PO SET status = '".$this->getstatus()."',lastupdate = GETDATE() where pono ='".$this->getpono()."' and active = 1");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+	}
+
+	public function ForceClosePO(){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.PO SET status = '".$this->getstatus()."',lastupdatedby = '".$this->getlastupdatedby()."', remarks = '".$this->getremarks()."', lastupdate = GETDATE() where pono ='".$this->getpono()."' and active = 1");
 
 			$conn->close();
 		}catch(Exception $e){

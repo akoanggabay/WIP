@@ -224,7 +224,7 @@ class IntLotno {
 		try
 		{
 			$conn->open();
-			$dataset = $conn->query("SELECT sum(origqty) as total FROM intlotno a inner join custlotno b  on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."' and a.station = (SELECT top (1) [station] from processroute where forpacking = 1 and process = b.processcat)");
+			$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b  on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."' and a.station = (SELECT top (1) [station] from processroute where forpacking = 1 and process = b.processcat)");
 			$counter = 0;
 
 			if ($conn->has_rows($dataset)){
