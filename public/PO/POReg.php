@@ -53,10 +53,10 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <!-- <div class="form-group">
+                                    <div class="form-group" hidden>
                                         <label class="text-gray-900" for="">Sub Category:</label><br/>
                                         <input class="form-control" type="text" name="subprocesscat" id="subprocesscat" placeholder="" value="" readonly>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group">
                                         <button type="button" class="btn btn-outline-success" id="btnReg">Add Purchase Order</button>
                                         <button type="button" class="btn btn-outline-warning float-right" id="btnCancel">Cancel</button>
