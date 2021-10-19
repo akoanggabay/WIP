@@ -58,7 +58,10 @@ if(!isset($_SESSION['idno']))
             <div class="sidebar-heading">
                 Forms
             </div>
-
+            <?php 
+                if(@$_SESSION['usertype'] != 'Operator') 
+                {
+            ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#POcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -76,7 +79,12 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
+            <?php } ?>
 
+            <?php 
+                if(@$_SESSION['usertype'] != 'Operator') 
+                {
+            ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#LNcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -95,7 +103,12 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
+            <?php } ?>
 
+            <?php 
+                if(@$_SESSION['usertype'] != 'Operator') 
+                {
+            ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#MEcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -113,6 +126,7 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
+            <?php } ?>
 
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PFcollapsePages" aria-expanded="true"
@@ -132,6 +146,10 @@ if(!isset($_SESSION['idno']))
 
             <hr class="sidebar-divider d-none d-md-block">
 
+            <?php 
+                if(@$_SESSION['usertype'] != 'Operator') 
+                {
+            ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#RLcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -149,6 +167,8 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
+            <?php } ?>
+
 
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#IQcollapsePages" aria-expanded="true"
@@ -167,7 +187,10 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
-
+            <?php 
+                if(@$_SESSION['usertype'] != 'Operator') 
+                {
+            ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#EDcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -187,7 +210,7 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
-
+            <?php } ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PCcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -358,6 +381,7 @@ if(!isset($_SESSION['idno']))
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

@@ -215,7 +215,7 @@
     <div class="col-lg-12">
         <div class="card border-left-danger">
             <div class="card-body">
-                <div class="row no-gutters">
+                <div class="row no-gutters table-responsive">
                 <table class="table table-bordered"  id="tblintlogs" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -249,7 +249,7 @@
     <div class="col-lg-12">
         <div class="card border-left-danger">
             <div class="card-body">
-                <div class="row no-gutters">
+                <div class="row no-gutters table-responsive">
                 <table class="table table-bordered" id="tblintrejlogs" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -281,7 +281,7 @@
     <div class="col-lg-12">
         <div class="card border-left-danger">
             <div class="card-body">
-                <div class="row no-gutters">
+                <div class="row no-gutters table-responsive">
                 <table class="table table-bordered" id="tblrlogs" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -314,7 +314,7 @@
     <div class="col-lg-12">
         <div class="card border-left-danger">
             <div class="card-body">
-                <div class="row no-gutters">
+                <div class="row no-gutters table-responsive">
                 <table class="table table-bordered" id="tbltlogs" width="100%" cellspacing="0">
                     <thead>
                         <tr>

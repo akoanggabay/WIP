@@ -25,6 +25,7 @@
                             <th>Shipped Lot number</th>
                             <th>Process Category</th>
                             <th>Sub Process Category</th>
+                            <th>Remarks</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -125,6 +126,7 @@
                             </td>
                             <td><?php echo $po[$i]->getprocesscat(); ?></td>
                             <td><?php echo $po[$i]->getsubprocesscat(); ?></td>
+                            <td><?php echo $po[$i]->getremarks(); ?></td>
                             <td>
                                 <button type="button" class="btn btn-outline-<?php echo $stat; ?>"  value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)"><?php echo $po[$i]->getstatus(); ?></button>
                             </td>

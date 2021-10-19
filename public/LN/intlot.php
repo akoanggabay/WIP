@@ -113,7 +113,7 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <h5 style="align:center;">Work Instruction</h5>
+                                                <h5 style="align:center;">Process flow</h5>
                                             </div>
                                         </div>
                                         <br/>
@@ -130,7 +130,7 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <label>Instruction: *</label>
+                                                <label>Instruction: </label>
                                             </div>
                                             <div class="col-md-7">
                                                 <textarea class="form-control" name="instruction" id="instruction" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>

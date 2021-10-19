@@ -244,7 +244,6 @@
         {
             alert('Cannot connect to Database!')
         }
-
             
         }   
         };

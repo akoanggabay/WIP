@@ -175,6 +175,7 @@ class PO {
                 $Select->setqty($reader["qty"]);
                 $Select->setprocesscat($reader["processcat"]);
                 $Select->setsubprocesscat($reader["subprocesscat"]);
+				$Select->setremarks($reader["remarks"]);
 				$Select->setstatus($reader["status"]);
 				$result[$counter] = $Select;
 				$counter++;

@@ -27,7 +27,7 @@
                             <th>Tagged Lot number</th>
                             <th>Shipped Lot number</th>
                             <th>Process Category</th>
-                            <th>Sub Process Category</th>
+                            <th>Remarks</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -130,7 +130,7 @@
                                 </div>
                             </td>
                             <td><?php echo $po[$i]->getprocesscat(); ?></td>
-                            <td><?php echo $po[$i]->getsubprocesscat(); ?></td>
+                            <td><?php echo $po[$i]->getremarks(); ?></td>
                             <td><span class="text-<?php echo $stat; ?>"><?php echo $po[$i]->getstatus(); ?></span></td>
                             <td>
                                 <button class="btn btn-success btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Edit"><i class="fas fa-eye" alt="Edit"></i></button>
@@ -255,7 +255,7 @@
                         }
                     }
                 },
-                'print'
+                'print','csv'
             ]
         });
 
