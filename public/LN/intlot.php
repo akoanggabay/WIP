@@ -61,11 +61,12 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <label>Z2 Wheel requirement: *</label>
+                                                <label>Z2 Wheel requirement(BG Only): *</label>
                                             </div>
                                             <div class="col-md-7">
                                                 <select class="form-control" id="wr" name="wr">
                                                     <option selected></option>
+                                                    <option value="NA">NA</option>
                                                     <?php 
                                                     include_once("../classes/wr.php");
                                                     $SelectWR = WR::GetAllWR();
