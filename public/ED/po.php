@@ -111,7 +111,7 @@
                             <td><?php echo $cust->getcustname(); ?></td>
                             <td><?php echo $po[$i]->getqty(); ?></td>
                             <td><?php echo $countpo; ?></td>
-                            <td><?php echo intval($po[$i]->getqty()) - intval($countpo); ?></td>
+                            <td><?php echo round($po[$i]->getqty(),2) - round($countpo,2); ?></td>
                             <td>
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round($progress,2); ?>%</div>
