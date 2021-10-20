@@ -52,10 +52,10 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <label>Wafer size: *</label>
+                                                <label>Wafer/Panel size: *</label>
                                             </div>
                                             <div class="col-md-7">
-                                                <input type="number" id="wafersize" name="wafersize"  class="form-control input-sm">
+                                                <input type="text" id="wafersize" name="wafersize"  class="form-control input-sm">
                                             </div>
                                         </div>
                                         <br/>
@@ -221,7 +221,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Thickness:</label>
+                                                        <label>Wafer Thickness(Microns/mm):</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wthick" name="wthick"  class="form-control input-sm" value="" readonly><br>
@@ -229,7 +229,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Required Thickness:</label>
+                                                        <label>Required Thickness(Microns/mm):</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="rthick" name="rthick"  class="form-control input-sm" value="" readonly><br>
