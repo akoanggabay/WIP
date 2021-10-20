@@ -1,5 +1,6 @@
 <?php
 include_once("../classes/po.php");
+include_once("../classes/forunits.php");
 include_once("../classes/custlotno.php");
 include_once("../classes/intlotno.php");
 
@@ -11,6 +12,7 @@ $pono = $_GET['pono'];
 $result = "";
 
 
+
 $custlot = CustLotno::GetDetails($custlotno,$custcode);
 $data = json_encode($custlot[0]);
 $data2 = json_decode($data);
@@ -19,10 +21,26 @@ $po = PO::GetDetails($pono,$custcode);
 $podata = json_encode($po[0]);
 $podata2 = json_decode($podata);
 
+$exist = ForUnits::checkExist($custcode);
+$qty = 0;
+if($exist == 'true')
+{
+    $forunits = new ForUnits;
+
+    $forunits->GetDetails($custcode);
+    $qty = $data2->waferqty * $forunits->getqty();
+}
+else
+{
+    $qty = $data2->waferqty;
+}
 
 $count = IntLotno::getcountbyPO($custcode,$pono);
 
-$total = intval($count) + intval($data2->waferqty);
+$total = intval($count) + intval($qty);
+/* echo $total;
+echo $count;
+echo $qty; */
 
 if($podata2->status == 'OPEN')
 {
@@ -37,11 +55,11 @@ if($podata2->status == 'OPEN')
                 $po->setstatus('CLOSED');
                 $po->setpono($pono);
                 $po->ClosePO();
-                echo 'success_PO number:<b>'.$pono.'</b> is now <b> CLOSED </b> There is no available Wafer quantity!';
+                echo 'success_PO number:<b>'.$pono.'</b> is now <b> CLOSED </b> There is no available PO quantity!';
             }
             else
             {
-                echo 'success_PO number: <b>'.$pono.'</b> has <b>'.$avail.'</b> available Wafer quantity!';
+                echo 'success_PO number: <b>'.$pono.'</b> has <b>'.$avail.'</b> available PO quantity!';
             }
             
         }
@@ -53,7 +71,7 @@ if($podata2->status == 'OPEN')
     }
     else
     {
-        echo 'error_Lot quantity exceeding current PO quantity! <b>Only '.$avail.' Wafer quantity available.</b>';
+        echo 'error_Lot quantity exceeding current PO quantity! <b>Only '.$avail.' PO quantity available.</b>';
     }
 }
 else

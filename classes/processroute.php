@@ -180,8 +180,18 @@ class ProcessRoute {
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new ProcessRoute();
-
-				$Select->setstation($reader["station"].':'.$reader["description"]);
+				if($reader["station"] == '005' || $reader["station"] == '010' || $reader["station"] == '020')
+				{
+					if(($_SESSION['idno'] == '150019' || $_SESSION['idno'] == '150025' || $_SESSION['idno'] == '150033' || $_SESSION['idno'] == '150038') || ($_SESSION['usertype'] != 'Operator'))
+					{
+						$Select->setstation($reader["station"].':'.$reader["description"]);
+					}
+				}
+				else
+				{
+					$Select->setstation($reader["station"].':'.$reader["description"]);
+				}
+				
 				$result[$counter] = $Select;
 				$counter++;
 			}

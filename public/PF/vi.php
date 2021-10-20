@@ -1203,11 +1203,15 @@ function RoughnessAve(){
             x1.add(option1);
             for (i = 0; i < res.length - 1; i++) 
             { 
-                    // alert(res[i]);
-                    var x = document.getElementById("station");
-                    var option = document.createElement("option");
-                    option.text = res[i];
-                    x.add(option);
+                    //alert(res[i]);
+                    if(res[i] != '')
+                    {
+                        var x = document.getElementById("station");
+                        var option = document.createElement("option");
+                        option.text = res[i];
+                        x.add(option);
+                    }
+                    
             }
         }
         };

@@ -35,7 +35,7 @@
                                         <input class="form-control" type="text" name="pono" id="pono" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-gray-900" for="">Qty: *</label><br/>
+                                        <label class="text-gray-900" for="">PO Quantity: *</label><br/>
                                         <input class="form-control" type="number" name="poqty" id="poqty">
                                     </div>
                                     <div class="form-group">

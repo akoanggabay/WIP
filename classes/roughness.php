@@ -202,7 +202,7 @@ class Roughness {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlotno,a.station,b.description,a.r1,a.r2,a.r3,a.r4,a.r5,a.rave,a.lastupdate,a.lastupdatedby FROM dbo.roughness a inner join station b on a.station = b.station where intlotno = '".$intlotno."' order by lastupdate desc");
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlotno,a.station,b.description,a.r1,a.r2,a.r3,a.r4,a.r5,a.rave,a.lastupdate,a.lastupdatedby FROM dbo.roughness a inner join station b on a.station = b.station where intlotno = '".$intlotno."' order by lastupdate asc");
 			include_once("user.php");
 			$user = new User;
 
@@ -284,7 +284,7 @@ class Roughness {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * from dbo.roughness order by lastupdate desc");
+			$dataset =  $conn->query("SELECT * from dbo.roughness order by lastupdate asc");
 			$counter = 0;
 			include_once("station.php");
 			include_once("user.php");

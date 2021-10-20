@@ -50,7 +50,7 @@ if($podata2->status == 'OPEN')
             $intlot = new IntLotno;
             
             $prefix = IntLotNo::IntLotNo(date("Y"));
-
+            //echo date("Y");
             $intlotno = date("Y").sprintf("%02d",date("W")).'-'.$prefix;
             //echo $intlotno;
             $intlot->setcustcode($custcode);

@@ -137,6 +137,7 @@ include_once("../classes/intlotlogs.php");
 include_once("../classes/customer.php");
 include_once("../classes/thickness.php");
 include_once("../classes/roughness.php");
+include_once("../classes/reject.php");
 
 $data = IntLotno::GetDetails($_GET['intlotno']);
 $intlotdata = json_encode($data[0]);
@@ -153,6 +154,10 @@ $thicklogs2 = json_decode($thicklogs);
 $data4 = Roughness::GetAllRoughnessLogs($_GET['intlotno']);
 $roughlogs = json_encode($data4);
 $roughlogs2 = json_decode($roughlogs);
+
+$data5 = Reject::GetAllIntRejLogs($_GET['intlotno']);
+$rejectlogs = json_encode($data5);
+$rejectlogs2 = json_decode($rejectlogs);
 
 $cust = new Customer;
 
@@ -175,7 +180,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
     <tr>
       <td style="font-weight:bold;">Customer Code : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->custcode; ?></td>
-      <td style="font-weight:bold;">Wafer Size(inch/mm) : </td>
+      <td style="font-weight:bold;">Wafer/Panel Size(inch/mm) : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->wafersize; ?></td>
       
     </tr>
@@ -189,7 +194,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
     <tr>
       <td style="font-weight:bold;">Device No : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->deviceno; ?></td>
-      <td style="font-weight:bold;">Wafer Thickness(mils/um) : </td>
+      <td style="font-weight:bold;">Wafer/Panel Thickness(mils/um) : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->waferthickness; ?></td>
       
       
@@ -221,7 +226,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </tr>
 
     <tr>
-      <td style="font-weight:bold;">Wafer Qty : </td>
+      <td style="font-weight:bold;">Wafer/Panel Qty : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->waferqty; ?></td>
       <td style="font-weight:bold;">Lot Qty : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->qty;; ?></td>
@@ -229,9 +234,9 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </tr>
 
     <tr>
-      <td style="font-weight:bold;">Wafer no : </td>
+      <td style="font-weight:bold;">Wafer/Panel no : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->waferno; ?></td>
-      <td style="font-weight:bold;">Wafer run : </td>
+      <td style="font-weight:bold;">Wafer/Panel run : </td>
       <td style="text-align:center;"><?php echo $intlotdata2->waferrun; ?></td>
       
     </tr>
@@ -276,6 +281,12 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </tr>
     <?php } ?>
   </table>
+  <br/><br/>
+  <?php 
+  if($intlotdata2->processcat == 'BACKGRIND')
+  {
+
+  ?>
   <h3>Backgrind Response Measurement</h3>
   <br/>
   <div style="width:100%;">
@@ -284,6 +295,47 @@ $cust->CustomerDetails($intlotdata2->custcode);
     <input type="checkbox" id ="psc" value="psc"  disabled> <span style="margin-right: 140px">PSC</span>
     <input type="checkbox" id ="cr" value="cr"  disabled> <span>Customer requirement</span>
  </div>
+ <br/>
+<?php } ?>
+ <table>
+  <tr>
+      <td colspan="8" style="text-align:center;font-size:18px;font-weight:bolder;">Reject Logs</td>
+    </tr>
+  <tr rowspan = "3">
+      <th>Process</th>
+      <th>Machine ID</th>
+      <th>Wafer/Panel no</th>
+      <th>Defect details</th>
+      <th>Defect quantity</th>
+      <th>Remarks</th>
+      <th>Date Input</th>
+      <th>Rejected By</th>
+    </tr>
+    <?php
+    for($i=0; $i < count($rejectlogs2); $i++)
+    {
+    ?>
+        
+    
+    <tr style="font-size:12px;">
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->station; ?></td>
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->machine; ?></td>
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->waferno; ?></td>
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->ddetails;?></td>
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->dqty; ?></td>
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->remarks; ?></td>
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->lastupdate; ?></td>
+        <td style="text-align:center;"><?php echo $rejectlogs2[$i]->lastupdatedby; ?></td>
+
+    </tr>
+    <?php } ?>
+  </table>
+  <br/><br/>
+  <?php 
+  if($intlotdata2->processcat == 'BACKGRIND')
+  {
+
+  ?>
   <table>
   <tr>
       <td colspan="10" style="text-align:center;font-size:18px;font-weight:bolder;">Final Thickness</td>
@@ -320,7 +372,14 @@ $cust->CustomerDetails($intlotdata2->custcode);
     <br/>
     
   </table>
+
+  <?php } ?>
   <br/><br/>
+  <?php 
+  if($intlotdata2->processcat == 'BACKGRIND')
+  {
+
+  ?>
   <table>
   <tr>
       <td colspan="7" style="text-align:center;font-size:18px;font-weight:bolder;">Roughness</td>
@@ -352,7 +411,8 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </tr>
     <?php } ?>
   </table>
-  
+  <?php } ?>
+
   <div id="footer">
     Form No: K0001-0034-01<br/>
     Form Rev: 02

@@ -268,7 +268,7 @@ class IntLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' order by datein desc");
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.remarks,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station  where a.intlot = '".$intlotno."' order by datein asc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
 				$do;

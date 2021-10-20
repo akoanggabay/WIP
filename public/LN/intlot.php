@@ -478,7 +478,7 @@ $(document).ready(function(){
         {
             var result = this.responseText;
             var res = result.split("_");
-            //alert(result);
+            alert(result);
             if(res[0] == 'success')
             {
                 document.getElementById("success").innerHTML = res[1];

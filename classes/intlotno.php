@@ -197,7 +197,27 @@ class IntLotno {
 		try
 		{
 			$conn->open();
-			$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode WHERE a.custcode ='".$code."' and a.pono = '".$po."'");
+			include_once("forunits.php");
+			$exist = ForUnits::checkExist($code);
+
+			$forunits = new ForUnits;
+
+    			$forunits->GetDetails($code);
+
+				$qty = $forunits->getqty();
+
+			if($exist == 'true')
+			{
+				$dataset = $conn->query("SELECT sum(b.waferqty) * $qty as total FROM intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode WHERE a.custcode ='".$code."' and a.pono = '".$po."'");
+			}
+			else
+			{
+				$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode WHERE a.custcode ='".$code."' and a.pono = '".$po."'");
+			}
+
+			//$dataset = $conn->query("SELECT sum(b.waferqty) * 253 as total FROM intlotno a inner join custlotno b on a.custlot = b.custlotno and a.custcode = b.custcode WHERE a.custcode ='".$code."' and a.pono = '".$po."'");
+			
+			
 			$counter = 0;
 
 			if ($conn->has_rows($dataset)){
@@ -224,7 +244,21 @@ class IntLotno {
 		try
 		{
 			$conn->open();
-			$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b  on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."' and a.station = (SELECT top (1) [station] from processroute where forpacking = 1 and process = b.processcat)");
+			include_once("forunits.php");
+			$exist = ForUnits::checkExist($code);
+			if($exist == 'true')
+			{
+				$forunits = new ForUnits;
+
+    			$forunits->GetDetails($code);
+
+				$qty = $forunits->getqty();
+				$dataset = $conn->query("SELECT sum(b.waferqty) * $qty as total FROM intlotno a inner join custlotno b  on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."' and a.station = (SELECT top (1) [station] from processroute where forpacking = 1 and process = b.processcat)");
+			}
+			else
+			{
+				$dataset = $conn->query("SELECT sum(b.waferqty) as total FROM intlotno a inner join custlotno b  on a.custlot = b.custlotno WHERE a.custcode ='".$code."' and a.pono = '".$po."' and a.station = (SELECT top (1) [station] from processroute where forpacking = 1 and process = b.processcat)");
+			}
 			$counter = 0;
 
 			if ($conn->has_rows($dataset)){

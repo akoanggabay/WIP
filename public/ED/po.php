@@ -44,9 +44,12 @@
                         $progcolorshipped ='';
                         $cust = new Customer;
                         for ($i=0; $i < count($po); $i++) 
-                        
+
                             {
+                                
                             $countpo = IntLotno::getcountbyPO($po[$i]->getcustcode(),$po[$i]->getpono());
+                            echo $countpo;
+                            //echo $po[$i]->getcustcode();
                             $countposhipped = IntLotno::getcountbyPOShipped($po[$i]->getcustcode(),$po[$i]->getpono());
                             $progress = (intval($countpo) / intval($po[$i]->getqty())) * 100 ;
                             $progressshipped = (intval($countposhipped) / intval($po[$i]->getqty())) * 100 ;
