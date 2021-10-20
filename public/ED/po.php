@@ -48,7 +48,7 @@
                             {
                                 
                             $countpo = IntLotno::getcountbyPO($po[$i]->getcustcode(),$po[$i]->getpono());
-                            echo $countpo;
+                            //echo $countpo;
                             //echo $po[$i]->getcustcode();
                             $countposhipped = IntLotno::getcountbyPOShipped($po[$i]->getcustcode(),$po[$i]->getpono());
                             $progress = (intval($countpo) / intval($po[$i]->getqty())) * 100 ;
