@@ -112,6 +112,7 @@ body{
   th{
     background-color: #fff;
     color:#000;
+    font-weight:normal;
   }
 
   td{
@@ -128,6 +129,9 @@ body{
    
     }
   .qrcode2{position: absolute;top:35px;left: 695px;z-index: 999;}
+  h3{
+    font-weight:normal;
+  }
 </style>
 <?php 
 
@@ -175,7 +179,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
   </table>
   <table style="">
     <tr>
-      <td colspan="6" style="text-align:center;font-size:18px;font-weight:bolder;">Lot Number Details</td>
+      <td colspan="6" style="text-align:center;font-size:12px;">Lot Number Details</td>
     </tr>
     <tr>
       <td style="font-weight:bold;">Customer Code : </td>
@@ -251,7 +255,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
 
   <table>
   <tr>
-      <td colspan="10" style="text-align:center;font-size:18px;font-weight:bolder;">Lot Number Logs</td>
+      <td colspan="10" style="text-align:center;font-size:12px;">Lot Number Logs</td>
     </tr>
   <tr rowspan = "3">
       <th>Process</th>
@@ -281,25 +285,24 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </tr>
     <?php } ?>
   </table>
-  <br/><br/>
+  
   <?php 
   if($intlotdata2->processcat == 'BACKGRIND')
   {
 
   ?>
   <h3>Backgrind Response Measurement</h3>
-  <br/>
   <div style="width:100%;">
     <input type="checkbox" id ="setup" value="setup"  disabled> <span style="margin-right: 140px">Set-up</span>
     <input type="checkbox" id ="monitoring" value="monitoring"  disabled> <span style="margin-right: 140px">Monitoring</span>
     <input type="checkbox" id ="psc" value="psc"  disabled> <span style="margin-right: 140px">PSC</span>
     <input type="checkbox" id ="cr" value="cr"  disabled> <span>Customer requirement</span>
  </div>
- <br/>
+ 
 <?php } ?>
  <table>
   <tr>
-      <td colspan="8" style="text-align:center;font-size:18px;font-weight:bolder;">Reject Logs</td>
+      <td colspan="8" style="text-align:center;font-size:12px;">Reject Logs</td>
     </tr>
   <tr rowspan = "3">
       <th>Process</th>
@@ -330,7 +333,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
     </tr>
     <?php } ?>
   </table>
-  <br/><br/>
+  
   <?php 
   if($intlotdata2->processcat == 'BACKGRIND')
   {
@@ -338,7 +341,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
   ?>
   <table>
   <tr>
-      <td colspan="10" style="text-align:center;font-size:18px;font-weight:bolder;">Final Thickness</td>
+      <td colspan="10" style="text-align:center;font-size:12px;">Final Thickness</td>
     </tr>
   <tr rowspan = "3">
       <th>Process</th>
@@ -369,12 +372,12 @@ $cust->CustomerDetails($intlotdata2->custcode);
         <td style="text-align:center;"><?php echo $thicklogs2[$i]->ttv; ?></td>
     </tr>
     <?php } ?>
-    <br/>
+    
     
   </table>
 
   <?php } ?>
-  <br/><br/>
+  <br/>
   <?php 
   if($intlotdata2->processcat == 'BACKGRIND')
   {
@@ -382,7 +385,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
   ?>
   <table>
   <tr>
-      <td colspan="7" style="text-align:center;font-size:18px;font-weight:bolder;">Roughness</td>
+      <td colspan="7" style="text-align:center;font-size:12px;">Roughness</td>
     </tr>
   <tr rowspan = "3">
       <th>Process</th>
