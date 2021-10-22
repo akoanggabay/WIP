@@ -574,5 +574,59 @@ class IntLotno {
 
 		}
 	}
+
+	public static function getLastILN() 
+	{
+		$conn = new Connection();
+		$result = '';
+		$result2 = '';
+
+		$alert = 'false_';
+
+		try
+		{
+			$conn->open();
+			$dataset = $conn->query("SELECT * from dbo.intlotno order by starttime desc");
+			$dataset2 = $conn->query("SELECT * from dbo.lastiln");
+			
+
+			if ($conn->has_rows($dataset)){
+			$reader = $conn->fetch_array($dataset);
+			$result = $reader["intlot"];
+
+			}
+
+			if ($conn->has_rows($dataset2)){
+				$reader2 = $conn->fetch_array($dataset2);
+				$result2 = $reader2["intlotno"];
+					
+			}
+
+			if($result != $result2)
+			{
+				$conn->query("UPDATE dbo.lastiln SET intlotno = '".$result."' where intlotno = '".$result2."'");
+				$alert = 'true_'.$reader["intlot"].'_'.$reader["starttime"]->format('F j, Y g:i:s a');
+			}
+			$conn->close();
+		}
+		catch(Exception $e)
+		{
+
+		}
+		return $alert;
+	}
+
+	public function updateLastILN($lastiln){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.lastiln SET intlotno = '".$lastiln."'");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+	}
 }
 ?>
