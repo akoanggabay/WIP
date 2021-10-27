@@ -17,7 +17,7 @@
 </style>
 <style type="text/css">
 body {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 15px;
 }
 #label{
