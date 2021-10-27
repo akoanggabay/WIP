@@ -85,7 +85,7 @@
                                                 <label>Cassette No: *</label>
                                             </div>
                                             <div class="col-md-7">
-                                                <input type="text" id="cassno" name="cassno"  class="form-control input-sm" disabled>
+                                                <input type="text" id="cassno" name="cassno"  class="form-control input-sm" style="text-transform:uppercase" disabled>
                                             </div>
                                         </div>
                                         <br/>
@@ -94,7 +94,7 @@
                                                 <label>Wafer no: </label>
                                             </div>
                                             <div class="col-md-7">
-                                                <input type="text" id="waferno" name="waferno"  class="form-control input-sm" disabled>
+                                                <input type="text" id="waferno" name="waferno"  class="form-control input-sm" style="text-transform:uppercase" placeholder="e.g 1-25" onkeyup="this.value = this.value.replace(/[^\d,-]/g,'')" disabled>
                                             </div>
                                         </div>
                                         <br/>
@@ -103,7 +103,7 @@
                                                 <label>Wafer run: </label>
                                             </div>
                                             <div class="col-md-7">
-                                                <input type="text" id="waferrun" name="waferrun"  class="form-control input-sm" disabled>
+                                                <input type="text" id="waferrun" name="waferrun"  class="form-control input-sm" style="text-transform:uppercase" placeholder="e.g X79540" disabled>
                                             </div>
                                         </div>
                                         <br/>
@@ -172,6 +172,14 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Customer Lot Number:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="custlot" name="custlot"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Device No:</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -212,6 +220,22 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Wafer No:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="wno" name="wno"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Run:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="wrun" name="wrun"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Wafer Thickness:</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -240,6 +264,22 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="ltype" name="ltype"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wheel Requirement:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="wr" name="wr"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Device Type:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="dtype" name="dtype"  class="form-control input-sm" value="" readonly><br>
                                                     </div>
                                                 </div>
                                             </div>
@@ -392,34 +432,36 @@
 </div>
 </br><br/>
 <!-- ----------------------------------------------------------------------------------------BRM -->
-<h4>Backgrind Response Measurement</h4>
-<div class="row">
-    
-    <div class="col-lg-3">
-        <div class="row">
-            <div class="col-lg-12">
-                <input type="checkbox" id ="setup" value="setup" onclick="BRM(value)" disabled> Set up
+<div id="bgonlybrm" hidden>
+    <h4>Backgrind Response Measurement</h4>
+    <div class="row">
+        
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="setup" value="setup" onclick="BRM(value)" disabled> Set up
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="row">
-            <div class="col-lg-12">
-                <input type="checkbox" id ="monitoring" value="monitoring" onclick="BRM(value)" disabled> Monitoring
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="monitoring" value="monitoring" onclick="BRM(value)" disabled> Monitoring
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="row">
-            <div class="col-lg-12">
-                <input type="checkbox" id ="psc" value="psc" onclick="BRM(value)" disabled> PSC
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="psc" value="psc" onclick="BRM(value)" disabled> PSC
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="row">
-            <div class="col-lg-12">
-                <input type="checkbox" id ="cr" value="cr" onclick="BRM(value)" disabled> Customer Requirement
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="cr" value="cr" onclick="BRM(value)" disabled> Customer Requirement
+                </div>
             </div>
         </div>
     </div>
@@ -494,7 +536,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4" id="bgonlythick" hidden>
         <h5>Final Thickness ( μm/Micron )</h5>
         <div class="row">
             <div class="col-lg-12">
@@ -596,7 +638,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4" id="bgonlyrough" hidden>
         <h5>Roughness( μm/Micron )</h5>
         <div class="row">
             <div class="col-lg-12">
@@ -679,7 +721,7 @@
     </div>
 </div><br/><br/>
 
-<div class="row"> 
+<div class="row" id="bgonlylist" hidden> 
     <h5>List of Final Thickness</h5>
     <div class="col-lg-12">
         <div class="card border-left-danger">
@@ -749,14 +791,14 @@ function removeRow(row){
     
     $("#tr"+row).remove();
     tblcount = $('#tblreject > tbody tr').length;
-    checkRow(tblcount);
+    //checkRow(tblcount);
 }
 
 function removeRow2(row){
     
     $("#tr"+row).remove();
     tblcount = $('#tblthickness > tbody tr').length;
-    checkRow(tblcount);
+    //checkRow(tblcount);
 }
 
 function checkRow(row){
@@ -923,6 +965,11 @@ function RoughnessAve(){
                 document.getElementById("rthick").value = res.requiredthickness;
                 document.getElementById("wsize").value = res.wafersize;
                 document.getElementById("ltype").value = res.lottype;
+                document.getElementById("custlot").value = res.custlot;
+                document.getElementById("wno").value = res.waferno;
+                document.getElementById("wrun").value = res.waferrun;
+                document.getElementById("wr").value = res.wr;
+                document.getElementById("dtype").value = res.devicetype;
                 
                 if(resdata[0] == 'error')
                 {
@@ -1177,6 +1224,21 @@ function RoughnessAve(){
         document.getElementById("rsuccess").hidden = true;
         document.getElementById("error").hidden = true;
         document.getElementById("success").hidden = true;
+
+        if(document.getElementById("processcat").value == 'BACKGRIND')
+        {
+            document.getElementById("bgonlybrm").hidden = false;
+            document.getElementById("bgonlythick").hidden = false;
+            document.getElementById("bgonlyrough").hidden = false;
+            document.getElementById("bgonlylist").hidden = false;
+        }   
+        else
+        {
+            document.getElementById("bgonlybrm").hidden = true;
+            document.getElementById("bgonlythick").hidden = true;
+            document.getElementById("bgonlyrough").hidden = true;
+            document.getElementById("bgonlylist").hidden = true;
+        }
         $("#intlotno").empty();
         $("#station").empty();
         $("#machine").empty();
@@ -1580,6 +1642,8 @@ function RoughnessAve(){
 
         var sttv = $('input[name="sttv[]"]').map(function () {
         return this.value; }).get();
+
+        
         
         //alert(JSON.stringify(stwaferno))
         if(tblcount2 <= 0 && document.getElementById("bg").value == 1)
@@ -1611,11 +1675,15 @@ function RoughnessAve(){
 
         if(tblcount > 0 )
         {
-            var remarks ='';
-
+            
+            var remarks;
             remarks = prompt("Reject found. Kindly input additional information:");
-            if(remarks === null)
+            if(remarks === null || str.isspace(remarks) == true)  
             {
+                if(str.isspace(remarks) == true)
+                {
+                    alert("Please input additional Reject Details!");
+                }
                 return false;
             }
         }
@@ -1678,6 +1746,14 @@ function RoughnessAve(){
                 $(".alert").attr('hidden','hidden');
                 $("#tblreject > tbody").empty();
                 $("#tblthickness > tbody").empty();
+                $("#tblintlogs > tbody").empty();
+                $("#tblintrejlogs > tbody").empty();
+                $("#tbltlogs > tbody").empty();
+                $("#tblrlogs > tbody").empty();
+                
+                brm = '';
+                tblcount = 0;
+                tblcount2 = 0;
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
                 $('#processcat').focus();

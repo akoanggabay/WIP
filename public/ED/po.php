@@ -137,7 +137,7 @@
                             <td><span class="text-<?php echo $stat; ?>"><?php echo $po[$i]->getstatus(); ?></span></td>
                             <td>
                                 <button class="btn btn-success btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Edit"><i class="fas fa-eye" alt="Edit"></i></button>
-                                <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="FClosePO(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
+                                <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono().'_'.$po[$i]->getstatus(); ?>" onclick="FClosePO(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
                             </td>
     
                 
@@ -278,8 +278,15 @@
 
     function FClosePO(value)
     {
+        var val = value.split("_");
 
-        remarks = prompt("Close PO number: "+ value + ". Kindly input Remarks/Summary:");
+        if(val[1] == 'CLOSED')
+        {
+            alert('PO already CLOSED!')
+            return false;
+        }
+
+        remarks = prompt("Close PO number: "+ val[0] + ". Kindly input Remarks/Summary:");
         if(remarks === null)
         {
             return false;
@@ -317,7 +324,7 @@
         }   
         };
 
-        xmlhttp.open("GET", '../php/closepo.php?pono='+value+'&remarks='+remarks,true);
+        xmlhttp.open("GET", '../php/closepo.php?pono='+val[0]+'&remarks='+remarks,true);
         xmlhttp.send();
          
     }

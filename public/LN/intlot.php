@@ -66,7 +66,7 @@
                                             <div class="col-md-7">
                                                 <select class="form-control" id="wr" name="wr">
                                                     <option selected></option>
-                                                    <option value="NA">NA</option>
+                                                    <option value="N/A">N/A</option>
                                                     <?php 
                                                     include_once("../classes/wr.php");
                                                     $SelectWR = WR::GetAllWR();

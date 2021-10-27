@@ -29,6 +29,10 @@ if(!isset($_SESSION['idno']))
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">
+    <!-- <link href="../vendor/datatables/datatables.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/datatables.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="../js/Buttons-2.0.1/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="../js/Buttons-2.0.1/buttons.dataTables.css"> -->
 
     
 
@@ -120,7 +124,7 @@ if(!isset($_SESSION['idno']))
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Machine:</h6>
-                        <a class="collapse-item" href="?form=ME&path=machinereg">Machine registration</a>
+                        <a class="collapse-item" href="?form=ME&path=machinereg">Machine Registration</a>
                     </div>
                 </div>
             </li>
@@ -154,14 +158,14 @@ if(!isset($_SESSION['idno']))
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#RLcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-box"></i>
-                    <span>Release Lot number</span>
+                    <span>Release Lot Number</span>
                 </a>
                 <div id="RLcollapsePages" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
 
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Release Lot number:</h6>
-                        <a class="collapse-item" href="?form=RL&path=releaselot">Release Lot number</a>
+                        <h6 class="collapse-header">Release Lot Number:</h6>
+                        <a class="collapse-item" href="?form=RL&path=releaselot">Release Lot Number</a>
                     </div>
                 </div>
             </li>
@@ -181,7 +185,7 @@ if(!isset($_SESSION['idno']))
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Inquiries:</h6>
-                        <a class="collapse-item" href="?form=IQ&path=iqintlot">Internal Lot number</a>
+                        <a class="collapse-item" href="?form=IQ&path=iqintlot">Internal Lot Number</a>
                     </div>
                 </div>
             </li>
@@ -202,9 +206,9 @@ if(!isset($_SESSION['idno']))
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data and Reports:</h6>
-                        <a class="collapse-item" href="?form=ED&path=po">PO number</a>
-                        <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot number Logs</a>
-                        <a class="collapse-item" href="?form=ED&path=custlotlogs">File upload Logs</a>
+                        <a class="collapse-item" href="?form=ED&path=po">PO Number</a>
+                        <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot Number Logs</a>
+                        <a class="collapse-item" href="?form=ED&path=custlotlogs">File Upload Logs</a>
                     </div>
                 </div>
             </li>
@@ -395,11 +399,17 @@ if(!isset($_SESSION['idno']))
     <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script> 
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script> 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script> -->
+
+    <script type="text/javascript" src="../js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="../js/jszip.min.js"></script>
+    <script type="text/javascript" src="../js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="../js/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../js/buttons.print.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables.js"></script>

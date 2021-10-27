@@ -47,6 +47,7 @@
                             <th>Tracking no</th>
                             <th>Customer</th>
                             <th>Internal Lot number</th>
+                            <th>Customer Lot number</th>
                             <th>Status</th>
                             <th>Station</th>
                             <th>Cassette no</th>
@@ -108,6 +109,7 @@
                 '<td><input type="hidden">'+res[i].trackingno+'</td>'+
                 '<td><input type="hidden">'+res[i].custcode+'</td>'+
                 '<td><input type="hidden">'+res[i].intlot+'</td>'+
+                '<td><input type="hidden">'+res[i].custlot+'</td>'+
                 '<td><input type="hidden">'+res[i].status+'</td>'+
                 '<td><input type="hidden">'+res[i].station+'</td>'+
                 '<td><input type="hidden">'+res[i].cassno+'</td>'+

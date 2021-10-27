@@ -61,17 +61,33 @@ if($_SESSION['idno'])
                         $upload->setuploadby($_SESSION['idno']);
                         $upload->setstatus('UPLOAD');
                         $uploaded = $upload->AddCustlotno();
-        
-                        $logs->setfilename($filename);
-                        $logs->setcustcode(trim($custcode));
-                        $logs->setcustlotno(trim($csv[0]));
-                        $logs->setstatus('SUCCESS');
-                        $logs->setremarks('');
-                        $logs->setlastupdatedby($_SESSION['idno']);
-                        $logs->AddFilelotlogs();
-                        //echo $uploaded;
-                        $succlot .= trim($csv[1]).',';
-                        $success += 1;
+                        
+                        if($uploaded == true)
+                        {
+                            $logs->setfilename($filename);
+                            $logs->setcustcode(trim($custcode));
+                            $logs->setcustlotno(trim($csv[0]));
+                            $logs->setstatus('SUCCESS');
+                            $logs->setremarks('');
+                            $logs->setlastupdatedby($_SESSION['idno']);
+                            $logs->AddFilelotlogs();
+                            //echo $uploaded;
+                            $succlot .= trim($csv[1]).',';
+                            $success += 1;
+                        }
+                        else
+                        {
+                            $logs->setfilename($filename);
+                            $logs->setcustcode(trim($custcode));
+                            $logs->setcustlotno(trim($csv[0]));
+                            $logs->setstatus('FAILED');
+                            $logs->setremarks('File format error');
+                            $logs->setlastupdatedby($_SESSION['idno']);
+                            $logs->AddFilelotlogs();
+                            $error +=1 ;
+                            $faillot .= trim($csv[0]).',';
+                        }
+                        
                     }
                     else
                     {
@@ -88,12 +104,12 @@ if($_SESSION['idno'])
                     
                 } catch (\Throwable $th) {
                     $logs->setfilename($filename);
-                        $logs->setcustcode(trim($custcode));
-                        $logs->setcustlotno(trim($csv[0]));
-                        $logs->setstatus('FAILED');
-                        $logs->setremarks('File format error');
-                        $logs->setlastupdatedby($_SESSION['idno']);
-                        $logs->AddFilelotlogs();
+                    $logs->setcustcode(trim($custcode));
+                    $logs->setcustlotno(trim($csv[0]));
+                    $logs->setstatus('FAILED');
+                    $logs->setremarks('File format error');
+                    $logs->setlastupdatedby($_SESSION['idno']);
+                    $logs->AddFilelotlogs();
                     $error +=1 ;
                     $faillot .= trim($csv[0]).',';
                 }

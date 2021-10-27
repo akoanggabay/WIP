@@ -203,7 +203,7 @@ class Reject {
 				'intlotno'   => $row["intlotno"],
 				'station' => $row["station"].':'.$row["description"],
 				'machine' => $row["machine"],
-				'waferno' => $row["waferno"],
+				'waferno' => strtoupper($row["waferno"]),
 				'ddetails' => $row["ddetails"],
 				'dqty' => $row["dqty"],
 				'remarks' => $row["remarks"],
