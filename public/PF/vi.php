@@ -220,7 +220,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer No:</label>
+                                                        <label>Wafer/Panel No:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wno" name="wno"  class="form-control input-sm" value="" readonly><br>
@@ -228,7 +228,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Run:</label>
+                                                        <label>Wafer/Panel Run:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wrun" name="wrun"  class="form-control input-sm" value="" readonly><br>
@@ -236,7 +236,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Thickness:</label>
+                                                        <label>Initial Wafer Thickness:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wthick" name="wthick"  class="form-control input-sm" value="" readonly><br>
@@ -252,7 +252,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Size:</label>
+                                                        <label>Wafer/Panel Size:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wsize" name="wsize"  class="form-control input-sm" value="" readonly><br>

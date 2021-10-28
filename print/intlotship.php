@@ -406,7 +406,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
         <td style="text-align:center;"><?php echo $roughlogs2[$i]->station; ?></td>
         <td style="text-align:center;"><?php echo $roughlogs2[$i]->r1; ?></td>
         <td style="text-align:center;"><?php echo $roughlogs2[$i]->r2; ?></td>
-        <td style="text-align:center;"><script>parseFloat(<?php echo $roughlogs2[$i]->r3;?>).toFixed(1)</script></td>
+        <td style="text-align:center;"><?php echo $roughlogs2[$i]->r3; ?></td>
         <td style="text-align:center;"><?php echo $roughlogs2[$i]->r4; ?></td>
         <td style="text-align:center;"><?php echo $roughlogs2[$i]->r5; ?></td>
         <td style="text-align:center;"><?php echo $roughlogs2[$i]->rave; ?></td>

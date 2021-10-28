@@ -213,12 +213,12 @@ class Roughness {
 				'custcode'   => $row["custcode"],
 				'intlotno'   => $row["intlotno"],
 				'station' => $row["station"].':'.$row["description"],
-				'r1' => $row["r1"],
-				'r2' => $row["r2"],
-				'r3' => $row["r3"],
-				'r4' => $row["r4"],
-				'r5' => $row["r5"],
-				'rave' => $row["rave"],
+				'r1' => number_format((float)$row["r1"], 5, '.', ''),
+				'r2' => number_format((float)$row["r2"], 5, '.', ''),
+				'r3' => number_format((float)$row["r3"], 5, '.', ''),
+				'r4' => number_format((float)$row["r4"], 5, '.', ''),
+				'r5' => number_format((float)$row["r5"], 5, '.', ''),
+				'rave' => number_format((float)$row["rave"], 5, '.', ''),
 				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
 				'lastupdatedby' => $user->getfname().' '.$user->getlname()
             );
