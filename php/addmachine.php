@@ -8,7 +8,7 @@ $type = $_GET['type'];
 $machineid = $_GET['machineid'];
 
 
-$exist = Machine::checkExist($machineid);
+$exist = Machine::checkExist($machineid,$processcat);
 
 if($_SESSION['idno'])
 {

@@ -152,14 +152,14 @@ class Machine {
 		return $result;
 	}
 
-	public static function checkExist($machineid)
+	public static function checkExist($machineid,$processcat)
 	{
 		$conn = new Connection();
 		$result = 'false';
 
 		try {
 			$conn->open();
-			$dataset = $conn->query("SELECT * FROM dbo.machine WHERE machineid ='" .$machineid."'");
+			$dataset = $conn->query("SELECT * FROM dbo.machine WHERE machineid ='" .$machineid."' and processcat = '".$processcat."'");
 
 			if ($conn->has_rows($dataset)) {
 
