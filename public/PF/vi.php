@@ -1678,12 +1678,8 @@ function RoughnessAve(){
             
             var remarks;
             remarks = prompt("Reject found. Kindly input additional information:");
-            if(remarks === null || str.isspace(remarks) == true)  
+            if(remarks === null)  
             {
-                if(str.isspace(remarks) == true)
-                {
-                    alert("Please input additional Reject Details!");
-                }
                 return false;
             }
         }
