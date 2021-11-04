@@ -311,7 +311,7 @@ class IntLotno {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty,a.waferno,a.waferrun,a.brm,a.devicetype,a.wr FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno and a.custcode = b.custcode where a.intlot = '".$intlot."'");
+			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty,a.origqty,a.waferno,a.waferrun,a.brm,a.devicetype,a.wr FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno and a.custcode = b.custcode where a.intlot = '".$intlot."'");
 			include_once("station.php");
 			include_once("processroute.php");
 			$station = new Station;
@@ -352,6 +352,7 @@ class IntLotno {
 				'station' => $row["station"],
 				'wafersize' => $row["wafersize"],
 				'currqty' => $row["currqty"],
+				'origqty' => $row["origqty"],
 				'pono' => $row["pono"],
 				'cstation' => $cstation,
 				'nstation' => $nstation,

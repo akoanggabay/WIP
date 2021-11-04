@@ -417,7 +417,7 @@ $(document).ready(function(){
                 document.getElementById("custlotno").value = lotno.custlot;
                 document.getElementById("deviceno").value = lotno.deviceno;
                 document.getElementById("status").value = lotno.status;
-                document.getElementById("oqty").value = lotno.waferqty;
+                document.getElementById("oqty").value = lotno.origqty;
                 document.getElementById("cqty").value = lotno.currqty;
                 document.getElementById("datestart").value = lotno.datestart;
                 document.getElementById("shipbackdate").value = lotno.shipbackdate;
