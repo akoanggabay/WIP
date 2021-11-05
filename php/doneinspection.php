@@ -197,6 +197,12 @@ if(@$_SESSION['idno'])
                 {
                     $ilot->updateBRM($intlotno,$intlotdata2->custcode,$brm);
                 }
+                $ilot->setstatus('DONE');
+                
+            }
+            else
+            {
+                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks,$_SESSION['idno']);
                 
                 if((intval($intlotdata2->currqty) - intval($total)) == 0)
                 {
@@ -206,11 +212,6 @@ if(@$_SESSION['idno'])
                 {
                     $ilot->setstatus('DONE');
                 }
-            }
-            else
-            {
-                $intlotlogs->DoneInspect($status,intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,$remarks,$_SESSION['idno']);
-                $ilot->setstatus('DONE');
             }
             $ilot->setstation($nextstage);
             
