@@ -109,10 +109,18 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Wafer quantity:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="wqty" name="wqty"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Original quantity:</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="oqty" name=oqty"  class="form-control input-sm" value="" readonly><br>
+                                                        <input type="text" id="oqty" name="oqty"  class="form-control input-sm" value="" readonly><br>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -417,6 +425,7 @@ $(document).ready(function(){
                 document.getElementById("custlotno").value = lotno.custlot;
                 document.getElementById("deviceno").value = lotno.deviceno;
                 document.getElementById("status").value = lotno.status;
+                document.getElementById("wqty").value = lotno.waferqty;
                 document.getElementById("oqty").value = lotno.origqty;
                 document.getElementById("cqty").value = lotno.currqty;
                 document.getElementById("datestart").value = lotno.datestart;
