@@ -4,6 +4,7 @@ include_once("../classes/custlotno.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/intlotlogs.php");
 include_once("../classes/wi.php");
+include_once("../classes/forunits.php");
 
 session_start();
 	//$account = trim($_SESSION['account']);
@@ -15,6 +16,9 @@ $devicetype = $_GET['devicetype'];
 $wr = $_GET['wr'];
 $result = "";
 $qty = "";
+$mqty = "";
+
+
 //echo $wafersize;
 $custlot = CustLotno::GetDetails($custlotno,$custcode);
 $data = json_encode($custlot[0]);
@@ -30,7 +34,19 @@ $scondition = json_decode($_GET['scondition']);
 
 $count = IntLotno::getcountbyPO($custcode,$pono);
 
-$total = intval($count) + intval($data2->waferqty);
+$total = round($count,2) + round($data2->waferqty,2);
+
+$forunits = new ForUnits;
+$exist = ForUnits::checkExist($custcode);
+if($exist == 'true')
+{
+    $forunits->GetDetails($custcode);
+    $mqty = round($data2->waferqty,2) * $forunits->getqty();
+}
+else
+{
+    $mqty = round($data2->waferqty,2);
+}
 
 if($data2->processcat == 'BACKGRIND')
 {
@@ -42,7 +58,7 @@ else
 }
 if($podata2->status == 'OPEN')
 {
-    $avail = intval($podata2->qty) - intval($count);
+    $avail = round($podata2->qty,2) - round($count,2);
     if($data2->status == 'UPLOAD')
     {
         if($total <= $podata2->qty)
@@ -106,8 +122,8 @@ if($podata2->status == 'OPEN')
                 $clot->setcustlotno($custlotno);
 
                 $clot->updateStatus();
-
-                if(intval($avail) == intval($data2->waferqty))
+                //echo round($avail,2),round($mqty,2);
+                if(round($avail,2) == round($mqty,2))
                 {
                     $ponodata = new PO;
 
