@@ -44,7 +44,7 @@ echo $qty; */
 
 if($podata2->status == 'OPEN')
 {
-    $avail = intval($podata2->qty) - intval($count);
+    $avail = round($podata2->qty,2) - round($count,2);
     if($total <= $podata2->qty)
     {
         if($data2->processcat == $podata2->processcat)
