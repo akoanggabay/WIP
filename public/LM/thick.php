@@ -4,7 +4,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-gray-800">List of Roughness logs</h6>
+            <h6 class="m-0 font-weight-bold text-gray-800">List of Thickness logs</h6>
         </div>
         
         <div id = "success" class="alert alert-success alert-dismissible" role="alert" hidden>
