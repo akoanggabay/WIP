@@ -129,6 +129,7 @@ if($podata2->status == 'OPEN')
 
                     $ponodata->setstatus('CLOSED');
                     $ponodata->setpono($pono);
+                    $ponodata->setcustcode($custcode);
 
                     $ponodata->ClosePO();
                 }

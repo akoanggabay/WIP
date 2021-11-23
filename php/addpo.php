@@ -10,7 +10,7 @@ $processcat = $_GET['processcat'];
 $subprocesscat = $_GET['subprocesscat'];
 
 
-$exist = PO::checkExist($custcode,$pono);
+$exist = PO::checkExist($pono);
 
 if($_SESSION['idno'])
 {

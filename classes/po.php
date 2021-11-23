@@ -134,14 +134,14 @@ class PO {
 		return $this->remarks;
 	}
 
-    public static function checkExist($custcode,$pono)
+    public static function checkExist($pono)
 	{
 		$conn = new Connection();
 		$result = 'false';
 
 		try {
 			$conn->open();
-			$dataset = $conn->query("SELECT * FROM PO WHERE custcode ='" . $custcode . "' and pono = '".$pono."'");
+			$dataset = $conn->query("SELECT * FROM PO WHERE pono = '".$pono."'");
 
 			if ($conn->has_rows($dataset)) {
 
@@ -284,7 +284,7 @@ class PO {
 
 		try{
 			$conn->open();
-			$conn->query("UPDATE dbo.PO SET status = '".$this->getstatus()."',lastupdate = GETDATE() where pono ='".$this->getpono()."' and active = 1");
+			$conn->query("UPDATE dbo.PO SET status = '".$this->getstatus()."',lastupdate = GETDATE() where pono ='".$this->getpono()."' and active = 1 and custcode ='".$this->getcustcode()."'");
 
 			$conn->close();
 		}catch(Exception $e){
@@ -297,7 +297,7 @@ class PO {
 
 		try{
 			$conn->open();
-			$conn->query("UPDATE dbo.PO SET status = '".$this->getstatus()."',lastupdatedby = '".$this->getlastupdatedby()."', remarks = '".$this->getremarks()."', lastupdate = GETDATE() where pono ='".$this->getpono()."' and active = 1");
+			$conn->query("UPDATE dbo.PO SET status = '".$this->getstatus()."',lastupdatedby = '".$this->getlastupdatedby()."', remarks = '".$this->getremarks()."', lastupdate = GETDATE() where pono ='".$this->getpono()."' and active = 1 and custcode ='".$this->getcustcode()."'");
 
 			$conn->close();
 		}catch(Exception $e){

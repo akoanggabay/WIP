@@ -137,7 +137,7 @@
                             <td><span class="text-<?php echo $stat; ?>"><?php echo $po[$i]->getstatus(); ?></span></td>
                             <td>
                                 <button class="btn btn-success btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Edit"><i class="fas fa-eye" alt="Edit"></i></button>
-                                <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono().'_'.$po[$i]->getstatus(); ?>" onclick="FClosePO(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
+                                <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono().'_'.$po[$i]->getstatus().'_'.$cust->getcustcode(); ?>" onclick="FClosePO(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
                             </td>
     
                 
@@ -324,7 +324,7 @@
         }   
         };
 
-        xmlhttp.open("GET", '../php/closepo.php?pono='+val[0]+'&remarks='+remarks,true);
+        xmlhttp.open("GET", '../php/closepo.php?pono='+val[0]+'&remarks='+remarks+'&custcode='+val[2],true);
         xmlhttp.send();
          
     }

@@ -3,6 +3,7 @@ include_once("../classes/po.php");
 session_start();
 
 $pono = $_GET['pono'];
+$custcode = $_GET['custcode'];
 $remarks = $_GET['remarks'];
 //echo $pono;
 
@@ -12,6 +13,7 @@ if($_SESSION['idno'])
 
     $po->setstatus('CLOSED');
     $po->setpono($pono);
+    $po->setcustcode($custcode);
     $po->setremarks($remarks);
     $po->setlastupdatedby($_SESSION['idno']);
     $po->ForceClosePO();
