@@ -63,7 +63,7 @@ if(!isset($_SESSION['idno']))
                 Forms
             </div>
             <?php 
-                if(@$_SESSION['usertype'] != 'Operator') 
+                if(@$_SESSION['usertype'] != 'Operator' && @$_SESSION['usertype'] != 'Guest') 
                 {
             ?>
             <li class="nav-item active">
@@ -86,7 +86,7 @@ if(!isset($_SESSION['idno']))
             <?php } ?>
 
             <?php 
-                if(@$_SESSION['usertype'] != 'Operator') 
+                if(@$_SESSION['usertype'] != 'Operator' && @$_SESSION['usertype'] != 'Guest') 
                 {
             ?>
             <li class="nav-item active">
@@ -110,7 +110,7 @@ if(!isset($_SESSION['idno']))
             <?php } ?>
 
             <?php 
-                if(@$_SESSION['usertype'] != 'Operator') 
+                if(@$_SESSION['usertype'] != 'Operator' && @$_SESSION['usertype'] != 'Guest') 
                 {
             ?>
             <li class="nav-item active">
@@ -131,7 +131,11 @@ if(!isset($_SESSION['idno']))
 
             <hr class="sidebar-divider d-none d-md-block">
             <?php } ?>
-
+            
+            <?php 
+                if(@$_SESSION['usertype'] != 'Guest') 
+                {
+            ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PFcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -150,8 +154,10 @@ if(!isset($_SESSION['idno']))
 
             <hr class="sidebar-divider d-none d-md-block">
 
+            <?php } ?>
+
             <?php 
-                if(@$_SESSION['usertype'] != 'Operator') 
+                if(@$_SESSION['usertype'] != 'Operator' && @$_SESSION['usertype'] != 'Guest') 
                 {
             ?>
             <li class="nav-item active">
@@ -215,6 +221,11 @@ if(!isset($_SESSION['idno']))
 
             <hr class="sidebar-divider d-none d-md-block">
             <?php } ?>
+
+            <?php 
+                if(@$_SESSION['usertype'] != 'Guest') 
+                {
+            ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PCcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -232,8 +243,10 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
+            <?php } ?>
+            
             <?php 
-                if(@$_SESSION['usertype'] == 'Super Administrator' || @$_SESSION['usertype'] == 'Administrator') 
+                if(@$_SESSION['usertype'] == 'Super Administrator' || @$_SESSION['usertype'] == 'Administrator' || @$_SESSION['usertype'] == 'Process Engineer') 
                 {
             ?>
             <li class="nav-item active">
