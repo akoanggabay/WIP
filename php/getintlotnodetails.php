@@ -8,6 +8,14 @@ include_once("../classes/reject.php");
 include_once("../classes/processroute.php");
 session_start();
 
+$exist = IntLotno::checkExist($_GET['intlotno']);
+
+if($exist == 'false')
+{
+    echo "error_Internal Lot number does not exist!";
+    return false;
+}
+
 $lotdata = IntLotno::GetDetails($_GET['intlotno']);
 $Intlotlogs = IntLotLogs::GetAllIntLogs($_GET['intlotno']);
 $Intrlogs = Roughness::GetAllRoughnessLogs($_GET['intlotno']);

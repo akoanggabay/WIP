@@ -275,6 +275,6 @@
     });
 
     $("#btnPrint").click(function() {
-        window.open('http://10.168.5.15/wip/print/intlotship.php?intlotno='+document.getElementById("intlotno").value);
+        window.open('http://localhost/wip/print/intlotship.php?intlotno='+document.getElementById("intlotno").value);
     });
 </script>

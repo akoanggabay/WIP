@@ -186,6 +186,46 @@ class User {
 			if ($conn->has_rows($dataset)) {
 				$reader = $conn->fetch_array($dataset);
 				$hash = $reader["password"];
+				if($reader["active"] == 1)
+				{
+					if(password_verify($pass, $hash))
+					{
+						$result = 'true';
+					}
+					else
+					{
+						$result = 'false';
+					}
+				}
+				else
+				{
+					$result = 'false2';
+				}
+				
+				
+			} else {
+				$result = 'false1';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
+		}
+		return $result;
+	}
+
+	public static function checkUser2($idno,$pass)
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+
+			/* $conn->open();
+			$dataset = $conn->query("SELECT * FROM users WHERE idno ='" . $idno . "'");
+
+			if ($conn->has_rows($dataset)) {
+				$reader = $conn->fetch_array($dataset);
+				$hash = $reader["password"];
 				if(password_verify($pass, $hash))
 				{
 					$result = 'true';
@@ -194,6 +234,17 @@ class User {
 				{
 					$result = 'false';
 				}
+				
+			} else {
+				$result = 'false1';
+			} */
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM users WHERE idno ='" . $idno . "' and password = '".$pass."'");
+
+			if ($conn->has_rows($dataset)) {
+				$reader = $conn->fetch_array($dataset);
+				
+				$result = 'true';
 				
 			} else {
 				$result = 'false1';

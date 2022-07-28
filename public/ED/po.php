@@ -136,7 +136,7 @@
                             <td><?php echo $po[$i]->getremarks(); ?></td>
                             <td><span class="text-<?php echo $stat; ?>"><?php echo $po[$i]->getstatus(); ?></span></td>
                             <td>
-                                <button class="btn btn-success btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="Edit"><i class="fas fa-eye" alt="Edit"></i></button>
+                                <button class="btn btn-success btn-circle" value="<?php echo $po[$i]->getpono(); ?>" onclick="Action(value)" title="View"><i class="fas fa-eye" alt="Edit"></i></button>
                                 <button class="btn btn-danger btn-circle" value="<?php echo $po[$i]->getpono().'_'.$po[$i]->getstatus().'_'.$cust->getcustcode(); ?>" onclick="FClosePO(value)" title="Close"><i class="fas fa-trash" alt="Delete"></i></button>
                             </td>
     

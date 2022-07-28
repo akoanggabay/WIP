@@ -66,10 +66,12 @@ if(isset($_SESSION['idno']))
                                     <br/>
                                     <form name="loguser" onsubmit="return validateForm()" action="./php/login.php" method="post">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="idno" name="idno" aria-describedby="" placeholder="ID Number *" onkeyup="this.value = this.value.replace(/[''#&*<>;]/g, '')">
+                                            <!-- <input type="text" class="form-control form-control-user" id="idno" name="idno" aria-describedby="" placeholder="ID Number *" onkeyup="this.value = this.value.replace(/[''#&*<>;]/g, '')"> -->
+                                            <input type="text" class="form-control form-control-user" id="idno" name="idno" aria-describedby="" placeholder="ID Number *">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password *" onkeyup="this.value = this.value.replace(/[''#&*<>;]/g, '')">
+                                            <!-- <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password *" onkeyup="this.value = this.value.replace(/[''#&*<>;]/g, '')"> -->
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password *">
                                         </div>
                                         
                                         <div class="form-group">

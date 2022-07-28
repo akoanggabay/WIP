@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4 text-gray-900">Process Station Log</h1>
+<h1 class="h3 mb-4 text-gray-900">Electronic Lot Traveller Card</h1>
 <div class="row">
     <div class="col-lg-6">
         <div class="row">

@@ -29,7 +29,11 @@ if(isset($_POST['btnSignin']))
         {
             header("location:../index.php?Error=User doesn't exist!");
         }
-    	else
+        else if($check=='false2')
+        {
+            header("location:../index.php?Error=User ID has been disabled!");
+        }
+    	else if($check=='false')
     	{
     		header("location:../index.php?Error=User and password did not Match!");
     	}
