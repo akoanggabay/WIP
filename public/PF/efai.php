@@ -1,7 +1,7 @@
 <div class="row">
     <h1 class="h3 mb-4 text-gray-900 col-lg-6">Electronic First Article Inspection</h1>
     <div class="col-lg-6 ">
-    <button type="button" class="btn btn-primary float-right" id="btnSave">Save</button>
+    <button type="button" class="btn btn-primary float-right" id="btnSave" hidden>Save</button>
     </div>
 </div>
 <div class="row">
@@ -162,6 +162,7 @@
     <?php include_once "SAW/009.php";?>
     <?php include_once "SAW/010.php";?>
     <?php include_once "SAW/011.php";?>
+    <?php include_once "BACKGRIND/test.php";?>
 </div>
 <br/>
 
@@ -171,6 +172,10 @@
 
 <script>
     var tblcount = 0;
+    var ihcount = 0;
+    var bhcount = 0;
+    var wpcount = 0;
+    var rccount = 0;
     $('#intlotno').focus();
     
     $('input[type=text').keyup(function(event) {
@@ -179,10 +184,19 @@
     
     $('#btnReset').click(function(event) {
         $(".form-control").val("");
+        $("#tblreject > tbody").empty();
+        $("#tblbh > tbody").empty();
+        $("#tblih > tbody").empty();
+        $("#tblwp > tbody").empty();
+        $("#tblrc > tbody").empty();
         $(".efai").attr('hidden',true);
         document.getElementById("intlotno").disabled = false;
         $("#intlotno").focus();
-        tblcount = 0
+        tblcount = 0;
+        bhcount = 0;
+        ihcount = 0;
+        wpcount = 0;
+        rccount = 0;
     });
 
     $('#intlotno').keyup(async function(event) { 

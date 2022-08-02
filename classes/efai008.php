@@ -523,6 +523,45 @@ class efai008 {
         return $success;	
 	}
 
+    function sample() {
+        $conn = new Connection();
+        $result = [];
+        $column = array();
+
+		try{
+            $conn->open();
+            $dataset = $conn->query("SELECT * from efai007");
+			if ($conn->has_rows($dataset)) {
+                
+                while ($row = $conn->fetch_array($dataset)) {
+                    array_push($result,$row);
+                }
+			}
+			else
+			{
+				$result = 'false';
+			}
+            
+			$conn->close();
+			
+		}catch(Exception $e){
+			$result = 'false';
+			echo $e;
+		}
+		return $result;
+    }
 }
+
+$efai008 = new efai008;
+$test = $efai008->sample();
+//print_r($test);
+echo (json_encode($test));
+/* $test2 = json_encode($test);
+$test3 = json_decode($test2); */
+/* echo $test3; */
+/* foreach($test[0] as $key => $value)
+{
+    print($key." ".$value);
+} */
 
 ?>

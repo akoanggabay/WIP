@@ -1,4 +1,4 @@
-<div id="008" class="efai">
+<div id="008" class="efai" hidden>
     <h3>SAW station</h3>
     <br/>
     <div class="row">
@@ -235,15 +235,15 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="cutmethod" name="cutmethod">
                                                             <option value=""></option>
-                                                            <option value="N/A"></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Z1">Z1</option>
                                                             <option value="Z2">Z2</option>
                                                             <option value="Dual">Dual</option>
                                                             <option value="Step">Step</option>
-                                                            <option value="4-CHANNEL">4-CHANNEL</option>
-                                                            <option value="ALTERNATE CUT">ALTERNATE CUT</option>
-                                                            <option value="DUAL PASS(Z1)">DUAL PASS(Z1)</option>
-                                                            <option value="DUAL PASS(Z2)">DUAL PASS(Z2)</option>
+                                                            <option class="saw" value="4-CHANNEL">4-CHANNEL</option>
+                                                            <option class="saw" value="ALTERNATE CUT">ALTERNATE CUT</option>
+                                                            <option class="saw" value="DUAL PASS(Z1)">DUAL PASS(Z1)</option>
+                                                            <option class="saw" value="DUAL PASS(Z2)">DUAL PASS(Z2)</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1135,8 +1135,8 @@
                         <button type="button" class="btn btn-outline-danger" id="btnAddDefect008" name = "btnAddDefect008">Add Reject</button>
                     </div>
                 </div>
-                <div class="col-lg-4" id="bgonlythick">
-                    <h5>Final Thickness ( μm/Micron )</h5>
+                <div class="col-lg-4 saw">
+                    <h5>Blade Height (mm) "For  Multi Die/Alternate Cut/Dual Pass/4-Channel</h5>
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
@@ -1154,78 +1154,61 @@
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Wafer no: </label>
+                                                                <label>Channel: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="text" id="twaferno" name="twaferno"  class="form-control input-sm bgthick">
+                                                                <input type="text" id="bhch" name="bhch"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Point 1: </label>
+                                                                <label>Blade Height 1: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="tpoint1" name="tpoint1"  class="form-control input-sm bgthick">
+                                                                <input type="number" id="bh1" name="bh1"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Point 2: </label>
+                                                                <label>Blade Height 2: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="tpoint2" name="tpoint2"  class="form-control input-sm bgthick">
+                                                                <input type="number" id="bh2" name="bh2"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Point 3: </label>
+                                                                <label>Blade Height 3: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="tpoint3" name="tpoint3"  class="form-control input-sm bgthick">
+                                                                <input type="number" id="bh3" name="bh3"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Point 4: </label>
+                                                                <label>Blade Height 4: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="tpoint4" name="tpoint4"  class="form-control input-sm bgthick">
+                                                                <input type="number" id="bh4" name="bh4"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Point 5: </label>
+                                                                <label>Blade Height 5: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="tpoint5" name="tpoint5"  class="form-control input-sm bgthick">
+                                                                <input type="number" id="bh5" name="bh5"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
-                                                        <div class="row">
-                                                            <div class="col-md-5">
-                                                                <label>Point average : </label>
-                                                            </div>
-                                                            <div class="col-md-7">
-                                                                <input type="number" id="pave" name="pave"  class="form-control input-sm" value = "" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <br/>
-                                                        <div class="row">
-                                                            <div class="col-md-5">
-                                                                <label>Total Thickness Variation : </label>
-                                                            </div>
-                                                            <div class="col-md-7">
-                                                                <input type="number" id="ttv" name="ttv"  class="form-control input-sm" value = "" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <br/>
+                                            
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddThick" name = "btnAddThick">Add Final Thickness</button>
+                                                            <button type="button" class="btn btn-outline-info" id="btnAddBH" name = "btnAddBH">Add Blade Height</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1237,8 +1220,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4" id="bgonlyrough">
-                    <h5>Roughness( μm/Micron )</h5>
+                <div class="col-lg-4 saw">
+                    <h5>Index Size (mm) "For Multi Die / Alternate Cut /Dual Pass / 4-CHANNEL"</h5>
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
@@ -1256,58 +1239,61 @@
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Roughness 1: </label>
+                                                                <label>Channel: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rpoint1" name="rpoint1"  class="form-control input-sm rough">
+                                                                <input type="number" id="ihch" name="ihch"  class="form-control input-sm ih">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Roughness 2: </label>
+                                                                <label>Index Height 1: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rpoint2" name="rpoint2"  class="form-control input-sm rough">
+                                                                <input type="number" id="ih1" name="ih1"  class="form-control input-sm ih">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Roughness 3: </label>
+                                                                <label>Index Height 2: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rpoint3" name="rpoint3"  class="form-control input-sm rough">
+                                                                <input type="number" id="ih2" name="ih2"  class="form-control input-sm ih">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Roughness 4: </label>
+                                                                <label>Index Height 3: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rpoint4" name="rpoint4"  class="form-control input-sm rough">
+                                                                <input type="number" id="ih3" name="ih3"  class="form-control input-sm ih">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Roughness 5: </label>
+                                                                <label>Index Height 4: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rpoint5" name="rpoint5"  class="form-control input-sm rough">
+                                                                <input type="number" id="ih4" name="ih4"  class="form-control input-sm ih">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Roughness average: </label>
+                                                                <label>Index Height 5: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rave" name="rave"  class="form-control input-sm" value = "" disabled>
+                                                                <input type="number" id="ih5" name="ih5"  class="form-control input-sm ih">
                                                             </div>
                                                         </div>
                                                         <br/>
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-outline-info" id="btnAddIH" name = "btnAddIH">Add Index Height</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1316,30 +1302,116 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div><br/><br/>
+                </div>
+                <div class="col-lg-4 saw ring">
+                    <h5>Wash Parameter</h5>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div>
+                                <div class="card border-left-danger">
+                                    <div class="card-body">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>Time(secs): </label>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <input type="number" id="wptime" name="wptime"  class="form-control input-sm wp">
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>RPM: </label>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <input type="number" id="wprpm" name="wprpm"  class="form-control input-sm wp">
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                    
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-outline-info" id="btnAddWP" name = "btnAddWP">Add Wash Parameter</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br/><br/>
+                </div>
+                <div class="col-lg-4 ring">
+                    <h5>Ring Cut Diameter Measurement(187.4 minimum)</h5>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div>
+                                <div class="card border-left-danger">
+                                    <div class="card-body">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>Wafer no: </label>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <input type="text" id="rcwaferno" name="rcwaferno"  class="form-control input-sm rc">
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>Measurement: </label>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <input type="number" id="rcmeasurement" name="rcmeasurement"  class="form-control input-sm rc">
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                    
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-outline-info" id="btnAddRC" name = "btnAddRC">Add Ring Cut Diameter</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br/><br/>
                 </div>
                 
             </div>
         </div>
     </div>
     <br/>
-    <div class="row" id="bgonlylist"> 
-    <h5>List of Final Thickness</h5>
+    <div class="row saw"> 
+    <h5>Blade Height</h5>
         <div class="col-lg-12">
             <div class="card border-left-danger">
                 <div class="card-body">
                     <div class="row no-gutters table-responsive">
-                    <table class="table table-bordered" id="tblthickness" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tblbh" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Wafer number</th>
-                                <th>Point 1</th>
-                                <th>Point 2</th>
-                                <th>Point 3</th>
-                                <th>Point 4</th>
-                                <th>Point 5</th>
-                                <th>Point average</th>
-                                <th>TTV</th>
+                                <th>Channel</th>
+                                <th>Blade Height 1</th>
+                                <th>Blade Height 2</th>
+                                <th>Blade Height 3</th>
+                                <th>Blade Height 4</th>
+                                <th>Blade Height 5</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -1350,9 +1422,81 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><br/><br/>
     </div>
-    </br><br/>
+    <div class="row saw"> 
+        <h5>Index Height</h5>
+        <div class="col-lg-12">
+            <div class="card border-left-danger">
+                <div class="card-body">
+                    <div class="row no-gutters table-responsive">
+                    <table class="table table-bordered" id="tblih" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Channel</th>
+                                <th>Index Height 1</th>
+                                <th>Index Height 2</th>
+                                <th>Index Height 3</th>
+                                <th>Index Height 4</th>
+                                <th>Index Height 5</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div><br/><br/>
+    </div>
+    <div class="row saw ring"> 
+        <h5>Wash parameter</h5>
+        <div class="col-lg-12">
+            <div class="card border-left-danger">
+                <div class="card-body">
+                    <div class="row no-gutters table-responsive">
+                    <table class="table table-bordered" id="tblwp" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Time(secs)</th>
+                                <th>RPM</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div><br/><br/>
+    </div>
+    <div class="row ring"> 
+        <h5>Ring-cut Diameter</h5>
+        <div class="col-lg-12">
+            <div class="card border-left-danger">
+                <div class="card-body">
+                    <div class="row no-gutters table-responsive">
+                    <table class="table table-bordered" id="tblrc" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Wafer no</th>
+                                <th>Measurement</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div><br/><br/>
+    </div>
     <div class="row"> 
         <h5>List of Reject Details</h5>
         <div class="col-lg-12">
@@ -1386,7 +1530,6 @@
 <br/>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
-    var tblcount2 = 0;
     //var tblcount = 0;
     //alert(tblcount)
     function removeRow(row){
@@ -1396,43 +1539,35 @@
         //checkRow(tblcount);
     }
 
-    function removeRow2(row){
+    function removeBHRow(row){
         
         $("#tr"+row).remove();
-        tblcount2 = $('#tblthickness > tbody tr').length;
+        bhcount = $('#tblbh > tbody tr').length;
+        //checkRow(tblcount);
+    }
+
+    function removeIHRow(row){
+        
+        $("#tr"+row).remove();
+        ihcount = $('#tblih > tbody tr').length;
+        //checkRow(tblcount);
+    }
+
+    function removeWPRow(row){
+        
+        $("#tr"+row).remove();
+        wpcount = $('#tblwp > tbody tr').length;
+        //checkRow(tblcount);
+    }
+
+    function removeRCRow(row){
+        
+        $("#tr"+row).remove();
+        rccount = $('#tblrc > tbody tr').length;
         //checkRow(tblcount);
     }
     
-    function countDecimals(value) {
-        var char_array = value.toString().split(""); // split every single char
-        var not_decimal = char_array.lastIndexOf(".");
-        return (not_decimal<0)?0:(char_array.length - not_decimal) - 1;
-    }
-
-    function Thickness(){
-        
-        if(document.getElementById("twaferno").value == '' || document.getElementById("tpoint1").value == '' || document.getElementById("tpoint2").value == '' || document.getElementById("tpoint3").value == '' || document.getElementById("tpoint4").value == '' || document.getElementById("tpoint5").value == '')
-        {
-            return false;
-        }
-        
-        return true;
-
-
-    }
-
-    function Roughness(){
-
-        if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
-        {
-            if(document.getElementById("rpoint1").value == '' || document.getElementById("rpoint2").value == '' || document.getElementById("rpoint3").value == '' || document.getElementById("rpoint4").value == '' || document.getElementById("rpoint5").value == '' )
-            {
-                return false;
-            }
-        }
-        return true;
-
-    }
+    
     
     $('#btnDone008').click(function(event) {
 
@@ -1448,29 +1583,54 @@
         var sdremarks = $('input[name="sdremarks008[]"]').map(function () {
         return this.value; }).get();
 
-        var stwaferno = $('input[name="stwaferno[]"]').map(function () {
+        //------------------------------------------------------------------
+
+        var sbhch = $('input[name="sbhch[]"]').map(function () {
         return this.value; }).get();
 
-        var stpoint1 = $('input[name="stpoint1[]"]').map(function () {
+        var sbh1 = $('input[name="sbh1[]"]').map(function () {
         return this.value; }).get();
 
-        var stpoint2 = $('input[name="stpoint2[]"]').map(function () {
+        var sbh2 = $('input[name="sbh3[]"]').map(function () {
         return this.value; }).get();
 
-        var stpoint3 = $('input[name="stpoint3[]"]').map(function () {
+        var sbh3 = $('input[name="sbh3[]"]').map(function () {
         return this.value; }).get();
 
-        var stpoint4 = $('input[name="stpoint4[]"]').map(function () {
+        var sbh4 = $('input[name="sbh4[]"]').map(function () {
         return this.value; }).get();
 
-        var stpoint5 = $('input[name="stpoint5[]"]').map(function () {
+        var sbh5 = $('input[name="sbh5[]"]').map(function () {
         return this.value; }).get();
 
-        var spave = $('input[name="spave[]"]').map(function () {
+        //------------------------------------------------------------------
+
+        var sihch = $('input[name="sihch[]"]').map(function () {
         return this.value; }).get();
 
-        var sttv = $('input[name="sttv[]"]').map(function () {
+        var sih1 = $('input[name="sih1[]"]').map(function () {
         return this.value; }).get();
+
+        var sih2 = $('input[name="sih3[]"]').map(function () {
+        return this.value; }).get();
+
+        var sih3 = $('input[name="sih3[]"]').map(function () {
+        return this.value; }).get();
+
+        var sih4 = $('input[name="sih4[]"]').map(function () {
+        return this.value; }).get();
+
+        var sih5 = $('input[name="sih5[]"]').map(function () {
+        return this.value; }).get();
+
+        //------------------------------------------------------------------
+
+        var swptime = $('input[name="swptime[]"]').map(function () {
+        return this.value; }).get();
+
+        var srpmtime = $('input[name="srpmtime[]"]').map(function () {
+        return this.value; }).get();
+
 
         $(".form-control").css({"border-color": "#d1d3e2"});
 
@@ -1501,100 +1661,7 @@
             });
             return false;
         }
-
-        var bgthick = document.getElementsByClassName("bgthick");
-        if(parseInt($('#wqty').val()) > 1)
-        {
-            if(tblcount2 < 2)
-            {
-                for(var i = 0;bgthick.length > i; i++)
-                {
-                    if(bgthick[i].value == '')
-                    {
-                        bgthick[i].style.borderColor = 'red';
-                        count+=1;
-                    }
-                    else
-                    {
-                        bgthick[i].style.borderColor = '#d1d3e2';
-                    }
-                }
-                document.getElementById('bgonlythick').scrollIntoView();
-                swal("missing input!",{
-                    icon: "warning",
-                    title: "Please input Final Thickness!",
-                    closeOnClickOutside: false,
-                });
-                return false;
-            }
-        }
-
-        if(parseInt($('#wqty').val()) < 2)
-        {
-            if(tblcount2 < 1)
-            {
-                for(var i = 0;bgthick.length > i; i++)
-                {
-                    if(bgthick[i].value == '')
-                    {
-                        bgthick[i].style.borderColor = 'red';
-                        count+=1;
-                    }
-                    else
-                    {
-                        bgthick[i].style.borderColor = '#d1d3e2';
-                    }
-                }
-                document.getElementById('bgonlythick').scrollIntoView();
-                swal("missing input!",{
-                    icon: "warning",
-                    title: "Please input Final Thickness!",
-                    closeOnClickOutside: false,
-                });
-                return false;
-            }
-        }
-
-        if(Roughness() == false)
-        {
-            //alert('Please complete Roughness details!');
-            document.getElementById('rej008').scrollIntoView();
-            var roughval = document.getElementsByClassName("rough");
-            for(var i = 0;roughval.length > i; i++)
-            {
-                if(roughval[i].value == '')
-                {
-                    roughval[i].style.borderColor = 'red';
-                }
-                else
-                {
-                    roughval[i].style.borderColor = '#d1d3e2';
-                }
-            }
-            swal("missing input!",{
-                icon: "warning",
-                title: "Please complete Roughness details!",
-                closeOnClickOutside: false,
-            });
-            return false;
-        }
-
-        if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
-        {
-            if(countDecimals(document.getElementById("rpoint1").value) != 5 || countDecimals(document.getElementById("rpoint2").value) != 5 || countDecimals(document.getElementById("rpoint3").value) != 5 || countDecimals(document.getElementById("rpoint4").value) != 5 || countDecimals(document.getElementById("rpoint5").value) != 5)
-            {
-                //alert('You have input Roughness with more or less than 5 decimal');
-                swal("missing input!",{
-                    icon: "warning",
-                    title: "You have input Roughness with more or less than 5 decimal",
-                    closeOnClickOutside: false,
-                });
-                return false;
-            }
-        }
-
         
-        //console.log(data)
         
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -1620,180 +1687,238 @@
         };
         xmlhttp.open("GET", "../php/addefai008.php?data=" + JSON.stringify(data) 
         + "&intlotno="+document.getElementById("intlotno").value 
-        + "&stwaferno="+JSON.stringify(stwaferno) 
-        + "&stpoint1="+ JSON.stringify(stpoint1) 
-        + "&stpoint2="+ JSON.stringify(stpoint2) 
-        + "&stpoint3="+ JSON.stringify(stpoint3) 
-        + "&stpoint4="+ JSON.stringify(stpoint4) 
-        + "&stpoint5="+ JSON.stringify(stpoint5) 
-        + "&spave="+ JSON.stringify(spave) 
-        + "&sttv="+ JSON.stringify(sttv) 
-        + "&rpoint1="+ document.getElementById("rpoint1").value 
-        + "&rpoint2="+ document.getElementById("rpoint2").value 
-        + "&rpoint3="+ document.getElementById("rpoint3").value 
-        + "&rpoint4="+ document.getElementById("rpoint4").value 
-        + "&rpoint5="+ document.getElementById("rpoint5").value 
-        + "&rave="+ document.getElementById("rave").value, true);
+        + "&sdwaferno="+JSON.stringify(sdwaferno) 
+        + "&sddetails="+ JSON.stringify(sddetails) 
+        + "&sdqty="+ JSON.stringify(sdqty) 
+        + "&sdremarks="+ JSON.stringify(sdremarks) 
+        + "&sbhch="+ JSON.stringify(sbhch) 
+        + "&sbh1="+ JSON.stringify(sbh1) 
+        + "&sbh2="+ JSON.stringify(sbh2) 
+        + "&sbh3="+ JSON.stringify(sbh3)
+        + "&sbh4="+ JSON.stringify(sbh4) 
+        + "&sbh5="+ JSON.stringify(sbh5)
+        + "&sihch="+ JSON.stringify(sihch) 
+        + "&sih1="+ JSON.stringify(sih1) 
+        + "&sih2="+ JSON.stringify(sih2) 
+        + "&sih3="+ JSON.stringify(sih3)
+        + "&sih4="+ JSON.stringify(sih4) 
+        + "&sih5="+ JSON.stringify(sih5)
+        + "&swptime="+ JSON.stringify(swptime) 
+        + "&srpmtime="+ JSON.stringify(srpmtime), true);
         xmlhttp.send();
     });
 
-    $("#rpoint1,#rpoint2,#rpoint3,#rpoint4,#rpoint5").keyup(function(event) { 
-        document.getElementById("rave").value = 0;
-        var rpoint1 = document.getElementById("rpoint1").value;
-        var rpoint2 = document.getElementById("rpoint2").value;
-        var rpoint3 = document.getElementById("rpoint3").value;
-        var rpoint4 = document.getElementById("rpoint4").value;
-        var rpoint5 = document.getElementById("rpoint5").value;
-
-        //alert(parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3));
-
-        var total;
-        total = (parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3) + parseFloat(rpoint4) + parseFloat(rpoint5));
-        if(Roughness() == true)
-        {
-            document.getElementById("rave").value = parseFloat(total / 5).toFixed(5);
-            //document.getElementById("rsuccess").innerHTML = "<b>Success!<b/> Roughness Average has been automatically calculated!";
-            /* document.getElementById("rerror").hidden = true;
-            document.getElementById("rsuccess").hidden = true; */
-        }
-        else
-        {
-            /* document.getElementById("rerror").innerHTML = "Please complete necessary details!";
-            document.getElementById("rerror").hidden = false;
-            document.getElementById("rsuccess").hidden = true; */
-            return false;
-        }
-        
-    });
-
-    $("#tpoint1,#tpoint2,#tpoint3,#tpoint4,#tpoint5,#twaferno").keyup(function(event) { 
-        document.getElementById("pave").value = 0;
-        var tpoint1 = document.getElementById("tpoint1").value;
-        var tpoint2 = document.getElementById("tpoint2").value;
-        var tpoint3 = document.getElementById("tpoint3").value;
-        var tpoint4 = document.getElementById("tpoint4").value;
-        var tpoint5 = document.getElementById("tpoint5").value;
-        //alert(parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3));
-        var total;
-        //alert(tpoint1.toString().split(".").length);
-        if(Thickness() == true)
-        {
-            //document.getElementById("tsuccess").innerHTML = "<b>Success!<b/> Total Thickness Variation has been automatically calculated!";
-        
-            total = (parseFloat(tpoint1) + parseFloat(tpoint2) + parseFloat(tpoint3) + parseFloat(tpoint4) + parseFloat(tpoint5));
-            /* document.getElementById("terror").hidden = true;
-            document.getElementById("tsuccess").hidden = true; */
-            var high = Math.max(tpoint1,tpoint2,tpoint3,tpoint4,tpoint5);
-            var low = Math.min(tpoint1,tpoint2,tpoint3,tpoint4,tpoint5);
-            document.getElementById("pave").value = parseFloat(total / 5).toFixed(1);
-            document.getElementById("ttv").value = parseFloat(high - low).toFixed(1);
-        }
-        else
-        {
-            /* document.getElementById("terror").innerHTML = "Please complete necessary details!";
-            document.getElementById("terror").hidden = false;
-            document.getElementById("tsuccess").hidden = true; */
-            return false;
-        }
-        
-    });
-
-    $( "#btnAddThick" ).click(function() {
+    $( "#btnAddBH" ).click(function() {
 
     //alert(countDecimals(document.getElementById("tpoint1").value))
 
-    if(parseInt($('#wqty').val()) > 1)
-    {
-        if(tblcount2 > 1)
+        var val = document.getElementsByClassName("bh");
+        var data = {};
+        var count = 0;
+        for(var i = 0;val.length > i; i++)
         {
-            swal("error!",{
-            icon: "error",
-            title: "Final Thickness input reached its maximum limit!",
-            closeOnClickOutside: false,
+            data[val[i].name] = val[i].value;
+            if(val[i].value == '')
+            {
+                val[i].style.borderColor = 'red';
+                count+=1;
+            }
+            else
+            {
+                val[i].style.borderColor = '#d1d3e2';
+            }
+        }
+        if(count > 0)
+        {
+            //$('#002').animate({scrollTop: '0px'}, 1000);
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please input required fields!",
+                closeOnClickOutside: false,
             });
             return false;
         }
-        
+
+        else
+        {
+            $('#tblbh > tbody').append('<tr id="tr'+bhcount+'">'+
+                                        '<td><input type="hidden" id = "sbhch[]"  name="sbhch[]" value="'+$('#bhch').val()+'">'+$('#bhch').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sbh1[]"  name="sbh1[]" value="'+$('#bh1').val()+'">'+$('#bh1').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sbh2[]"  name="sbh2[]" value="'+$('#bh2').val()+'">'+$('#bh2').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sbh3[]"  name="sbh3[]" value="'+$('#bh3').val()+'">'+$('#bh3').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sbh4[]"  name="sbh4[]" value="'+$('#bh4').val()+'">'+$('#bh4').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sbh5[]"  name="sbh5[]" value="'+$('#bh5').val()+'">'+$('#bh5').val()+'</td>'+
+                                        '<td><button type="button" onclick="removeBHRow('+bhcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                        '</tr>');
+
+            bhcount++;
+            swal("success!",{
+                icon: "success",
+                title: "Blade Height details successfully added!",
+                closeOnClickOutside: false,
+            });
+            $(".bh").css({"border-color": "#d1d3e2"});
+            $(".bh").val("");
+            
+        }
+
+    });
+
+    $( "#btnAddIH" ).click(function() {
+
+    //alert(countDecimals(document.getElementById("tpoint1").value))
+
+    var val = document.getElementsByClassName("ih");
+    var data = {};
+    var count = 0;
+    for(var i = 0;val.length > i; i++)
+    {
+        data[val[i].name] = val[i].value;
+        if(val[i].value == '')
+        {
+            val[i].style.borderColor = 'red';
+            count+=1;
+        }
+        else
+        {
+            val[i].style.borderColor = '#d1d3e2';
+        }
+    }
+    if(count > 0)
+    {
+        //$('#002').animate({scrollTop: '0px'}, 1000);
+        swal("missing input!",{
+            icon: "warning",
+            title: "Please input required fields!",
+            closeOnClickOutside: false,
+        });
+        return false;
     }
 
-    if(parseInt($('#wqty').val())  <= 1 )
-    {
-        //alert(tblcount)
-        if(tblcount2 > 0)
-        {
-            swal("error!",{
-            icon: "error",
-            title: "Final Thickness input reached its maximum limit!",
-            closeOnClickOutside: false,
-            });
-            return false;
-        }
-        
-    }
-    if(Thickness() == false)
-    {
-        //alert('Please complete Final thickness details!');
-        swal("missing input!",{
-            icon: "warning",
-            title: "Please complete Final thickness details!",
-            closeOnClickOutside: false,
-        });
-        return false;
-    }
-    if(document.getElementById("ttv").value == '')
-    {
-        swal("missing input!",{
-            icon: "warning",
-            title: "Please complete Final thickness details!",
-            closeOnClickOutside: false,
-        });
-        return false;
-    }
-    if(countDecimals(document.getElementById("tpoint1").value) != 1 || countDecimals(document.getElementById("tpoint2").value) != 1 || countDecimals(document.getElementById("tpoint3").value) != 1 || countDecimals(document.getElementById("tpoint4").value) != 1 || countDecimals(document.getElementById("tpoint5").value) != 1)
-    {
-        //alert('You have input Thickness with more or less than 1 decimal');
-        swal("missing input!",{
-            icon: "warning",
-            title: "You have input Thickness with 1 decimal",
-            closeOnClickOutside: false,
-        });
-        return false;
-    }
     else
     {
-        $('#tblthickness > tbody').append('<tr id="tr'+tblcount2+'">'+
-                                    '<td><input type="hidden" id = "stwaferno[]"  name="stwaferno[]" value="'+$('#twaferno').val()+'">'+$('#twaferno').val()+'</td>'+
-                                    '<td><input type="hidden" id = "stpoint1[]"  name="stpoint1[]" value="'+$('#tpoint1').val()+'">'+$('#tpoint1').val()+'</td>'+
-                                    '<td><input type="hidden" id = "stpoint2[]"  name="stpoint2[]" value="'+$('#tpoint2').val()+'">'+$('#tpoint2').val()+'</td>'+
-                                    '<td><input type="hidden" id = "stpoint3[]"  name="stpoint3[]" value="'+$('#tpoint3').val()+'">'+$('#tpoint3').val()+'</td>'+
-                                    '<td><input type="hidden" id = "stpoint4[]"  name="stpoint4[]" value="'+$('#tpoint4').val()+'">'+$('#tpoint4').val()+'</td>'+
-                                    '<td><input type="hidden" id = "stpoint5[]"  name="stpoint5[]" value="'+$('#tpoint5').val()+'">'+$('#tpoint5').val()+'</td>'+
-                                    '<td><input type="hidden" id = "spave[]"  name="spave[]" value="'+$('#pave').val()+'">'+$('#pave').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sttv[]"  name="sttv[]" value="'+$('#ttv').val()+'">'+$('#ttv').val()+'</td>'+
-                                    '<td><button type="button" onclick="removeRow2('+tblcount2+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+        $('#tblih > tbody').append('<tr id="tr'+ihcount+'">'+
+                                    '<td><input type="hidden" id = "sihch[]"  name="sihch[]" value="'+$('#ihch').val()+'">'+$('#ihch').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sih1[]"  name="sih1[]" value="'+$('#ih1').val()+'">'+$('#ih1').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sih2[]"  name="sih2[]" value="'+$('#ih2').val()+'">'+$('#ih2').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sih3[]"  name="sih3[]" value="'+$('#ih3').val()+'">'+$('#ih3').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sih4[]"  name="sih4[]" value="'+$('#ih4').val()+'">'+$('#ih4').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sih5[]"  name="sih5[]" value="'+$('#ih5').val()+'">'+$('#ih5').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeIHRow('+ihcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
-        tblcount2++;
-        $('#twaferno').val("");
-        $('#tpoint1').val("");
-        $('#tpoint2').val("");
-        $('#tpoint3').val("");
-        $('#tpoint4').val("");
-        $('#tpoint5').val("");
-        $('#pave').val("");
-        $('#ttv').val("");
-        $('#twaferno').focus();
-        //checkRow(tblcount);
-        
-        /* document.getElementById("tsuccess").innerHTML = "Final Thickness details successfully added!";
-        document.getElementById("terror").hidden = true;
-        document.getElementById("tsuccess").hidden = false; */
+        ihcount++;
         swal("success!",{
             icon: "success",
-            title: "Final Thickness details successfully added!",
+            title: "Index Height details successfully added!",
             closeOnClickOutside: false,
         });
-        $(".bgthick").css({"border-color": "#d1d3e2"});
+        $(".ih").css({"border-color": "#d1d3e2"});
+        $(".ih").val("");
+        
+    }
+
+    });
+
+    $( "#btnAddWP" ).click(function() {
+
+//alert(countDecimals(document.getElementById("tpoint1").value))
+
+    var val = document.getElementsByClassName("wp");
+    var data = {};
+    var count = 0;
+    for(var i = 0;val.length > i; i++)
+    {
+        data[val[i].name] = val[i].value;
+        if(val[i].value == '')
+        {
+            val[i].style.borderColor = 'red';
+            count+=1;
+        }
+        else
+        {
+            val[i].style.borderColor = '#d1d3e2';
+        }
+    }
+    if(count > 0)
+    {
+        //$('#002').animate({scrollTop: '0px'}, 1000);
+        swal("missing input!",{
+            icon: "warning",
+            title: "Please input required fields!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+
+    else
+    {
+        $('#tblwp > tbody').append('<tr id="tr'+wpcount+'">'+
+                                    '<td><input type="hidden" id = "swptime[]"  name="swptime[]" value="'+$('#wptime').val()+'">'+$('#wptime').val()+'</td>'+
+                                    '<td><input type="hidden" id = "swprpm[]"  name="swprpm[]" value="'+$('#wprpm').val()+'">'+$('#wprpm').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeWPRow('+wpcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        wpcount++;
+        swal("success!",{
+            icon: "success",
+            title: "Wash parameter details successfully added!",
+            closeOnClickOutside: false,
+        });
+        $(".wp").css({"border-color": "#d1d3e2"});
+        $(".wp").val("");
+        
+    }
+
+    });
+
+    $( "#btnAddRC" ).click(function() {
+
+//alert(countDecimals(document.getElementById("tpoint1").value))
+
+    var val = document.getElementsByClassName("rc");
+    var data = {};
+    var count = 0;
+    for(var i = 0;val.length > i; i++)
+    {
+        data[val[i].name] = val[i].value;
+        if(val[i].value == '')
+        {
+            val[i].style.borderColor = 'red';
+            count+=1;
+        }
+        else
+        {
+            val[i].style.borderColor = '#d1d3e2';
+        }
+    }
+    if(count > 0)
+    {
+        //$('#002').animate({scrollTop: '0px'}, 1000);
+        swal("missing input!",{
+            icon: "warning",
+            title: "Please input required fields!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+
+    else
+    {
+        $('#tblrc > tbody').append('<tr id="tr'+rccount+'">'+
+                                    '<td><input type="hidden" id = "srcwaferno[]"  name="srcwaferno[]" value="'+$('#rcwaferno').val()+'">'+$('#rcwaferno').val()+'</td>'+
+                                    '<td><input type="hidden" id = "srcmeasurement[]"  name="srcmeasurement[]" value="'+$('#rcmeasurement').val()+'">'+$('#rcmeasurement').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeRCRow('+rccount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        rccount++;
+        swal("success!",{
+            icon: "success",
+            title: "Ring-cut Diameter details successfully added!",
+            closeOnClickOutside: false,
+        });
+        $(".rc").css({"border-color": "#d1d3e2"});
+        $(".rc").val("");
         
     }
 
@@ -1894,6 +2019,7 @@
             $("select.ring").val("N/A");
             $("input.ring[type=number]").val(0);
             $(".saw").attr("disabled",false);
+            $(".ring").hide();
             $(".saw").show();
             $(".saw").val("");
         }
@@ -1907,6 +2033,7 @@
             $("select.saw").val("N/A");
             $("input.saw[type=number]").val(0);
             $(".ring").attr("disabled",false);
+            $(".saw").hide();
             $(".ring").show();
             $(".ring").val("");
         }
@@ -1915,6 +2042,22 @@
             $('.saw,.ring').hide();
         }
 
+    });
+
+    $('#wtype.req008').change(function (){
+        
+        if($(this).val() == 'others')
+        {
+            
+            $("#wtypeothers.008").removeAttr("disabled");
+            $("#wtypeothers.008").focus();
+        }
+        else
+        {
+            $("#wtypeothers.008").val('');
+            $("#wtypeothers.008").attr("disabled","disabled");
+        }
+        
     });
     
 </script>

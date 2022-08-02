@@ -38,7 +38,7 @@ class Connection{
 
 	public function fetch_array($query){
 
-		return sqlsrv_fetch_array($query);
+		return sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC);
 	}
 	
 	public function close(){
