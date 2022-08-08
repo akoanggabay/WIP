@@ -72,6 +72,14 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Process Category:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="processcat" name="processcat"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Customer Lot Number:</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -120,6 +128,14 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Current qty:</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="currqty" name="currqty"  class="form-control input-sm" value="" readonly><br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Wafer size:</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -162,6 +178,10 @@
     <?php include_once "SAW/009.php";?>
     <?php include_once "SAW/010.php";?>
     <?php include_once "SAW/011.php";?>
+    <?php include_once "SINGULATION/013.php";?>
+    <?php include_once "SINGULATION/016.php";?>
+    <?php include_once "SINGULATION/017.php";?>
+    <?php include_once "SINGULATION/019.php";?>
     <?php include_once "BACKGRIND/test.php";?>
 </div>
 <br/>
@@ -251,9 +271,11 @@
                     document.getElementById("waferrunno").value = resdata[0].waferrun;
                     document.getElementById("waferno").value = resdata[0].waferno;
                     document.getElementById("wqty").value = resdata[0].waferqty;
+                    document.getElementById("currqty").value = resdata[0].currqty;
                     document.getElementById("lqty").value = resdata[0].qty;
                     document.getElementById("wsize").value = resdata[0].wafersize;
                     document.getElementById("ltype").value = resdata[0].lottype;
+                    document.getElementById("processcat").value = resdata[0].processcat;
                     
                     document.getElementById(resdata[0].nstation.split(":")[0]).hidden = false;
                 }

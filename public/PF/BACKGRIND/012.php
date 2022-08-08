@@ -225,6 +225,18 @@
 <script>
     $('#btnDone012').click(function(event) {
 
+        var sdwaferno = $('input[name="sdwaferno012[]"]').map(function () {
+        return this.value; }).get();
+
+        var sddetails = $('input[name="sddetails012[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdqty = $('input[name="sdqty012[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdremarks = $('input[name="sdremarks012[]"]').map(function () {
+        return this.value; }).get();
+
         var val = document.getElementsByClassName("req012");
         var data = {};
         var count = 0;
@@ -275,8 +287,91 @@
                 }
             }
         };
-        xmlhttp.open("GET", "../php/addefai012.php?data=" + JSON.stringify(data)+"&intlotno="+document.getElementById("intlotno").value, true);
+        xmlhttp.open("GET", "../php/addefai012.php?data=" + JSON.stringify(data)
+        +"&intlotno="+document.getElementById("intlotno").value
+        + "&sdwaferno="+JSON.stringify(sdwaferno) 
+        + "&sddetails="+ JSON.stringify(sddetails) 
+        + "&sdqty="+ JSON.stringify(sdqty) 
+        + "&sdremarks="+ JSON.stringify(sdremarks), true);
         xmlhttp.send();
+    });
+
+    $( "#btnAddDefect012" ).click(function() {
+
+    //alert(tblcount)
+
+
+    var sdqty = $('input[name="sdqty012[]"]').map(function () {
+    return this.value; }).get();
+    var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
+    //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
+    if((parseInt(dtotal) + parseInt($('#dqty012').val())) > parseInt(document.getElementById("wqty").value))
+    {
+        /* document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        swal("error!",{
+            icon: "error",
+            title: "Reject quantity exceeding Internal Lot number current quantity!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    if($('#dwaferno012').val()== "" ||  $('#dqty012').val()== "" ||  $('#ddetails012').val()== "")
+    {
+        //alert("test")
+        /* document.getElementById("derror").innerHTML = 'Please complete necessary details!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        document.getElementById('rej012').scrollIntoView();
+        var rejval = document.getElementsByClassName("rej012");
+        for(var i = 0;rejval.length > i; i++)
+        {
+            if(rejval[i].value == '')
+            {
+                rejval[i].style.borderColor = 'red';
+            }
+            else
+            {
+                rejval[i].style.borderColor = '#d1d3e2';
+            }
+        }
+        swal("missing input!",{
+            icon: "warning",
+            title: "Please complete reject details!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    else
+    {
+        $('#tblreject012 > tbody').append('<tr id="tr'+tblcount+'">'+
+                                    '<td><input type="hidden" id = "sdwaferno012[]"  name="sdwaferno012[]" value="'+$('#dwaferno012').val()+'">'+$('#dwaferno012').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sddetails012[]"  name="sddetails012[]" value="'+$('#ddetails012').val()+'">'+$('#ddetails012').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdqty012[]"  name="sdqty012[]" value="'+$('#dqty012').val()+'">'+$('#dqty012').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdremarks012[]"  name="sdremarks012[]" value="'+$('#dremarks012').val()+'">'+$('#dremarks012').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        tblcount++;
+        $('#dwaferno012').val("");
+        $('#ddetails012').val("");
+        $('#dqty012').val("");
+        $('#dremarks012').val("");
+        //checkRow(tblcount);
+        
+        /* document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
+        document.getElementById("derror").hidden = true;
+        document.getElementById("dsuccess").hidden = false; */
+        swal("success!",{
+            icon: "success",
+            title: "Reject details successfully added!",
+            closeOnClickOutside: false,
+        });
+        dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
+        parseInt(dtotal) += parseInt($('#dqty012').val());
+    }
+
     });
 
     /* $('#processmode,req012').change(function (){

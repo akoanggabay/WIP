@@ -342,7 +342,17 @@
 
     $('#btnDone001').click(function(event) {
 
-        
+        var sdwaferno = $('input[name="sdwaferno001[]"]').map(function () {
+        return this.value; }).get();
+
+        var sddetails = $('input[name="sddetails001[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdqty = $('input[name="sdqty001[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdremarks = $('input[name="sdremarks001[]"]').map(function () {
+        return this.value; }).get();
 
         var sinitialthickness = $('input[name="sinitialthickness[]"]').map(function () {
         return this.value; }).get();
@@ -436,7 +446,11 @@
         
         xmlhttp.open("GET", "../php/addefai001.php?data=" + JSON.stringify(data)
         +"&wtypeothers="+$("#wtypeothers.001").val()
-        +"&intlotno="+document.getElementById("intlotno").value, true);
+        +"&intlotno="+document.getElementById("intlotno").value
+        + "&sdwaferno="+JSON.stringify(sdwaferno) 
+        + "&sddetails="+ JSON.stringify(sddetails) 
+        + "&sdqty="+ JSON.stringify(sdqty) 
+        + "&sdremarks="+ JSON.stringify(sdremarks), true);
         xmlhttp.send();
         /* const wtype = document.getElementById("wtype").value === 'others' ? document.getElementById("wtypeothers").value : document.getElementById("wtype").value
         xmlhttp.open("GET", "../php/addefai001.php?intlotno=" + document.getElementById("intlotno").value 
@@ -467,6 +481,84 @@
             $("#wtypeothers.001").attr("disabled","disabled");
         }
         
+    });
+
+    $( "#btnAddDefect001" ).click(function() {
+
+    //alert(tblcount)
+
+
+    var sdqty = $('input[name="sdqty001[]"]').map(function () {
+    return this.value; }).get();
+    var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
+    //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
+    if((parseInt(dtotal) + parseInt($('#dqty001').val())) > parseInt(document.getElementById("wqty").value))
+    {
+        /* document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        swal("error!",{
+            icon: "error",
+            title: "Reject quantity exceeding Internal Lot number current quantity!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    if($('#dwaferno001').val()== "" ||  $('#dqty001').val()== "" ||  $('#ddetails001').val()== "")
+    {
+        //alert("test")
+        /* document.getElementById("derror").innerHTML = 'Please complete necessary details!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        document.getElementById('rej001').scrollIntoView();
+        var rejval = document.getElementsByClassName("rej001");
+        for(var i = 0;rejval.length > i; i++)
+        {
+            if(rejval[i].value == '')
+            {
+                rejval[i].style.borderColor = 'red';
+            }
+            else
+            {
+                rejval[i].style.borderColor = '#d1d3e2';
+            }
+        }
+        swal("missing input!",{
+            icon: "warning",
+            title: "Please complete reject details!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    else
+    {
+        $('#tblreject001 > tbody').append('<tr id="tr'+tblcount+'">'+
+                                    '<td><input type="hidden" id = "sdwaferno001[]"  name="sdwaferno001[]" value="'+$('#dwaferno001').val()+'">'+$('#dwaferno001').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sddetails001[]"  name="sddetails001[]" value="'+$('#ddetails001').val()+'">'+$('#ddetails001').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdqty001[]"  name="sdqty001[]" value="'+$('#dqty001').val()+'">'+$('#dqty001').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdremarks001[]"  name="sdremarks001[]" value="'+$('#dremarks001').val()+'">'+$('#dremarks001').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        tblcount++;
+        $('#dwaferno001').val("");
+        $('#ddetails001').val("");
+        $('#dqty001').val("");
+        $('#dremarks001').val("");
+        //checkRow(tblcount);
+        
+        /* document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
+        document.getElementById("derror").hidden = true;
+        document.getElementById("dsuccess").hidden = false; */
+        swal("success!",{
+            icon: "success",
+            title: "Reject details successfully added!",
+            closeOnClickOutside: false,
+        });
+        dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
+        parseInt(dtotal) += parseInt($('#dqty001').val());
+    }
+
     });
     
 </script>

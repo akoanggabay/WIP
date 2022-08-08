@@ -502,6 +502,18 @@
 <script>
     $('#btnDone002').click(function(event) {
 
+        var sdwaferno = $('input[name="sdwaferno002[]"]').map(function () {
+        return this.value; }).get();
+
+        var sddetails = $('input[name="sddetails002[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdqty = $('input[name="sdqty002[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdremarks = $('input[name="sdremarks002[]"]').map(function () {
+        return this.value; }).get();
+
         var val = document.getElementsByClassName("req002");
         var data = {};
         var count = 0;
@@ -554,41 +566,12 @@
         };
         xmlhttp.open("GET", "../php/addefai002.php?data=" + JSON.stringify(data)
         +"&wtypeothers="+$("#wtypeothers.002").val()
-        +"&intlotno="+document.getElementById("intlotno").value, true);
+        +"&intlotno="+document.getElementById("intlotno").value
+        + "&sdwaferno="+JSON.stringify(sdwaferno) 
+        + "&sddetails="+ JSON.stringify(sddetails) 
+        + "&sdqty="+ JSON.stringify(sdqty) 
+        + "&sdremarks="+ JSON.stringify(sdremarks), true);
         xmlhttp.send();
-       /*  const wtype = document.getElementById("wtype").value === 'others' ? document.getElementById("wtypeothers").value : document.getElementById("wtype").value
-        xmlhttp.open("GET", "../php/addefai002.php?intlotno=" + document.getElementById("intlotno").value 
-        + "&machine=" + document.getElementById("machine").value
-        + "&faicat=" + document.getElementById("faicat").value
-        + "&wswr=" + document.getElementById("wswr").value
-        + "&swrno=" + document.getElementById("swrno").value
-        + "&wafercondition=" + document.getElementById("wcondition").value
-        + "&wafertype=" + wtype
-        + "&waferboatslotting=" + document.getElementById("waferboatslotting").value
-        + "&chucktabletype=" + document.getElementById("chucktabletype").value
-        + "&chucktablecleaning=" + document.getElementById("chucktablecleaning").value
-        + "&processmode=" + document.getElementById("processmode").value
-        + "&changetape=" + document.getElementById("changetape").value
-        + "&bgtapetype=" + document.getElementById("bgtapetype").value
-        + "&bgtapeused=" + document.getElementById("bgtapeused").value
-        + "&bgtapelotno=" + document.getElementById("bgtapelotno").value
-        + "&bgtapeexpdate=" + document.getElementById("bgtapeexpdate").value
-        + "&notchtype=" + document.getElementById("notchtype").value
-        + "&changeblade=" + document.getElementById("changeblade").value
-        + "&bladetemp=" + document.getElementById("bladetemp").value
-        + "&bladecount=" + document.getElementById("bladecount").value
-        + "&setupwafer=" + document.getElementById("setupwafer").value
-        + "&firstwaferinspection=" + document.getElementById("firstwaferinspection").value
-        + "&firstwaferno=" + document.getElementById("firstwaferno").value
-        + "&mpchucktablecleaning=" + document.getElementById("mpchucktablecleaning").value
-        + "&mpbgtapeinstallation=" + document.getElementById("mpbgtapeinstallation").value
-        + "&mpbgtaperollercleaning=" + document.getElementById("mpbgtaperollercleaning").value
-        + "&mpbladeposition=" + document.getElementById("mpbladeposition").value
-        + "&mplamphourusage=" + document.getElementById("mplamphourusage").value
-        + "&mptechemp=" + document.getElementById("mptechemp").value
-        + "&mpqcemp=" + document.getElementById("mpqcemp").value
-        + "&remarks=" + document.getElementById("remarks").value, true);
-        xmlhttp.send();  */
     });
 
     $('#wtype.req002').change(function (){
@@ -605,6 +588,84 @@
             $("#wtypeothers.002").attr("disabled","disabled");
         }
         
+    });
+
+    $( "#btnAddDefect002" ).click(function() {
+
+    //alert(tblcount)
+
+
+    var sdqty = $('input[name="sdqty002[]"]').map(function () {
+    return this.value; }).get();
+    var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
+    //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
+    if((parseInt(dtotal) + parseInt($('#dqty002').val())) > parseInt(document.getElementById("wqty").value))
+    {
+        /* document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        swal("error!",{
+            icon: "error",
+            title: "Reject quantity exceeding Internal Lot number current quantity!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    if($('#dwaferno002').val()== "" ||  $('#dqty002').val()== "" ||  $('#ddetails002').val()== "")
+    {
+        //alert("test")
+        /* document.getElementById("derror").innerHTML = 'Please complete necessary details!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        document.getElementById('rej002').scrollIntoView();
+        var rejval = document.getElementsByClassName("rej002");
+        for(var i = 0;rejval.length > i; i++)
+        {
+            if(rejval[i].value == '')
+            {
+                rejval[i].style.borderColor = 'red';
+            }
+            else
+            {
+                rejval[i].style.borderColor = '#d1d3e2';
+            }
+        }
+        swal("missing input!",{
+            icon: "warning",
+            title: "Please complete reject details!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    else
+    {
+        $('#tblreject002 > tbody').append('<tr id="tr'+tblcount+'">'+
+                                    '<td><input type="hidden" id = "sdwaferno002[]"  name="sdwaferno002[]" value="'+$('#dwaferno002').val()+'">'+$('#dwaferno002').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sddetails002[]"  name="sddetails002[]" value="'+$('#ddetails002').val()+'">'+$('#ddetails002').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdqty002[]"  name="sdqty002[]" value="'+$('#dqty002').val()+'">'+$('#dqty002').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdremarks002[]"  name="sdremarks002[]" value="'+$('#dremarks002').val()+'">'+$('#dremarks002').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        tblcount++;
+        $('#dwaferno002').val("");
+        $('#ddetails002').val("");
+        $('#dqty002').val("");
+        $('#dremarks002').val("");
+        //checkRow(tblcount);
+        
+        /* document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
+        document.getElementById("derror").hidden = true;
+        document.getElementById("dsuccess").hidden = false; */
+        swal("success!",{
+            icon: "success",
+            title: "Reject details successfully added!",
+            closeOnClickOutside: false,
+        });
+        dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
+        parseInt(dtotal) += parseInt($('#dqty002').val());
+    }
+
     });
     
     

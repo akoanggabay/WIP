@@ -203,6 +203,18 @@
 
     $('#btnDone011').click(function(event) {
 
+        var sdwaferno = $('input[name="sdwaferno011[]"]').map(function () {
+        return this.value; }).get();
+
+        var sddetails = $('input[name="sddetails011[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdqty = $('input[name="sdqty011[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdremarks = $('input[name="sdremarks011[]"]').map(function () {
+        return this.value; }).get();
+
         
         var val = document.getElementsByClassName("req011");
         var data = {};
@@ -260,7 +272,11 @@
         
         xmlhttp.open("GET", "../php/addefai011.php?data=" + JSON.stringify(data)
         +"&intlotno="+document.getElementById("intlotno").value
-        +"&wtypeothers="+$("#wtypeothers.011").val(), true);
+        +"&wtypeothers="+$("#wtypeothers.011").val()
+        + "&sdwaferno="+JSON.stringify(sdwaferno) 
+        + "&sddetails="+ JSON.stringify(sddetails) 
+        + "&sdqty="+ JSON.stringify(sdqty) 
+        + "&sdremarks="+ JSON.stringify(sdremarks), true);
         xmlhttp.send();
     });
 
@@ -278,6 +294,84 @@
             $("#wtypeothers.011").attr("disabled","disabled");
         }
         
+    });
+
+    $( "#btnAddDefect011" ).click(function() {
+
+    //alert(tblcount)
+
+
+    var sdqty = $('input[name="sdqty011[]"]').map(function () {
+    return this.value; }).get();
+    var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
+    //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
+    if((parseInt(dtotal) + parseInt($('#dqty011').val())) > parseInt(document.getElementById("currqty").value))
+    {
+        /* document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        swal("error!",{
+            icon: "error",
+            title: "Reject quantity exceeding Internal Lot number current quantity!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    if($('#dwaferno011').val()== "" ||  $('#dqty011').val()== "" ||  $('#ddetails011').val()== "")
+    {
+        //alert("test")
+        /* document.getElementById("derror").innerHTML = 'Please complete necessary details!';
+        document.getElementById("derror").hidden = false;
+        document.getElementById("dsuccess").hidden = true; */
+        document.getElementById('rej011').scrollIntoView();
+        var rejval = document.getElementsByClassName("rej011");
+        for(var i = 0;rejval.length > i; i++)
+        {
+            if(rejval[i].value == '')
+            {
+                rejval[i].style.borderColor = 'red';
+            }
+            else
+            {
+                rejval[i].style.borderColor = '#d1d3e2';
+            }
+        }
+        swal("missing input!",{
+            icon: "warning",
+            title: "Please complete reject details!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    else
+    {
+        $('#tblreject011 > tbody').append('<tr id="tr'+tblcount+'">'+
+                                    '<td><input type="hidden" id = "sdwaferno011[]"  name="sdwaferno011[]" value="'+$('#dwaferno011').val()+'">'+$('#dwaferno011').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sddetails011[]"  name="sddetails011[]" value="'+$('#ddetails011').val()+'">'+$('#ddetails011').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdqty011[]"  name="sdqty011[]" value="'+$('#dqty011').val()+'">'+$('#dqty011').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdremarks011[]"  name="sdremarks011[]" value="'+$('#dremarks011').val()+'">'+$('#dremarks011').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        tblcount++;
+        $('#dwaferno011').val("");
+        $('#ddetails011').val("");
+        $('#dqty011').val("");
+        $('#dremarks011').val("");
+        //checkRow(tblcount);
+        
+        /* document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
+        document.getElementById("derror").hidden = true;
+        document.getElementById("dsuccess").hidden = false; */
+        swal("success!",{
+            icon: "success",
+            title: "Reject details successfully added!",
+            closeOnClickOutside: false,
+        });
+        dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
+        parseInt(dtotal) += parseInt($('#dqty011').val());
+    }
+
     });
     
 </script>

@@ -75,7 +75,7 @@ class efai008 {
     private $atomcleanairpressure;
     private $spinnertableworkwith;
     private $spinnertableworkwithout;
-    private $diwatertamp;
+    private $diwatertemp;
     private $diwaterpressure;
     private $diwaterresistivity;
     private $cleaningcuttingtabledone;
@@ -181,7 +181,7 @@ class efai008 {
     public function setatomcleanairpressure($atomcleanairpressure){$this->atomcleanairpressure=$atomcleanairpressure;}
     public function setspinnertableworkwith($spinnertableworkwith){$this->spinnertableworkwith=$spinnertableworkwith;}
     public function setspinnertableworkwithout($spinnertableworkwithout){$this->spinnertableworkwithout=$spinnertableworkwithout;}
-    public function setdiwatertamp($diwatertamp){$this->diwatertamp=$diwatertamp;}
+    public function setdiwatertemp($diwatertemp){$this->diwatertemp=$diwatertemp;}
     public function setdiwaterpressure($diwaterpressure){$this->diwaterpressure=$diwaterpressure;}
     public function setdiwaterresistivity($diwaterresistivity){$this->diwaterresistivity=$diwaterresistivity;}
     public function setcleaningcuttingtabledone($cleaningcuttingtabledone){$this->cleaningcuttingtabledone=$cleaningcuttingtabledone;}
@@ -281,7 +281,7 @@ class efai008 {
     public function getatomcleanairpressure(){return $this->atomcleanairpressure;}
     public function getspinnertableworkwith(){return $this->spinnertableworkwith;}
     public function getspinnertableworkwithout(){return $this->spinnertableworkwithout;}
-    public function getdiwatertamp(){return $this->diwatertamp;}
+    public function getdiwatertemp(){return $this->diwatertemp;}
     public function getdiwaterpressure(){return $this->diwaterpressure;}
     public function getdiwaterresistivity(){return $this->diwaterresistivity;}
     public function getcleaningcuttingtabledone(){return $this->cleaningcuttingtabledone;}
@@ -386,7 +386,7 @@ class efai008 {
             atomcleanairpressure,
             spinnertableworkwith,
             spinnertableworkwithout,
-            diwatertamp,
+            diwatertemp,
             diwaterpressure,
             diwaterresistivity,
             cleaningcuttingtabledone,
@@ -406,8 +406,11 @@ class efai008 {
             remarks,
             lastupdate,
             lastupdatedby,
-            active,feedspeedz1,feedspeedz2,sawtype
-            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            active,
+            feedspeedz1,
+            feedspeedz2,
+            sawtype
+            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $params = array($this->getcustcode(),
             $this->getintlot(),
             $this->getmachine(),
@@ -481,7 +484,7 @@ class efai008 {
             $this->getatomcleanairpressure(),
             $this->getspinnertableworkwith(),
             $this->getspinnertableworkwithout(),
-            $this->getdiwatertamp(),
+            $this->getdiwatertemp(),
             $this->getdiwaterpressure(),
             $this->getdiwaterresistivity(),
             $this->getcleaningcuttingtabledone(),
@@ -555,7 +558,7 @@ class efai008 {
 $efai008 = new efai008;
 $test = $efai008->sample();
 //print_r($test);
-echo (json_encode($test));
+//echo (json_encode($test));
 /* $test2 = json_encode($test);
 $test3 = json_decode($test2); */
 /* echo $test3; */

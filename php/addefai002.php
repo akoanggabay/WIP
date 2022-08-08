@@ -1,10 +1,17 @@
 <?php
 include_once("../classes/efai002.php");
 include_once("../classes/intlotno.php");
+include_once("../classes/reject.php");
 session_start();
 
 $intlotno = $_GET['intlotno'];
 $data = json_decode($_GET['data']);
+
+//json defect
+$sdwaferno = json_decode($_GET['sdwaferno']);
+$sddetails = json_decode($_GET['sddetails']);
+$sdqty = json_decode($_GET['sdqty']);
+$sdremarks = json_decode($_GET['sdremarks']);
 
 
 //echo json_encode($data);
@@ -101,6 +108,25 @@ $success = $efai002->AddeFAI002();
 if($success == true)
 {
     echo 'success_Success! '.$intlotno.' eFAI details successfully added!';
+
+    if(count($sdwaferno) > 0)
+    {
+        $reject = new Reject;
+
+        for($x=0;$x<count($sdwaferno);$x++){
+            $reject->setintlotno($intlotno);
+            $reject->setcustcode($intlotdata2->custcode);
+            $reject->setstation('002');
+            $reject->setmachine($data->machine);
+            $reject->setwaferno($sdwaferno[$x]);
+            $reject->setddetails($sddetails[$x]);
+            $reject->setdqty($sdqty[$x]);
+            $reject->setremarks($sdremarks[$x]);
+            $reject->setlastupdate(date("Y-m-d h:i:sa"));
+            $reject->setlastupdatedby($_SESSION['idno']);
+            $reject->AddReject();
+        }
+    }
 }
 else
 {

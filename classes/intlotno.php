@@ -427,6 +427,19 @@ class IntLotno {
 		}
 	}
 
+	public function updateCurrqty2($intlot,$custcode,$qty){
+		$conn = new Connection();
+
+		try{
+			$conn->open();
+			$conn->query("UPDATE dbo.intlotno SET currqty = '".$qty."',lastupdate = GETDATE() where custcode ='".$custcode."' and intlot = '".$intlot."'");
+
+			$conn->close();
+		}catch(Exception $e){
+
+		}
+	}
+
 	public function updateBRM($intlotno,$custcode,$brm){
 		$conn = new Connection();
 

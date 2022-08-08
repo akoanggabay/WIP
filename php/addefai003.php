@@ -26,6 +26,12 @@ $rpoint4 = $_GET['rpoint4'];
 $rpoint5 = $_GET['rpoint5'];
 $rave = $_GET['rave'];
 
+//json defect
+$sdwaferno = json_decode($_GET['sdwaferno']);
+$sddetails = json_decode($_GET['sddetails']);
+$sdqty = json_decode($_GET['sdqty']);
+$sdremarks = json_decode($_GET['sdremarks']);
+
 
 //echo json_encode($data);
 /* 
@@ -79,45 +85,6 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
-if($rave)
-{
-    $roughness = new Roughness;
-
-    $roughness->setintlotno($intlotno);
-    $roughness->setcustcode($intlotdata2->custcode);
-    $roughness->setstation('003');
-    $roughness->setr1($rpoint1);
-    $roughness->setr2($rpoint2);
-    $roughness->setr3($rpoint3);
-    $roughness->setr4($rpoint4);
-    $roughness->setr5($rpoint5);
-    $roughness->setrave($rave);
-    $roughness->setlastupdate(date("Y-m-d h:i:sa"));
-    $roughness->setlastupdatedby($_SESSION['idno']);
-    $roughness->AddRoughness();
-}
-
-if(count($stwaferno) > 0)
-{
-    $thickness = new Thickness;
-
-    for($x=0;$x<count($stwaferno);$x++){
-        $thickness->setintlotno($intlotno);
-        $thickness->setcustcode($intlotdata2->custcode);
-        $thickness->setwaferno($stwaferno[$x]);
-        $thickness->setstation('003');
-        $thickness->setp1($stpoint1[$x]);
-        $thickness->setp2($stpoint2[$x]);
-        $thickness->setp3($stpoint3[$x]);
-        $thickness->setp4($stpoint4[$x]);
-        $thickness->setp5($stpoint5[$x]);
-        $thickness->setpave($spave[$x]);
-        $thickness->setttv($sttv[$x]);
-        $thickness->setlastupdate(date("Y-m-d h:i:sa"));
-        $thickness->setlastupdatedby($_SESSION['idno']);
-        $thickness->AddThickness();
-    }
-}
 
 //echo $intlotdata2->custcode;
 $efai003 = new efai003();
@@ -160,6 +127,66 @@ $success = $efai003->AddeFAI003();
 
 if($success == true)
 {
+    
+    if($rave)
+    {
+        $roughness = new Roughness;
+
+        $roughness->setintlotno($intlotno);
+        $roughness->setcustcode($intlotdata2->custcode);
+        $roughness->setstation('003');
+        $roughness->setr1($rpoint1);
+        $roughness->setr2($rpoint2);
+        $roughness->setr3($rpoint3);
+        $roughness->setr4($rpoint4);
+        $roughness->setr5($rpoint5);
+        $roughness->setrave($rave);
+        $roughness->setlastupdate(date("Y-m-d h:i:sa"));
+        $roughness->setlastupdatedby($_SESSION['idno']);
+        $roughness->AddRoughness();
+    }
+
+    if(count($stwaferno) > 0)
+    {
+        $thickness = new Thickness;
+
+        for($x=0;$x<count($stwaferno);$x++){
+            $thickness->setintlotno($intlotno);
+            $thickness->setcustcode($intlotdata2->custcode);
+            $thickness->setwaferno($stwaferno[$x]);
+            $thickness->setstation('003');
+            $thickness->setp1($stpoint1[$x]);
+            $thickness->setp2($stpoint2[$x]);
+            $thickness->setp3($stpoint3[$x]);
+            $thickness->setp4($stpoint4[$x]);
+            $thickness->setp5($stpoint5[$x]);
+            $thickness->setpave($spave[$x]);
+            $thickness->setttv($sttv[$x]);
+            $thickness->setlastupdate(date("Y-m-d h:i:sa"));
+            $thickness->setlastupdatedby($_SESSION['idno']);
+            $thickness->AddThickness();
+        }
+    }
+
+    if(count($sdwaferno) > 0)
+    {
+        $reject = new Reject;
+
+        for($x=0;$x<count($sdwaferno);$x++){
+            $reject->setintlotno($intlotno);
+            $reject->setcustcode($intlotdata2->custcode);
+            $reject->setstation('003');
+            $reject->setmachine($data->machine);
+            $reject->setwaferno($sdwaferno[$x]);
+            $reject->setddetails($sddetails[$x]);
+            $reject->setdqty($sdqty[$x]);
+            $reject->setremarks($sdremarks[$x]);
+            $reject->setlastupdate(date("Y-m-d h:i:sa"));
+            $reject->setlastupdatedby($_SESSION['idno']);
+            $reject->AddReject();
+        }
+    }
+
     echo 'success_Success! '.$intlotno.' eFAI details successfully added!';
 }
 else

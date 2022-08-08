@@ -1,5 +1,5 @@
 <?php
-include_once("../classes/efai001.php");
+include_once("../classes/efai019.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/reject.php");
 session_start();
@@ -12,19 +12,7 @@ $sdwaferno = json_decode($_GET['sdwaferno']);
 $sddetails = json_decode($_GET['sddetails']);
 $sdqty = json_decode($_GET['sdqty']);
 $sdremarks = json_decode($_GET['sdremarks']);
-
-/* $intlotno = $_GET['intlotno'];
-$wswr = $_GET['wswr'];
-$swrno = $_GET['swrno'];
-$wafercondition = $_GET['wafercondition'];
-$wafertype = $_GET['wafertype'];
-$initialthickness = $_GET['initialthickness'];
-$heightmeasurement = $_GET['heightmeasurement'];
-$warpage = $_GET['warpage'];
-$waferboatslotting = $_GET['waferboatslotting'];
-$highmaginspectionrequired = $_GET['highmaginspectionrequired'];
-$remarks = $_GET['remarks']; */
-
+$total = 0;
 
 $exist = IntLotno::checkExist($intlotno);
 
@@ -44,22 +32,22 @@ $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
 //echo $intlotdata2->custcode;
-$efai001 = new efai001();
+$efai019 = new efai019();
 
-$efai001->setcustcode($intlotdata2->custcode);
-$efai001->setintlot($intlotno);
-$efai001->setwswr($data->wswr);
-$efai001->setswrno($data->swrno);
-$efai001->setwafercondition($data->wcondition);
-$efai001->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
-$efai001->setinitialthickness($data->initialthickness);
-$efai001->setheightmeasurement($data->heightmeasurement);
-$efai001->setwarpage($data->warpage);
-$efai001->setwaferboatslotting($data->waferboatslotting);
-$efai001->sethighmaginspectionrequired($data->highmaginspectionrequired);
-$efai001->setremarks($data->remarks);
-$efai001->setlastupdatedby($_SESSION['idno']);
-$success = $efai001->AddeFAI001();
+$efai019->setcustcode($intlotdata2->custcode);
+$efai019->setintlot($intlotno);
+$efai019->setwswr($data->wswr);
+$efai019->setswrno($data->swrno);
+$efai019->setpackagetype($data->packagetype);
+$efai019->setstripno($data->stripno);
+$efai019->setpackagethickness($data->packagethickness);
+$efai019->setpackagesize($data->packagesize);
+$efai019->setarraysize($data->arraysize);
+$efai019->setsamplingplan($data->samplingplan);
+$efai019->setsamplingsize($data->samplingsize);
+$efai019->setremarks($data->remarks);
+$efai019->setlastupdatedby($_SESSION['idno']);
+$success = $efai019->Addefai019();
 
 if($success == true)
 {
@@ -68,12 +56,14 @@ if($success == true)
     if(count($sdwaferno) > 0)
     {
         $reject = new Reject;
-
+        
         for($x=0;$x<count($sdwaferno);$x++){
+
+            $total += (int) $sdqty[$x];
             $reject->setintlotno($intlotno);
             $reject->setcustcode($intlotdata2->custcode);
-            $reject->setstation('001');
-            $reject->setmachine($data->machine);
+            $reject->setstation('017');
+            $reject->setmachine('');
             $reject->setwaferno($sdwaferno[$x]);
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
@@ -82,6 +72,10 @@ if($success == true)
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }
+
+        $ilot = new IntLotno;
+        $ilot->updateCurrqty2($intlotno,$intlotdata2->custcode,intval($intlotdata2->currqty) - intval($total));
+        
     }
 }
 else

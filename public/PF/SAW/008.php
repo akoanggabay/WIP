@@ -207,7 +207,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="cutmode" name="cutmode">
                                                             <option value=""></option>
-                                                            <option value="N/A"></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="A-NORMAL">A-NORMAL</option>
                                                             <option value="AS-Sub-Index">AS-Sub-Index</option>
                                                         </select>
@@ -240,10 +240,10 @@
                                                             <option value="Z2">Z2</option>
                                                             <option value="Dual">Dual</option>
                                                             <option value="Step">Step</option>
-                                                            <option class="saw" value="4-CHANNEL">4-CHANNEL</option>
-                                                            <option class="saw" value="ALTERNATE CUT">ALTERNATE CUT</option>
-                                                            <option class="saw" value="DUAL PASS(Z1)">DUAL PASS(Z1)</option>
-                                                            <option class="saw" value="DUAL PASS(Z2)">DUAL PASS(Z2)</option>
+                                                            <option value="4-CHANNEL" class="saw">4-CHANNEL</option>
+                                                            <option value="ALTERNATE CUT" class="saw" >ALTERNATE CUT</option>
+                                                            <option value="DUAL PASS(Z1)" class="saw" >DUAL PASS(Z1)</option>
+                                                            <option value="DUAL PASS(Z2)" class="saw" >DUAL PASS(Z2)</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -273,9 +273,8 @@
                                                     </div>
                                                 </div>
                                                 <br/>
-                                                
+                                                <h6 class="saw"><b>CHANNEL THETA Rotation(0 deg,90deg,180 deg & 270deg)</b></h6><br/>
                                                 <div class="row saw">
-                                                    <h6><b>CHANNEL THETA Rotation(0 deg,90deg,180 deg & 270deg)</b></h6><br/>
                                                     <div class="col-md-3">
                                                         <label>CH 1: * </label>
                                                     </div>
@@ -683,7 +682,7 @@
                                                         <label>Stroke Rate (%) (applicable for Iwaki pump only): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="strokerate" name="stokerate"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="strokerate" name="strokerate"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1055,7 +1054,7 @@
                                                         <label>Technician Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="mptechemp" name="mptechemp"  class="form-control input-sm req008 saw ring">
+                                                        <input type="password" id="techemp" name="techemp"  class="form-control input-sm req008 saw ring">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1064,7 +1063,7 @@
                                                         <label>Quality Control Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="mpqcemp" name="mpqcemp"  class="form-control input-sm req008 saw ring">
+                                                        <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req008 saw ring">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1242,7 +1241,7 @@
                                                                 <label>Channel: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="ihch" name="ihch"  class="form-control input-sm ih">
+                                                                <input type="text" id="ihch" name="ihch"  class="form-control input-sm ih">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1628,12 +1627,18 @@
         var swptime = $('input[name="swptime[]"]').map(function () {
         return this.value; }).get();
 
-        var srpmtime = $('input[name="srpmtime[]"]').map(function () {
+        var swprpm = $('input[name="swprpm[]"]').map(function () {
+        return this.value; }).get();
+
+        var srcwaferno = $('input[name="srcwaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var srcmeasurement = $('input[name="srcmeasurement[]"]').map(function () {
         return this.value; }).get();
 
 
         $(".form-control").css({"border-color": "#d1d3e2"});
-
+        
         var val = document.getElementsByClassName("req008");
         var data = {};
         var count = 0;
@@ -1650,6 +1655,7 @@
                 val[i].style.borderColor = '#d1d3e2';
             }
         }
+        
         if(count > 0)
         {
             //$('#002').animate({scrollTop: '0px'}, 1000);
@@ -1670,7 +1676,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                //alert(result)
+                console.log(result)
 
                 if(res[0].trim() == 'success')
                 {
@@ -1681,6 +1687,14 @@
                     });
                     $('#btnReset').click()
                     $('button.swal-button').click(function(event){$("#intlotno").focus();});
+                }
+                else
+                {
+                    swal("error!",{
+                        icon: "error",
+                        title: res[1],
+                        closeOnClickOutside: false,
+                    });
                 }
                 
             }
@@ -1703,8 +1717,11 @@
         + "&sih3="+ JSON.stringify(sih3)
         + "&sih4="+ JSON.stringify(sih4) 
         + "&sih5="+ JSON.stringify(sih5)
+        + "&srcwaferno="+ JSON.stringify(srcwaferno)
+        + "&srcmeasurement="+ JSON.stringify(srcmeasurement)
         + "&swptime="+ JSON.stringify(swptime) 
-        + "&srpmtime="+ JSON.stringify(srpmtime), true);
+        + "&swprpm="+ JSON.stringify(swprpm)
+        +"&wtypeothers="+$("#wtypeothers.008").val(), true);
         xmlhttp.send();
     });
 
@@ -1875,7 +1892,8 @@
     $( "#btnAddRC" ).click(function() {
 
 //alert(countDecimals(document.getElementById("tpoint1").value))
-
+    
+    
     var val = document.getElementsByClassName("rc");
     var data = {};
     var count = 0;
@@ -1903,24 +1921,34 @@
         return false;
     }
 
-    else
+    if(document.getElementById("rcmeasurement").value < 187.4)
     {
-        $('#tblrc > tbody').append('<tr id="tr'+rccount+'">'+
-                                    '<td><input type="hidden" id = "srcwaferno[]"  name="srcwaferno[]" value="'+$('#rcwaferno').val()+'">'+$('#rcwaferno').val()+'</td>'+
-                                    '<td><input type="hidden" id = "srcmeasurement[]"  name="srcmeasurement[]" value="'+$('#rcmeasurement').val()+'">'+$('#rcmeasurement').val()+'</td>'+
-                                    '<td><button type="button" onclick="removeRCRow('+rccount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
-                                    '</tr>');
-
-        rccount++;
-        swal("success!",{
-            icon: "success",
-            title: "Ring-cut Diameter details successfully added!",
+        swal("below minimum!",{
+            icon: "warning",
+            title: "Ring Cut Diameter Measurement is below minimum!",
             closeOnClickOutside: false,
         });
-        $(".rc").css({"border-color": "#d1d3e2"});
-        $(".rc").val("");
-        
+        return false;
     }
+
+
+    
+    $('#tblrc > tbody').append('<tr id="tr'+rccount+'">'+
+                                '<td><input type="hidden" id = "srcwaferno[]"  name="srcwaferno[]" value="'+$('#rcwaferno').val()+'">'+$('#rcwaferno').val()+'</td>'+
+                                '<td><input type="hidden" id = "srcmeasurement[]"  name="srcmeasurement[]" value="'+$('#rcmeasurement').val()+'">'+$('#rcmeasurement').val()+'</td>'+
+                                '<td><button type="button" onclick="removeRCRow('+rccount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                '</tr>');
+
+    rccount++;
+    swal("success!",{
+        icon: "success",
+        title: "Ring-cut Diameter details successfully added!",
+        closeOnClickOutside: false,
+    });
+    $(".rc").css({"border-color": "#d1d3e2"});
+    $(".rc").val("");
+        
+    
 
     });
 
@@ -1930,11 +1958,11 @@
     //alert(tblcount)
 
 
-    var sdqty = $('input[name="sdqty[]"]').map(function () {
+    var sdqty = $('input[name="sdqty008[]"]').map(function () {
     return this.value; }).get();
     var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
     //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
-    if((parseInt(dtotal) + parseInt($('#dqty008').val())) > parseInt(document.getElementById("wqty").value))
+    if((parseInt(dtotal) + parseInt($('#dqty008').val())) > parseInt(document.getElementById("currqty").value))
     {
         /* document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
         document.getElementById("derror").hidden = false;

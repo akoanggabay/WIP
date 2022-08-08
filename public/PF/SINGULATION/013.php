@@ -1,5 +1,5 @@
-<div id="010" class="efai" hidden>
-    <h3>2ND OPT station</h3>
+<div id="013" class="efai" hidden>
+    <h3>Strip/Panel Incoming station</h3>
     <br/>
     <div class="row">
         <div class="col-lg-6">
@@ -12,12 +12,39 @@
                                     <div class="col-lg-12">
                                         <div class="row">
                                             <div class="col-lg-12">
+
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>FAI Category: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req013" id="faicat" name="faicat">
+                                                            <option value=""></option>
+                                                            <option value="Bare">Bare</option>
+                                                            <option value="Mounted">Mounted</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Package Type: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req013" id="packagetype" name="packagetype">
+                                                            <option value=""></option>
+                                                            <option value="Strip">Strip</option>
+                                                            <option value="Panel">Panel</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req010" id="wswr" name="wswr">
+                                                        <select class="form-control req013" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
@@ -30,51 +57,25 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req010" style="text-transform:uppercase">
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Wafer Type: *</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <select class="form-control req010" id="wtype" name="wtype">
-                                                            <option value=""></option>
-                                                            <option value="inked">Inked</option>
-                                                            <option value="bumped">Bumped</option>
-                                                            <option value="standard">Standard</option>
-                                                            <option value="glass">Glass</option>
-                                                            <option value="others">Others</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label>Others: </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input type="text" id="wtypeothers" name="wtypeothers"  class="form-control input-sm 010" style="text-transform:uppercase" disabled>
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req013" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Type of Inking: *</label>
+                                                        <label>Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req010" id="inktype" name="inktype">
-                                                            <option value=""></option>
-                                                            <option value="Electronic Inking">Electronic Inking</option>
-                                                            <option value="Manual Inking">Manual Inking</option>
-                                                        </select>
+                                                        <input type="number" id="packagethickness" name="packagethickness"  class="form-control input-sm req013" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Ink Used: *</label>
+                                                        <label>Package Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="inkused" name="inkused"  class="form-control input-sm req010" style="text-transform:uppercase">
+                                                        <input type="number" id="packagesize" name="packagesize"  class="form-control input-sm req013" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -92,59 +93,40 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div>
-                        <div class="card border-left-danger">
-                            <div class="card-body">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="panel panel-primary">
+                        <div>
+                            <div class="card border-left-danger">
+                                <div class="card-body">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-lg-12">
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Ink Expiration date: </label>
+                                                            <label>Strip Nos./Panel Nos. : *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="date" id="inkexpdate" name="inkexpdate"  class="form-control input-sm" style="text-transform:uppercase">
+                                                            <input type="text" id="stripno" name="stripno"  class="form-control input-sm req013" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Ink Expired? *</label>
+                                                            <label>Array Size: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req010" id="inkexpired" name="inkexpired">
-                                                                <option value=""></option>
-                                                                <option value="N/A">N/A</option>
-                                                                <option value="Yes">Yes</option>
-                                                                <option value="No">No</option>
-                                                            </select>
+                                                            <input type="text" id="arraysize" name="arraysize"  class="form-control input-sm req013" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Ink Visual Inspection result: *</label>
+                                                            <label>Low MAG inspection required?: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req010" id="inkviresult" name="inkviresult">
+                                                            <select class="form-control req013" id="lowmaginspectionrequired" name="lowmaginspectionrequired">
                                                                 <option value=""></option>
-                                                                <option value="Pass">Pass</option>
-                                                                <option value="Fail">Fail</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <br/>
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label>Inspection Type: *</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <select class="form-control req010" id="inspectiontype" name="inspectiontype">
-                                                                <option value=""></option>
-                                                                <option value="Sampling">Sampling</option>
-                                                                <option value="100% inspection">100% inspection</option>
-                                                                <option value="Re-inspection / Failed 2nd Opt. QA">Re-inspection / Failed 2nd Opt. QA</option>
+                                                                <option value="Yes">YES</option>
+                                                                <option value="No">NO</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -154,7 +136,7 @@
                                                             <label>Remarks: * </label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <textarea class="form-control req010" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
+                                                            <textarea class="form-control req013" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -182,7 +164,7 @@
                             <label>Wafer no: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="dwaferno010" name="dwaferno010"  class="form-control input-sm">
+                            <input type="text" id="dwaferno013" name="dwaferno013"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
@@ -191,7 +173,7 @@
                             <label>Defect call-out: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="ddetails010" name="ddetails010"  class="form-control input-sm">
+                            <input type="text" id="ddetails013" name="ddetails013"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
@@ -200,7 +182,7 @@
                             <label>Defect quantity: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="number" id="dqty010" name="dqty010"  class="form-control input-sm">
+                            <input type="number" id="dqty013" name="dqty013"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
@@ -209,12 +191,12 @@
                             <label>Remarks: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="dremarks010" name="dremarks010"  class="form-control input-sm">
+                            <input type="text" id="dremarks013" name="dremarks013"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect010" name = "btnAddDefect010">Add Reject</button>
+                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect013" name = "btnAddDefect013">Add Reject</button>
                     </div>
                 </div>
 
@@ -232,7 +214,7 @@
             <div class="card border-left-danger">
                 <div class="card-body">
                     <div class="row no-gutters table-responsive">
-                    <table class="table table-bordered" id="tblreject010" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tblreject013" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Wafer number</th>
@@ -253,7 +235,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone010" name = "btnDone010" value="done">Done</button>
+        <button type="button" class="btn btn-outline-success" id="btnDone013" name = "btnDone013" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -263,27 +245,27 @@
     function removeRow(row){
         
         $("#tr"+row).remove();
-        tblcount = $('#tblreject010 > tbody tr').length;
+        tblcount = $('#tblreject013 > tbody tr').length;
         $("#initialthickness").focus();
         //checkRow(tblcount);
     }
 
-    $('#btnDone010').click(function(event) {
+    $('#btnDone013').click(function(event) {
 
-        var sdwaferno = $('input[name="sdwaferno010[]"]').map(function () {
+        var sdwaferno = $('input[name="sdwaferno013[]"]').map(function () {
         return this.value; }).get();
 
-        var sddetails = $('input[name="sddetails010[]"]').map(function () {
+        var sddetails = $('input[name="sddetails013[]"]').map(function () {
         return this.value; }).get();
 
-        var sdqty = $('input[name="sdqty010[]"]').map(function () {
+        var sdqty = $('input[name="sdqty013[]"]').map(function () {
         return this.value; }).get();
 
-        var sdremarks = $('input[name="sdremarks010[]"]').map(function () {
+        var sdremarks = $('input[name="sdremarks013[]"]').map(function () {
         return this.value; }).get();
 
         
-        var val = document.getElementsByClassName("req010");
+        var val = document.getElementsByClassName("req013");
         var data = {};
         var count = 0;
         for(var i = 0;val.length > i; i++)
@@ -303,7 +285,7 @@
         if(count > 0)
         {
             //$('#002').animate({scrollTop: '0px'}, 1000);
-            document.getElementById('010').scrollIntoView();
+            document.getElementById('013').scrollIntoView();
             swal("missing input!",{
                 icon: "warning",
                 title: "Please input required fields!",
@@ -329,7 +311,17 @@
                         title: res[1],
                         closeOnClickOutside: false,
                     });
-                    $('#btnReset').click()
+                    $("#btnReset").click()
+                    $('button.swal-button').click(function(event){$("#intlotno").focus();});
+                }
+                else
+                {
+                    swal("error!",{
+                        icon: "error",
+                        title: res[1],
+                        closeOnClickOutside: false,
+                    });
+                    $("#btnReset").click()
                     $('button.swal-button').click(function(event){$("#intlotno").focus();});
                 }
             }
@@ -337,10 +329,8 @@
 
         
         
-        xmlhttp.open("GET", "../php/addefai010.php?data=" + JSON.stringify(data)
+        xmlhttp.open("GET", "../php/addefai013.php?data=" + JSON.stringify(data)
         +"&intlotno="+document.getElementById("intlotno").value
-        +"&wtypeothers="+$("#wtypeothers.010").val()
-        +"&inkexpdate="+document.getElementById("inkexpdate").value
         + "&sdwaferno="+JSON.stringify(sdwaferno) 
         + "&sddetails="+ JSON.stringify(sddetails) 
         + "&sdqty="+ JSON.stringify(sdqty) 
@@ -348,32 +338,18 @@
         xmlhttp.send();
     });
 
-    $('#wtype.req010').change(function (){
-        
-        if($(this).val() == 'others')
-        {
-            
-            $("#wtypeothers.010").removeAttr("disabled");
-            $("#wtypeothers.010").focus();
-        }
-        else
-        {
-            $("#wtypeothers.010").val('');
-            $("#wtypeothers.010").attr("disabled","disabled");
-        }
-        
-    });
-
-    $( "#btnAddDefect010" ).click(function() {
+    $( "#btnAddDefect013" ).click(function() {
 
     //alert(tblcount)
 
 
-    var sdqty = $('input[name="sdqty010[]"]').map(function () {
+    var sdqty = $('input[name="sdqty013[]"]').map(function () {
     return this.value; }).get();
     var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
     //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
-    if((parseInt(dtotal) + parseInt($('#dqty010').val())) > parseInt(document.getElementById("currqty").value))
+
+    //var qty = document.getElementById("processcat").value === 'BACKGRIND' ? parseInt(document.getElementById("wqty").value) : parseInt(document.getElementById("lqty").value)
+    if((parseInt(dtotal) + parseInt($('#dqty013').val())) > parseInt(document.getElementById("currqty").value))
     {
         /* document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
         document.getElementById("derror").hidden = false;
@@ -385,14 +361,14 @@
         });
         return false;
     }
-    if($('#dwaferno010').val()== "" ||  $('#dqty010').val()== "" ||  $('#ddetails010').val()== "")
+    if($('#dwaferno013').val()== "" ||  $('#dqty013').val()== "" ||  $('#ddetails013').val()== "")
     {
         //alert("test")
         /* document.getElementById("derror").innerHTML = 'Please complete necessary details!';
         document.getElementById("derror").hidden = false;
         document.getElementById("dsuccess").hidden = true; */
-        document.getElementById('rej010').scrollIntoView();
-        var rejval = document.getElementsByClassName("rej010");
+        document.getElementById('rej013').scrollIntoView();
+        var rejval = document.getElementsByClassName("rej013");
         for(var i = 0;rejval.length > i; i++)
         {
             if(rejval[i].value == '')
@@ -413,19 +389,19 @@
     }
     else
     {
-        $('#tblreject010 > tbody').append('<tr id="tr'+tblcount+'">'+
-                                    '<td><input type="hidden" id = "sdwaferno010[]"  name="sdwaferno010[]" value="'+$('#dwaferno010').val()+'">'+$('#dwaferno010').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sddetails010[]"  name="sddetails010[]" value="'+$('#ddetails010').val()+'">'+$('#ddetails010').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sdqty010[]"  name="sdqty010[]" value="'+$('#dqty010').val()+'">'+$('#dqty010').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sdremarks010[]"  name="sdremarks010[]" value="'+$('#dremarks010').val()+'">'+$('#dremarks010').val()+'</td>'+
+        $('#tblreject013 > tbody').append('<tr id="tr'+tblcount+'">'+
+                                    '<td><input type="hidden" id = "sdwaferno013[]"  name="sdwaferno013[]" value="'+$('#dwaferno013').val()+'">'+$('#dwaferno013').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sddetails013[]"  name="sddetails013[]" value="'+$('#ddetails013').val()+'">'+$('#ddetails013').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdqty013[]"  name="sdqty013[]" value="'+$('#dqty013').val()+'">'+$('#dqty013').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdremarks013[]"  name="sdremarks013[]" value="'+$('#dremarks013').val()+'">'+$('#dremarks013').val()+'</td>'+
                                     '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
         tblcount++;
-        $('#dwaferno010').val("");
-        $('#ddetails010').val("");
-        $('#dqty010').val("");
-        $('#dremarks010').val("");
+        $('#dwaferno013').val("");
+        $('#ddetails013').val("");
+        $('#dqty013').val("");
+        $('#dremarks013').val("");
         //checkRow(tblcount);
         
         /* document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
@@ -437,7 +413,7 @@
             closeOnClickOutside: false,
         });
         dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
-        parseInt(dtotal) += parseInt($('#dqty010').val());
+        parseInt(dtotal) += parseInt($('#dqty013').val());
     }
 
     });

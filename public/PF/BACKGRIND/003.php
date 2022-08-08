@@ -889,6 +889,10 @@
         };
         xmlhttp.open("GET", "../php/addefai003.php?data=" + JSON.stringify(data) 
         + "&intlotno="+document.getElementById("intlotno").value 
+        + "&sdwaferno="+JSON.stringify(sdwaferno) 
+        + "&sddetails="+ JSON.stringify(sddetails) 
+        + "&sdqty="+ JSON.stringify(sdqty) 
+        + "&sdremarks="+ JSON.stringify(sdremarks)
         + "&stwaferno="+JSON.stringify(stwaferno) 
         + "&stpoint1="+ JSON.stringify(stpoint1) 
         + "&stpoint2="+ JSON.stringify(stpoint2) 
@@ -1074,7 +1078,7 @@
     //alert(tblcount)
 
 
-    var sdqty = $('input[name="sdqty[]"]').map(function () {
+    var sdqty = $('input[name="sdqty003[]"]').map(function () {
     return this.value; }).get();
     var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
     //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
