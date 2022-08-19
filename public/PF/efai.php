@@ -179,9 +179,12 @@
     <?php include_once "SAW/010.php";?>
     <?php include_once "SAW/011.php";?>
     <?php include_once "SINGULATION/013.php";?>
+    <?php include_once "SINGULATION/014.php";?>
+    <?php include_once "SINGULATION/015.php";?>
     <?php include_once "SINGULATION/016.php";?>
     <?php include_once "SINGULATION/017.php";?>
     <?php include_once "SINGULATION/019.php";?>
+    <?php include_once "SINGULATION/020.php";?>
     <?php include_once "BACKGRIND/test.php";?>
 </div>
 <br/>
@@ -192,7 +195,7 @@
 
 <script>
     var tblcount = 0;
-    var ihcount = 0;
+    var iscount = 0;
     var bhcount = 0;
     var wpcount = 0;
     var rccount = 0;
@@ -206,15 +209,17 @@
         $(".form-control").val("");
         $("#tblreject > tbody").empty();
         $("#tblbh > tbody").empty();
-        $("#tblih > tbody").empty();
+        $("#tblis > tbody").empty();
         $("#tblwp > tbody").empty();
+        $("#tblis015 > tbody").empty();
+        $("#tblwp015 > tbody").empty();
         $("#tblrc > tbody").empty();
         $(".efai").attr('hidden',true);
         document.getElementById("intlotno").disabled = false;
         $("#intlotno").focus();
         tblcount = 0;
         bhcount = 0;
-        ihcount = 0;
+        iscount = 0;
         wpcount = 0;
         rccount = 0;
     });

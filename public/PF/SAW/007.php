@@ -613,7 +613,7 @@
         
         $("#tr"+row).remove();
         tblcount = $('#tblreject007 > tbody tr').length;
-        $("#initialthickness").focus();
+        $("#dwaferno007").focus();
         //checkRow(tblcount);
     }
 
@@ -669,7 +669,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                alert(result)
+                //alert(result)
 
                 if(res[0].trim() == 'success')
                 {
@@ -679,6 +679,15 @@
                         closeOnClickOutside: false,
                     });
                     $('#btnReset').click()
+                    $('button.swal-button').click(function(event){$("#intlotno").focus();});
+                }
+                else
+                {
+                    swal("error!",{
+                        icon: "error",
+                        title: res[1],
+                        closeOnClickOutside: false,
+                    });
                     $('button.swal-button').click(function(event){$("#intlotno").focus();});
                 }
             }

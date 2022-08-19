@@ -246,7 +246,7 @@
         
         $("#tr"+row).remove();
         tblcount = $('#tblreject013 > tbody tr').length;
-        $("#initialthickness").focus();
+        $("#dwaferno013").focus();
         //checkRow(tblcount);
     }
 
@@ -321,7 +321,6 @@
                         title: res[1],
                         closeOnClickOutside: false,
                     });
-                    $("#btnReset").click()
                     $('button.swal-button').click(function(event){$("#intlotno").focus();});
                 }
             }

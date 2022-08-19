@@ -1,5 +1,5 @@
 <?php
-include_once("../classes/efai019.php");
+include_once("../classes/efai020.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/reject.php");
 session_start();
@@ -32,22 +32,33 @@ $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
 //echo $intlotdata2->custcode;
-$efai019 = new efai019();
+$efai020 = new efai020();
 
-$efai019->setcustcode($intlotdata2->custcode);
-$efai019->setintlot($intlotno);
-$efai019->setwswr($data->wswr);
-$efai019->setswrno($data->swrno);
-$efai019->setpackagetype($data->packagetype);
-$efai019->setstripno($data->stripno);
-$efai019->setpackagethickness($data->packagethickness);
-$efai019->setpackagesize($data->packagesize);
-$efai019->setarraysize($data->arraysize);
-$efai019->setsamplingplan($data->samplingplan);
-$efai019->setsamplingsize($data->samplingsize);
-$efai019->setremarks($data->remarks);
-$efai019->setlastupdatedby($_SESSION['idno']);
-$success = $efai019->Addefai019();
+$efai020->setcustcode($intlotdata2->custcode);
+$efai020->setintlot($intlotno);
+$efai020->setwswr($data->wswr);
+$efai020->setswrno($data->swrno);
+$efai020->setpackagetype($data->packagetype);
+$efai020->setstripno($data->stripno);
+$efai020->setpackagethickness($data->packagethickness);
+$efai020->setpackagesize($data->packagesize);
+$efai020->setarraysize($data->arraysize);
+$efai020->setlotrequiringmanualdepanelling($data->lotrequiringmanualdepanelling);
+$efai020->setremnantsrejectunitsbeenremoved($data->remnantsrejectunitsbeenremoved);
+$efai020->setgoodunitsbeenscrapedfromdicingtape($data->goodunitsbeenscrapedfromdicingtape);
+$efai020->setcanisterfilledwithfoam($data->canisterfilledwithfoam);
+$efai020->setcanisterproperlyenclosedwithlid($data->canisterproperlyenclosedwithlid);
+$efai020->setpackinglotdetailsattached($data->packinglotdetailsattached);
+$efai020->setlotproperlyvacuumsealed($data->lotproperlyvacuumsealed);
+$efai020->setqcremnantsrejectunitsbeenremoved($data->qcremnantsrejectunitsbeenremoved);
+$efai020->setqcemp($data->qcemp);
+$efai020->setremarks($data->remarks);
+$efai020->setlastupdate(date("Y-m-d h:i:s"));
+$efai020->setlastupdatedby($_SESSION['idno']);
+$efai020->setactive(1);
+
+
+$success = $efai020->Addefai020();
 
 if($success == true)
 {
@@ -62,7 +73,7 @@ if($success == true)
             $total += (int) $sdqty[$x];
             $reject->setintlotno($intlotno);
             $reject->setcustcode($intlotdata2->custcode);
-            $reject->setstation('019');
+            $reject->setstation('020');
             $reject->setmachine('');
             $reject->setwaferno($sdwaferno[$x]);
             $reject->setddetails($sddetails[$x]);

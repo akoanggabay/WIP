@@ -1,5 +1,5 @@
 <?php
-include_once("../classes/efai019.php");
+include_once("../classes/efai016.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/reject.php");
 session_start();
@@ -32,22 +32,33 @@ $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
 //echo $intlotdata2->custcode;
-$efai019 = new efai019();
+$efai016 = new efai016();
 
-$efai019->setcustcode($intlotdata2->custcode);
-$efai019->setintlot($intlotno);
-$efai019->setwswr($data->wswr);
-$efai019->setswrno($data->swrno);
-$efai019->setpackagetype($data->packagetype);
-$efai019->setstripno($data->stripno);
-$efai019->setpackagethickness($data->packagethickness);
-$efai019->setpackagesize($data->packagesize);
-$efai019->setarraysize($data->arraysize);
-$efai019->setsamplingplan($data->samplingplan);
-$efai019->setsamplingsize($data->samplingsize);
-$efai019->setremarks($data->remarks);
-$efai019->setlastupdatedby($_SESSION['idno']);
-$success = $efai019->Addefai019();
+$efai016->setcustcode($intlotdata2->custcode);
+$efai016->setintlot($intlotno);
+$efai016->setmachine($data->machine);
+$efai016->setwswr($data->wswr);
+$efai016->setswrno($data->swrno);
+$efai016->setfaicat($data->faicat);
+$efai016->setpackagetype($data->packagetype);
+$efai016->setstripno($data->stripno);
+$efai016->setpackagethickness($data->packagethickness);
+$efai016->setpackagesize($data->packagesize);
+$efai016->setarraysize($data->arraysize);
+$efai016->setreasonuvcuring($data->reasonuvcuring);
+$efai016->setloadingtrayclean($data->loadingtrayclean);
+$efai016->setuvlampsfunctional($data->uvlampsfunctional);
+$efai016->setuvtapedescription($data->uvtapedescription);
+$efai016->setuvirradtime($data->uvirradtime);
+$efai016->setringnoundergoneuvcuring($data->ringnoundergoneuvcuring);
+$efai016->setmarkingperformedwithuvcuring($data->markingperformedwithuvcuring);
+$efai016->settechemp($data->techemp);
+$efai016->setremarks($data->remarks);
+$efai016->setlastupdatedby($_SESSION['idno']);
+
+
+
+$success = $efai016->Addefai016();
 
 if($success == true)
 {
@@ -62,7 +73,7 @@ if($success == true)
             $total += (int) $sdqty[$x];
             $reject->setintlotno($intlotno);
             $reject->setcustcode($intlotdata2->custcode);
-            $reject->setstation('019');
+            $reject->setstation('016');
             $reject->setmachine('');
             $reject->setwaferno($sdwaferno[$x]);
             $reject->setddetails($sddetails[$x]);

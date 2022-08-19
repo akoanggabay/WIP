@@ -111,7 +111,7 @@
                                                         <label>Required: Wafer Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -120,7 +120,7 @@
                                                         <label>Actual: Wafer Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -129,7 +129,7 @@
                                                         <label>Street width (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="streetwidth" name="streetwidth"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="streetwidth" name="streetwidth"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -138,7 +138,7 @@
                                                         <label>ACTUAL: Die Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="actualdiesize" name="actualdiesize"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="actualdiesize" name="actualdiesize"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -377,7 +377,7 @@
                                                         <label>Blade Height (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="bladeheight" name="bladeheight"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="number" id="bladeheight" name="bladeheight"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -389,13 +389,31 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row saw">
+                                                    <div class="col-md-4">
+                                                        <label>Index size (mm): * </label>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>CH1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="number" id="indexsizech1" name="indexsizech1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>CH2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="number" id="indexsizech2" name="indexsizech2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -407,13 +425,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -425,13 +443,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -443,13 +461,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -458,7 +476,7 @@
                                                         <label>Feed speed (o/s): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="feedspeed" name="feedspeed"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="number" id="feedspeed" name="feedspeed"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -470,13 +488,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -485,7 +503,7 @@
                                                         <label>Cut Width (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="cutwidth" name="cutwidth"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="number" id="cutwidth" name="cutwidth"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -619,7 +637,7 @@
                                                         <label>Dicing Tape Thickness(mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="number" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -628,7 +646,7 @@
                                                         <label>UV Curing Time: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="uvcuringtime" name="uvcuringtime"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="number" id="uvcuringtime" name="uvcuringtime"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1241,57 +1259,57 @@
                                                                 <label>Channel: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="text" id="ihch" name="ihch"  class="form-control input-sm ih">
+                                                                <input type="text" id="isch" name="isch"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Index Height 1: </label>
+                                                                <label>Index Size 1: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="ih1" name="ih1"  class="form-control input-sm ih">
+                                                                <input type="number" id="is1" name="is1"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Index Height 2: </label>
+                                                                <label>Index Size 2: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="ih2" name="ih2"  class="form-control input-sm ih">
+                                                                <input type="number" id="is2" name="is2"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Index Height 3: </label>
+                                                                <label>Index Size 3: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="ih3" name="ih3"  class="form-control input-sm ih">
+                                                                <input type="number" id="is3" name="is3"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Index Height 4: </label>
+                                                                <label>Index Size 4: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="ih4" name="ih4"  class="form-control input-sm ih">
+                                                                <input type="number" id="is4" name="is4"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <label>Index Height 5: </label>
+                                                                <label>Index Size 5: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="ih5" name="ih5"  class="form-control input-sm ih">
+                                                                <input type="number" id="is5" name="is5"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddIH" name = "btnAddIH">Add Index Height</button>
+                                                            <button type="button" class="btn btn-outline-info" id="btnAddis" name = "btnAddis">Add Index Size</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1423,21 +1441,21 @@
             </div>
         </div><br/><br/>
     </div>
-    <div class="row saw"> 
-        <h5>Index Height</h5>
+    <div class="row saw"> <br/>
+        <h5>Index Size</h5>
         <div class="col-lg-12">
             <div class="card border-left-danger">
                 <div class="card-body">
                     <div class="row no-gutters table-responsive">
-                    <table class="table table-bordered" id="tblih" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tblis" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Channel</th>
-                                <th>Index Height 1</th>
-                                <th>Index Height 2</th>
-                                <th>Index Height 3</th>
-                                <th>Index Height 4</th>
-                                <th>Index Height 5</th>
+                                <th>Index Size 1</th>
+                                <th>Index Size 2</th>
+                                <th>Index Size 3</th>
+                                <th>Index Size 4</th>
+                                <th>Index Size 5</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -1450,7 +1468,7 @@
             </div>
         </div><br/><br/>
     </div>
-    <div class="row saw ring"> 
+    <div class="row saw ring"><br/>
         <h5>Wash parameter</h5>
         <div class="col-lg-12">
             <div class="card border-left-danger">
@@ -1473,7 +1491,7 @@
             </div>
         </div><br/><br/>
     </div>
-    <div class="row ring"> 
+    <div class="row ring"><br/>
         <h5>Ring-cut Diameter</h5>
         <div class="col-lg-12">
             <div class="card border-left-danger">
@@ -1496,7 +1514,7 @@
             </div>
         </div><br/><br/>
     </div>
-    <div class="row"> 
+    <div class="row"><br/>
         <h5>List of Reject Details</h5>
         <div class="col-lg-12">
             <div class="card border-left-danger">
@@ -1535,6 +1553,7 @@
         
         $("#tr"+row).remove();
         tblcount = $('#tblreject008 > tbody tr').length;
+        $("#dwaferno008").focus();
         //checkRow(tblcount);
     }
 
@@ -1545,10 +1564,10 @@
         //checkRow(tblcount);
     }
 
-    function removeIHRow(row){
+    function removeisRow(row){
         
         $("#tr"+row).remove();
-        ihcount = $('#tblih > tbody tr').length;
+        iscount = $('#tblis > tbody tr').length;
         //checkRow(tblcount);
     }
 
@@ -1604,22 +1623,22 @@
 
         //------------------------------------------------------------------
 
-        var sihch = $('input[name="sihch[]"]').map(function () {
+        var sisch = $('input[name="sisch[]"]').map(function () {
         return this.value; }).get();
 
-        var sih1 = $('input[name="sih1[]"]').map(function () {
+        var sis1 = $('input[name="sis1[]"]').map(function () {
         return this.value; }).get();
 
-        var sih2 = $('input[name="sih3[]"]').map(function () {
+        var sis2 = $('input[name="sis2[]"]').map(function () {
         return this.value; }).get();
 
-        var sih3 = $('input[name="sih3[]"]').map(function () {
+        var sis3 = $('input[name="sis3[]"]').map(function () {
         return this.value; }).get();
 
-        var sih4 = $('input[name="sih4[]"]').map(function () {
+        var sis4 = $('input[name="sis4[]"]').map(function () {
         return this.value; }).get();
 
-        var sih5 = $('input[name="sih5[]"]').map(function () {
+        var sis5 = $('input[name="sis5[]"]').map(function () {
         return this.value; }).get();
 
         //------------------------------------------------------------------
@@ -1676,7 +1695,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                console.log(result)
+                //console.log(result)
 
                 if(res[0].trim() == 'success')
                 {
@@ -1695,6 +1714,7 @@
                         title: res[1],
                         closeOnClickOutside: false,
                     });
+                    $('button.swal-button').click(function(event){$("#intlotno").focus();});
                 }
                 
             }
@@ -1711,12 +1731,12 @@
         + "&sbh3="+ JSON.stringify(sbh3)
         + "&sbh4="+ JSON.stringify(sbh4) 
         + "&sbh5="+ JSON.stringify(sbh5)
-        + "&sihch="+ JSON.stringify(sihch) 
-        + "&sih1="+ JSON.stringify(sih1) 
-        + "&sih2="+ JSON.stringify(sih2) 
-        + "&sih3="+ JSON.stringify(sih3)
-        + "&sih4="+ JSON.stringify(sih4) 
-        + "&sih5="+ JSON.stringify(sih5)
+        + "&sisch="+ JSON.stringify(sisch) 
+        + "&sis1="+ JSON.stringify(sis1) 
+        + "&sis2="+ JSON.stringify(sis2) 
+        + "&sis3="+ JSON.stringify(sis3)
+        + "&sis4="+ JSON.stringify(sis4) 
+        + "&sis5="+ JSON.stringify(sis5)
         + "&srcwaferno="+ JSON.stringify(srcwaferno)
         + "&srcmeasurement="+ JSON.stringify(srcmeasurement)
         + "&swptime="+ JSON.stringify(swptime) 
@@ -1781,11 +1801,11 @@
 
     });
 
-    $( "#btnAddIH" ).click(function() {
+    $( "#btnAddis" ).click(function() {
 
     //alert(countDecimals(document.getElementById("tpoint1").value))
 
-    var val = document.getElementsByClassName("ih");
+    var val = document.getElementsByClassName("is");
     var data = {};
     var count = 0;
     for(var i = 0;val.length > i; i++)
@@ -1814,24 +1834,24 @@
 
     else
     {
-        $('#tblih > tbody').append('<tr id="tr'+ihcount+'">'+
-                                    '<td><input type="hidden" id = "sihch[]"  name="sihch[]" value="'+$('#ihch').val()+'">'+$('#ihch').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sih1[]"  name="sih1[]" value="'+$('#ih1').val()+'">'+$('#ih1').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sih2[]"  name="sih2[]" value="'+$('#ih2').val()+'">'+$('#ih2').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sih3[]"  name="sih3[]" value="'+$('#ih3').val()+'">'+$('#ih3').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sih4[]"  name="sih4[]" value="'+$('#ih4').val()+'">'+$('#ih4').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sih5[]"  name="sih5[]" value="'+$('#ih5').val()+'">'+$('#ih5').val()+'</td>'+
-                                    '<td><button type="button" onclick="removeIHRow('+ihcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+        $('#tblis > tbody').append('<tr id="tr'+iscount+'">'+
+                                    '<td><input type="hidden" id = "sisch[]"  name="sisch[]" value="'+$('#isch').val()+'">'+$('#isch').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sis1[]"  name="sis1[]" value="'+$('#is1').val()+'">'+$('#is1').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sis2[]"  name="sis2[]" value="'+$('#is2').val()+'">'+$('#is2').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sis3[]"  name="sis3[]" value="'+$('#is3').val()+'">'+$('#is3').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sis4[]"  name="sis4[]" value="'+$('#is4').val()+'">'+$('#is4').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sis5[]"  name="sis5[]" value="'+$('#is5').val()+'">'+$('#is5').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeisRow('+iscount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
-        ihcount++;
+        iscount++;
         swal("success!",{
             icon: "success",
-            title: "Index Height details successfully added!",
+            title: "Index Size details successfully added!",
             closeOnClickOutside: false,
         });
-        $(".ih").css({"border-color": "#d1d3e2"});
-        $(".ih").val("");
+        $(".is").css({"border-color": "#d1d3e2"});
+        $(".is").val("");
         
     }
 

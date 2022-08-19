@@ -2,7 +2,7 @@
 include_once("../classes/efai008.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/bladeheight.php");
-include_once("../classes/indexheight.php");
+include_once("../classes/indexsize.php");
 include_once("../classes/ringcut.php");
 include_once("../classes/washparameter.php");
 include_once("../classes/reject.php");
@@ -25,13 +25,13 @@ $sbh3 = json_decode($_GET['sbh3']);
 $sbh4 = json_decode($_GET['sbh4']);
 $sbh5 = json_decode($_GET['sbh5']);
 
-//json index height
-$sihch = json_decode($_GET['sihch']);
-$sih1 = json_decode($_GET['sih1']);
-$sih2 = json_decode($_GET['sih2']);
-$sih3 = json_decode($_GET['sih3']);
-$sih4 = json_decode($_GET['sih4']);
-$sih5 = json_decode($_GET['sih5']);
+//json index size
+$sisch = json_decode($_GET['sisch']);
+$sis1 = json_decode($_GET['sis1']);
+$sis2 = json_decode($_GET['sis2']);
+$sis3 = json_decode($_GET['sis3']);
+$sis4 = json_decode($_GET['sis4']);
+$sis5 = json_decode($_GET['sis5']);
 
 //json ringcut
 $srcwaferno = json_decode($_GET['srcwaferno']);
@@ -50,11 +50,11 @@ if($exist == 'false')
     return false;
 }
 
-/* if(!$_SESSION['idno'])
+if(!$_SESSION['idno'])
 {
     echo 'error_Login session timeout!';
     return false;
-} */
+}
 $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
@@ -81,7 +81,7 @@ $efai008->setcuttingposition($data->cuttingposition);
 $efai008->setcutmethod($data->cutmethod);
 $efai008->setchopperseed($data->chopperseed);
 $efai008->setcuttingchannelseq($data->cuttingchannelseq);
-$efai008->setchannelthetarotation($data->ch1,$data->ch2,$data->ch3,$data->ch4);
+$efai008->setchannelthetarotation($data->ch1.','.$data->ch2.','.$data->ch3.','.$data->ch4);
 $efai008->setbladetype($data->bladetype);
 $efai008->setflangsizez1($data->flangsizez1);
 $efai008->setflangsizez2($data->flangsizez2);
@@ -92,6 +92,8 @@ $efai008->setbladelotnoz2($data->bladelotnoz2);
 $efai008->setbladeheight($data->bladeheight);
 $efai008->setbladeheightz1($data->bladeheightz1);
 $efai008->setbladeheightz2($data->bladeheightz2);
+$efai008->setindexsizech1($data->indexsizech1);
+$efai008->setindexsizech2($data->indexsizech2);
 $efai008->setbladeexposurez1($data->bladeexposurez1);
 $efai008->setbladeexposurez2($data->bladeexposurez2);
 $efai008->setbladecutlengthz1($data->bladecutlengthz1);
@@ -153,7 +155,7 @@ $efai008->setwafernoinspected($data->wafernoinspected);
 $efai008->settechemp($data->techemp);
 $efai008->setqcemp($data->qcemp);
 $efai008->setremarks($data->remarks);
-$efai008->setlastupdatedby('1037');
+$efai008->setlastupdatedby($_SESSION['idno']);
 $efai008->setfeedspeedz1($data->feedspeedz1);
 $efai008->setfeedspeedz2($data->feedspeedz2);
 $efai008->setsawtype($data->sawtype);
@@ -191,7 +193,7 @@ if($success == true)
 
         for($x=0;$x<count($sbhch);$x++){
             $bladeheight->setintlot($intlotno);
-            $bladeheight->setch($sbhch[$x]);
+            $bladeheight->setch($sisch[$x]);
             $bladeheight->setbh1($sbh1[$x]);
             $bladeheight->setbh2($sbh2[$x]);
             $bladeheight->setbh3($sbh3[$x]);
@@ -203,21 +205,22 @@ if($success == true)
         }
     }
 
-    if(count($sihch) > 0)
+    if(count($sisch) > 0)
     {
-        $indexheight = new indexheight;
+        $indexsize = new indexsize;
 
-        for($x=0;$x<count($sihch);$x++){
-            $indexheight->setintlot($intlotno);
-            $indexheight->setch($sbhch[$x]);
-            $indexheight->setih1($sbh1[$x]);
-            $indexheight->setih2($sbh2[$x]);
-            $indexheight->setih3($sbh3[$x]);
-            $indexheight->setih4($sbh4[$x]);
-            $indexheight->setih5($sbh5[$x]);
-            $indexheight->setlastupdate(date("Y-m-d h:i:sa"));
-            $indexheight->setlastupdatedby($_SESSION['idno']);
-            $indexheight->AddIndexHeight();
+        for($x=0;$x<count($sisch);$x++){
+            $indexsize->setintlot($intlotno);
+            $indexsize->setch($sisch[$x]);
+            $indexsize->setstation('008');
+            $indexsize->setis1($sis1[$x]);
+            $indexsize->setis2($sis2[$x]);
+            $indexsize->setis3($sis3[$x]);
+            $indexsize->setis4($sis4[$x]);
+            $indexsize->setis5($sis5[$x]);
+            $indexsize->setlastupdate(date("Y-m-d h:i:sa"));
+            $indexsize->setlastupdatedby($_SESSION['idno']);
+            $indexsize->Addindexsize();
         }
     }
 

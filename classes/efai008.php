@@ -32,6 +32,8 @@ class efai008 {
     private $bladeheight;
     private $bladeheightz1;
     private $bladeheightz2;
+    private $indexsizech1;
+    private $indexsizech2;
     private $bladeexposurez1;
     private $bladeexposurez2;
     private $bladecutlengthz1;
@@ -138,6 +140,8 @@ class efai008 {
     public function setbladeheight($bladeheight){$this->bladeheight=$bladeheight;}
     public function setbladeheightz1($bladeheightz1){$this->bladeheightz1=$bladeheightz1;}
     public function setbladeheightz2($bladeheightz2){$this->bladeheightz2=$bladeheightz2;}
+    public function setindexsizech1($indexsizech1){$this->indexsizech1=$indexsizech1;}
+    public function setindexsizech2($indexsizech2){$this->indexsizech2=$indexsizech2;}
     public function setbladeexposurez1($bladeexposurez1){$this->bladeexposurez1=$bladeexposurez1;}
     public function setbladeexposurez2($bladeexposurez2){$this->bladeexposurez2=$bladeexposurez2;}
     public function setbladecutlengthz1($bladecutlengthz1){$this->bladecutlengthz1=$bladecutlengthz1;}
@@ -238,6 +242,8 @@ class efai008 {
     public function getbladeheight(){return $this->bladeheight;}
     public function getbladeheightz1(){return $this->bladeheightz1;}
     public function getbladeheightz2(){return $this->bladeheightz2;}
+    public function getindexsizech1(){return $this->indexsizech1;}
+    public function getindexsizech2(){return $this->indexsizech2;}
     public function getbladeexposurez1(){return $this->bladeexposurez1;}
     public function getbladeexposurez2(){return $this->bladeexposurez2;}
     public function getbladecutlengthz1(){return $this->bladecutlengthz1;}
@@ -343,6 +349,8 @@ class efai008 {
             bladeheight,
             bladeheightz1,
             bladeheightz2,
+            indexsizech1,
+            indexsizech2,
             bladeexposurez1,
             bladeexposurez2,
             bladecutlengthz1,
@@ -410,7 +418,7 @@ class efai008 {
             feedspeedz1,
             feedspeedz2,
             sawtype
-            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $params = array($this->getcustcode(),
             $this->getintlot(),
             $this->getmachine(),
@@ -441,6 +449,8 @@ class efai008 {
             $this->getbladeheight(),
             $this->getbladeheightz1(),
             $this->getbladeheightz2(),
+            $this->getindexsizech1(),
+            $this->getindexsizech2(),
             $this->getbladeexposurez1(),
             $this->getbladeexposurez2(),
             $this->getbladecutlengthz1(),

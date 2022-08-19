@@ -114,6 +114,30 @@ if(!isset($_SESSION['idno']))
                 {
             ?>
             <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#PIcollapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-microchip"></i>
+                    <span>Parts Inventory</span>
+                </a>
+                <div id="PIcollapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Parts Inventory:</h6>
+                        <a class="collapse-item" href="?form=PI&path=partsupload">Parts Upload</a>
+                        <a class="collapse-item" href="?form=PI&path=withdraw">Parts Withdrawal</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+            <?php } ?>
+
+            <?php 
+                if(@$_SESSION['usertype'] != 'Operator' && @$_SESSION['usertype'] != 'Guest') 
+                {
+            ?>
+            <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#MEcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -429,6 +453,12 @@ if(!isset($_SESSION['idno']))
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables.js"></script>
+
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
 
 </body>
 

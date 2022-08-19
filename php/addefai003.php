@@ -32,42 +32,6 @@ $sddetails = json_decode($_GET['sddetails']);
 $sdqty = json_decode($_GET['sdqty']);
 $sdremarks = json_decode($_GET['sdremarks']);
 
-
-//echo json_encode($data);
-/* 
-$intlotno = $_GET['intlotno'];
-$machine = $_GET['machine'];
-$faicat = $_GET['faicat'];
-$wswr = $_GET['wswr'];
-$swrno = $_GET['swrno'];
-$wafercondition = $_GET['wafercondition'];
-$wafertype = $_GET['wafertype'];
-$waferboatslotting = $_GET['waferboatslotting'];
-$chucktabletype = $_GET['chucktabletype'];
-$chucktablecleaning = $_GET['chucktablecleaning'];
-$processmode = $_GET['processmode'];
-$changetape = $_GET['changetape'];
-$bgtapetype = $_GET['bgtapetype'];
-$bgtapeused = $_GET['bgtapeused'];
-$bgtapelotno = $_GET['bgtapelotno'];
-$bgtapeexpdate = $_GET['bgtapeexpdate'];
-$notchtype = $_GET['notchtype'];
-$changeblade = $_GET['changeblade'];
-$bladetemperature = $_GET['bladetemperature'];
-$bladecount = $_GET['bladecount'];
-$setupwafer = $_GET['setupwafer'];
-$firstwaferinspection = $_GET['firstwaferinspection'];
-$firstwaferno = $_GET['firstwaferno'];
-$mpchucktablecleaning = $_GET['mpchucktablecleaning'];
-$mpbgtapeinstallation = $_GET['mpbgtapeinstallation'];
-$mpbgtaperollercleaning = $_GET['mpbgtaperollercleaning'];
-$mpbladeposition = $_GET['mpbladeposition'];
-$mplamphourusage = $_GET['mplamphourusage'];
-$mptechemp = $_GET['mptechemp'];
-$mpqcemp = $_GET['mpqcemp'];
-$remarks = $_GET['remarks']; */
-
-
 $exist = IntLotno::checkExist($intlotno);
 
 if($exist == 'false')
@@ -186,6 +150,8 @@ if($success == true)
             $reject->AddReject();
         }
     }
+    $ilot = new IntLotno;
+    $ilot->updateBRM($intlotno,$intlotdata2->custcode,$data->faicat);
 
     echo 'success_Success! '.$intlotno.' eFAI details successfully added!';
 }

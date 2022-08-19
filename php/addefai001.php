@@ -13,18 +13,6 @@ $sddetails = json_decode($_GET['sddetails']);
 $sdqty = json_decode($_GET['sdqty']);
 $sdremarks = json_decode($_GET['sdremarks']);
 
-/* $intlotno = $_GET['intlotno'];
-$wswr = $_GET['wswr'];
-$swrno = $_GET['swrno'];
-$wafercondition = $_GET['wafercondition'];
-$wafertype = $_GET['wafertype'];
-$initialthickness = $_GET['initialthickness'];
-$heightmeasurement = $_GET['heightmeasurement'];
-$warpage = $_GET['warpage'];
-$waferboatslotting = $_GET['waferboatslotting'];
-$highmaginspectionrequired = $_GET['highmaginspectionrequired'];
-$remarks = $_GET['remarks']; */
-
 
 $exist = IntLotno::checkExist($intlotno);
 

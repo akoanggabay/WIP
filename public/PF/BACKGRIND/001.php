@@ -439,6 +439,15 @@
                     $('#btnReset').click()
                     $('button.swal-button').click(function(event){$("#intlotno").focus();});
                 }
+                else
+                {
+                    swal("error!",{
+                        icon: "error",
+                        title: res[1],
+                        closeOnClickOutside: false,
+                    });
+                    $('button.swal-button').click(function(event){$("#intlotno").focus();});
+                }
             }
         };
 

@@ -430,10 +430,353 @@
         </div>
     </div>
 </div>
+</br><br/>
+<!-- ----------------------------------------------------------------------------------------BRM -->
+<div id="bgonlybrm" hidden>
+    <h4>Backgrind Response Measurement</h4>
+    <div class="row">
+        
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="setup" value="setup" onclick="BRM(value)" disabled> Set up
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="monitoring" value="monitoring" onclick="BRM(value)" disabled> Monitoring
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="psc" value="psc" onclick="BRM(value)" disabled> PSC
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="checkbox" id ="cr" value="cr" onclick="BRM(value)" disabled> Customer Requirement
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <br/>
 <br/>
 <!-- ---------------------------------------------------------------------------------------- -->
+<div class="row"> 
+    <div class="col-lg-4">
+        <h5>Reject Details</h5>
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <div class="row no-gutters">
+                                <div class="col-lg-12">
+                                    <div id = "dsuccess" class="alert alert-success alert-dismissible" role="alert" hidden>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div id = "derror" class="alert alert-danger alert-dismissible" role="alert" hidden>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Wafer no: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="text" id="dwaferno" name="dwaferno"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Defect call-out: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="text" id="ddetails" name="ddetails"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Defect quantity: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="dqty" name="dqty"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Remarks: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="text" id="dremarks" name="dremarks"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-outline-danger" id="btnAddDefect" name = "btnAddDefect" disabled>Add Reject</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4" id="bgonlythick" hidden>
+        <h5>Final Thickness ( μm/Micron )</h5>
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <div class="row no-gutters">
+                                <div class="col-lg-12">
+                                    <div id = "tsuccess" class="alert alert-success alert-dismissible" role="alert" hidden>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div id = "terror" class="alert alert-danger alert-dismissible" role="alert" hidden>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Wafer no: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="text" id="twaferno" name="twaferno"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Point 1: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="tpoint1" name="tpoint1"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Point 2: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="tpoint2" name="tpoint2"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Point 3: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="tpoint3" name="tpoint3"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Point 4: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="tpoint4" name="tpoint4"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Point 5: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="tpoint5" name="tpoint5"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Point average : </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="pave" name="pave"  class="form-control input-sm" value = "" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Total Thickness Variation : </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="ttv" name="ttv"  class="form-control input-sm" value = "" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-outline-info" id="btnAddThick" name = "btnAddThick" disabled>Add Final Thickness</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4" id="bgonlyrough" hidden>
+        <h5>Roughness( μm/Micron )</h5>
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <div class="row no-gutters">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div id = "rsuccess" class="alert alert-success alert-dismissible" role="alert" hidden>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div id = "rerror" class="alert alert-danger alert-dismissible" role="alert" hidden>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Roughness 1: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="rpoint1" name="rpoint1"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Roughness 2: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="rpoint2" name="rpoint2"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Roughness 3: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="rpoint3" name="rpoint3"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Roughness 4: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="rpoint4" name="rpoint4"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Roughness 5: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="rpoint5" name="rpoint5"  class="form-control input-sm" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Roughness average: </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="number" id="rave" name="rave"  class="form-control input-sm" value = "" disabled>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br/><br/>
 
+<div class="row" id="bgonlylist" hidden> 
+    <h5>List of Final Thickness</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters table-responsive">
+                <table class="table table-bordered" id="tblthickness" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Wafer number</th>
+                            <th>Point 1</th>
+                            <th>Point 2</th>
+                            <th>Point 3</th>
+                            <th>Point 4</th>
+                            <th>Point 5</th>
+                            <th>Point average</th>
+                            <th>TTV</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
+<div class="row"> 
+    <h5>List of Reject Details</h5>
+    <div class="col-lg-12">
+        <div class="card border-left-danger">
+            <div class="card-body">
+                <div class="row no-gutters table-responsive">
+                <table class="table table-bordered" id="tblreject" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Wafer number</th>
+                            <th>Defect call-out</th>
+                            <th>Quantity</th>
+                            <th>Remarks</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br><br/>
 <div class="form-group">
     <button type="button" class="btn btn-outline-success" id="btnDone" name = "btnStat" value="done" disabled>Done</button>
     <button type="button" class="btn btn-outline-info float-right" id="btnHold" name = "btnStat" value="hold" disabled>Hold Lot number</button>
@@ -441,8 +784,89 @@
 
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
+var tblcount = 0;
+var tblcount2 = 0;
+var brm ='';
+function removeRow(row){
+    
+    $("#tr"+row).remove();
+    tblcount = $('#tblreject > tbody tr').length;
+    //checkRow(tblcount);
+}
+
+function removeRow2(row){
+    
+    $("#tr"+row).remove();
+    tblcount = $('#tblthickness > tbody tr').length;
+    //checkRow(tblcount);
+}
+
+function checkRow(row){
+
+}
+
+function countDecimals(value) {
+    var char_array = value.toString().split(""); // split every single char
+    var not_decimal = char_array.lastIndexOf(".");
+    return (not_decimal<0)?0:(char_array.length - not_decimal) - 1;
+}
+
+function BRM(value)
+{
+    if(document.getElementById(value).checked == true)
+    {
+        brm = value;
+        document.getElementById('setup').checked = false;
+        document.getElementById('psc').checked = false;
+        document.getElementById('monitoring').checked = false;
+        document.getElementById('cr').checked = false;
+        document.getElementById(value).checked = true;
+        
+    }
+    else
+    {
+        document.getElementById('setup').checked = false;
+        document.getElementById('psc').checked = false;
+        document.getElementById('monitoring').checked = false;
+        document.getElementById('cr').checked = false;
+        brm = '';
+    }
+    //alert(brm);
+}
+
 
 $(document).ready(function(){
+
+function Thickness(){
+    if(document.getElementById("bg").value == 1)
+    {
+        if(document.getElementById("twaferno").value == '' || document.getElementById("tpoint1").value == '' || document.getElementById("tpoint2").value == '' || document.getElementById("tpoint3").value == '' || document.getElementById("tpoint4").value == '' || document.getElementById("tpoint5").value == '')
+        {
+            return false;
+        }
+    }
+    return true;
+
+
+}
+
+function Roughness(){
+
+    if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
+    {
+        if(document.getElementById("rpoint1").value == '' || document.getElementById("rpoint2").value == '' || document.getElementById("rpoint3").value == '' || document.getElementById("rpoint4").value == '' || document.getElementById("rpoint5").value == '' )
+        {
+            return false;
+        }
+    }
+    return true;
+
+}
+
+function RoughnessAve(){
+    //alert(document.getElementById("rpoint1").value);
+    
+}
 
     $('#custcode').change(function (){
         $("input[type=text]").val('');
@@ -508,6 +932,7 @@ $(document).ready(function(){
         $("#tblrlogs > tbody").empty();
         $("input").attr('disabled','disabled');
         $("number").attr('disabled','disabled');
+        $("#ddetails").attr('disabled','disabled');
         $("#btnDone").attr('disabled','disabled');
         $("#btnHold").attr('disabled','disabled');
         $("input[type=text]").val('');
@@ -721,13 +1146,41 @@ $(document).ready(function(){
                     document.getElementById("custcode").disabled = true;
                     document.getElementById("intlotno").disabled = true;
 
-                    document.getElementById("machine").value = '';
-                    document.getElementById("machine").disabled = true;
-
                     document.getElementById("waferno").value = '';
                     document.getElementById("waferrun").value = '';
 
+                    document.getElementById("derror").hidden = true;
+                    document.getElementById("dsuccess").hidden = true;
+                    document.getElementById("rerror").hidden = true;
+                    document.getElementById("rsuccess").hidden = true;
+                    document.getElementById("terror").hidden = true;
+                    document.getElementById("tsuccess").hidden = true;
                     
+                    document.getElementById("dwaferno").disabled = false;
+                    document.getElementById("ddetails").disabled = false;
+                    document.getElementById("dqty").disabled = false;
+                    document.getElementById("dremarks").disabled = false;
+                    document.getElementById("btnAddDefect").disabled = false;
+
+                    document.getElementById("rpoint1").disabled = false;
+                    document.getElementById("rpoint2").disabled = false;
+                    document.getElementById("rpoint3").disabled = false;
+                    document.getElementById("rpoint4").disabled = false;
+                    document.getElementById("rpoint5").disabled = false;
+                
+                    if(resdata[5] == 1)
+                    {
+                        document.getElementById("twaferno").disabled = false;
+                        document.getElementById("tpoint1").disabled = false;
+                        document.getElementById("tpoint2").disabled = false;
+                        document.getElementById("tpoint4").disabled = false;
+                        document.getElementById("tpoint5").disabled = false;
+                        document.getElementById("tpoint3").disabled = false;
+                        document.getElementById("btnAddThick").disabled = false;
+                        document.getElementById("bg").value = 1;
+                        $("#setup,#monitoring,#psc,#cr").removeAttr('disabled');
+                        
+                    }
                     document.getElementById("btnDone").disabled = false;
                     document.getElementById("btnHold").disabled = false;
                 }
@@ -742,15 +1195,16 @@ $(document).ready(function(){
     });
 
     $('#processcat').change(function (){
-       
         document.getElementById("bg").value = 0;
         document.getElementById("inc").value = 0;
         $("input[type=text]").val('');
         $("input[type=number]").val('');
         $("input").attr('disabled','disabled');
         $("number").attr('disabled','disabled');
+        $("#tblreject > tbody").empty();
+        $("#tblthickness > tbody").empty();
         document.getElementById("custcode").value ='';
-        //disabled 
+        //disabled
         document.getElementById("station").disabled = true;
         document.getElementById("intlotno").disabled = true;
         document.getElementById("machine").disabled = true;
@@ -759,11 +1213,32 @@ $(document).ready(function(){
         document.getElementById("btnDone").disabled = true;
         document.getElementById("btnHold").disabled = true;
         document.getElementById("btnStart").disabled = true;
-        
+        document.getElementById("ddetails").disabled = true;
+        document.getElementById("btnAddDefect").disabled = true;
         //hidden
+        document.getElementById("derror").hidden = true;
+        document.getElementById("dsuccess").hidden = true;
+        document.getElementById("terror").hidden = true;
+        document.getElementById("tsuccess").hidden = true;
+        document.getElementById("rerror").hidden = true;
+        document.getElementById("rsuccess").hidden = true;
         document.getElementById("error").hidden = true;
         document.getElementById("success").hidden = true;
-        
+
+        if(document.getElementById("processcat").value == 'BACKGRIND')
+        {
+            document.getElementById("bgonlybrm").hidden = false;
+            document.getElementById("bgonlythick").hidden = false;
+            document.getElementById("bgonlyrough").hidden = false;
+            document.getElementById("bgonlylist").hidden = false;
+        }   
+        else
+        {
+            document.getElementById("bgonlybrm").hidden = true;
+            document.getElementById("bgonlythick").hidden = true;
+            document.getElementById("bgonlyrough").hidden = true;
+            document.getElementById("bgonlylist").hidden = true;
+        }
         $("#intlotno").empty();
         $("#station").empty();
         $("#machine").empty();
@@ -777,11 +1252,12 @@ $(document).ready(function(){
         $('#custcode').focus();
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
-        
+        //alert(this.readyState + ' ' + this.status);
         if (this.readyState == 4 && this.status == 200) 
         {
             var result = this.responseText;
             var res = result.split("_");
+            //alert(result);
             
             var x1 = document.getElementById("station");
             var option1 = document.createElement("option");
@@ -889,7 +1365,114 @@ $(document).ready(function(){
         }
     });
 
+    $( "#btnAddDefect" ).click(function() {
 
+        //alert(tblcount)
+
+        
+        var sdqty = $('input[name="sdqty[]"]').map(function () {
+        return this.value; }).get();
+        var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
+        //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
+        if((parseInt(dtotal) + parseInt($('#dqty').val())) > parseInt(document.getElementById("wqty").value))
+        {
+            document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
+            document.getElementById("derror").hidden = false;
+            document.getElementById("dsuccess").hidden = true;
+            return false;
+        }
+        if($('#dwaferno').val()== "" ||  $('#dqty').val()== "" ||  $('#ddetails').val()== "")
+        {
+            document.getElementById("derror").innerHTML = 'Please complete necessary details!';
+            document.getElementById("derror").hidden = false;
+            document.getElementById("dsuccess").hidden = true;
+            return false;
+        }
+        else
+        {
+            $('#tblreject > tbody').append('<tr id="tr'+tblcount+'">'+
+                                        '<td><input type="hidden" id = "sdwaferno[]"  name="sdwaferno[]" value="'+$('#dwaferno').val()+'">'+$('#dwaferno').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sddetails[]"  name="sddetails[]" value="'+$('#ddetails').val()+'">'+$('#ddetails').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sdqty[]"  name="sdqty[]" value="'+$('#dqty').val()+'">'+$('#dqty').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sdremarks[]"  name="sdremarks[]" value="'+$('#dremarks').val()+'">'+$('#dremarks').val()+'</td>'+
+                                        '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                        '</tr>');
+
+            tblcount++;
+            $('#dwaferno').val("");
+            $('#ddetails').val("");
+            $('#dqty').val("");
+            $('#dremarks').val("");
+            //checkRow(tblcount);
+            
+            document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
+            document.getElementById("derror").hidden = true;
+            document.getElementById("dsuccess").hidden = false;
+            dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
+            parseInt(dtotal) += parseInt($('#dqty').val());
+        }
+
+    });
+
+    $( "#btnAddThick" ).click(function() {
+
+        //alert(countDecimals(document.getElementById("tpoint1").value))
+        if(Thickness() == false)
+        {
+            alert('Please complete Final thickness details!');
+            document.getElementById("terror").innerHTML = "Please complete necessary details!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+        if(document.getElementById("ttv").value == '')
+        {
+            alert('Please complete Final thickness details!');
+            document.getElementById("terror").innerHTML = "Please complete necessary details!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+        if(countDecimals(document.getElementById("tpoint1").value) != 1 || countDecimals(document.getElementById("tpoint2").value) != 1 || countDecimals(document.getElementById("tpoint3").value) != 1 || countDecimals(document.getElementById("tpoint4").value) != 1 || countDecimals(document.getElementById("tpoint5").value) != 1)
+        {
+            alert('You have input Thickness with more or less than 1 decimal');
+            document.getElementById("terror").innerHTML = "You have input Thickness with more or less than 1 decimal!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+        else
+        {
+            $('#tblthickness > tbody').append('<tr id="tr'+tblcount2+'">'+
+                                        '<td><input type="hidden" id = "stwaferno[]"  name="stwaferno[]" value="'+$('#twaferno').val()+'">'+$('#twaferno').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint1[]"  name="stpoint1[]" value="'+$('#tpoint1').val()+'">'+$('#tpoint1').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint2[]"  name="stpoint2[]" value="'+$('#tpoint2').val()+'">'+$('#tpoint2').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint3[]"  name="stpoint3[]" value="'+$('#tpoint3').val()+'">'+$('#tpoint3').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint4[]"  name="stpoint4[]" value="'+$('#tpoint4').val()+'">'+$('#tpoint4').val()+'</td>'+
+                                        '<td><input type="hidden" id = "stpoint5[]"  name="stpoint5[]" value="'+$('#tpoint5').val()+'">'+$('#tpoint5').val()+'</td>'+
+                                        '<td><input type="hidden" id = "spave[]"  name="spave[]" value="'+$('#pave').val()+'">'+$('#pave').val()+'</td>'+
+                                        '<td><input type="hidden" id = "sttv[]"  name="sttv[]" value="'+$('#ttv').val()+'">'+$('#ttv').val()+'</td>'+
+                                        '<td><button type="button" onclick="removeRow2('+tblcount2+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                        '</tr>');
+
+            tblcount2++;
+            $('#twaferno').val("");
+            $('#tpoint1').val("");
+            $('#tpoint2').val("");
+            $('#tpoint3').val("");
+            $('#tpoint4').val("");
+            $('#tpoint5').val("");
+            $('#pave').val("");
+            $('#ttv').val("");
+            $('#twaferno').focus();
+            //checkRow(tblcount);
+            
+            document.getElementById("tsuccess").innerHTML = "Final Thickness details successfully added!";
+            document.getElementById("terror").hidden = true;
+            document.getElementById("tsuccess").hidden = false;
+        }
+
+    });
 
     $("#btnStart").click(function() {
         if(document.getElementById("inc").value == 1)
@@ -1010,6 +1593,7 @@ $(document).ready(function(){
                 document.getElementById("tpoint3").disabled = false;
                 document.getElementById("btnAddThick").disabled = false;
                 document.getElementById("bg").value = 1;
+                $("#setup,#monitoring,#psc,#cr").removeAttr('disabled');
                 
             }
             
@@ -1022,8 +1606,94 @@ $(document).ready(function(){
     });
 
     $("#btnDone").click(function() {
+        //alert(document.getElementById("rpoint3").value)
+        var sdwaferno = $('input[name="sdwaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var sddetails = $('input[name="sddetails[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdqty = $('input[name="sdqty[]"]').map(function () {
+        return this.value; }).get();
+
+        var sdremarks = $('input[name="sdremarks[]"]').map(function () {
+        return this.value; }).get();
+
+        var stwaferno = $('input[name="stwaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint1 = $('input[name="stpoint1[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint2 = $('input[name="stpoint2[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint3 = $('input[name="stpoint3[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint4 = $('input[name="stpoint4[]"]').map(function () {
+        return this.value; }).get();
+
+        var stpoint5 = $('input[name="stpoint5[]"]').map(function () {
+        return this.value; }).get();
+
+        var spave = $('input[name="spave[]"]').map(function () {
+        return this.value; }).get();
+
+        var sttv = $('input[name="sttv[]"]').map(function () {
+        return this.value; }).get();
 
         
+        
+        //alert(JSON.stringify(stwaferno))
+        if(tblcount2 <= 0 && document.getElementById("bg").value == 1)
+        {
+            alert('Please Input Final thickness details!');
+            document.getElementById("terror").innerHTML = "Please Input Final thickness details!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+
+        if(Roughness() == false)
+        {
+            alert('Please complete Roughness details!');
+            document.getElementById("rerror").innerHTML = "Please complete necessary details!";
+            document.getElementById("rerror").hidden = false;
+            document.getElementById("rsuccess").hidden = true;
+            return false;
+        }
+
+        if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
+        {
+            if(countDecimals(document.getElementById("rpoint1").value) != 5 || countDecimals(document.getElementById("rpoint2").value) != 5 || countDecimals(document.getElementById("rpoint3").value) != 5 || countDecimals(document.getElementById("rpoint4").value) != 5 || countDecimals(document.getElementById("rpoint5").value) != 5)
+            {
+                alert('You have input Roughness with more or less than 5 decimal');
+                return false;
+            }
+        }
+
+        if(tblcount > 0 )
+        {
+            
+            var remarks;
+            remarks = prompt("Reject found. Kindly input additional information:");
+            if(remarks === null)  
+            {
+                return false;
+            }
+        }
+        else
+        {
+            remarks ='';
+        }
+
+        if(brm == '' && document.getElementById("bg").value == 1)
+        {
+            alert('Kindly select Backgrind Response Measurement!');
+            return false;
+        }
+
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -1237,21 +1907,89 @@ $(document).ready(function(){
         xmlhttp.send();
     });
 
+    $("#rpoint1,#rpoint2,#rpoint3,#rpoint4,#rpoint5").keyup(function(event) { 
+        document.getElementById("rave").value = 0;
+        var rpoint1 = document.getElementById("rpoint1").value;
+        var rpoint2 = document.getElementById("rpoint2").value;
+        var rpoint3 = document.getElementById("rpoint3").value;
+        var rpoint4 = document.getElementById("rpoint4").value;
+        var rpoint5 = document.getElementById("rpoint5").value;
+
+        //alert(parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3));
+
+        var total;
+        total = (parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3) + parseFloat(rpoint4) + parseFloat(rpoint5));
+        if(Roughness() == true)
+        {
+            document.getElementById("rave").value = parseFloat(total / 5).toFixed(5);
+            //document.getElementById("rsuccess").innerHTML = "<b>Success!<b/> Roughness Average has been automatically calculated!";
+            document.getElementById("rerror").hidden = true;
+            document.getElementById("rsuccess").hidden = true;
+        }
+        else
+        {
+            document.getElementById("rerror").innerHTML = "Please complete necessary details!";
+            document.getElementById("rerror").hidden = false;
+            document.getElementById("rsuccess").hidden = true;
+            return false;
+        }
+        
+    });
+
+    $("#tpoint1,#tpoint2,#tpoint3,#tpoint4,#tpoint5,#twaferno").keyup(function(event) { 
+        document.getElementById("pave").value = 0;
+        var tpoint1 = document.getElementById("tpoint1").value;
+        var tpoint2 = document.getElementById("tpoint2").value;
+        var tpoint3 = document.getElementById("tpoint3").value;
+        var tpoint4 = document.getElementById("tpoint4").value;
+        var tpoint5 = document.getElementById("tpoint5").value;
+        
+        //alert(parseFloat(rpoint1) + parseFloat(rpoint2) + parseFloat(rpoint3));
+        var total;
+        //alert(tpoint1.toString().split(".").length);
+        
+        if(Thickness() == true)
+        {
+            //document.getElementById("tsuccess").innerHTML = "<b>Success!<b/> Total Thickness Variation has been automatically calculated!";
+        
+            total = (parseFloat(tpoint1) + parseFloat(tpoint2) + parseFloat(tpoint3) + parseFloat(tpoint4) + parseFloat(tpoint5));
+            document.getElementById("terror").hidden = true;
+            document.getElementById("tsuccess").hidden = true;
+            var high = Math.max(tpoint1,tpoint2,tpoint3,tpoint4,tpoint5);
+            var low = Math.min(tpoint1,tpoint2,tpoint3,tpoint4,tpoint5);
+            document.getElementById("pave").value = parseFloat(total / 5).toFixed(1);
+            document.getElementById("ttv").value = parseFloat(high - low).toFixed(1);
+        }
+        else
+        {
+            document.getElementById("terror").innerHTML = "Please complete necessary details!";
+            document.getElementById("terror").hidden = false;
+            document.getElementById("tsuccess").hidden = true;
+            return false;
+        }
+        
+    });
 
     $("#btnClear").click(function() {
         
         $("input[type=text]").val('');
         $("input[type=number]").val('');
         $("select").val('');
+        $("#setup,#monitoring,#psc,#cr").prop('checked', false);
         $("input").attr('disabled','disabled');
         $("number").attr('disabled','disabled');
         $("select").attr('disabled','disabled');
         $("button").attr('disabled','disabled');
         $(".alert").attr('hidden','hidden');
+        $("#tblreject > tbody").empty();
+        $("#tblthickness > tbody").empty();
         $("#tblintlogs > tbody").empty();
         $("#tblintrejlogs > tbody").empty();
         $("#tbltlogs > tbody").empty();
         $("#tblrlogs > tbody").empty();
+        tblcount = 0;
+        tblcount2 = 0;
+        brm = '';
         
         document.getElementById("btnClear").disabled = false;
         document.getElementById("processcat").disabled = false;

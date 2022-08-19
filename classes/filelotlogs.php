@@ -122,7 +122,7 @@ class FileLotLogs {
 				$cust->CustomerDetails($reader["custcode"]);
 				$Select->setid($reader["id"]);
 				$Select->setfilename($reader["filename"]);
-                $Select->setcustcode($cust->getcustname());
+                $Select->setcustcode($cust->getcustname() ? $cust->getcustname() : $reader["custcode"]);
                 $Select->setcustlotno($reader["custlotno"]);
                 $Select->setstatus($reader["status"]);
                 $Select->setremarks($reader["remarks"]);

@@ -13,8 +13,8 @@
                         <tr>
                             <th>Tracking no</th>
                             <th>Filename</th>
-                            <th>Customer name</th>
-                            <th>Customer Lot number</th>
+                            <th>Customer name/Part no</th>
+                            <th>Customer/Parts Lot number</th>
                             <th>Status</th>
                             <th>Remarks</th>
                             <th>Date Upload</th>
