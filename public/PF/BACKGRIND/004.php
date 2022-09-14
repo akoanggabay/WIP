@@ -132,19 +132,19 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>BG Tape Staged (from Taping time-out): * </label>
+                                                        <label>BG Tape Staged (from Taping time-out < 16 hours): * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="bgtapestaging" name="bgtapestaging"  class="form-control input-sm req004 auto manual">
+                                                        <input type="text" id="bgtapestaging" name="bgtapestaging"  class="form-control input-sm req004" readonly>
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Table Temp: *</label>
+                                                        <label>Table Temperature (50-70deg.C): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="tabletemp" name="tabletemp"  class="form-control input-sm req004 auto manual">
+                                                        <input type="text" id="tabletemp" name="tabletemp"  class="form-control input-sm req004 auto manual">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -285,7 +285,7 @@
                                                         <label>1st Wafer No. Inspected: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req004 auto" style="text-transform:uppercase" value=0>
+                                                        <input type="text" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req004 auto" style="text-transform:uppercase" value=0>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -321,28 +321,28 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Tape winding pressure: *</label>
+                                                        <label>Tape winding pressure (0.18 - 0.25 MPa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="tapewindingpressure" name="tapewindingpressure"  class="form-control input-sm req004 auto" value=0>
+                                                        <input type="text" id="tapewindingpressure" name="tapewindingpressure"  class="form-control input-sm req004 auto" value=0>
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Tape Delivery pressure: *</label>
+                                                        <label>Tape Delivery pressure (0.10 - 0.15 MPa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="tapedeliverypressure" name="tapedeliverypressure"  class="form-control input-sm req004 auto" value=0>
+                                                        <input type="text" id="tapedeliverypressure" name="tapedeliverypressure"  class="form-control input-sm req004 auto" value=0>
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Lamp Hour Usage: *</label>
+                                                        <label>Lamp Hour Usage (2000 hours max): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req004 auto">
+                                                        <input type="text" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req004 auto">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -428,7 +428,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect004" name = "btnAddDefect">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect004" name = "btnAddDefect">Add Reject</button>
                     </div>
                 </div>
 
@@ -467,7 +467,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone004" name = "btnDone004" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone004" name = "btnDone004" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -523,7 +523,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                //alert(result)
+                alert(result)
 
                 if(res[0].trim() == 'success')
                 {

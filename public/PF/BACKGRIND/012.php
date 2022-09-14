@@ -88,7 +88,7 @@
                                                         <label>Canister No: </label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="text" id="canisternoused" name="canisternoused"  class="form-control input-sm req012" style="text-transform:uppercase">
+                                                        <input type="text" id="canisternoused" name="canisternoused"  class="form-control input-sm 012 req012" style="text-transform:uppercase" disabled>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -178,7 +178,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect012" name = "btnAddDefect012">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect012" name = "btnAddDefect012">Add Reject</button>
                     </div>
                 </div>
 
@@ -217,7 +217,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone012" name = "btnDone012" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone012" name = "btnDone012" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -383,32 +383,20 @@
 
     });
 
-    /* $('#processmode,req012').change(function (){
+    $('#canisterused.req012').change(function (){
         
-        //console.log($(this).val())
-        
-        if($(this).val() == 'Manual')
+        if($(this).val() == 'KKM')
         {
-            
-            $(".auto").attr("disabled",true);
-            $(".manual").attr("disabled",false);
-            $("input.auto[type=text]").val("N/A");
-            $("input.auto[type=password]").val("N/A");
-            $("input.auto[type=date]").val("1900-01-01");
-            $("select.auto").val("N/A");
-            $("input.auto[type=number]").val(0);
-            $(".manual").val("");
+            $("#canisternoused.012").val('');
+            $("#canisternoused.012").removeAttr("disabled");
+            $("#canisternoused.012").focus();
         }
         else
         {
-            $(".manual").attr("disabled",true);
-            $(".auto").attr("disabled",false);
-            $("input.manual[type=text]").val("N/A");
-            $("select.manual").val("N/A");
-            $("input.manual[type=number]").val(0);
-            $(".auto").val("");
+            $("#canisternoused.012").val('N/A');
+            $("#canisternoused.012").attr("disabled","disabled");
         }
-
-    }); */
+    
+    });
     
 </script>

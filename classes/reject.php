@@ -164,7 +164,7 @@ class Reject {
 		try{
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
-			//$con = $conn->open();
+			$con = $conn->open();
             $sql = "INSERT INTO dbo.reject (custcode,intlotno,station,machine,waferno,ddetails,dqty,remarks,lastupdate,lastupdatedby) VALUES(?,?,?,?,?,?,?,?,?,?)";
             $params = array($this->getcustcode(),$this->getintlotno(),$this->getstation(),$this->getmachine(),$this->getwaferno(),$this->getddetails(),$this->getdqty(),$this->getremarks(),$this->getlastupdate(),$this->getlastupdatedby());
             $stmt = sqlsrv_query( $con, $sql, $params);

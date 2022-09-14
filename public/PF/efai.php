@@ -38,8 +38,8 @@
                                                 class="btn btn-secondary" id="btnReset">Reset</button>
                                         </div>
                                         <!-- <div class="form-group">
-                                            <button type="button" class="btn btn-outline-info" id="btnStart" name = "btnStart" disabled>Start</button>
-                                            <button type="button" class="btn btn-outline-warning float-right" id="btnClear" name = "btnClear">Clear</button>
+                                            <button type="button" class="btn btn-info" id="btnStart" name = "btnStart" disabled>Start</button>
+                                            <button type="button" class="btn btn-warning float-right" id="btnClear" name = "btnClear">Clear</button>
                                         </div> -->
                                         </form>
                                     </div>
@@ -185,7 +185,7 @@
     <?php include_once "SINGULATION/017.php";?>
     <?php include_once "SINGULATION/019.php";?>
     <?php include_once "SINGULATION/020.php";?>
-    <?php include_once "BACKGRIND/test.php";?>
+    
 </div>
 <br/>
 
@@ -199,6 +199,10 @@
     var bhcount = 0;
     var wpcount = 0;
     var rccount = 0;
+    var initialthickcount = 0;
+    var inkdotheightcount = 0;
+    var bumpheightcount = 0;
+    var warpagecount = 0;
     $('#intlotno').focus();
     
     $('input[type=text').keyup(function(event) {
@@ -209,6 +213,10 @@
         $(".form-control").val("");
         $("#tblreject > tbody").empty();
         $("#tblbh > tbody").empty();
+        $("#tblinitialthickness > tbody").empty();
+        $("#tblinkdotheight > tbody").empty();
+        $("#tblbumpheight > tbody").empty();
+        $("#tblwarpage > tbody").empty();
         $("#tblis > tbody").empty();
         $("#tblwp > tbody").empty();
         $("#tblis015 > tbody").empty();
@@ -222,6 +230,10 @@
         iscount = 0;
         wpcount = 0;
         rccount = 0;
+        initialthickcount = 0;
+        inkdotheightcount = 0;
+        bumpheightcount = 0;
+        warpagecount = 0;
     });
 
     $('#intlotno').keyup(async function(event) { 
@@ -249,8 +261,8 @@
                 {
                     var result = this.responseText;
                     var res = result.split("_");
-
-                    if(res[0].trim() == 'error')
+                    
+                    if(res[0].trim() == 'error')    
                     {
                         swal(res[1],"","error");
                         $('button.swal-button').click(function(event){$("#intlotno").focus();});
@@ -259,6 +271,13 @@
 
                     
                     var resdata = JSON.parse(res[1]);
+                    var station = (resdata[0].nstation.split(":")[0]).substring(0,3);
+                    if((resdata[0].status).trim() == 'DONE')
+                    {
+                        swal("Internal Lot number is not yet on processed!","","error");
+                        $('button.swal-button').click(function(event){$("#intlotno").focus();});
+                        return false;
+                    }
                     $("#btnReset").click();
                     $(".form-control").attr("disabled",false);
                     $('input[name*="wtypeothers"]').attr("disabled",true);
@@ -270,7 +289,30 @@
                         button: true,
                         icon: "success"
                     })
-                    document.getElementById("intlotno").value = resdata[0].intlot
+                    //alert(parseInt(resdata[0].bgtapetime))
+                    //document.getElementById("bgtapestaged").value = (parseInt(resdata[0].bgtapetime) < 60 ? "0 hour and " + String(resdata[0].bgtapetime) + " minutes": String(Math.floor((parseInt(resdata[0].bgtapetime)/60))) + " hour/s and " + String(parseInt(resdata[0].bgtapetime) % 60 ) + " minute/s");
+                    //document.getElementById("bgtapestaging").value = (parseInt(resdata[0].bgtapetime) < 60 ? "0 hour and " + String(resdata[0].bgtapetime) + " minutes": String(Math.floor(parseInt(resdata[0].bgtapetime)/60)) + " hour/s and " + String(parseInt(resdata[0].bgtapetime) % 60 ) + " minute/s");
+                    if(station == '003')
+                    {
+                        if(parseInt(resdata[0].bgtapetime) > 840)
+                        {
+                            swal("Taping to BG process is more than 14 hours!","","error");
+                            $('button.swal-button').click(function(event){$("#intlotno").focus();});
+                            return false;
+                        }
+                        document.getElementById("bgtapestaged").value = (parseInt(resdata[0].bgtapetime) < 60 ? "0 hour and " + resdata[0].bgtapetime + " minutes": String(Math.floor(parseInt(resdata[0].bgtapetime)/60)) + " hour/s and " + String(parseInt(resdata[0].bgtapetime) % 60 ) + " minute/s");
+                    }
+                    if(station == '004')
+                    {
+                        if(parseInt(resdata[0].bgtapetime) > 960)
+                        {
+                            swal("BG Taping out process is more than 16 hours!","","error");
+                            $('button.swal-button').click(function(event){$("#intlotno").focus();});
+                            return false;
+                        }
+                        document.getElementById("bgtapestaging").value = (parseInt(resdata[0].bgtapetime) < 60 ? "0 hour and " + String(resdata[0].bgtapetime) + " minutes": String(Math.floor(parseInt(resdata[0].bgtapetime)/60)) + " hour/s and " + String(parseInt(resdata[0].bgtapetime) % 60 ) + " minute/s");
+                    }
+                    document.getElementById("intlotno").value = resdata[0].intlot;
                     document.getElementById("custlot").value = resdata[0].custlot;
                     document.getElementById("deviceno").value = resdata[0].deviceno;
                     document.getElementById("waferrunno").value = resdata[0].waferrun;
@@ -282,7 +324,7 @@
                     document.getElementById("ltype").value = resdata[0].lottype;
                     document.getElementById("processcat").value = resdata[0].processcat;
                     
-                    document.getElementById(resdata[0].nstation.split(":")[0]).hidden = false;
+                    document.getElementById((resdata[0].nstation.split(":")[0]).substring(0,3)).hidden = false;
                 }
             };
             xmlhttp.open("GET", "../php/getintlotnodetails.php?intlotno=" + document.getElementById("intlotno").value, true);

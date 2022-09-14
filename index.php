@@ -75,8 +75,8 @@ if(isset($_SESSION['idno']))
                                         </div>
                                         
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-success" id="btnSignin" name="btnSignin">Login</button>
-                                            <!-- <a href="register.php" style="margin-bottom: 15px;" class="btn btn-outline-primary float-right">
+                                            <button type="submit" class="btn btn-success" id="btnSignin" name="btnSignin">Login</button>
+                                            <!-- <a href="register.php" style="margin-bottom: 15px;" class="btn btn-primary float-right">
                                                 Register
                                             </a> -->
                                         </div>
@@ -96,25 +96,30 @@ if(isset($_SESSION['idno']))
    
     <script src="vendor/jquery/jquery.min.js"></script>
     <script>
-
-    function validateForm() {
-        var idno = document.forms["loguser"]["idno"].value;
-        var pass = document.forms["loguser"]["pass"].value;
-    
-        if (idno == "" || pass == "" ) {
-            alert('Kindly complete details!')
-            return false;
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
-        else
-        {
-            
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                alert('test')
-            };
-        }
+        async function validateForm() {
+            var idno = document.forms["loguser"]["idno"].value;
+            var pass = document.forms["loguser"]["pass"].value;
         
-    }
+            if (idno == "" || pass == "" ) {
+                alert('Kindly complete details!')
+                return false;
+            }
+        }
+
+        $("#btnSignin").click(function(event) {
+            swal({
+                icon: "info",
+                title: 'Loading...',
+                text: 'Your transaction request is on process.',
+                showCancelButton: false,
+                showConfirmButton: false,
+                button: false
+                
+            })
+        });
 
     /* $("#btnLog").click(function() {
         var xmlhttp = new XMLHttpRequest();
@@ -148,6 +153,7 @@ if(isset($_SESSION['idno']))
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables.js"></script>

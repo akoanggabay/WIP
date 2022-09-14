@@ -122,8 +122,8 @@ if($_SESSION['usertype'] == 'Super Administrator' || $_SESSION['usertype'] == 'A
                                         <input type="password" class="form-control"
                                             id="cpass" name="cpass" placeholder=" Confirm password *">
                                     </div>
-                                    <button type="submit" class="btn btn-outline-success" id="btnReg" name="btnReg">Register</button>
-                                    <!-- <button class="btn btn-outline-primary float-right"><a href="index.php">Sign In</a></button> -->
+                                    <button type="submit" class="btn btn-success" id="btnReg" name="btnReg">Register</button>
+                                    <!-- <button class="btn btn-primary float-right"><a href="index.php">Sign In</a></button> -->
                                     
                                 </form>
                             </div>

@@ -111,7 +111,7 @@
                                                         <label>Required: Wafer Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -120,7 +120,7 @@
                                                         <label>Actual: Wafer Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -129,7 +129,7 @@
                                                         <label>Street width (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="streetwidth" name="streetwidth"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="streetwidth" name="streetwidth"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -138,7 +138,7 @@
                                                         <label>ACTUAL: Die Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="actualdiesize" name="actualdiesize"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="actualdiesize" name="actualdiesize"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -210,6 +210,7 @@
                                                             <option value="N/A">N/A</option>
                                                             <option value="A-NORMAL">A-NORMAL</option>
                                                             <option value="AS-Sub-Index">AS-Sub-Index</option>
+                                                            <option value="A-UP">A-UP</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -267,7 +268,7 @@
                                                             <option value="N/A">N/A</option>
                                                             <option value="12">12</option>
                                                             <option value="21">21</option>
-                                                            <option value="123">123</option>
+                                                            <option value="1324">1324</option>
                                                             <option value="2143">2143</option>
                                                         </select>
                                                     </div>
@@ -320,7 +321,7 @@
                                                 <br/>
                                                 <div class="row saw ring">
                                                     <div class="col-md-4">
-                                                        <label>Flang Size(if Hubless): * </label>
+                                                        <label>Flange Size(if Hubless): * </label>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z1: </label>
@@ -377,7 +378,7 @@
                                                         <label>Blade Height (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="bladeheight" name="bladeheight"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheight" name="bladeheight"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -389,13 +390,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -407,13 +408,13 @@
                                                         <label>CH1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="indexsizech1" name="indexsizech1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="indexsizech1" name="indexsizech1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>CH2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="indexsizech2" name="indexsizech2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="indexsizech2" name="indexsizech2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -425,13 +426,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -443,13 +444,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -461,22 +462,22 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row ring">
                                                     <div class="col-md-5">
-                                                        <label>Feed speed (o/s): *</label>
+                                                        <label>Feed speed (degree per sec): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="feedspeed" name="feedspeed"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeed" name="feedspeed"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -488,13 +489,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -503,7 +504,7 @@
                                                         <label>Cut Width (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="cutwidth" name="cutwidth"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="cutwidth" name="cutwidth"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -637,7 +638,7 @@
                                                         <label>Dicing Tape Thickness(mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -646,7 +647,7 @@
                                                         <label>UV Curing Time: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="uvcuringtime" name="uvcuringtime"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="uvcuringtime" name="uvcuringtime"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -727,7 +728,7 @@
                                                         <label>Atomizing Clean Air pressure: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="atomcleanairpressure" name="atomcleanairpressure"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="atomcleanairpressure" name="atomcleanairpressure"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -736,7 +737,7 @@
                                                         <label>Spinner Table Work(w/ Wafer) (Accept = / > -65 Kpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="spinnertableworkwith" name="spinnertableworkwith"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spinnertableworkwith" name="spinnertableworkwith"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -745,7 +746,7 @@
                                                         <label>Spinner Table Work(w/o Wafer) (Accept < -10Kpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="spinnertableworkwithout" name="spinnertableworkwithout"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spinnertableworkwithout" name="spinnertableworkwithout"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -832,7 +833,7 @@
                                                         <label>Reading NCS1(V): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="readingncs1" name="readingncs1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingncs1" name="readingncs1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -841,7 +842,7 @@
                                                         <label>Reading NCS2(V): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="readingncs2" name="readingncs2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingncs2" name="readingncs2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -873,31 +874,13 @@
                                                     </div>
                                                 </div>
                                                 <br/>
-                                                <div class="row saw ring">
-                                                    <div class="col-md-4">
-                                                        <label>Dry Parameter: * </label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label>Time: </label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="text" id="dryparamtime" name="dryparamtime"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label>RPM: </label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="text" id="dryparamrpm" name="dryparamrpm"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
-                                                    </div>
-                                                </div>
-                                                <br/>
                                                 <h4 class="saw ring">CO2 Bubbler</h4><br/>
                                                 <div class="row saw ring">
                                                     <div class="col-md-5">
                                                         <label>DI Water Temperature (°C): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -906,7 +889,7 @@
                                                         <label>DI Water Pressure (Mpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="diwaterpressure" name="diwaterpressure"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="diwaterpressure" name="diwaterpressure"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -915,7 +898,7 @@
                                                         <label>DI Water Resistivity (mega Ohm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="diwaterresistivity" name="diwaterresistivity"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="diwaterresistivity" name="diwaterresistivity"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1058,12 +1041,12 @@
                                                     </div>
                                                 </div>
                                                 <br/>
-                                                <div class="row ring">
+                                                <div class="row saw ring">
                                                     <div class="col-md-5">
                                                         <label>Wafer No. Inspected: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="wafernoinspected" name="wafernoinspected"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="wafernoinspected" name="wafernoinspected"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1149,7 +1132,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect008" name = "btnAddDefect008">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect008" name = "btnAddDefect008">Add Reject</button>
                     </div>
                 </div>
                 <div class="col-lg-4 saw">
@@ -1183,7 +1166,7 @@
                                                                 <label>Blade Height 1: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="bh1" name="bh1"  class="form-control input-sm bh">
+                                                                <input type="text" id="bh1" name="bh1"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1192,7 +1175,7 @@
                                                                 <label>Blade Height 2: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="bh2" name="bh2"  class="form-control input-sm bh">
+                                                                <input type="text" id="bh2" name="bh2"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1201,7 +1184,7 @@
                                                                 <label>Blade Height 3: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="bh3" name="bh3"  class="form-control input-sm bh">
+                                                                <input type="text" id="bh3" name="bh3"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1210,7 +1193,7 @@
                                                                 <label>Blade Height 4: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="bh4" name="bh4"  class="form-control input-sm bh">
+                                                                <input type="text" id="bh4" name="bh4"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1219,13 +1202,13 @@
                                                                 <label>Blade Height 5: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="bh5" name="bh5"  class="form-control input-sm bh">
+                                                                <input type="text" id="bh5" name="bh5"  class="form-control input-sm bh">
                                                             </div>
                                                         </div>
                                                         <br/>
                                             
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddBH" name = "btnAddBH">Add Blade Height</button>
+                                                            <button type="button" class="btn btn-info" id="btnAddBH" name = "btnAddBH">Add Blade Height</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1268,7 +1251,7 @@
                                                                 <label>Index Size 1: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is1" name="is1"  class="form-control input-sm is">
+                                                                <input type="text" id="is1" name="is1"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1277,7 +1260,7 @@
                                                                 <label>Index Size 2: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is2" name="is2"  class="form-control input-sm is">
+                                                                <input type="text" id="is2" name="is2"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1286,7 +1269,7 @@
                                                                 <label>Index Size 3: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is3" name="is3"  class="form-control input-sm is">
+                                                                <input type="text" id="is3" name="is3"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1295,7 +1278,7 @@
                                                                 <label>Index Size 4: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is4" name="is4"  class="form-control input-sm is">
+                                                                <input type="text" id="is4" name="is4"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1304,12 +1287,12 @@
                                                                 <label>Index Size 5: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is5" name="is5"  class="form-control input-sm is">
+                                                                <input type="text" id="is5" name="is5"  class="form-control input-sm is">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddis" name = "btnAddis">Add Index Size</button>
+                                                            <button type="button" class="btn btn-info" id="btnAddis" name = "btnAddis">Add Index Size</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1322,7 +1305,7 @@
                     </div><br/><br/>
                 </div>
                 <div class="col-lg-4 saw ring">
-                    <h5>Wash Parameter</h5>
+                    <h5>Wash/Dry Parameter</h5>
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
@@ -1331,14 +1314,31 @@
                                         <div class="row no-gutters">
                                             <div class="col-lg-12">
                                                 <div class="row">
-                                                    
                                                     <div class="col-lg-12">
+                                                        <div class="row saw ring">
+                                                            <div class="col-md-4">
+                                                                <label>Dry Parameter: * </label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label>Time: </label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input type="text" id="dryparamtime" name="dryparamtime"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label>RPM: </label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input type="text" id="dryparamrpm" name="dryparamrpm"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                            </div>
+                                                        </div>
+                                                        <br/>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <label>Time(secs): </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="wptime" name="wptime"  class="form-control input-sm wp">
+                                                                <input type="text" id="wptime" name="wptime"  class="form-control input-sm wp">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1347,13 +1347,13 @@
                                                                 <label>RPM: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="wprpm" name="wprpm"  class="form-control input-sm wp">
+                                                                <input type="text" id="wprpm" name="wprpm"  class="form-control input-sm wp">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                     
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddWP" name = "btnAddWP">Add Wash Parameter</button>
+                                                            <button type="button" class="btn btn-info" id="btnAddWP" name = "btnAddWP">Add Wash Parameter</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1391,13 +1391,13 @@
                                                                 <label>Measurement: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rcmeasurement" name="rcmeasurement"  class="form-control input-sm rc">
+                                                                <input type="text" id="rcmeasurement" name="rcmeasurement"  class="form-control input-sm rc">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                     
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddRC" name = "btnAddRC">Add Ring Cut Diameter</button>
+                                                            <button type="button" class="btn btn-info" id="btnAddRC" name = "btnAddRC">Add Ring Cut Diameter</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1541,7 +1541,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone008" name = "btnDone008" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone008" name = "btnDone008" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -2104,6 +2104,26 @@
         {
             $("#wtypeothers.008").val('');
             $("#wtypeothers.008").attr("disabled","disabled");
+        }
+        
+    });
+
+    $('#bladetype.req008').change(function (){
+        
+        if($(this).val() == 'HUBLESS')
+        {
+            
+            $("#flangsizez1.req008").removeAttr("disabled");
+            $("#flangsizez2.req008").removeAttr("disabled");
+            $("#flangsizez1.req008").val('');
+            $("#flangsizez2.req008").val('');
+        }
+        else
+        {
+            $("#flangsizez2.req008").val('N/A');
+            $("#flangsizez1.req008").val('N/A');
+            $("#flangsizez2.req008").attr("disabled","disabled");
+            $("#flangsizez1.req008").attr("disabled","disabled");
         }
         
     });

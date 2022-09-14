@@ -41,8 +41,8 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req006" id="wcondition" name="wcondition">
                                                             <option value=""></option>
-                                                            <option value="BW">BW</option>
-                                                            <option value="MW">MW</option>
+                                                            <option value="Bare Wafer">Bare Wafer</option>
+                                                            <option value="Mounted Wafer (Unsawn)">Mounted Wafer (Unsawn)</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -65,7 +65,7 @@
                                                         <label>Others: </label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input type="text" id="wtypeothers" name="wtypeothers"  class="form-control input-sm" style="text-transform:uppercase" disabled>
+                                                        <input type="text" id="wtypeothers" name="wtypeothers"  class="form-control input-sm 006" style="text-transform:uppercase" disabled>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -94,7 +94,7 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Tape Thickness: *</label>
+                                                        <label>Tape Thickness (In microns): *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="tapethickness" name="tapethickness"  class="form-control input-sm req006" style="text-transform:uppercase">
@@ -103,19 +103,19 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Required Wafer Thickness: *</label>
+                                                        <label>Required Wafer Thickness (In microns): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req006" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req006" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Actual Wafer Thickness: *</label>
+                                                        <label>Actual Wafer Thickness (In microns): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req006" style="text-transform:uppercase">
+                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req006" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -259,7 +259,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect006" name = "btnAddDefect006">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect006" name = "btnAddDefect006">Add Reject</button>
                     </div>
                 </div>
 
@@ -298,7 +298,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone006" name = "btnDone006" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone006" name = "btnDone006" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -490,6 +490,22 @@
         parseInt(dtotal) += parseInt($('#dqty006').val());
     }
 
+    });
+
+    $('#wtype.req006').change(function (){
+        
+        if($(this).val() == 'others')
+        {
+            
+            $("#wtypeothers.006").removeAttr("disabled");
+            $("#wtypeothers.006").focus();
+        }
+        else
+        {
+            $("#wtypeothers.006").val('');
+            $("#wtypeothers.006").attr("disabled","disabled");
+        }
+        
     });
     
 </script>

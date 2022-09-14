@@ -353,7 +353,8 @@ class IntLotLogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,c.custlot,a.station,b.description,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.cassno FROM dbo.intlotlogs a inner join station b on a.station = b.station inner join intlotno c on a.intlot = c.intlot  where a.datein between '".$start."' and '".$end."' order by intlot,datein desc");
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlot,c.custlot,a.station,a.machine,a.qtyin,a.qtyout,a.datein,a.dateout,a.lastupdatedby,a.status,a.waferno,a.waferrun,a.cassno,d.qty,d.waferqty,d.requiredthickness,d.lottype,d.deviceno,c.currqty,c.origqty
+			FROM dbo.intlotlogs a inner join station b on a.station = b.station inner join intlotno c on a.intlot = c.intlot inner join custlotno d on d.custlotno = c.custlot  where a.datein between '".$start."' and '".$end."' order by intlot,datein desc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
 				include_once("customer.php");
@@ -364,15 +365,46 @@ class IntLotLogs {
 				$user = new User;
 				$cust = new Customer;
 				$intlot = new IntLotno;
+				$dateinshift = '';
+				$dateoutshift = '';
+				$yield = 0;
 				
 				while ($row = $conn->fetch_array($dataset)) {
+				
+				if($row["currqty"] != 0 || $row["origqty"] != 0)
+				{
+					$yield = (intval($row["currqty"])/intval($row["origqty"]) * 100);
+				}
+				
 				if($row["dateout"] != '' || !empty($row["dateout"]))
 				{
 					$do = @$row["dateout"]->format('F j, Y g:i:s a');
+					if ( intval(@$row["dateout"]->format("Hi")) >= 0600 && intval(@$row["dateout"]->format("Hi")) <= 1400) {
+						$dateoutshift = "A";
+					}
+					else if ( intval(@$row["dateout"]->format("Hi")) > 1400 && intval(@$row["dateout"]->format("Hi")) <= 2200) {
+						$dateoutshift = "B";
+					}
+					else
+					{
+						$dateoutshift = "C";
+					}
 				}
 				else
 				{
 					$do = '';
+					$dateoutshift = "";
+				}
+
+				if ( intval(@$row["datein"]->format("Hi")) >= 0600 && intval(@$row["datein"]->format("Hi")) <= 1400) {
+					$dateinshift = "A";
+				}
+				else if ( intval(@$row["datein"]->format("Hi")) > 1400 && intval(@$row["datein"]->format("Hi")) <= 2200) {
+					$dateinshift = "B";
+				}
+				else
+				{
+					$dateinshift = "C";
 				}
 
 				if($row["qtyout"] != '' || !empty($row["qtyout"]))
@@ -394,13 +426,13 @@ class IntLotLogs {
 				}
 				$user->UserData($row["lastupdatedby"]);
 				$cust->CustomerDetails($row["custcode"]);
-				$intlot->GetDetails($row["intlot"]);
+				//$intlot->GetDetails($row["intlot"]);
 				$result[] = array(
 				'trackingno'   => $row["trackingno"],
 				'custcode'   => $cust->getcustname(),
 				'intlot'   => $row["intlot"],
 				'custlot'   => $row["custlot"],
-				'station' => $row["station"].':'.$row["description"],
+				'station' => $row["station"],
 				'machine' => $row["machine"],
 				'qtyin' => $row["qtyin"],
 				'qtyout' => $qo,
@@ -410,7 +442,15 @@ class IntLotLogs {
 				'status' => $row["status"],
 				'waferno' => $row["waferno"],
 				'cassno' => strtoupper($cassno),
-				'waferrun' => $row["waferrun"]
+				'waferrun' => $row["waferrun"],
+				'dateoutshift' => $dateoutshift,
+				'dateinshift' => $dateinshift,
+				'waferqty' => $row["waferqty"],
+				'qty' => $row["qty"],
+				'requiredthickness' => $row["requiredthickness"],
+				'lottype' => $row["lottype"],
+				'yield' => $yield,
+				'deviceno' => $row["deviceno"]
 				);
 				}
 			}
@@ -638,6 +678,28 @@ class IntLotLogs {
 		}catch(Exception $e){
 			$result = 'false';
 			echo $e;
+		}
+		return $result;
+	}
+
+	public static function ILNLogsTapingtoBG($intlotno)
+	{
+		$conn = new Connection();
+		$result = 0;
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("select DATEDIFF(minute, (SELECT top 1 dateout from intlotlogs where intlot='".$intlotno."' and station ='002' order by dateout desc),GETDATE()) as minute");
+
+			if ($conn->has_rows($dataset)) {
+				$row = $conn->fetch_array($dataset);
+				$result = $row["minute"];
+			} else {
+				$result = 0;
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
 		}
 		return $result;
 	}

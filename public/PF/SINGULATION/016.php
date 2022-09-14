@@ -85,7 +85,7 @@
                                                         <label>Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagethickness" name="packagethickness"  class="form-control input-sm req016" style="text-transform:uppercase">
+                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req016" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -94,7 +94,7 @@
                                                         <label>Package Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagesize" name="packagesize"  class="form-control input-sm req016" style="text-transform:uppercase">
+                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req016" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -193,7 +193,7 @@
                                                             <label>UV Irradiation time (secs): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="uvirradtime" name="uvirradtime"  class="form-control input-sm req016" style="text-transform:uppercase">
+                                                            <input type="text" id="uvirradtime" name="uvirradtime"  class="form-control input-sm req016" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -294,7 +294,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect016" name = "btnAddDefect016">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect016" name = "btnAddDefect016">Add Reject</button>
                     </div>
                 </div>
 
@@ -333,7 +333,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone016" name = "btnDone016" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone016" name = "btnDone016" value="done">Done</button>
     </div>
 </div>
 <br/>

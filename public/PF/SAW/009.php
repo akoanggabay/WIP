@@ -85,7 +85,7 @@
                                                         <label>UV Irradiation Time(<b>in seconds</b>): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="uvirradtime" name="uvirradtime"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="uvirradtime" name="uvirradtime"  class="form-control input-sm req009" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -107,7 +107,7 @@
                                                         <label>Lamp Hour Usage: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req009" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -116,7 +116,7 @@
                                                         <label>Required UV Dosage: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="requireduvdosage" name="requireduvdosage"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="requireduvdosage" name="requireduvdosage"  class="form-control input-sm req009" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -125,7 +125,7 @@
                                                         <label>Actual UV Dosage: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="actualuvdosage" name="actualuvdosage"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="actualuvdosage" name="actualuvdosage"  class="form-control input-sm req009" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -174,7 +174,7 @@
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Technician Employee: *</label>
+                                                            <label>Technician Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
                                                             <input type="password" id="techemp" name="techemp"  class="form-control input-sm req009">
@@ -183,7 +183,7 @@
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Quality Control Employee: *</label>
+                                                            <label>Quality Control Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
                                                             <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req009">
@@ -255,7 +255,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect009" name = "btnAddDefect009">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect009" name = "btnAddDefect009">Add Reject</button>
                     </div>
                 </div>
 
@@ -294,7 +294,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone009" name = "btnDone009" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone009" name = "btnDone009" value="done">Done</button>
     </div>
 </div>
 <br/>

@@ -6,6 +6,7 @@ include_once("../classes/indexsize.php");
 include_once("../classes/ringcut.php");
 include_once("../classes/washparameter.php");
 include_once("../classes/reject.php");
+include_once("../classes/passcode.php");
 session_start();
 
 $intlotno = $_GET['intlotno'];
@@ -43,10 +44,24 @@ $swprpm = json_decode($_GET['swprpm']);
 $total = 0;
 
 $exist = IntLotno::checkExist($intlotno);
+$techexist = passcode::checkExist($data->techemp,'tech');
+$qcexist = passcode::checkExist($data->qcemp,'qc');
 
 if($exist == 'false')
 {
     echo 'error_Error! '.$intlotno.' not exist on our Database!';
+    return false;
+}
+
+if($techexist == 'false')
+{
+    echo 'error_Error! Technician Employee passcode does not exist!';
+    return false;
+}
+
+if($qcexist == 'false')
+{
+    echo 'error_Error! QC Employee passcode does not exist!';
     return false;
 }
 
@@ -178,7 +193,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:sa"));
+            $reject->setlastupdate(date("Y-m-d h:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }
@@ -199,7 +214,7 @@ if($success == true)
             $bladeheight->setbh3($sbh3[$x]);
             $bladeheight->setbh4($sbh4[$x]);
             $bladeheight->setbh5($sbh5[$x]);
-            $bladeheight->setlastupdate(date("Y-m-d h:i:sa"));
+            $bladeheight->setlastupdate(date("Y-m-d h:i:s"));
             $bladeheight->setlastupdatedby($_SESSION['idno']);
             $bladeheight->AddBladeHeight();
         }
@@ -218,7 +233,7 @@ if($success == true)
             $indexsize->setis3($sis3[$x]);
             $indexsize->setis4($sis4[$x]);
             $indexsize->setis5($sis5[$x]);
-            $indexsize->setlastupdate(date("Y-m-d h:i:sa"));
+            $indexsize->setlastupdate(date("Y-m-d h:i:s"));
             $indexsize->setlastupdatedby($_SESSION['idno']);
             $indexsize->Addindexsize();
         }
@@ -232,7 +247,7 @@ if($success == true)
             $ringcut->setintlot($intlotno);
             $ringcut->setwaferno($srcwaferno[$x]);
             $ringcut->setmeasurement($srcmeasurement[$x]);
-            $ringcut->setlastupdate(date("Y-m-d h:i:sa"));
+            $ringcut->setlastupdate(date("Y-m-d h:i:s"));
             $ringcut->setlastupdatedby($_SESSION['idno']);
             $ringcut->AddRingCut();
         }
@@ -246,7 +261,7 @@ if($success == true)
             $washparameter->setintlot($intlotno);
             $washparameter->settime($swptime[$x]);
             $washparameter->setrpm($swprpm[$x]);
-            $washparameter->setlastupdate(date("Y-m-d h:i:sa"));
+            $washparameter->setlastupdate(date("Y-m-d h:i:s"));
             $washparameter->setlastupdatedby($_SESSION['idno']);
             $washparameter->AddWashParameter();
         }

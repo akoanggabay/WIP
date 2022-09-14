@@ -58,8 +58,8 @@
                                         <input class="form-control" type="text" name="subprocesscat" id="subprocesscat" placeholder="" value="" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-outline-success" id="btnReg">Add Purchase Order</button>
-                                        <button type="button" class="btn btn-outline-warning float-right" id="btnCancel">Cancel</button>
+                                        <button type="button" class="btn btn-success" id="btnReg">Add Purchase Order</button>
+                                        <button type="button" class="btn btn-warning float-right" id="btnCancel">Cancel</button>
                                     </div>
                                 </div>
                                 <!-- <div class="col-lg-6">

@@ -59,8 +59,8 @@
                                     
                                     
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-outline-success" id="btnReg">Register Machine</button>
-                                        <button type="button" class="btn btn-outline-warning float-right" id="btnCancel">Cancel</button>
+                                        <button type="button" class="btn btn-success" id="btnReg">Register Machine</button>
+                                        <button type="button" class="btn btn-warning float-right" id="btnCancel">Cancel</button>
                                     </div>
                                 </div>
                                 <!-- <div class="col-lg-6">

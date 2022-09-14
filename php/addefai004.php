@@ -2,6 +2,8 @@
 include_once("../classes/efai004.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/reject.php");
+include_once("../classes/passcode.php");
+include_once("../classes/intlotlogs.php");
 session_start();
 
 $intlotno = $_GET['intlotno'];
@@ -15,10 +17,24 @@ $sdremarks = json_decode($_GET['sdremarks']);
 
 
 $exist = IntLotno::checkExist($intlotno);
+$techexist = passcode::checkExist($data->techemp,'tech');
+$qcexist = passcode::checkExist($data->qcemp,'qc');
 
 if($exist == 'false')
 {
     echo 'error_Error! '.$intlotno.' not exist on our Database!';
+    return false;
+}
+
+if($techexist == 'false' && strtoupper($data->techemp) != 'N/A')
+{
+    echo 'error_Error! Technician Employee passcode does not exist!';
+    return false;
+}
+
+if($qcexist == 'false' && strtoupper($data->qcemp) != 'N/A')
+{
+    echo 'error_Error! QC Employee passcode does not exist!';
     return false;
 }
 
@@ -30,6 +46,8 @@ if(!$_SESSION['idno'])
 $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
+
+$bgtapetime = IntLotLogs::ILNLogsTapingtoBG($intlotno);
 
 //echo $intlotdata2->custcode;
 $efai004 = new efai004();
@@ -45,7 +63,7 @@ $efai004->setchucktablecleaning($data->chucktablecleaning);
 $efai004->setprocessmode($data->processmode);
 $efai004->setbgtapetype($data->bgtapetype);
 $efai004->setbgtapeused($data->bgtapeused);
-$efai004->setbgtapestaging($data->bgtapestaging);
+$efai004->setbgtapestaging($bgtapetime);
 $efai004->settabletemp($data->tabletemp);
 $efai004->setuvlight($data->uvlight);
 $efai004->setchangedetapetape($data->changedetapetape);
@@ -86,7 +104,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:sa"));
+            $reject->setlastupdate(date("Y-m-d h:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }

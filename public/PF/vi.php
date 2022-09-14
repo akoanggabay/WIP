@@ -138,8 +138,8 @@
                                         </div>
                                         <br/>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-info" id="btnStart" name = "btnStart" disabled>Start</button>
-                                            <button type="button" class="btn btn-outline-warning float-right" id="btnClear" name = "btnClear">Clear</button>
+                                            <button type="button" class="btn btn-info" id="btnStart" name = "btnStart" disabled>Start</button>
+                                            <button type="button" class="btn btn-warning float-right" id="btnClear" name = "btnClear">Clear</button>
                                         </div>
                                         </form>
                                     </div>
@@ -220,7 +220,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer/Panel No:</label>
+                                                        <label>Wafer/Panel/Strip No:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wno" name="wno"  class="form-control input-sm" value="" readonly><br>
@@ -228,7 +228,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer/Panel Run:</label>
+                                                        <label>Wafer/Panel/Strip Run:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wrun" name="wrun"  class="form-control input-sm" value="" readonly><br>
@@ -252,7 +252,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer/Panel Size:</label>
+                                                        <label>Wafer/Panel/Strip Size:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wsize" name="wsize"  class="form-control input-sm" value="" readonly><br>
@@ -435,8 +435,8 @@
 <!-- ---------------------------------------------------------------------------------------- -->
 
 <div class="form-group">
-    <button type="button" class="btn btn-outline-success" id="btnDone" name = "btnStat" value="done" disabled>Done</button>
-    <button type="button" class="btn btn-outline-info float-right" id="btnHold" name = "btnStat" value="hold" disabled>Hold Lot number</button>
+    <button type="button" class="btn btn-success" id="btnDone" name = "btnStat" value="done" disabled>Done</button>
+    <button type="button" class="btn btn-info float-right" id="btnHold" name = "btnStat" value="hold" disabled>Hold Lot number</button>
 </div>
 
 <script src="../vendor/jquery/jquery.min.js"></script>
@@ -1023,7 +1023,6 @@ $(document).ready(function(){
 
     $("#btnDone").click(function() {
 
-        
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -1033,25 +1032,27 @@ $(document).ready(function(){
 
             if(res[0] == 'success')
             {
+
+                swal("success!",{
+                    icon: "success",
+                    title: "Successful Transaction!",
+                    closeOnClickOutside: false,
+                });
+                
                 $("input[type=text]").val('');
                 $("input[type=number]").val('');
                 $("select").val('');
-                $("#setup,#monitoring,#psc,#cr").prop('checked', false);
                 $("input").attr('disabled','disabled');
                 $("number").attr('disabled','disabled');
                 $("select").attr('disabled','disabled');
                 $("button").attr('disabled','disabled');
                 $(".alert").attr('hidden','hidden');
-                $("#tblreject > tbody").empty();
-                $("#tblthickness > tbody").empty();
                 $("#tblintlogs > tbody").empty();
                 $("#tblintrejlogs > tbody").empty();
                 $("#tbltlogs > tbody").empty();
                 $("#tblrlogs > tbody").empty();
+                $('button.swal-button').prop("disabled", false);
                 
-                brm = '';
-                tblcount = 0;
-                tblcount2 = 0;
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
                 document.getElementById("success").innerHTML = res[1];
@@ -1062,30 +1063,13 @@ $(document).ready(function(){
 
             else if(res[0] == 'error')
             {
-                $("input[type=text]").val('');
-                $("input[type=number]").val('');
-                $("select").val('');
-                $("input").attr('disabled','disabled');
-                $("number").attr('disabled','disabled');
-                $("select").attr('disabled','disabled');
-                $("button").attr('disabled','disabled');
-                $(".alert").attr('hidden','hidden');
-                $("#tblreject > tbody").empty();
-                $("#tblthickness > tbody").empty();
-                $("#tblintlogs > tbody").empty();
-                $("#tblintrejlogs > tbody").empty();
-                $("#tbltlogs > tbody").empty();
-                $("#tblrlogs > tbody").empty();
-                
-                brm = '';
-                tblcount = 0;
-                tblcount2 = 0;
-                document.getElementById("btnClear").disabled = false;
-                document.getElementById("processcat").disabled = false;
-                $('#processcat').focus();
-                document.getElementById("error").innerHTML = res[1];
-                document.getElementById("success").hidden = true;
-                document.getElementById("error").hidden = false;
+
+                swal("error!",{
+                    icon: "error",
+                    title: res[1],
+                    closeOnClickOutside: false,
+                });
+    
             }
             else if(res[0] == 'session')
             {
@@ -1096,92 +1080,11 @@ $(document).ready(function(){
         }
         };
 
-        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=done"+"&remarks="+remarks+"&brm="+brm, true);
+        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&btnStat=done", true);
         xmlhttp.send();
     });
 
     $("#btnHold").click(function() {
-        //alert(document.getElementById("rpoint3").value)
-        var sdwaferno = $('input[name="sdwaferno[]"]').map(function () {
-        return this.value; }).get();
-
-        var sddetails = $('input[name="sddetails[]"]').map(function () {
-        return this.value; }).get();
-
-        var sdqty = $('input[name="sdqty[]"]').map(function () {
-        return this.value; }).get();
-
-        var sdremarks = $('input[name="sdremarks[]"]').map(function () {
-        return this.value; }).get();
-
-        var stwaferno = $('input[name="stwaferno[]"]').map(function () {
-        return this.value; }).get();
-
-        var stpoint1 = $('input[name="stpoint1[]"]').map(function () {
-        return this.value; }).get();
-
-        var stpoint2 = $('input[name="stpoint2[]"]').map(function () {
-        return this.value; }).get();
-
-        var stpoint3 = $('input[name="stpoint3[]"]').map(function () {
-        return this.value; }).get();
-
-        var stpoint4 = $('input[name="stpoint4[]"]').map(function () {
-        return this.value; }).get();
-
-        var stpoint5 = $('input[name="stpoint5[]"]').map(function () {
-        return this.value; }).get();
-
-        var spave = $('input[name="spave[]"]').map(function () {
-        return this.value; }).get();
-
-        var sttv = $('input[name="sttv[]"]').map(function () {
-        return this.value; }).get();
-
-        var remarks ='';
-
-            
-        
-        //alert(document.getElementsByName("btnStat"));
-        if(tblcount2 <= 0 && document.getElementById("bg").value == 1)
-        {
-            alert('Please complete Final thickness details!');
-            document.getElementById("terror").innerHTML = "Please complete necessary details!";
-            document.getElementById("terror").hidden = false;
-            document.getElementById("tsuccess").hidden = true;
-            return false;
-        }
-
-        if(Roughness() == false)
-        {
-            alert('Please complete Roughness details!');
-            document.getElementById("rerror").innerHTML = "Please complete necessary details!";
-            document.getElementById("rerror").hidden = false;
-            document.getElementById("rsuccess").hidden = true;
-            return false;
-        }
-
-        if(brm == '' && document.getElementById("bg").value == 1)
-        {
-            alert('Kindly select Backgrind Response Measurement!');
-            return false;
-        }
-        if(document.getElementById("rpoint1").value != '' || document.getElementById("rpoint2").value != '' || document.getElementById("rpoint3").value != '' || document.getElementById("rpoint4").value != '' || document.getElementById("rpoint5").value != '')
-        {
-            if(countDecimals(document.getElementById("rpoint1").value) != 5 || countDecimals(document.getElementById("rpoint2").value) != 5 || countDecimals(document.getElementById("rpoint3").value) != 5 || countDecimals(document.getElementById("rpoint4").value) != 5 || countDecimals(document.getElementById("rpoint5").value) != 5)
-            {
-                alert('You have input Roughness with more or less than 5 decimal');
-                return false;
-            }
-        }
-
-        
-
-        remarks = prompt("Lot number: "+ document.getElementById("intlotno").value + " for HOLD. Kindly input Remarks/Summary:");
-        if(remarks === null)
-        {
-            return false;
-        }
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -1192,7 +1095,13 @@ $(document).ready(function(){
 
             if(res[0] == 'success')
             {
-                $("#setup,#monitoring,#psc,#cr").prop('checked', false);
+
+                swal("success!",{
+                    icon: "success",
+                    title: "Successful Transaction!",
+                    closeOnClickOutside: false,
+                });
+                
                 $("input[type=text]").val('');
                 $("input[type=number]").val('');
                 $("select").val('');
@@ -1201,17 +1110,14 @@ $(document).ready(function(){
                 $("select").attr('disabled','disabled');
                 $("button").attr('disabled','disabled');
                 $(".alert").attr('hidden','hidden');
-                $("#tblreject > tbody").empty();
-                $("#tblthickness > tbody").empty();
                 $("#tblintlogs > tbody").empty();
                 $("#tblintrejlogs > tbody").empty();
                 $("#tbltlogs > tbody").empty();
                 $("#tblrlogs > tbody").empty();
+                $('button.swal-button').prop("disabled", false);
+                
                 document.getElementById("btnClear").disabled = false;
                 document.getElementById("processcat").disabled = false;
-                brm = '';
-                tblcount = 0;
-                tblcount2 = 0;
                 document.getElementById("success").innerHTML = res[1];
                 document.getElementById("error").hidden = true;
                 document.getElementById("success").hidden = false;
@@ -1220,9 +1126,13 @@ $(document).ready(function(){
 
             else if(res[0] == 'error')
             {
-                document.getElementById("error").innerHTML = res[1];
-                document.getElementById("success").hidden = true;
-                document.getElementById("error").hidden = false;
+
+                swal("error!",{
+                    icon: "error",
+                    title: res[1],
+                    closeOnClickOutside: false,
+                });
+
             }
             else if(res[0] == 'session')
             {
@@ -1233,7 +1143,7 @@ $(document).ready(function(){
         }
         };
 
-        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&sdwaferno="+JSON.stringify(sdwaferno)+"&sddetails="+JSON.stringify(sddetails)+"&sdqty="+JSON.stringify(sdqty)+"&sdremarks="+JSON.stringify(sdremarks)+"&stwaferno="+JSON.stringify(stwaferno)+"&stpoint1="+ JSON.stringify(stpoint1)+"&stpoint2="+ JSON.stringify(stpoint2)+"&stpoint3="+ JSON.stringify(stpoint3)+"&stpoint4="+ JSON.stringify(stpoint4)+"&stpoint5="+ JSON.stringify(stpoint5)+"&spave="+ JSON.stringify(spave)+"&sttv="+ JSON.stringify(sttv)+"&rpoint1="+ document.getElementById("rpoint1").value+"&rpoint2="+ document.getElementById("rpoint2").value+"&rpoint3="+ document.getElementById("rpoint3").value+"&rpoint4="+ document.getElementById("rpoint4").value+"&rpoint5="+ document.getElementById("rpoint5").value+"&rave="+ document.getElementById("rave").value+"&btnStat=hold"+"&remarks="+remarks+"&brm="+brm, true);
+        xmlhttp.open("GET", "../php/doneinspection.php?intlotno=" + document.getElementById("intlotno").value +"&btnStat=hold", true);
         xmlhttp.send();
     });
 

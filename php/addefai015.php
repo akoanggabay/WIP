@@ -4,19 +4,8 @@ include_once("../classes/intlotno.php");
 include_once("../classes/indexsize.php");
 include_once("../classes/washparameter.php");
 include_once("../classes/reject.php");
+include_once("../classes/passcode.php");
 session_start();
-
-$conn = new Connection;
-$con = $conn->open();
-
-if( $con === false ) {
-    die( print_r( sqlsrv_errors(), true ));
-}
-
-/* Begin the transaction. */
-if ( sqlsrv_begin_transaction( $con ) === false ) {
-     die( print_r( sqlsrv_errors(), true ));
-}
 
 $intlotno = $_GET['intlotno'];
 $data = json_decode($_GET['data']);
@@ -41,6 +30,8 @@ $swptime = json_decode($_GET['swptime']);
 $total = 0;
 
 $exist = IntLotno::checkExist($intlotno);
+$techexist = passcode::checkExist($data->techemp,'tech');
+$qcexist = passcode::checkExist($data->qcemp,'qc');
 
 $successrej = false;
 $successis = false;
@@ -49,6 +40,18 @@ $successwp = false;
 if($exist == 'false')
 {
     echo 'error_Error! '.$intlotno.' not exist on our Database!';
+    return false;
+}
+
+if($techexist == 'false')
+{
+    echo 'error_Error! Technician Employee passcode does not exist!';
+    return false;
+}
+
+if($qcexist == 'false')
+{
+    echo 'error_Error! QC Employee passcode does not exist!';
     return false;
 }
 
@@ -174,7 +177,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:sa"));
+            $reject->setlastupdate(date("Y-m-d h:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
 
             $successrej = $reject->AddReject();
@@ -217,17 +220,6 @@ if($success == true)
         
             $successwp = $washparameter->AddWashParameter();
         }
-    }
-
-    if($success && $successrej && $successis && $successwp)
-    {
-        sqlsrv_commit( $con );
-        echo 'success_Success! '.$intlotno.' eFAI details successfully added!';
-    }
-    else
-    {
-        sqlsrv_rollback( $con );
-        echo "error_Failed transaction.";
     }
     
 }

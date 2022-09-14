@@ -83,7 +83,7 @@
                                     </div>
                                     <br/>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-outline-success" id="btnUpload" name = "btnUpload">Upload File</button>
+                                        <button type="button" class="btn btn-success" id="btnUpload" name = "btnUpload">Upload File</button>
                                     </div>
                                     </form>
                                 </div>

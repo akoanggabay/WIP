@@ -87,7 +87,7 @@
                                         <input class="form-control" type="file" name="uploadfile" id="uploadfile" accept=".csv" />
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-outline-success" id="btnUpload" name = "btnUpload">Upload File</button>
+                                        <button type="submit" class="btn btn-success" id="btnUpload" name = "btnUpload">Upload File</button>
                                     </div>
                                     </form>
                                 </div>

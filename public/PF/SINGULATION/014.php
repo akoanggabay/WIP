@@ -85,7 +85,7 @@
                                                         <label>Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagethickness" name="packagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -94,7 +94,7 @@
                                                         <label>Package Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagesize" name="packagesize"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req014" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -121,7 +121,7 @@
                                                         <label>Required: Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="requiredpackagethickness" name="requiredpackagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredpackagethickness" name="requiredpackagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -130,7 +130,7 @@
                                                         <label>Actual: Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="actualpackagethickness" name="actualpackagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="actualpackagethickness" name="actualpackagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -267,7 +267,7 @@
                                                             <label>Blade Count (300 cuts max): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="bladecount" name="bladecount"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                            <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req014" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -423,7 +423,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect014" name = "btnAddDefect014">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect014" name = "btnAddDefect014">Add Reject</button>
                     </div>
                 </div>
 
@@ -462,7 +462,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone014" name = "btnDone014" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone014" name = "btnDone014" value="done">Done</button>
     </div>
 </div>
 <br/>

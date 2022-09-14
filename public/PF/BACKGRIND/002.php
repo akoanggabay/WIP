@@ -258,19 +258,19 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Blade Temperature: *</label>
+                                                        <label>Blade Temperature (140 ± 20 °C): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="bladetemp" name="bladetemp"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="bladetemp" name="bladetemp"  class="form-control input-sm req002" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Blade count: *</label>
+                                                        <label>Blade count (350 cuts max): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="bladecount" name="bladecount"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req002" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -305,7 +305,7 @@
                                                         <label>1st Wafer No. Inspected: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req002" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -357,6 +357,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="mpbladeposition" name="mpbladeposition">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="5">5</option>
                                                             <option value="6">6</option>
                                                             <option value="8">8</option>
@@ -366,10 +367,10 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Lamp Hour Usage: *</label>
+                                                        <label>Lamp Hour Usage (2000 hours max): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="mplamphourusage" name="mplamphourusage"  class="form-control input-sm req002">
+                                                        <input type="text" id="mplamphourusage" name="mplamphourusage"  class="form-control input-sm req002">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -415,7 +416,7 @@
     <div class="card border-left-danger">
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4" id="rej002">
                     <h4>Add Reject logs</h4>
                     <br/>
                     <div class="row">
@@ -423,7 +424,7 @@
                             <label>Wafer no: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="dwaferno" name="dwaferno"  class="form-control input-sm" disabled>
+                            <input type="text" id="dwaferno002" name="dwaferno002"  class="form-control input-sm rej002">
                         </div>
                     </div>
                     <br/>
@@ -432,7 +433,7 @@
                             <label>Defect call-out: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="ddetails" name="ddetails"  class="form-control input-sm" disabled>
+                            <input type="text" id="ddetails002" name="ddetails002"  class="form-control input-sm rej002">
                         </div>
                     </div>
                     <br/>
@@ -441,7 +442,7 @@
                             <label>Defect quantity: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="number" id="dqty" name="dqty"  class="form-control input-sm" disabled>
+                            <input type="number" id="dqty002" name="dqty002"  class="form-control input-sm rej002">
                         </div>
                     </div>
                     <br/>
@@ -450,12 +451,12 @@
                             <label>Remarks: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="dremarks" name="dremarks"  class="form-control input-sm" disabled>
+                            <input type="text" id="dremarks002" name="dremarks002"  class="form-control input-sm rej002">
                         </div>
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect" name = "btnAddDefect">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect002" name = "btnAddDefect002">Add Reject</button>
                     </div>
                 </div>
 
@@ -473,7 +474,7 @@
             <div class="card border-left-danger">
                 <div class="card-body">
                     <div class="row no-gutters table-responsive">
-                    <table class="table table-bordered" id="tblreject" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tblreject002" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Wafer number</th>
@@ -494,7 +495,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone002" name = "btnDone002" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone002" name = "btnDone002" value="done">Done</button>
     </div>
 </div>
 <br/>

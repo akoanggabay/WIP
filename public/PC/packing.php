@@ -28,11 +28,11 @@
                                         <br/>
                                         
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-success" id="btnCheck" name = "btnCheck"  onkeypress="if (event.keyCode == 13)  return false;" >Pack Internal Lot number</button>
-                                            <button type="button" class="btn btn-outline-warning float-right" id="btnClear" name = "btnClear">Clear details</button>
+                                            <button type="button" class="btn btn-success" id="btnCheck" name = "btnCheck"  onkeypress="if (event.keyCode == 13)  return false;" >Pack Internal Lot number</button>
+                                            <button type="button" class="btn btn-warning float-right" id="btnClear" name = "btnClear">Clear details</button>
                                         </div>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-info" id="btnPrint" name = "btnPrint" onkeypress="if (event.keyCode == 13)  return false;" disabled >Print E-LTC</button>
+                                            <button type="button" class="btn btn-info" id="btnPrint" name = "btnPrint" onkeypress="if (event.keyCode == 13)  return false;" disabled >Print E-LTC</button>
                                         </div>
                                         
                                     </div>

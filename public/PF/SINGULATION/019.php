@@ -52,7 +52,7 @@
                                                         <label>Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagethickness" name="packagethickness"  class="form-control input-sm req019" style="text-transform:uppercase">
+                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req019" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -61,7 +61,7 @@
                                                         <label>Package Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagesize" name="packagesize"  class="form-control input-sm req019" style="text-transform:uppercase">
+                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req019" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -187,7 +187,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect019" name = "btnAddDefect019">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect019" name = "btnAddDefect019">Add Reject</button>
                     </div>
                 </div>
 
@@ -226,7 +226,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone019" name = "btnDone019" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone019" name = "btnDone019" value="done">Done</button>
     </div>
 </div>
 <br/>

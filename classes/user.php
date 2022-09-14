@@ -9,7 +9,9 @@ class User {
     private $password;
     private $birthday;
     private $usertype;
+	private $numberofdays;
 	private $active;
+	private $alert;
 
 
 	function __construct(){
@@ -53,9 +55,19 @@ class User {
 		$this->usertype = $usertype;
 	}
 
+	public function setnumberofdays($numberofdays)
+	{
+		$this->numberofdays = $numberofdays;
+	}
+
 	public function setactive($active)
 	{
 		$this->active = $active;
+	}
+
+	public function setalert($alert)
+	{
+		$this->alert = $alert;
 	}
 
 	//Getter
@@ -94,9 +106,19 @@ class User {
 		return $this->usertype;
 	}
 
+	public function getnumberofdays()
+	{
+		return $this->numberofdays;
+	}
+
 	public function getactive()
 	{
 		return $this->active;
+	}
+
+	public function getalert()
+	{
+		return $this->alert;
 	}
 
     public static function checkExist($idno)
@@ -125,12 +147,18 @@ class User {
     public function UserReg(){
 		$conn = new Connection();
         $success = true;
+		$alert = 1;
+
+		if($this->getusertype() == 'Operator')
+		{
+			$alert = 0;
+		}
 		try{
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
-            $sql = "INSERT INTO dbo.users (idno,fname,lname,password,birthday,usertype,active,dateregistered) VALUES(?,?,?,?,?,?,?,?)";
-            $params = array($this->getidno(),$this->getfname(),$this->getlname(),password_hash($this->getpassword(), PASSWORD_DEFAULT),$this->getbirthday(),$this->getusertype(),1,date("Y-m-d h:i:sa"));
+            $sql = "INSERT INTO dbo.users (idno,fname,lname,password,birthday,usertype,active,dateregistered,alert) VALUES(?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getidno(),$this->getfname(),$this->getlname(),password_hash($this->getpassword(), PASSWORD_DEFAULT),$this->getbirthday(),$this->getusertype(),1,date("Y-m-d h:i:sa"),$alert);
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)
@@ -154,7 +182,7 @@ class User {
 		
 		try {
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM users WHERE idno ='" .$idno."' and active = 1");
+			$dataset =  $conn->query("SELECT *,DATEDIFF(day,GETDATE(),CONCAT(YEAR(GETDATE()),'-',FORMAT(birthday,'MM-dd'))) as numberofdays FROM users WHERE idno ='" .$idno."' and active = 1");
 
 			if ($conn->has_rows($dataset)) {
 				$reader = $conn->fetch_array($dataset);
@@ -163,7 +191,8 @@ class User {
 				$this->setlname($reader["lname"]);
 				$this->setbirthday($reader["birthday"]);
                 $this->setusertype($reader["usertype"]);
-				
+				$this->setnumberofdays($reader["numberofdays"]);
+				$this->setalert($reader["alert"]);
 
 			}
 
@@ -346,6 +375,33 @@ class User {
             	$params = array($this->getfname(),$this->getlname(),$this->getbirthday(),$this->getusertype(),$idno);
 			}
             
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+            if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            }
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
+	}
+
+	public function UpdateUserAlert($idno,$status){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+			
+			$sql = "UPDATE dbo.users set alert = ? WHERE idno = ? and usertype = 'Operator'";
+			$params = array($status,$idno);
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

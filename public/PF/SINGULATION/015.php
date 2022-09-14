@@ -1,4 +1,4 @@
-<div id="015" class="efai">
+<div id="015" class="efai" hidden>
     <h3>Strip/Panel Singulation station</h3>
     <br/>
     <div class="row">
@@ -85,7 +85,7 @@
                                                         <label>Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagethickness" name="packagethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -94,7 +94,7 @@
                                                         <label>Package Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="packagesize" name="packagesize"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -121,7 +121,7 @@
                                                         <label>Required: Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="requiredpackagethickness" name="requiredpackagethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredpackagethickness" name="requiredpackagethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -130,7 +130,7 @@
                                                         <label>Actual: Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="actualpackagethickness" name="actualpackagethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="actualpackagethickness" name="actualpackagethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -237,7 +237,7 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <label>Flang Size(if Hubless): * </label>
+                                                        <label>Flange Size(if Hubless): * </label>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z1: </label>
@@ -344,13 +344,13 @@
                                                         <label>CH1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="indexsizech1" name="indexsizech1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="indexsizech1" name="indexsizech1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>CH2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="indexsizech2" name="indexsizech2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="indexsizech2" name="indexsizech2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -362,13 +362,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -380,13 +380,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -398,13 +398,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -416,13 +416,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -434,13 +434,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -453,13 +453,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladecoolerz1" name="bladecoolerz1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecoolerz1" name="bladecoolerz1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="bladecoolerz2" name="bladecoolerz2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecoolerz2" name="bladecoolerz2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -471,13 +471,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="showerz1" name="showerz1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="showerz1" name="showerz1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="showerz2" name="showerz2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="showerz2" name="showerz2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -489,13 +489,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="sprayz1" name="sprayz1"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="sprayz1" name="sprayz1"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="number" id="sprayz2" name="sprayz2"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="sprayz2" name="sprayz2"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -527,7 +527,7 @@
                                                         <label>Dicing Tape Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                        <input type="text" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -605,7 +605,7 @@
                                                     <h6><b>Machine Preparation</b></h6><br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Is Purging done>  *</label>
+                                                            <label>Is Purging done?  *</label>
                                                         </div>
                                                         <div class="col-md-7">
                                                             <select class="form-control req015" id="purgingdone" name="purgingdone">
@@ -769,25 +769,6 @@
                                                         </div>
                                                     </div>
                                                     <br/>
-                                                    <h6><b>Wash/Dry</b></h6><br/>
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                            <label>Dry Parameter: * </label>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label>Time: </label>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input type="text" id="dryparamtime" name="dryparamtime"  class="form-control input-sm req015" style="text-transform:uppercase">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label>RPM: </label>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input type="text" id="dryparamrpm" name="dryparamrpm"  class="form-control input-sm req015" style="text-transform:uppercase">
-                                                        </div>
-                                                    </div>
-                                                    <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
                                                             <label>Spinner Water Pressure: *</label>
@@ -799,7 +780,7 @@
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Spinner Table (w/ Wafer) (Kpa): *</label>
+                                                            <label>Spinner Table Vacuum (w/ Wafer) (Kpa): *</label>
                                                         </div>
                                                         <div class="col-md-7">
                                                             <input type="text" id="spinnertablewith" name="spinnertablewith"  class="form-control input-sm req015" style="text-transform:uppercase">
@@ -808,7 +789,7 @@
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Spinner Table (w/o Wafer) (Kpa): *</label>
+                                                            <label>Spinner Table Vacuum (w/o Wafer) (Kpa): *</label>
                                                         </div>
                                                         <div class="col-md-7">
                                                             <input type="text" id="spinnertablewithout" name="spinnertablewithout"  class="form-control input-sm req015" style="text-transform:uppercase">
@@ -821,7 +802,7 @@
                                                             <label>DI Water Temperature (°C): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                            <input type="text" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -830,7 +811,7 @@
                                                             <label>DI Water Pressure (MPa): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="diwaterpressure" name="diwaterpressure"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                            <input type="text" id="diwaterpressure" name="diwaterpressure"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -839,7 +820,7 @@
                                                             <label>DI Water Resistivity (mega Ohm): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="diwaterresistivity" name="diwaterresistivity"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                            <input type="text" id="diwaterresistivity" name="diwaterresistivity"  class="form-control input-sm req015" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -1020,7 +1001,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect015" name = "btnAddDefect015">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect015" name = "btnAddDefect015">Add Reject</button>
                     </div>
                 </div>
 
@@ -1055,7 +1036,7 @@
                                                                 <label>Index Size 1: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is1015" name="is1015"  class="form-control input-sm is015">
+                                                                <input type="text" id="is1015" name="is1015"  class="form-control input-sm is015">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1064,7 +1045,7 @@
                                                                 <label>Index Size 2: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is2015" name="is2015"  class="form-control input-sm is015">
+                                                                <input type="text" id="is2015" name="is2015"  class="form-control input-sm is015">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1073,7 +1054,7 @@
                                                                 <label>Index Size 3: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is3015" name="is3015"  class="form-control input-sm is015">
+                                                                <input type="text" id="is3015" name="is3015"  class="form-control input-sm is015">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1082,12 +1063,12 @@
                                                                 <label>Index Size 4: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="is4015" name="is4015"  class="form-control input-sm is015">
+                                                                <input type="text" id="is4015" name="is4015"  class="form-control input-sm is015">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddis015" name = "btnAddis015">Add Index Size</button>
+                                                            <button type="button" class="btn btn-info" id="btnAddis015" name = "btnAddis015">Add Index Size</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1100,7 +1081,7 @@
                     </div><br/><br/>
                 </div>
                 <div class="col-lg-4 saw ring">
-                    <h5>Wash Parameter</h5>
+                    <h5>Wash/Dry Parameter</h5>
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
@@ -1109,14 +1090,34 @@
                                         <div class="row no-gutters">
                                             <div class="col-lg-12">
                                                 <div class="row">
-                                                    
+                                                    <h5>Dry Parameter</h5>
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>Time: </label>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <input type="text" id="dryparamtime" name="dryparamtime"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                            </div>
+                                                        </div><br/>
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <label>RPM: </label>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <input type="text" id="dryparamrpm" name="dryparamrpm"  class="form-control input-sm req015" style="text-transform:uppercase">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br/><br/>
+                                                    <h5>Wash Parameter</h5>
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <label>Time(secs): </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="wptime015" name="wptime015"  class="form-control input-sm wp015">
+                                                                <input type="text" id="wptime015" name="wptime015"  class="form-control input-sm wp015">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1125,13 +1126,13 @@
                                                                 <label>RPM: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="wprpm015" name="wprpm015"  class="form-control input-sm wp015">
+                                                                <input type="text" id="wprpm015" name="wprpm015"  class="form-control input-sm wp015">
                                                             </div>
                                                         </div>
                                                         <br/>
                                                     
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddWP015" name = "btnAddWP015">Add Wash Parameter</button>
+                                                            <button type="button" class="btn btn-info" id="btnAddWP015" name = "btnAddWP015">Add Wash Parameter</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1225,7 +1226,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone015" name = "btnDone015" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone015" name = "btnDone015" value="done">Done</button>
     </div>
 </div>
 <br/>

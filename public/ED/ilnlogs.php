@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <div class="col-sm-4">
-                <button class="btn btn-outline-success" onclick="Action()" id="btnGen" name="btnGen">Generate Reports</button>
+                <button class="btn btn-success" id="btnGen" name="btnGen">Generate Reports</button>
             </div>
         </div>
         <div class="card-body">
@@ -46,16 +46,24 @@
                         <tr>
                             <th>Tracking no</th>
                             <th>Customer</th>
-                            <th>Internal Lot number</th>
-                            <th>Customer Lot number</th>
+                            <th>Internal lot number</th>
+                            <th>Customer lot number</th>
+                            <th>Thickness requirements</th>
+                            <th>Wafer quantity</th>
+                            <th>Lot quantity</th>
+                            <th>Yield</th>
+                            <th>Lot category</th>
+                            <th>Device no</th>
                             <th>Status</th>
                             <th>Station</th>
                             <th>Cassette no</th>
                             <th>Machine</th>
-                            <th>Qty In</th>
+                            <th>Qty in</th>
                             <th>Qty out</th>
-                            <th>Date In</th>
+                            <th>Date in</th>
+                            <th>Shift</th>
                             <th>Date out</th>
+                            <th>Shift</th>
                             <th>Processed by</th>
                         </tr>
                     </thead>
@@ -89,7 +97,7 @@
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
-            //alert(result);
+            console.log(result)
             var res = JSON.parse(result);
             
             
@@ -105,11 +113,18 @@
             document.getElementById("error").hidden = true;
             for(var i = 0;i<res.length;i++)
             {
+                console.log(res[i].dateout + " " + res[i].dateoutshift)
                 $('#IntLotLogs > tbody').append('<tr id="tr'+res[i].trackingno+'">'+
                 '<td><input type="hidden">'+res[i].trackingno+'</td>'+
                 '<td><input type="hidden">'+res[i].custcode+'</td>'+
                 '<td><input type="hidden">'+res[i].intlot+'</td>'+
                 '<td><input type="hidden">'+res[i].custlot+'</td>'+
+                '<td><input type="hidden">'+res[i].requiredthickness+'</td>'+
+                '<td><input type="hidden">'+res[i].waferqty+'</td>'+
+                '<td><input type="hidden">'+res[i].qty+'</td>'+
+                '<td><input type="hidden">'+(res[i].yield).toFixed(2)+'</td>'+
+                '<td><input type="hidden">'+res[i].lottype+'</td>'+
+                '<td><input type="hidden">'+res[i].deviceno+'</td>'+
                 '<td><input type="hidden">'+res[i].status+'</td>'+
                 '<td><input type="hidden">'+res[i].station+'</td>'+
                 '<td><input type="hidden">'+res[i].cassno+'</td>'+
@@ -117,7 +132,9 @@
                 '<td><input type="hidden">'+res[i].qtyin+'</td>'+
                 '<td><input type="hidden">'+res[i].qtyout+'</td>'+
                 '<td><input type="hidden">'+res[i].datein+'</td>'+
+                '<td><input type="hidden">'+res[i].dateinshift+'</td>'+
                 '<td><input type="hidden">'+res[i].dateout+'</td>'+
+                '<td><input type="hidden">'+res[i].dateoutshift+'</td>'+
                 '<td><input type="hidden">'+res[i].lastupdatedby+'</td>'+
                 '</tr>');
             }

@@ -71,24 +71,6 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Height measurement: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <input type="number" id="heightmeasurement" name="heightmeasurement"  class="form-control input-sm req001" style="text-transform:uppercase">
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
-                                                        <label>Warpage: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="warpage" name="warpage"  class="form-control input-sm req001" style="text-transform:uppercase">
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
                                                         <label>Wafer Boat Slotting: *</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -132,111 +114,321 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div>
-                        <div class="card border-left-danger">
-                            <div class="card-body">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="panel panel-primary">
-                                                <div class="row">
-                                                    <div class="col-md-5">
-                                                        <label>Initial Thickness: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <input type="number" id="initialthickness" name="initialthickness"  class="form-control input-sm" style="text-transform:uppercase">
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="form-group">
-                                                    <button type="button" class="btn btn-outline-primary float-right" id="btnAddinitialthickness" name = "btnAddinitialthickness">Add</button>
-                                                </div>
-                                                <br/>
-                                                <div class="row"> 
-                                                    <div class="col-lg-12">
-                                                        <div class="card-body">
-                                                            <div class="row no-gutters table-responsive">
-                                                            <table class="table table-bordered" id="tblinitialthickness" width="100%" cellspacing="0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Initial Thickness</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <br/>
     <div class="card border-left-danger">
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-4">
-                    <h4>Add Reject logs</h4>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <label>Wafer no: </label>
+                <div class="col-lg-4" id="rej001">
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <h4>Add Reject logs</h4>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Wafer no: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="dwaferno001" name="dwaferno001"  class="form-control input-sm rej001">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Defect call-out: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="ddetails001" name="ddetails001"  class="form-control input-sm rej001">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Defect quantity: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="number" id="dqty001" name="dqty001"  class="form-control input-sm rej001">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Remarks: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="dremarks001" name="dremarks001"  class="form-control input-sm rej001">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger" id="btnAddDefect001" name = "btnAddDefect001">Add Reject</button>
+                            </div>
                         </div>
-                        <div class="col-md-7">
-                            <input type="text" id="dwaferno001" name="dwaferno001"  class="form-control input-sm">
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <label>Defect call-out: </label>
-                        </div>
-                        <div class="col-md-7">
-                            <input type="text" id="ddetails001" name="ddetails001"  class="form-control input-sm">
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <label>Defect quantity: </label>
-                        </div>
-                        <div class="col-md-7">
-                            <input type="number" id="dqty001" name="dqty001"  class="form-control input-sm">
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <label>Remarks: </label>
-                        </div>
-                        <div class="col-md-7">
-                            <input type="text" id="dremarks001" name="dremarks001"  class="form-control input-sm">
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect001" name = "btnAddDefect001">Add Reject</button>
                     </div>
                 </div>
-
-                <div class="col-lg-6">
-                    
+                <br/>
+                <div class="col-lg-4" id="it">
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <h4>Add Initial Thickness</h4>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Wafer no: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="initialthicknesswaferno" name="initialthicknesswaferno"  class="form-control input-sm it">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 1: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="initialthicknessp1" name="initialthicknessp1"  class="form-control input-sm it">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 2: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="initialthicknessp2" name="initialthicknessp2"  class="form-control input-sm it">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 3: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="initialthicknessp3" name="initialthicknessp3"  class="form-control input-sm it">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 4: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="initialthicknessp4" name="initialthicknessp4"  class="form-control input-sm it">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 5: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="initialthicknessp5" name="initialthicknessp5"  class="form-control input-sm it">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info" id="btnAddInitialThickness" name = "btnAddInitialThickness">Add InitialThickness</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="col-lg-4" id="idh">
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <h4>Add Ink Dot Height</h4>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Wafer no: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="inkdotheightwaferno" name="inkdotheightwaferno"  class="form-control input-sm idh">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 1: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="inkdotheightp1" name="inkdotheightp1"  class="form-control input-sm idh">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 2: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="inkdotheightp2" name="inkdotheightp2"  class="form-control input-sm idh">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 3: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="inkdotheightp3" name="inkdotheightp3"  class="form-control input-sm idh">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 4: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="inkdotheightp4" name="inkdotheightp4"  class="form-control input-sm idh">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 5: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="inkdotheightp5" name="inkdotheightp5"  class="form-control input-sm idh">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info" id="btnAddInkDotHeight" name = "btnAddInkDotHeight">Add Ink Dot Height</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="col-lg-4" id="bph">
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <h4>Add Bump Height</h4>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Wafer no: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="bumpheightwaferno" name="bumpheightwaferno"  class="form-control input-sm bph">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 1: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="bumpheightp1" name="bumpheightp1"  class="form-control input-sm bph">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 2: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="bumpheightp2" name="bumpheightp2"  class="form-control input-sm bph">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 3: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="bumpheightp3" name="bumpheightp3"  class="form-control input-sm bph">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 4: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="bumpheightp4" name="bumpheightp4"  class="form-control input-sm bph">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 5: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="bumpheightp5" name="bumpheightp5"  class="form-control input-sm bph">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info" id="btnAddBumpHeight" name = "btnAddBumpHeight">Add Bump Height</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="col-lg-4" id="wrp">
+                    <div class="card border-left-danger">
+                        <div class="card-body">
+                            <h4>Add Warpage</h4>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Wafer no: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="warpagewaferno" name="warpagewaferno"  class="form-control input-sm wrp">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 1: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="warpagep1" name="warpagep1"  class="form-control input-sm wrp">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 2: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="warpagep2" name="warpagep2"  class="form-control input-sm wrp">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 3: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="warpagep3" name="warpagep3"  class="form-control input-sm wrp">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 4: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="warpagep4" name="warpagep4"  class="form-control input-sm wrp">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Point 5: </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="warpagep5" name="warpagep5"  class="form-control input-sm wrp">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info" id="btnAddWarpage" name = "btnAddWarpage">Add Warpage</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -269,8 +461,120 @@
         </div>
     </div>
     <br/>
+    <div class="row"> 
+        <h5>List of Initial Thickness</h5>
+        <div class="col-lg-12">
+            <div class="card border-left-danger">
+                <div class="card-body">
+                    <div class="row no-gutters table-responsive">
+                    <table class="table table-bordered" id="tblinitialthickness" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                            <th>Wafer no</th>
+                            <th>Point 1</th>
+                            <th>Point 2</th>
+                            <th>Point 3</th>
+                            <th>Point 4</th>
+                            <th>Point 5</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row"> 
+        <h5>List of Ink Dot Height</h5>
+        <div class="col-lg-12">
+            <div class="card border-left-danger">
+                <div class="card-body">
+                    <div class="row no-gutters table-responsive">
+                    <table class="table table-bordered" id="tblinkdotheight" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                            <th>Wafer no</th>
+                            <th>Point 1</th>
+                            <th>Point 2</th>
+                            <th>Point 3</th>
+                            <th>Point 4</th>
+                            <th>Point 5</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row"> 
+        <h5>List of Bump Height</h5>
+        <div class="col-lg-12">
+            <div class="card border-left-danger">
+                <div class="card-body">
+                    <div class="row no-gutters table-responsive">
+                    <table class="table table-bordered" id="tblbumpheight" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                            <th>Wafer no</th>
+                            <th>Point 1</th>
+                            <th>Point 2</th>
+                            <th>Point 3</th>
+                            <th>Point 4</th>
+                            <th>Point 5</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row"> 
+        <h5>List of Warpage</h5>
+        <div class="col-lg-12">
+            <div class="card border-left-danger">
+                <div class="card-body">
+                    <div class="row no-gutters table-responsive">
+                    <table class="table table-bordered" id="tblwarpage" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                            <th>Wafer no</th>
+                            <th>Point 1</th>
+                            <th>Point 2</th>
+                            <th>Point 3</th>
+                            <th>Point 4</th>
+                            <th>Point 5</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone001" name = "btnDone001" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone001" name = "btnDone001" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -280,33 +584,80 @@
     function removeRow(row){
         
         $("#tr"+row).remove();
-        tblcount = $('#tblreject > tbody tr').length;
-        $("#initialthickness").focus();
-        //checkRow(tblcount);
+        tblcount = $('#tblreject001 > tbody tr').length;
+        //checkRow(thickcount);
     }
-    $('#btnAddinitialthickness').click(function(event) {
+
+    function removeInitialThickRow(row){
+        
+        $("#trit"+row).remove();
+        initialthickcount = $('#tblinitialthickness > tbody tr').length;
+        //$("#initialthicknesswaferno").focus();
+        //checkRow(thickcount);
+    }
+
+    function removeInkDotHeightRow(row){
+        
+        $("#tridh"+row).remove();
+        inkdotheightcount = $('#tblinkdotheight > tbody tr').length;
+        //$("#initialthicknesswaferno").focus();
+        //checkRow(thickcount);
+    }
+
+    function removeBumpHeightRow(row){
+        
+        $("#trbph"+row).remove();
+        bumpheightcount = $('#tblbumpheight > tbody tr').length;
+        //$("#initialthicknesswaferno").focus();
+        //checkRow(thickcount);
+    }
+
+    function removeWarpageRow(row){
+        
+        $("#trwrp"+row).remove();
+        warpagecount = $('#tblwarpage> tbody tr').length;
+        //$("#initialthicknesswaferno").focus();
+        //checkRow(thickcount);
+    }
+
+    //Add Initial Thickness
+
+    $('#btnAddInitialThickness').click(function(event) {
        
-        if($('#initialthickness').val()== "")
+        if($('#initialthicknesswaferno').val()== "" || $('#initialthicknessp1').val()== "" || $('#initialthicknessp2').val()== "" || $('#initialthicknessp3').val()== "" || $('#initialthicknessp4').val()== "" || $('#initialthicknessp5').val()== "")
         {
+            document.getElementById('it').scrollIntoView();
+            var rejval = document.getElementsByClassName("it");
+            for(var i = 0;rejval.length > i; i++)
+            {
+                if(rejval[i].value == '')
+                {
+                    rejval[i].style.borderColor = 'red';
+                }
+                else
+                {
+                    rejval[i].style.borderColor = '#d1d3e2';
+                }
+            }
             swal("missing input!",{
                 icon: "warning",
-                title: "Please input Initial Thickness!",
+                title: "Please complete Initial Thickness details!",
                 closeOnClickOutside: false,
             });
-            $('button.swal-button').click(function(event){$("#initialthickness").focus();});
+            $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
             return false;
         }
 
         if(parseInt($('#wqty').val()) > 1)
         {
-            if(tblcount > 1)
+            if(initialthickcount > 1)
             {
                 swal("error!",{
                 icon: "error",
                 title: "Initial Thickness input reached its maximum limit!",
                 closeOnClickOutside: false,
                 });
-                $('button.swal-button').click(function(event){$("#initialthickness").focus();});
+                $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
                 return false;
             }
             
@@ -314,33 +665,308 @@
 
         if(parseInt($('#wqty').val())  <= 1 )
         {
-            alert(tblcount)
-            if(tblcount > 0)
+            //alert(thickcount)
+            if(initialthickcount > 0)
             {
                 swal("error!",{
                 icon: "error",
                 title: "Initial Thickness input reached its maximum limit!",
                 closeOnClickOutside: false,
                 });
-                $('button.swal-button').click(function(event){$("#initialthickness").focus();});
+                $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
                 return false;
             }
             
         }
-        
-        $('#tblinitialthickness > tbody').append('<tr id="tr'+tblcount+'">'+
-                                    '<td><input type="hidden" id = "sinitialthickness[]"  name="sinitialthickness[]" value="'+$('#initialthickness').val()+'">'+$('#initialthickness').val()+'</td>'+
-                                    '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+        $('#tblinitialthickness > tbody').append('<tr id="trit'+initialthickcount+'">'+
+                                    '<td><input type="hidden" id = "sinitialthicknesswaferno[]"  name="sinitialthicknesswaferno[]" value="'+$('#initialthicknesswaferno').val()+'">'+$('#initialthicknesswaferno').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinitialthicknessp1[]"  name="sinitialthicknessp1[]" value="'+$('#initialthicknessp1').val()+'">'+$('#initialthicknessp1').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinitialthicknessp2[]"  name="sinitialthicknessp2[]" value="'+$('#initialthicknessp2').val()+'">'+$('#initialthicknessp2').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinitialthicknessp3[]"  name="sinitialthicknessp3[]" value="'+$('#initialthicknessp3').val()+'">'+$('#initialthicknessp3').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinitialthicknessp4[]"  name="sinitialthicknessp4[]" value="'+$('#initialthicknessp4').val()+'">'+$('#initialthicknessp4').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinitialthicknessp5[]"  name="sinitialthicknessp5[]" value="'+$('#initialthicknessp5').val()+'">'+$('#initialthicknessp5').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeInitialThickRow('+initialthickcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
-        tblcount++;
-        $('#initialthickness').val("");
-        $("#initialthickness").focus();
-        //checkRow(tblcount);
+        initialthickcount++;
+        $('#initialthicknesswaferno').val("");
+        $('#initialthicknessp1').val("");
+        $('#initialthicknessp2').val("");
+        $('#initialthicknessp3').val("");
+        $('#initialthicknessp4').val("");
+        $('#initialthicknessp5').val("");
+        $("#initialthicknesswaferno").focus();
+        //checkRow(thickcount);
+        $(".it").css({"border-color": "#d1d3e2"});
+        swal("success!",{
+            icon: "success",
+            title: "Initial Thickness details successfully added!",
+            closeOnClickOutside: false,
+        });
+            
+    });
+
+    //Add Ink dot height
+
+    $('#btnAddInkDotHeight').click(function(event) {
+       
+        if($('#inkdotheightwaferno').val()== "" || $('#inkdotheightp1').val()== "" || $('#inkdotheightp2').val()== "" || $('#inkdotheightp3').val()== "" || $('#inkdotheightp4').val()== "" || $('#inkdotheightp5').val()== "")
+        {
+            document.getElementById('idh').scrollIntoView();
+            var rejval = document.getElementsByClassName("idh");
+            for(var i = 0;rejval.length > i; i++)
+            {
+                if(rejval[i].value == '')
+                {
+                    rejval[i].style.borderColor = 'red';
+                }
+                else
+                {
+                    rejval[i].style.borderColor = '#d1d3e2';
+                }
+            }
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please complete Ink Dot Height details!",
+                closeOnClickOutside: false,
+            });
+            $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
+            return false;
+        }
+
+        if(parseInt($('#wqty').val()) > 1)
+        {
+            if(inkdotheightcount > 1)
+            {
+                swal("error!",{
+                icon: "error",
+                title: "Ink Dot Height input reached its maximum limit!",
+                closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
+                return false;
+            }
+            
+        }
+
+        if(parseInt($('#wqty').val())  <= 1 )
+        {
+            //alert(thickcount)
+            if(inkdotheightcount > 0)
+            {
+                swal("error!",{
+                icon: "error",
+                title: "Ink Dot Height input reached its maximum limit!",
+                closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
+                return false;
+            }
+            
+        }
+        $('#tblinkdotheight > tbody').append('<tr id="tridh'+inkdotheightcount+'">'+
+                                    '<td><input type="hidden" id = "sinkdotheightwaferno[]"  name="sinkdotheightwaferno[]" value="'+$('#inkdotheightwaferno').val()+'">'+$('#inkdotheightwaferno').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinkdotheightp1[]"  name="sinkdotheightp1[]" value="'+$('#inkdotheightp1').val()+'">'+$('#inkdotheightp1').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinkdotheightp2[]"  name="sinkdotheightp2[]" value="'+$('#inkdotheightp2').val()+'">'+$('#inkdotheightp2').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinkdotheightp3[]"  name="sinkdotheightp3[]" value="'+$('#inkdotheightp3').val()+'">'+$('#inkdotheightp3').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinkdotheightp4[]"  name="sinkdotheightp4[]" value="'+$('#inkdotheightp4').val()+'">'+$('#inkdotheightp4').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sinkdotheightp5[]"  name="sinkdotheightp5[]" value="'+$('#inkdotheightp5').val()+'">'+$('#inkdotheightp5').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeInkDotHeightRow('+inkdotheightcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        inkdotheightcount++;
+        $('#inkdotheightwaferno').val("");
+        $('#inkdotheightp1').val("");
+        $('#inkdotheightp2').val("");
+        $('#inkdotheightp3').val("");
+        $('#inkdotheightp4').val("");
+        $('#inkdotheightp5').val("");
+        $("#inkdotheightwaferno").focus();
+        //checkRow(thickcount);
+        $(".idh").css({"border-color": "#d1d3e2"});
+        swal("success!",{
+            icon: "success",
+            title: "Ink Dot Height details successfully added!",
+            closeOnClickOutside: false,
+        });
+            
+    });
+
+    // Add Bump Height
+
+    $('#btnAddBumpHeight').click(function(event) {
+       
+        if($('#bumpheightwaferno').val()== "" || $('#bumpheightp1').val()== "" || $('#bumpheightp2').val()== "" || $('#bumpheightp3').val()== "" || $('#bumpheightp4').val()== "" || $('#bumpheightp5').val()== "")
+        {
+            document.getElementById('bph').scrollIntoView();
+            var rejval = document.getElementsByClassName("bph");
+            for(var i = 0;rejval.length > i; i++)
+            {
+                if(rejval[i].value == '')
+                {
+                    rejval[i].style.borderColor = 'red';
+                }
+                else
+                {
+                    rejval[i].style.borderColor = '#d1d3e2';
+                }
+            }
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please complete Bump Height details!",
+                closeOnClickOutside: false,
+            });
+            $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
+            return false;
+        }
+
+        if(parseInt($('#wqty').val()) > 1)
+        {
+            if(bumpheightcount > 1)
+            {
+                swal("error!",{
+                icon: "error",
+                title: "Bump Height input reached its maximum limit!",
+                closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
+                return false;
+            }
+            
+        }
+
+        if(parseInt($('#wqty').val())  <= 1 )
+        {
+            //alert(thickcount)
+            if(bumpheightcount > 0)
+            {
+                swal("error!",{
+                icon: "error",
+                title: "Bump Height input reached its maximum limit!",
+                closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
+                return false;
+            }
+            
+        }
+        $('#tblbumpheight > tbody').append('<tr id="trbph'+bumpheightcount+'">'+
+                                    '<td><input type="hidden" id = "sbumpheightwaferno[]"  name="sbumpheightwaferno[]" value="'+$('#bumpheightwaferno').val()+'">'+$('#bumpheightwaferno').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sbumpheightp1[]"  name="sbumpheightp1[]" value="'+$('#bumpheightp1').val()+'">'+$('#bumpheightp1').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sbumpheightp2[]"  name="sbumpheightp2[]" value="'+$('#bumpheightp2').val()+'">'+$('#bumpheightp2').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sbumpheightp3[]"  name="sbumpheightp3[]" value="'+$('#bumpheightp3').val()+'">'+$('#bumpheightp3').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sbumpheightp4[]"  name="sbumpheightp4[]" value="'+$('#bumpheightp4').val()+'">'+$('#bumpheightp4').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sbumpheightp5[]"  name="sbumpheightp5[]" value="'+$('#bumpheightp5').val()+'">'+$('#bumpheightp5').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeBumpHeightRow('+bumpheightcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        bumpheightcount++;
+        $('#bumpheightwaferno').val("");
+        $('#bumpheightp1').val("");
+        $('#bumpheightp2').val("");
+        $('#bumpheightp3').val("");
+        $('#bumpheightp4').val("");
+        $('#bumpheightp5').val("");
+        $("#bumpheightwaferno").focus();
+        //checkRow(thickcount);
+        $(".bph").css({"border-color": "#d1d3e2"});
+        swal("success!",{
+            icon: "success",
+            title: "Bump Height details successfully added!",
+            closeOnClickOutside: false,
+        });
+            
+    });
+
+    // Add Warpage
+
+    $('#btnAddWarpage').click(function(event) {
+       
+        if($('#warpagewaferno').val()== "" || $('#warpagep1').val()== "" || $('#warpagep2').val()== "" || $('#warpagep3').val()== "" || $('#warpagep4').val()== "" || $('#warpagep5').val()== "")
+        {
+            document.getElementById('wrp').scrollIntoView();
+            var rejval = document.getElementsByClassName("wrp");
+            for(var i = 0;rejval.length > i; i++)
+            {
+                if(rejval[i].value == '')
+                {
+                    rejval[i].style.borderColor = 'red';
+                }
+                else
+                {
+                    rejval[i].style.borderColor = '#d1d3e2';
+                }
+            }
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please complete Warpage details!",
+                closeOnClickOutside: false,
+            });
+            $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
+            return false;
+        }
+
+        if(parseInt($('#wqty').val()) > 1)
+        {
+            if(warpagecount > 1)
+            {
+                swal("error!",{
+                icon: "error",
+                title: "Warpage input reached its maximum limit!",
+                closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
+                return false;
+            }
+            
+        }
+
+        if(parseInt($('#wqty').val())  <= 1 )
+        {
+            //alert(thickcount)
+            if(warpagecount > 0)
+            {
+                swal("error!",{
+                icon: "error",
+                title: "Warpage input reached its maximum limit!",
+                closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
+                return false;
+            }
+            
+        }
+        $('#tblwarpage > tbody').append('<tr id="trwrp'+warpagecount+'">'+
+                                    '<td><input type="hidden" id = "swarpagewaferno[]"  name="swarpagewaferno[]" value="'+$('#warpagewaferno').val()+'">'+$('#warpagewaferno').val()+'</td>'+
+                                    '<td><input type="hidden" id = "swarpagep1[]"  name="swarpagep1[]" value="'+$('#warpagep1').val()+'">'+$('#warpagep1').val()+'</td>'+
+                                    '<td><input type="hidden" id = "swarpagep2[]"  name="swarpagep2[]" value="'+$('#warpagep2').val()+'">'+$('#warpagep2').val()+'</td>'+
+                                    '<td><input type="hidden" id = "swarpagep3[]"  name="swarpagep3[]" value="'+$('#warpagep3').val()+'">'+$('#warpagep3').val()+'</td>'+
+                                    '<td><input type="hidden" id = "swarpagep4[]"  name="swarpagep4[]" value="'+$('#warpagep4').val()+'">'+$('#warpagep4').val()+'</td>'+
+                                    '<td><input type="hidden" id = "swarpagep5[]"  name="swarpagep5[]" value="'+$('#warpagep5').val()+'">'+$('#warpagep5').val()+'</td>'+
+                                    '<td><button type="button" onclick="removeWarpageRow('+warpagecount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '</tr>');
+
+        warpagecount++;
+        $('#warpagewaferno').val("");
+        $('#warpagep1').val("");
+        $('#warpagep2').val("");
+        $('#warpagep3').val("");
+        $('#warpagep4').val("");
+        $('#warpagep5').val("");
+        $("#warpagewaferno").focus();
+        //checkRow(thickcount);
+        $(".wrp").css({"border-color": "#d1d3e2"});
+        swal("success!",{
+            icon: "success",
+            title: "Warpage details successfully added!",
+            closeOnClickOutside: false,
+        });
             
     });
 
     $('#btnDone001').click(function(event) {
+
+        //Reject
 
         var sdwaferno = $('input[name="sdwaferno001[]"]').map(function () {
         return this.value; }).get();
@@ -357,6 +983,87 @@
         var sinitialthickness = $('input[name="sinitialthickness[]"]').map(function () {
         return this.value; }).get();
 
+        //Initial thickness
+
+        var sinitialthicknesswaferno = $('input[name="sinitialthicknesswaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinitialthicknessp1 = $('input[name="sinitialthicknessp1[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinitialthicknessp2 = $('input[name="sinitialthicknessp2[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinitialthicknessp3 = $('input[name="sinitialthicknessp3[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinitialthicknessp4 = $('input[name="sinitialthicknessp4[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinitialthicknessp5 = $('input[name="sinitialthicknessp5[]"]').map(function () {
+        return this.value; }).get();
+
+        //Ink Dot Height
+
+        var sinkdotheightwaferno = $('input[name="sinkdotheightwaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinkdotheightp1 = $('input[name="sinkdotheightp1[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinkdotheightp2 = $('input[name="sinkdotheightp2[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinkdotheightp3 = $('input[name="sinkdotheightp3[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinkdotheightp4 = $('input[name="sinkdotheightp4[]"]').map(function () {
+        return this.value; }).get();
+
+        var sinkdotheightp5 = $('input[name="sinkdotheightp5[]"]').map(function () {
+        return this.value; }).get();
+
+        //Bump Height
+
+        var sbumpheightwaferno = $('input[name="sbumpheightwaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var sbumpheightp1 = $('input[name="sbumpheightp1[]"]').map(function () {
+        return this.value; }).get();
+
+        var sbumpheightp2 = $('input[name="sbumpheightp2[]"]').map(function () {
+        return this.value; }).get();
+
+        var sbumpheightp3 = $('input[name="sbumpheightp3[]"]').map(function () {
+        return this.value; }).get();
+
+        var sbumpheightp4 = $('input[name="sbumpheightp4[]"]').map(function () {
+        return this.value; }).get();
+
+        var sbumpheightp5 = $('input[name="sbumpheightp5[]"]').map(function () {
+        return this.value; }).get();
+
+        //Warpage
+
+        var swarpagewaferno = $('input[name="swarpagewaferno[]"]').map(function () {
+        return this.value; }).get();
+
+        var swarpagep1 = $('input[name="swarpagep1[]"]').map(function () {
+        return this.value; }).get();
+
+        var swarpagep2 = $('input[name="swarpagep2[]"]').map(function () {
+        return this.value; }).get();
+
+        var swarpagep3 = $('input[name="swarpagep3[]"]').map(function () {
+        return this.value; }).get();
+
+        var swarpagep4 = $('input[name="swarpagep4[]"]').map(function () {
+        return this.value; }).get();
+
+        var swarpagep5 = $('input[name="swarpagep5[]"]').map(function () {
+        return this.value; }).get();
+
+        //
         
         var val = document.getElementsByClassName("req001");
         var data = {};
@@ -386,39 +1093,127 @@
             return false;
         }
 
-        if(tblcount == 0)
+        //Check Initial Thickness
+
+        if(initialthickcount == 0)
         {
-            document.getElementById("initialthickness").style.borderColor = 'red';
-            document.getElementById('001').scrollIntoView();
+            $(".it").css({"border-color": "#FF0000"});
+            document.getElementById('it').scrollIntoView();
             swal("missing input!",{
                 icon: "warning",
                 title: "Please input Initial Thickness!",
                 closeOnClickOutside: false,
             });
-            $('button.swal-button').click(function(event){$("#initialthickness").focus();});
+            $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
             return false;
         }
         if(parseInt($('#wqty').val()) > 1)
         {
-            if(tblcount < 2)
+            if(initialthickcount < 2)
             {
-                document.getElementById("initialthickness").style.borderColor = 'red';
-                document.getElementById('001').scrollIntoView();
+                $(".it").css({"border-color": "#FF0000"});
+                document.getElementById('it').scrollIntoView();
                 swal("missing input!",{
                     icon: "warning",
                     title: "Please input Initial Thickness!",
                     closeOnClickOutside: false,
                 });
-                $('button.swal-button').click(function(event){$("#initialthickness").focus();});
+                $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
+                return false;
+            }
+        }
+        
+        // Check Ink Dot Height
+
+        if(inkdotheightcount == 0)
+        {
+            $(".idh").css({"border-color": "#FF0000"});
+            document.getElementById('idh').scrollIntoView();
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please input Ink Dot Height!",
+                closeOnClickOutside: false,
+            });
+            $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
+            return false;
+        }
+        if(parseInt($('#wqty').val()) > 1)
+        {
+            if(inkdotheightcount < 2)
+            {
+                $(".idh").css({"border-color": "#FF0000"});
+                document.getElementById('idh').scrollIntoView();
+                swal("missing input!",{
+                    icon: "warning",
+                    title: "Please input Ink Dot Height!",
+                    closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
                 return false;
             }
         }
 
-        document.getElementById("initialthickness").style.borderColor = '#d1d3e2';
+        // Check Bump Height
+        
+        if(bumpheightcount == 0)
+        {
+            $(".bph").css({"border-color": "#FF0000"});
+            document.getElementById('bph').scrollIntoView();
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please input Bump Height!",
+                closeOnClickOutside: false,
+            });
+            $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
+            return false;
+        }
+        if(parseInt($('#wqty').val()) > 1)
+        {
+            if(bumpheightcount < 2)
+            {
+                $(".bph").css({"border-color": "#FF0000"});
+                document.getElementById('bph').scrollIntoView();
+                swal("missing input!",{
+                    icon: "warning",
+                    title: "Please input Bump Height!",
+                    closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
+                return false;
+            }
+        }
 
-        const initthick = sinitialthickness.length > 1 ? sinitialthickness.join(",") : sinitialthickness.join("");
+        // Check Warpage
 
-        data["initialthickness"] = initthick;
+        if(warpagecount == 0)
+        {
+            $(".wrp").css({"border-color": "#FF0000"});
+            document.getElementById('wrp').scrollIntoView();
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please input Warpage!",
+                closeOnClickOutside: false,
+            });
+            $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
+            return false;
+        }
+        if(parseInt($('#wqty').val()) > 1)
+        {
+            if(warpagecount < 2)
+            {
+                $(".wrp").css({"border-color": "#FF0000"});
+                document.getElementById('wrp').scrollIntoView();
+                swal("missing input!",{
+                    icon: "warning",
+                    title: "Please input Warpage!",
+                    closeOnClickOutside: false,
+                });
+                $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
+                return false;
+            }
+        }
+
+        //
 
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -427,7 +1222,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                //alert(result)
+                alert(result)
 
                 if(res[0].trim() == 'success')
                 {
@@ -456,6 +1251,30 @@
         xmlhttp.open("GET", "../php/addefai001.php?data=" + JSON.stringify(data)
         +"&wtypeothers="+$("#wtypeothers.001").val()
         +"&intlotno="+document.getElementById("intlotno").value
+        + "&sinitialthicknesswaferno="+JSON.stringify(sinitialthicknesswaferno) 
+        + "&sinitialthicknessp1="+JSON.stringify(sinitialthicknessp1)
+        + "&sinitialthicknessp2="+JSON.stringify(sinitialthicknessp2)
+        + "&sinitialthicknessp3="+JSON.stringify(sinitialthicknessp3)
+        + "&sinitialthicknessp4="+JSON.stringify(sinitialthicknessp4)
+        + "&sinitialthicknessp5="+JSON.stringify(sinitialthicknessp5) 
+        + "&sinkdotheightwaferno="+JSON.stringify(sinkdotheightwaferno) 
+        + "&sinkdotheightp1="+JSON.stringify(sinkdotheightp1)
+        + "&sinkdotheightp2="+JSON.stringify(sinkdotheightp2)
+        + "&sinkdotheightp3="+JSON.stringify(sinkdotheightp3)
+        + "&sinkdotheightp4="+JSON.stringify(sinkdotheightp4)
+        + "&sinkdotheightp5="+JSON.stringify(sinkdotheightp5)
+        + "&sbumpheightwaferno="+JSON.stringify(sbumpheightwaferno) 
+        + "&sbumpheightp1="+JSON.stringify(sbumpheightp1)
+        + "&sbumpheightp2="+JSON.stringify(sbumpheightp2)
+        + "&sbumpheightp3="+JSON.stringify(sbumpheightp3)
+        + "&sbumpheightp4="+JSON.stringify(sbumpheightp4)
+        + "&sbumpheightp5="+JSON.stringify(sbumpheightp5)
+        + "&swarpagewaferno="+JSON.stringify(swarpagewaferno) 
+        + "&swarpagep1="+JSON.stringify(swarpagep1)
+        + "&swarpagep2="+JSON.stringify(swarpagep2)
+        + "&swarpagep3="+JSON.stringify(swarpagep3)
+        + "&swarpagep4="+JSON.stringify(swarpagep4)
+        + "&swarpagep5="+JSON.stringify(swarpagep5)
         + "&sdwaferno="+JSON.stringify(sdwaferno) 
         + "&sddetails="+ JSON.stringify(sddetails) 
         + "&sdqty="+ JSON.stringify(sdqty) 
@@ -494,7 +1313,7 @@
 
     $( "#btnAddDefect001" ).click(function() {
 
-    //alert(tblcount)
+    //alert(thickcount)
 
 
     var sdqty = $('input[name="sdqty001[]"]').map(function () {
@@ -554,7 +1373,7 @@
         $('#ddetails001').val("");
         $('#dqty001').val("");
         $('#dremarks001').val("");
-        //checkRow(tblcount);
+        //checkRow(thickcount);
         
         /* document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
         document.getElementById("derror").hidden = true;

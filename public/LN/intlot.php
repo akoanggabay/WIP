@@ -148,7 +148,7 @@
                                         </div>
                                         <br/>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-success" id="btnAddWI" name = "btnAddWI" >Add Work Instruction</button>
+                                            <button type="button" class="btn btn-success" id="btnAddWI" name = "btnAddWI" >Add Work Instruction</button>
                                         </div>
                                         </form>
                                     </div>
@@ -291,7 +291,7 @@
 </div>
 </br><br/>
 <div class="form-group">
-    <button type="button" class="btn btn-outline-success" id="btnGenerate" name = "btnGenerate" disabled>Generate ILN</button>
+    <button type="button" class="btn btn-success" id="btnGenerate" name = "btnGenerate" disabled>Generate ILN</button>
 </div>
 <br/>
 <script src="../vendor/jquery/jquery.min.js"></script>

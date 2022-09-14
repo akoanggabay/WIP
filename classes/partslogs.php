@@ -60,6 +60,40 @@ class partslogs {
         return $success;	
 	}
 
+    public static function GetAllPartsLogs($lotno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from partslogs where lotno = '".$lotno."' order by trackingno desc");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+				$user = new User;
+				
+				while ($row = $conn->fetch_array($dataset)) {
+				
+				$user->UserData($row["lastupdatedby"]);
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'lotno'   => $row["lotno"],
+				'qty'   => $row["qty"],
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
+				'remarks' => $row["remarks"],
+				'lastupdatedby' => $user->getfname().' '.$user->getlname()
+				);
+				}
+			}
+		
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
 }
 
 ?>

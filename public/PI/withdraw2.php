@@ -243,7 +243,7 @@ if (this.readyState == 4 && this.status == 200)
 {
     $("#lotno").empty();
     var result = this.responseText;
-    alert(result);
+    //alert(result);
     var res = result.split("_");
     if(res.length <=1 )
     {

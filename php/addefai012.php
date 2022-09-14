@@ -59,12 +59,12 @@ if($success == true)
             $reject->setintlotno($intlotno);
             $reject->setcustcode($intlotdata2->custcode);
             $reject->setstation('012');
-            $reject->setmachine($data->machine);
+            $reject->setmachine('');
             $reject->setwaferno($sdwaferno[$x]);
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:sa"));
+            $reject->setlastupdate(date("Y-m-d h:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }

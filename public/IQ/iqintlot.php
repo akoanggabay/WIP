@@ -31,12 +31,12 @@
                                         <br/>
                                         
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-success" id="btnView" name = "btnView" onkeypress="if (event.keyCode == 13)  return false;">View Details</button>
-                                            <button type="button" class="btn btn-outline-warning float-right" id="btnClear" name = "btnClear">Clear details</button>
+                                            <button type="button" class="btn btn-success" id="btnView" name = "btnView" onkeypress="if (event.keyCode == 13)  return false;">View Details</button>
+                                            <button type="button" class="btn btn-warning float-right" id="btnClear" name = "btnClear">Clear details</button>
                                         </div>
 
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline-info" id="btnPrint" name = "btnPrint" onkeypress="if (event.keyCode == 13)  return false;" disabled>Re-print</button>
+                                            <button type="button" class="btn btn-info" id="btnPrint" name = "btnPrint" onkeypress="if (event.keyCode == 13)  return false;" disabled>Re-print</button>
                                         </div>
                                         
                                     </div>
@@ -149,7 +149,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer size:</label>
+                                                        <label>Wafer/Panel/Strip size:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wsize" name="wsize"  class="form-control input-sm" value="" readonly><br>
@@ -157,7 +157,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer thickness:</label>
+                                                        <label>Wafer/Panel/Strip thickness:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wthick" name="wthick"  class="form-control input-sm" value="" readonly><br>
@@ -165,7 +165,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer no:</label>
+                                                        <label>Wafer/Panel/Strip no:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wno" name="wno"  class="form-control input-sm" value="" readonly><br>
@@ -173,7 +173,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer run:</label>
+                                                        <label>Wafer/Panel/Strip run:</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wrun" name="wrun"  class="form-control input-sm" value="" readonly><br>

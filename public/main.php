@@ -217,6 +217,7 @@ if(!isset($_SESSION['idno']))
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Inquiries:</h6>
                         <a class="collapse-item" href="?form=IQ&path=iqintlot">Internal Lot Number</a>
+                        <a class="collapse-item" href="?form=IQ&path=iqpartslot">Parts Lot Number</a>
                     </div>
                 </div>
             </li>
@@ -240,6 +241,7 @@ if(!isset($_SESSION['idno']))
                         <a class="collapse-item" href="?form=ED&path=po">PO Number</a>
                         <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot Number Logs</a>
                         <a class="collapse-item" href="?form=ED&path=custlotlogs">File Upload Logs</a>
+                        <a class="collapse-item" href="?form=ED&path=efailogs">eFAI Logs</a>
                     </div>
                 </div>
             </li>
@@ -455,6 +457,20 @@ if(!isset($_SESSION['idno']))
     <script src="../js/demo/datatables.js"></script>
 
     <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+        if(<?php echo $_SESSION['alert']; ?> == 1)
+        {
+            swal("notification!",{
+                icon: "warning",
+                title: "Your certification will expire in <?php echo $_SESSION['numberofdays']; ?> days!",
+                closeOnClickOutside: false,
+            });
+        }
+
+        <?php $_SESSION['alert'] = 0; ?>
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }

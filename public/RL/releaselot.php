@@ -52,7 +52,7 @@
                             <td><?php echo $intlotno[$i]->getstarttime(); ?></td>
                             <td><?php echo $intlotno[$i]->getwafersize(); ?></td>
                             <td><?php echo $intlotno[$i]->getlastupdatedby(); ?></td>
-                            <td><button type="button" class="btn btn-outline-info" value = "<?php echo $intlotno[$i]->getintlotno(); ?>" onclick="Action(value)">RELEASE</button></td>
+                            <td><button type="button" class="btn btn-info" value = "<?php echo $intlotno[$i]->getintlotno(); ?>" onclick="Action(value)">RELEASE</button></td>
     
                 
                         <?php } ?>

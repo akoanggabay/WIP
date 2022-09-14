@@ -19,7 +19,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req007" id="mounttype" name="mounttype">
                                                             <option value=""></option>
-                                                            <option value="Mount">Mount</option>
+                                                            <option value="Mount (Semi-auto)">Mount (Semi-auto)</option>
                                                             <option value="Vacuum Mount">Vacuum Mount</option>
                                                             <option value="Manual Mount">Manual Mount</option>
                                                         </select>
@@ -109,7 +109,7 @@
                                                         <label>Required: Wafer Thickess (in microns): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -118,7 +118,7 @@
                                                         <label>Actual: Wafer Thickess (in microns): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
+                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -227,7 +227,7 @@
                                                         <label>Chuck Table Temperature(<b>in ℃</b>): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="chucktabletemp" name="chucktabletemp"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
+                                                        <input type="text" id="chucktabletemp" name="chucktabletemp"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -383,7 +383,7 @@
                                                             <label>Blade Count <span id="007bladecount"></span>: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="bladecount" name="bladecount"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
+                                                            <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -435,7 +435,7 @@
                                                             <label>Required: Table Temperature(<b>in ℃</b>): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="tabletemprequired" name="tabletemprequired"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
+                                                            <input type="text" id="tabletemprequired" name="tabletemprequired"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -444,7 +444,7 @@
                                                             <label>Actual: Table Temperature(<b>in ℃</b>): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="tabletempactual" name="tabletempactual"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
+                                                            <input type="text" id="tabletempactual" name="tabletempactual"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -453,7 +453,7 @@
                                                             <label>Pre-heating time(optional): </label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="preheatingtime" name="preheatingtime"  class="form-control input-sm" style="text-transform:uppercase">
+                                                            <input type="text" id="preheatingtime" name="preheatingtime"  class="form-control input-sm" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -462,7 +462,7 @@
                                                             <label>Main Air Pressure/Bars/0.5 kPa (min): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="number" id="mainairpressure" name="mainairpressure"  class="form-control input-sm req007 vacuum" style="text-transform:uppercase">
+                                                            <input type="text" id="mainairpressure" name="mainairpressure"  class="form-control input-sm req007 vacuum" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -471,7 +471,7 @@
                                                             <label>Set-up Wafer result: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 vacuum manual" id="setupwafer" name="setupwafer">
+                                                            <select class="form-control req007 vacuum manual mount" id="setupwafer" name="setupwafer">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Ok">Ok</option>
@@ -482,7 +482,7 @@
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Technician Employee: *</label>
+                                                            <label>Technician Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
                                                             <input type="password" id="techemp" name="techemp"  class="form-control input-sm req007 mount vacuum manual">
@@ -491,7 +491,7 @@
                                                     <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label>Quality Control Employee: *</label>
+                                                            <label>Quality Control Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
                                                             <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req007 mount vacuum manual">
@@ -563,7 +563,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect007" name = "btnAddDefect007">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect007" name = "btnAddDefect007">Add Reject</button>
                     </div>
                 </div>
 
@@ -602,7 +602,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone007" name = "btnDone007" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone007" name = "btnDone007" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -752,7 +752,7 @@
             $(".vacuum").attr("disabled",false);
             $(".vacuum").val("");
         }
-        else if($(this).val() == 'Mount')
+        else if($(this).val() == 'Mount (Semi-auto)')
         {
             $(".vacuum,.manual").attr("disabled",true);
             

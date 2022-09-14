@@ -314,8 +314,10 @@ class IntLotno {
 			$dataset =  $conn->query("SELECT a.custcode,b.deviceno,a.intlot,a.custlot,b.waferqty,b.qty,b.lottype,b.waferthickness,b.requiredthickness,a.pono,b.datestart,b.shipbackdate,a.status,b.processcat,a.wafersize,a.station,a.currqty,a.origqty,a.waferno,a.waferrun,a.brm,a.devicetype,a.wr FROM intlotno a inner join custlotno b on  a.custlot = b.custlotno and a.custcode = b.custcode where a.intlot = '".$intlot."'");
 			include_once("station.php");
 			include_once("processroute.php");
+			include_once("intlotlogs.php");
 			$station = new Station;
 			$process = new ProcessRoute;
+			$intlotlogs = new IntLotLogs;
 			if ($conn->has_rows($dataset)) {
 				$row = $conn->fetch_array($dataset);
 				$station->StationDetails($row["station"]);
@@ -325,7 +327,7 @@ class IntLotno {
 				$process->getStationDetails();
 				$cstation  = $row["station"].':'.$station->getdescription();
 				$nextstage = ProcessRoute::getnextstage($process->getprocess(),$process->getflowsequence());
-
+				$bgtapetime = IntLotLogs::ILNLogsTapingtoBG($intlot);
 				$station->StationDetails($nextstage);
 				if($nextstage == '')
 				{
@@ -361,6 +363,7 @@ class IntLotno {
 				'brm' => $row["brm"],
 				'devicetype' => $row["devicetype"],
 				'wr' => $row["wr"],
+				'bgtapetime' => $bgtapetime,
 				'intlot' => $row["intlot"]
 				);
 			}
@@ -641,6 +644,27 @@ class IntLotno {
 		}catch(Exception $e){
 
 		}
+	}
+
+	public static function checkExisteFAI($efai,$intlotno)
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM dbo.efai$efai WHERE intlot ='" .$intlotno."'");
+
+			if ($conn->has_rows($dataset)) {
+				$result = 'true';
+			} else {
+				$result = 'false';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
+		}
+		return $result;
 	}
 }
 ?>

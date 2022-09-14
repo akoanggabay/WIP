@@ -115,6 +115,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req003" id="processmode" name="processmode">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
                                                             <option value="Manual">Manual</option>
                                                         </select>
@@ -130,6 +131,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req003" id="bgtapetype" name="bgtapetype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="UV">UV</option>
                                                             <option value="Non-UV">Non-UV</option>
                                                         </select>
@@ -150,43 +152,61 @@
                                                         <label>BG Tape Thickness: * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="bgtapethickness" name="bgtapethickness"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                        <input type="text" id="bgtapethickness" name="bgtapethickness"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>BG Tape Staged (from Taping to BG): * </label>
+                                                        <label>BG Tape Staged (from Taping to BG in hours < 14 hours): * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="bgtapestaged" name="bgtapestaged"  class="form-control input-sm req003">
+                                                        <input type="text" id="bgtapestaged" name="bgtapestaged"  class="form-control input-sm req003" readonly>
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>DI Water Temp: *</label>
+                                                        <label>DI Water Temp (Reqt : 25 +/- 3 deg C): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req003">
+                                                        <input type="text" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req003">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
-                                                        <label>Grinding wheel: *</label>
+                                                    <div class="col-md-4">
+                                                        <label>Grinding wheel: * </label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="grindingwheel" name="grindingwheel"  class="form-control input-sm req003">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="grindingwheelz1" name="grindingwheelz1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="grindingwheelz2" name="grindingwheelz2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
-                                                        <label>Grinding wheel usable tooth: *</label>
+                                                    <div class="col-md-4">
+                                                        <label>Grinding wheel usable tooth (1000 um min): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="number" id="grindingwheelusabletooth" name="grindingwheelusabletooth"  class="form-control input-sm req003">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="grindingwheelusabletoothz1" name="grindingwheelusabletoothz1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="grindingwheelusabletoothz2" name="grindingwheelusabletoothz2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -213,74 +233,146 @@
                                                 <h4 style="text-align:center;">Backgrind Parameters</h4>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Air Cut (µm-microns): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="aircut" name="aircut"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="aircutz1" name="aircutz1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="aircutz2" name="aircutz2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Spindle RPM: *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="spindlerpm" name="spindlerpm"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="spindlerpmz1" name="spindlerpmz1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="spindlerpmz2" name="spindlerpmz2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Feed rate (P1) (µm/sec): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="feedratep1" name="feedratep1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="feedratep1z1" name="feedratep1z1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="feedratep1z2" name="feedratep1z2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Feed rate (P2) (µm/sec): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="feedratep2" name="feedratep2"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="feedratep2z1" name="feedratep2z1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="feedratep2z2" name="feedratep2z2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Feed rate (P3) (µm/sec): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="feedratep3" name="feedratep3"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="feedratep3z1" name="feedratep3z1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="feedratep3z2" name="feedratep3z2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Chuck Table Speed (P1) (rpm): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="chucktableseedp1" name="chucktableseedp1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="chucktableseedp1z1" name="chucktableseedp1z1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="chucktableseedp1z2" name="chucktableseedp1z2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Chuck Table Speed (P2) (rpm): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="chucktableseedp2" name="chucktableseedp2"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="chucktableseedp2z1" name="chucktableseedp2z1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="chucktableseedp2z2" name="chucktableseedp2z2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label>Chuck Table Speed (P3) (rpm): *</label>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <input type="text" id="chucktableseedp3" name="chucktableseedp3"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    <div class="col-md-1">
+                                                        <label>Z1: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="chucktableseedp3z1" name="chucktableseedp3z1"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <label>Z2: </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input type="text" id="chucktableseedp3z2" name="chucktableseedp3z2"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -291,6 +383,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req003" id="setupwafer" name="setupwafer">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
                                                             <option value="Not Ok">Not Ok</option>
                                                         </select>
@@ -304,6 +397,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req003" id="firstwaferinspection" name="firstwaferinspection">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
                                                             <option value="Not Ok">Not Ok</option>
                                                         </select>
@@ -315,7 +409,7 @@
                                                         <label>1st Wafer No. Inspected: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="number" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                        <input type="text" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req003" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -401,7 +495,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect003" name = "btnAddDefect003">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect003" name = "btnAddDefect003">Add Reject</button>
                     </div>
                 </div>
                 <div class="col-lg-4" id="bgonlythick">
@@ -480,7 +574,7 @@
                                                                 <label>Point average : </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="pave" name="pave"  class="form-control input-sm" value = "" disabled>
+                                                                <input type="number" id="pave" name="pave"  class="form-control input-sm" value = "" readonly>
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -489,12 +583,12 @@
                                                                 <label>Total Thickness Variation : </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="ttv" name="ttv"  class="form-control input-sm" value = "" disabled>
+                                                                <input type="number" id="ttv" name="ttv"  class="form-control input-sm" value = "" readonly>
                                                             </div>
                                                         </div>
                                                         <br/>
                                                         <div class="form-group">
-                                                            <button type="button" class="btn btn-outline-info" id="btnAddThick" name = "btnAddThick">Add Final Thickness</button>
+                                                            <button type="button" class="btn btn-info" id="btnAddThick" name = "btnAddThick">Add Final Thickness</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -573,7 +667,7 @@
                                                                 <label>Roughness average: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="number" id="rave" name="rave"  class="form-control input-sm" value = "" disabled>
+                                                                <input type="number" id="rave" name="rave"  class="form-control input-sm" value = "" readonly>
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -649,7 +743,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone003" name = "btnDone003" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone003" name = "btnDone003" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -665,9 +759,9 @@
         //checkRow(tblcount);
     }
 
-    function removeRow2(row){
+    function removeRowThick(row){
         
-        $("#tr"+row).remove();
+        $("#trthick"+row).remove();
         tblcount2 = $('#tblthickness > tbody tr').length;
         //checkRow(tblcount);
     }
@@ -1043,7 +1137,7 @@
     }
     else
     {
-        $('#tblthickness > tbody').append('<tr id="tr'+tblcount2+'">'+
+        $('#tblthickness > tbody').append('<tr id="trthick'+tblcount2+'">'+
                                     '<td><input type="hidden" id = "stwaferno[]"  name="stwaferno[]" value="'+$('#twaferno').val()+'">'+$('#twaferno').val()+'</td>'+
                                     '<td><input type="hidden" id = "stpoint1[]"  name="stpoint1[]" value="'+$('#tpoint1').val()+'">'+$('#tpoint1').val()+'</td>'+
                                     '<td><input type="hidden" id = "stpoint2[]"  name="stpoint2[]" value="'+$('#tpoint2').val()+'">'+$('#tpoint2').val()+'</td>'+
@@ -1052,7 +1146,7 @@
                                     '<td><input type="hidden" id = "stpoint5[]"  name="stpoint5[]" value="'+$('#tpoint5').val()+'">'+$('#tpoint5').val()+'</td>'+
                                     '<td><input type="hidden" id = "spave[]"  name="spave[]" value="'+$('#pave').val()+'">'+$('#pave').val()+'</td>'+
                                     '<td><input type="hidden" id = "sttv[]"  name="sttv[]" value="'+$('#ttv').val()+'">'+$('#ttv').val()+'</td>'+
-                                    '<td><button type="button" onclick="removeRow2('+tblcount2+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '<td><button type="button" onclick="removeRowThick('+tblcount2+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
         tblcount2++;

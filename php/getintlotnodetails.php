@@ -44,6 +44,12 @@ $logsdata = IntLotLogs::GetDetails($_GET['intlotno'],$nextstage);
 $intlogsdata = json_encode($logsdata[0]);
 $intlogsdata2 = json_decode($intlogsdata);
 //echo $intlotdata2->status;
+
+if($intlotdata2->status == 'HOLD')
+{
+    echo "error_Internal Lot number is on HOLD status!";
+    return false;
+}
 if($intlotdata2->status == 'DONE')
 {
     echo 'success_'.json_encode($lotdata).'_'.json_encode($Intlotlogs).'_'.json_encode($Intrlogs).'_'.json_encode($Inttlogs).'_'.json_encode($Intrejlogs);

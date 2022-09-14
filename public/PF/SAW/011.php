@@ -147,7 +147,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-outline-danger" id="btnAddDefect011" name = "btnAddDefect011">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect011" name = "btnAddDefect011">Add Reject</button>
                     </div>
                 </div>
 
@@ -186,7 +186,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-outline-success" id="btnDone011" name = "btnDone011" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone011" name = "btnDone011" value="done">Done</button>
     </div>
 </div>
 <br/>

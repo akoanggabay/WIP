@@ -1,9 +1,11 @@
 <?php
 include_once("../classes/efai003.php");
 include_once("../classes/intlotno.php");
+include_once("../classes/intlotlogs.php");
 include_once("../classes/thickness.php");
 include_once("../classes/roughness.php");
 include_once("../classes/reject.php");
+include_once("../classes/passcode.php");
 session_start();
 
 $intlotno = $_GET['intlotno'];
@@ -33,10 +35,24 @@ $sdqty = json_decode($_GET['sdqty']);
 $sdremarks = json_decode($_GET['sdremarks']);
 
 $exist = IntLotno::checkExist($intlotno);
+$techexist = passcode::checkExist($data->mptechemp,'tech');
+$qcexist = passcode::checkExist($data->mpqcemp,'qc');
 
 if($exist == 'false')
 {
     echo 'error_Error! '.$intlotno.' not exist on our Database!';
+    return false;
+}
+
+if($techexist == 'false' && strtoupper($data->mptechemp) != 'N/A')
+{
+    echo 'error_Error! Technician Employee passcode does not exist!';
+    return false;
+}
+
+if($qcexist == 'false' && strtoupper($data->mpqcemp) != 'N/A')
+{
+    echo 'error_Error! QC Employee passcode does not exist!';
     return false;
 }
 
@@ -49,7 +65,7 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
-
+$bgtapetime = IntLotLogs::ILNLogsTapingtoBG($intlotno);
 //echo $intlotdata2->custcode;
 $efai003 = new efai003();
 
@@ -67,18 +83,28 @@ $efai003->setprocessmode($data->processmode);
 $efai003->setbgtapetype($data->bgtapetype);
 $efai003->setbgtapeused($data->bgtapeused);
 $efai003->setbgtapethickness($data->bgtapethickness);
-$efai003->setbgtapestaged($data->bgtapestaged);
+$efai003->setbgtapestaged($bgtapetime);
 $efai003->setdiwatertemp($data->diwatertemp);
-$efai003->setgrindingwheel($data->grindingwheel);
-$efai003->setgrindingwheelusabletooth($data->grindingwheelusabletooth);
-$efai003->setaircut($data->aircut);
-$efai003->setspindlerpm($data->spindlerpm);
-$efai003->setfeedratep1($data->feedratep1);
-$efai003->setfeedratep2($data->feedratep2);
-$efai003->setfeedratep3($data->feedratep3);
-$efai003->setchucktableseedp1($data->chucktableseedp1);
-$efai003->setchucktableseedp2($data->chucktableseedp2);
-$efai003->setchucktableseedp3($data->chucktableseedp3);
+$efai003->setgrindingwheelz1($data->grindingwheelz1);
+$efai003->setgrindingwheelz2($data->grindingwheelz2);
+$efai003->setgrindingwheelusabletoothz1($data->grindingwheelusabletoothz1);
+$efai003->setgrindingwheelusabletoothz2($data->grindingwheelusabletoothz2);
+$efai003->setaircutz1($data->aircutz1);
+$efai003->setaircutz2($data->aircutz2);
+$efai003->setspindlerpmz1($data->spindlerpmz1);
+$efai003->setspindlerpmz2($data->spindlerpmz2);
+$efai003->setfeedratep1z1($data->feedratep1z1);
+$efai003->setfeedratep1z2($data->feedratep1z2);
+$efai003->setfeedratep2z1($data->feedratep2z1);
+$efai003->setfeedratep2z2($data->feedratep2z2);
+$efai003->setfeedratep3z1($data->feedratep3z1);
+$efai003->setfeedratep3z2($data->feedratep3z2);
+$efai003->setchucktableseedp1z1($data->chucktableseedp1z1);
+$efai003->setchucktableseedp1z2($data->chucktableseedp1z2);
+$efai003->setchucktableseedp2z1($data->chucktableseedp2z1);
+$efai003->setchucktableseedp2z2($data->chucktableseedp2z2);
+$efai003->setchucktableseedp3z1($data->chucktableseedp3z1);
+$efai003->setchucktableseedp3z2($data->chucktableseedp3z2);
 $efai003->setsetupwafer($data->setupwafer);
 $efai003->setfirstwaferinspection($data->firstwaferinspection);
 $efai003->setfirstwaferno($data->firstwaferno);
@@ -86,12 +112,14 @@ $efai003->setmptechemp($data->mptechemp);
 $efai003->setmpqcemp($data->mpqcemp);
 $efai003->setremarks($data->remarks);
 $efai003->setlastupdatedby($_SESSION['idno']);
+$efai003->setlastupdate(date("Y-m-d h:i:s"));
+$efai003->setactive(1);
 
 $success = $efai003->AddeFAI003();
 
 if($success == true)
 {
-    
+
     if($rave)
     {
         $roughness = new Roughness;
@@ -105,7 +133,7 @@ if($success == true)
         $roughness->setr4($rpoint4);
         $roughness->setr5($rpoint5);
         $roughness->setrave($rave);
-        $roughness->setlastupdate(date("Y-m-d h:i:sa"));
+        $roughness->setlastupdate(date("Y-m-d h:i:s"));
         $roughness->setlastupdatedby($_SESSION['idno']);
         $roughness->AddRoughness();
     }
@@ -126,7 +154,7 @@ if($success == true)
             $thickness->setp5($stpoint5[$x]);
             $thickness->setpave($spave[$x]);
             $thickness->setttv($sttv[$x]);
-            $thickness->setlastupdate(date("Y-m-d h:i:sa"));
+            $thickness->setlastupdate(date("Y-m-d h:i:s"));
             $thickness->setlastupdatedby($_SESSION['idno']);
             $thickness->AddThickness();
         }
@@ -145,7 +173,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:sa"));
+            $reject->setlastupdate(date("Y-m-d h:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }
