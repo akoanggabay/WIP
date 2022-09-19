@@ -19,6 +19,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req004" id="processmode" name="processmode">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
                                                             <option value="Manual">Manual</option>
                                                         </select>

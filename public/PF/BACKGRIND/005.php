@@ -57,6 +57,7 @@
                                                     <div class="col-md-3">
                                                         <select class="form-control req005" id="wtype" name="wtype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
                                                             <option value="standard">Standard</option>
@@ -79,6 +80,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req005" id="highmaginspection" name="highmaginspection">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>

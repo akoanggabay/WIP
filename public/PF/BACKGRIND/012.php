@@ -58,6 +58,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req012" id="tally" name="tally">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -71,6 +72,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req012" id="qtyouttally" name="qtyouttally">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -84,6 +86,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req012" id="detailsattached" name="detailsattached">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -97,6 +100,7 @@
                                                     <div class="col-md-3">
                                                         <select class="form-control req012" id="canisterused" name="canisterused">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Customer">Customer</option>
                                                             <option value="KKM">KKM</option>
                                                         </select>
@@ -116,6 +120,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req012" id="properlyvacuum" name="properlyvacuum">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>

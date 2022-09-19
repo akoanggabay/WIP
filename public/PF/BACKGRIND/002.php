@@ -43,6 +43,7 @@
                                                             <option value="Set-up">Set-up</option>
                                                             <option value="PSC">PSC</option>
                                                             <option value="Monitoring">Monitoring</option>
+                                                            <option value="Customer requirement">Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
