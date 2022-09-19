@@ -177,7 +177,7 @@ $cust->CustomerDetails($intlotdata2->custcode);
         <td colspan="2"style="text-align:right;"><img src="../img/image002.png" style="width: 100px;height: 96px;" alt=""></td>
     </tr>
   </table>
-  <table style="">
+  <table>
     <tr>
       <td colspan="6" style="text-align:center;font-size:12px;">Lot Number Details</td>
     </tr>
