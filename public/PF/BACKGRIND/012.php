@@ -36,6 +36,23 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Wafer Size: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req012" id="wsize" name="wsize">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Is wafer run no. tally with the corresponding lotno? *</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -85,7 +102,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label>Canister No: </label>
+                                                        <label>Canister No (For KKMWI canister only): </label>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <input type="text" id="canisternoused" name="canisternoused"  class="form-control input-sm 012 req012" style="text-transform:uppercase" disabled>
@@ -102,6 +119,15 @@
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Total no. of rings used: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="totalnoofringsused" name="totalnoofringsused"  class="form-control input-sm req012" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -398,5 +424,6 @@
         }
     
     });
+    
     
 </script>

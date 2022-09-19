@@ -37,6 +37,16 @@ $sdremarks = json_decode($_GET['sdremarks']);
 $exist = IntLotno::checkExist($intlotno);
 $techexist = passcode::checkExist($data->mptechemp,'tech');
 $qcexist = passcode::checkExist($data->mpqcemp,'qc');
+$roughnessexist = Roughness::checkExist();
+
+if($rave)
+{
+    if($roughnessexist == 'true' && ($data->faicat == 'PSC' || $data->faicat == 'Monitoring'))
+    {
+        echo 'error_Error! Roughness measurement is only once a day for PSC and Monitoring!';
+        return false;
+    }
+}
 
 if($exist == 'false')
 {
@@ -75,15 +85,17 @@ $efai003->setmachine($data->machine);
 $efai003->setfaicat($data->faicat);
 $efai003->setwswr($data->wswr);
 $efai003->setswrno($data->swrno);
+$efai003->setwafersize($data->wsize);
 $efai003->setrecipeno($data->recipeno);
 $efai003->setwtaperequiredfinalthickness($data->wtaperequiredfinalthickness);
 $efai003->setwtapeinitialthickness($data->wtapeinitialthickness);
 $efai003->setslottingoncassette($data->slottingoncassette);
 $efai003->setprocessmode($data->processmode);
+$efai003->setdummywafersetup($data->dummywafersetup);
 $efai003->setbgtapetype($data->bgtapetype);
 $efai003->setbgtapeused($data->bgtapeused);
 $efai003->setbgtapethickness($data->bgtapethickness);
-$efai003->setbgtapestaged($bgtapetime);
+$efai003->setbgtapestaged($data->bgtapestaged);
 $efai003->setdiwatertemp($data->diwatertemp);
 $efai003->setgrindingwheelz1($data->grindingwheelz1);
 $efai003->setgrindingwheelz2($data->grindingwheelz2);

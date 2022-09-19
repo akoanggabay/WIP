@@ -35,6 +35,22 @@
                                                 </div>
                                                 <br/>
                                                 <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Size: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req005" id="wsize" name="wsize">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
                                                     <div class="col-md-3">
                                                         <label>Wafer Type: *</label>
                                                     </div>
@@ -71,7 +87,7 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Nos inspected: *</label>
+                                                        <label>Wafer Nos inspected (for high mag inspection only): *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="wafernoinspected" name="wafernoinspected"  class="form-control input-sm req005">

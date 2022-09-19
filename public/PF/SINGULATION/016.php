@@ -392,6 +392,18 @@
             return false;
         }
        
+        if($("#faicat.req016").val() == 'Set-up')
+        {
+            if(($("#techemp.req016").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Technician Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
 
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -400,7 +412,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                alert(result)
+                //alert(result)
 
                 if(res[0].trim() == 'success')
                 {

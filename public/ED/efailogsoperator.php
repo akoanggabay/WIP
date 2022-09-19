@@ -72,7 +72,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="tblefailogs" width="100%" cellspacing="1">
+                <table class="table table-bordered" id="tblefailogsoperator" width="100%" cellspacing="1">
                     <thead>
                     </thead>
                     <tbody>
@@ -104,7 +104,7 @@
             if (this.readyState == 4 && this.status == 200) 
             {
                 var result = this.responseText;
-                //console.log(result)
+                console.log(result)
                 if(result == '"false"')
                 {
                     swal("no data!",{
@@ -116,12 +116,12 @@
                 }
                 var res = result.split("_");
 
-                if ($.fn.DataTable.isDataTable( '#tblefailogs' ) ) {
-                    $('#tblefailogs').DataTable().destroy();
+                if ($.fn.DataTable.isDataTable( '#tblefailogsoperator' ) ) {
+                    $('#tblefailogsoperator').DataTable().destroy();
                 }
                 
-                $("#tblefailogs > tbody").empty();
-                $("#tblefailogs > thead").empty();
+                $("#tblefailogsoperator > tbody").empty();
+                $("#tblefailogsoperator > thead").empty();
                 var header = "";
                 var datarows = "";
                 var temptd = "";
@@ -134,17 +134,25 @@
                 JSON.parse(result).forEach(obj => {
                     temptd = ""
                     Object.entries(obj).forEach(([key, value]) => {
-                        temptd+="<td>"+
-                        (typeof value ==='object' ? value.date : value)
-                        +"</td>"
+                        if(value === null)
+                        {
+                            temptd+="<td></td>"
+                        }
+                        else
+                        {
+                            temptd+="<td>"+
+                            (typeof value ==='object' ? value.date : value)
+                            +"</td>"
+                        }
+                        
                     })
                     datarows+="<tr>"+temptd+"</tr>";
                 });
                 
-                $('#tblefailogs > thead').append("<tr>"+header+"</tr>");
-                $('#tblefailogs > tbody').append(datarows);
+                $('#tblefailogsoperator > thead').append("<tr>"+header+"</tr>");
+                $('#tblefailogsoperator > tbody').append(datarows);
     
-                $('#tblefailogs').DataTable({
+                $('#tblefailogsoperator').DataTable({
                     dom: 'Bfrtip',
                     "pageLength": 25,
                     lengthMenu: [
@@ -170,7 +178,7 @@
                 
             }
         };
-    xmlhttp.open("GET", "../php/getefailogsreports.php?start="+document.getElementById("start").value+"&end="+document.getElementById("end").value+"&station="+document.getElementById("station").value,true);
+    xmlhttp.open("GET", "../php/getefailogsoperatorreports.php?start="+document.getElementById("start").value+"&end="+document.getElementById("end").value+"&station="+document.getElementById("station").value,true);
     xmlhttp.send();
 
     });
@@ -188,6 +196,7 @@
         
         if (this.readyState == 4 && this.status == 200) 
         {
+            
             var result = this.responseText;
             var res = result.split("_");
             

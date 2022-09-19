@@ -549,20 +549,6 @@
                                                     </div>
                                                 </div>
                                                 <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
-                                                        <label>Surfactant: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control req015" id="surfactant" name="surfactant">
-                                                            <option value=""></option>
-                                                            <option value="N/A">N/A</option>
-                                                            <option value="Yes">Yes</option>
-                                                            <option value="No">No</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <br/>
                                             </div>
                                         </div>
                                     </div>
@@ -584,6 +570,20 @@
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>Surfactant: *</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <select class="form-control req015" id="surfactant" name="surfactant">
+                                                                <option value=""></option>
+                                                                <option value="N/A">N/A</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
                                                     <div class="row">
                                                         <div class="col-md-5">
                                                             <label>Stroke Rate (%) Applicable to Iwaki: *</label>
@@ -1323,6 +1323,28 @@
             return false;
         }
        
+        if($("#faicat.req015").val() == 'Set-up')
+        {
+            if(($("#techemp.req015").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Technician Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+
+            if(($("#qcemp.req015").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Quality Control Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
 
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -1558,6 +1580,25 @@
         
     }
 
+    });
+
+    $('#surfactant.req015').change(function (){
+        
+        if($(this).val() == 'N/A')
+        {
+            $("#strokerate.req015").val('N/A');
+            $("#strokelength.req015").val('N/A');
+            $("#strokerate.req015").attr("disabled","disabled");
+            $("#strokelength.req015").attr("disabled","disabled");
+        }
+        else
+        {
+            $("#strokelength.req015").val('');
+            $("#strokerate.req015").val('');
+            $("#strokelength.req015").removeAttr("disabled");
+            $("#strokerate.req015").removeAttr("disabled");
+        }
+        
     });
     
 </script>

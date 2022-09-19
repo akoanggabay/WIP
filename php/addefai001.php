@@ -78,6 +78,7 @@ $efai001->setcustcode($intlotdata2->custcode);
 $efai001->setintlot($intlotno);
 $efai001->setwswr($data->wswr);
 $efai001->setswrno($data->swrno);
+$efai001->setwafersize($data->wsize);
 $efai001->setwafercondition($data->wcondition);
 $efai001->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai001->setwaferboatslotting($data->waferboatslotting);

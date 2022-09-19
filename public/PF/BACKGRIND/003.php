@@ -39,9 +39,11 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req003" id="faicat" name="faicat">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Set-up">Set-up</option>
                                                             <option value="PSC">PSC</option>
                                                             <option value="Monitoring">Monitoring</option>
+                                                            <option value="Customer requirement">Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -53,6 +55,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req003" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -65,6 +68,22 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="swrno" name="swrno"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Size: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req003" id="wsize" name="wsize">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -102,6 +121,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req003" id="slottingoncassette" name="slottingoncassette">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -517,6 +537,20 @@
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-md-5">
+                                                                <label>Dummy Wafer Set-up: *</label>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <select class="form-control req003" id="dummywafersetup" name="dummywafersetup">
+                                                                    <option value=""></option>
+                                                                    <option value="N/A">N/A</option>
+                                                                    <option value="with BG Tape">with BG Tape</option>
+                                                                    <option value="without BG Tape">without BG Tape</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                        <div class="row">
+                                                            <div class="col-md-5">
                                                                 <label>Wafer no: </label>
                                                             </div>
                                                             <div class="col-md-7">
@@ -853,6 +887,7 @@
                 val[i].style.borderColor = '#d1d3e2';
             }
         }
+        
         if(count > 0)
         {
             //$('#002').animate({scrollTop: '0px'}, 1000);
@@ -864,6 +899,35 @@
             });
             return false;
         }
+
+        //buy off checking
+
+        if($("#faicat.req003").val() == 'Set-up')
+        {
+            if(($("#mptechemp.req003").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Technician Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+
+            if(($("#mpqcemp.req003").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Quality Control Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
+
+        //end buy off checking
+
+        //final thickness checking
 
         var bgthick = document.getElementsByClassName("bgthick");
         if(parseInt($('#wqty').val()) > 1)
@@ -918,10 +982,37 @@
             }
         }
 
+        //end final thickness checking
+
+        //Roughness checking
+
+        if(($("#faicat.req003").val() == 'Set-up' || $("#faicat.req003").val() == 'Customer requirement') && (document.getElementById("rave").value == ''))
+        {
+            document.getElementById('bgonlyrough').scrollIntoView();
+            var roughval = document.getElementsByClassName("rough");
+            for(var i = 0;roughval.length > i; i++)
+            {
+                if(roughval[i].value == '')
+                {
+                    roughval[i].style.borderColor = 'red';
+                }
+                else
+                {
+                    roughval[i].style.borderColor = '#d1d3e2';
+                }
+            }
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please complete Roughness details!",
+                closeOnClickOutside: false,
+            });
+            return false;
+        }
+
         if(Roughness() == false)
         {
             //alert('Please complete Roughness details!');
-            document.getElementById('rej003').scrollIntoView();
+            document.getElementById('bgonlyrough').scrollIntoView();
             var roughval = document.getElementsByClassName("rough");
             for(var i = 0;roughval.length > i; i++)
             {
@@ -956,6 +1047,16 @@
             }
         }
 
+        if(parseFloat(document.getElementById("rave").value) > 0.3)
+        {
+            swal("reached limit!",{
+                icon: "warning",
+                title: "Roughness measurement average is more than 0.3 microns!",
+                closeOnClickOutside: false,
+            });
+            return false;
+        }
+        // end roughness checking
         
         //console.log(data)
         
@@ -1077,7 +1178,7 @@
     $( "#btnAddThick" ).click(function() {
 
     //alert(countDecimals(document.getElementById("tpoint1").value))
-
+    
     if(parseInt($('#wqty').val()) > 1)
     {
         if(tblcount2 > 1)
@@ -1091,7 +1192,7 @@
         }
         
     }
-
+    
     if(parseInt($('#wqty').val())  <= 1 )
     {
         //alert(tblcount)
@@ -1106,6 +1207,7 @@
         }
         
     }
+    
     if(Thickness() == false)
     {
         //alert('Please complete Final thickness details!');
@@ -1116,6 +1218,7 @@
         });
         return false;
     }
+    
     if(document.getElementById("ttv").value == '')
     {
         swal("missing input!",{
@@ -1125,6 +1228,17 @@
         });
         return false;
     }
+    
+    if(parseFloat(document.getElementById("ttv").value) > 12.7)
+    {
+        swal("reached limit!",{
+            icon: "warning",
+            title: "Total Thickness variation is more than 12.7 microns!",
+            closeOnClickOutside: false,
+        });
+        return false;
+    }
+    
     if(countDecimals(document.getElementById("tpoint1").value) != 1 || countDecimals(document.getElementById("tpoint2").value) != 1 || countDecimals(document.getElementById("tpoint3").value) != 1 || countDecimals(document.getElementById("tpoint4").value) != 1 || countDecimals(document.getElementById("tpoint5").value) != 1)
     {
         //alert('You have input Thickness with more or less than 1 decimal');

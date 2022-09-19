@@ -19,6 +19,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req001" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
                                                         </select>
@@ -36,11 +37,28 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Wafer Size: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req001" id="wsize" name="wsize">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Wafer Condition: *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <select class="form-control req001" id="wcondition" name="wcondition">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="virgin">Virgin</option>
                                                             <option value="pre-grinded">Pre-grinded</option>
                                                         </select>
@@ -54,6 +72,7 @@
                                                     <div class="col-md-3">
                                                         <select class="form-control req001" id="wtype" name="wtype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
                                                             <option value="standard">Standard</option>
@@ -76,6 +95,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req001" id="waferboatslotting" name="waferboatslotting">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="ok">Ok</option>
                                                             <option value="notok">Not ok</option>
                                                         </select>
@@ -89,6 +109,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req001" id="highmaginspectionrequired" name="highmaginspectionrequired">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -171,6 +192,14 @@
                     <div class="card border-left-danger">
                         <div class="card-body">
                             <h4>Add Initial Thickness</h4>
+                            <p>(µm - microns)</p>
+                            <br/>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="initialthicknesscheck">
+                                <label class="form-check-label" for="initialthicknesscheck">
+                                    N/A:
+                                </label>
+                            </div>
                             <br/>
                             <div class="row">
                                 <div class="col-md-5">
@@ -227,7 +256,7 @@
                             </div>
                             <br/>
                             <div class="form-group">
-                                <button type="button" class="btn btn-info" id="btnAddInitialThickness" name = "btnAddInitialThickness">Add InitialThickness</button>
+                                <button type="button" class="btn btn-info it" id="btnAddInitialThickness" name = "btnAddInitialThickness">Add InitialThickness</button>
                             </div>
                         </div>
                     </div>
@@ -237,6 +266,16 @@
                     <div class="card border-left-danger">
                         <div class="card-body">
                             <h4>Add Ink Dot Height</h4>
+                            <p>(µm - microns)</p>
+                            <p>25um max for Wafer Thickness ≥ 11 mils (279.4um)</p>
+                            <p>15um max for Wafer Thickness < 11 mils (279.4um)</p>
+                            <br/>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="inkdotheightcheck">
+                                <label class="form-check-label" for="inkdotheightcheck">
+                                    N/A:
+                                </label>
+                            </div>
                             <br/>
                             <div class="row">
                                 <div class="col-md-5">
@@ -293,7 +332,7 @@
                             </div>
                             <br/>
                             <div class="form-group">
-                                <button type="button" class="btn btn-info" id="btnAddInkDotHeight" name = "btnAddInkDotHeight">Add Ink Dot Height</button>
+                                <button type="button" class="btn btn-info idh" id="btnAddInkDotHeight" name = "btnAddInkDotHeight">Add Ink Dot Height</button>
                             </div>
                         </div>
                     </div>
@@ -303,6 +342,15 @@
                     <div class="card border-left-danger">
                         <div class="card-body">
                             <h4>Add Bump Height</h4>
+                            <p>(µm - microns)</p>
+                            <p>140μm max</p>
+                            <br/>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="bumpheightcheck">
+                                <label class="form-check-label" for="bumpheightcheck">
+                                    N/A:
+                                </label>
+                            </div>
                             <br/>
                             <div class="row">
                                 <div class="col-md-5">
@@ -359,7 +407,7 @@
                             </div>
                             <br/>
                             <div class="form-group">
-                                <button type="button" class="btn btn-info" id="btnAddBumpHeight" name = "btnAddBumpHeight">Add Bump Height</button>
+                                <button type="button" class="btn btn-info bph" id="btnAddBumpHeight" name = "btnAddBumpHeight">Add Bump Height</button>
                             </div>
                         </div>
                     </div>
@@ -368,7 +416,18 @@
                 <div class="col-lg-4" id="wrp">
                     <div class="card border-left-danger">
                         <div class="card-body">
-                            <h4>Add Warpage</h4>
+                            <h4>Add Warpage (µm - microns)</h4>
+                            <p>4"(100mm) wafer: 60μm max</p>
+                            <p>5"(125mm) wafer: 80μm max</p>
+                            <p>6"(150mm) wafer: 100μm max</p>
+                            <p>8"(200mm) wafer: 190μm max</p>
+                            <br/>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="warpagecheck">
+                                <label class="form-check-label" for="warpagecheck">
+                                    N/A:
+                                </label>
+                            </div>
                             <br/>
                             <div class="row">
                                 <div class="col-md-5">
@@ -425,7 +484,7 @@
                             </div>
                             <br/>
                             <div class="form-group">
-                                <button type="button" class="btn btn-info" id="btnAddWarpage" name = "btnAddWarpage">Add Warpage</button>
+                                <button type="button" class="btn btn-info wrp" id="btnAddWarpage" name = "btnAddWarpage">Add Warpage</button>
                             </div>
                         </div>
                     </div>
@@ -1094,22 +1153,9 @@
         }
 
         //Check Initial Thickness
-
-        if(initialthickcount == 0)
+        if($("#initialthicknesscheck").is(":not(:checked)"))
         {
-            $(".it").css({"border-color": "#FF0000"});
-            document.getElementById('it').scrollIntoView();
-            swal("missing input!",{
-                icon: "warning",
-                title: "Please input Initial Thickness!",
-                closeOnClickOutside: false,
-            });
-            $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
-            return false;
-        }
-        if(parseInt($('#wqty').val()) > 1)
-        {
-            if(initialthickcount < 2)
+            if(initialthickcount == 0)
             {
                 $(".it").css({"border-color": "#FF0000"});
                 document.getElementById('it').scrollIntoView();
@@ -1121,25 +1167,28 @@
                 $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
                 return false;
             }
+            if(parseInt($('#wqty').val()) > 1)
+            {
+                if(initialthickcount < 2)
+                {
+                    $(".it").css({"border-color": "#FF0000"});
+                    document.getElementById('it').scrollIntoView();
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Initial Thickness!",
+                        closeOnClickOutside: false,
+                    });
+                    $('button.swal-button').click(function(event){$("#initialthicknesswaferno").focus();});
+                    return false;
+                }
+            }
         }
         
         // Check Ink Dot Height
 
-        if(inkdotheightcount == 0)
+        if($("#inkdotheightcheck").is(":not(:checked)"))
         {
-            $(".idh").css({"border-color": "#FF0000"});
-            document.getElementById('idh').scrollIntoView();
-            swal("missing input!",{
-                icon: "warning",
-                title: "Please input Ink Dot Height!",
-                closeOnClickOutside: false,
-            });
-            $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
-            return false;
-        }
-        if(parseInt($('#wqty').val()) > 1)
-        {
-            if(inkdotheightcount < 2)
+            if(inkdotheightcount == 0)
             {
                 $(".idh").css({"border-color": "#FF0000"});
                 document.getElementById('idh').scrollIntoView();
@@ -1151,25 +1200,28 @@
                 $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
                 return false;
             }
+            if(parseInt($('#wqty').val()) > 1)
+            {
+                if(inkdotheightcount < 2)
+                {
+                    $(".idh").css({"border-color": "#FF0000"});
+                    document.getElementById('idh').scrollIntoView();
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Ink Dot Height!",
+                        closeOnClickOutside: false,
+                    });
+                    $('button.swal-button').click(function(event){$("#inkdotheightwaferno").focus();});
+                    return false;
+                }
+            }
         }
 
         // Check Bump Height
         
-        if(bumpheightcount == 0)
+        if($("#bumpheightcheck").is(":not(:checked)"))
         {
-            $(".bph").css({"border-color": "#FF0000"});
-            document.getElementById('bph').scrollIntoView();
-            swal("missing input!",{
-                icon: "warning",
-                title: "Please input Bump Height!",
-                closeOnClickOutside: false,
-            });
-            $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
-            return false;
-        }
-        if(parseInt($('#wqty').val()) > 1)
-        {
-            if(bumpheightcount < 2)
+            if(bumpheightcount == 0)
             {
                 $(".bph").css({"border-color": "#FF0000"});
                 document.getElementById('bph').scrollIntoView();
@@ -1181,25 +1233,28 @@
                 $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
                 return false;
             }
+            if(parseInt($('#wqty').val()) > 1)
+            {
+                if(bumpheightcount < 2)
+                {
+                    $(".bph").css({"border-color": "#FF0000"});
+                    document.getElementById('bph').scrollIntoView();
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Bump Height!",
+                        closeOnClickOutside: false,
+                    });
+                    $('button.swal-button').click(function(event){$("#bumpheightwaferno").focus();});
+                    return false;
+                }
+            }
         }
 
         // Check Warpage
 
-        if(warpagecount == 0)
+        if($("#warpagecheck").is(":not(:checked)"))
         {
-            $(".wrp").css({"border-color": "#FF0000"});
-            document.getElementById('wrp').scrollIntoView();
-            swal("missing input!",{
-                icon: "warning",
-                title: "Please input Warpage!",
-                closeOnClickOutside: false,
-            });
-            $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
-            return false;
-        }
-        if(parseInt($('#wqty').val()) > 1)
-        {
-            if(warpagecount < 2)
+            if(warpagecount == 0)
             {
                 $(".wrp").css({"border-color": "#FF0000"});
                 document.getElementById('wrp').scrollIntoView();
@@ -1210,6 +1265,21 @@
                 });
                 $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
                 return false;
+            }
+            if(parseInt($('#wqty').val()) > 1 && $("#warpagecheck").is(":not(:checked)"))
+            {
+                if(warpagecount < 2)
+                {
+                    $(".wrp").css({"border-color": "#FF0000"});
+                    document.getElementById('wrp').scrollIntoView();
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Warpage!",
+                        closeOnClickOutside: false,
+                    });
+                    $('button.swal-button').click(function(event){$("#warpagewaferno").focus();});
+                    return false;
+                }
             }
         }
 
@@ -1222,7 +1292,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                alert(result)
+                //alert(result)
 
                 if(res[0].trim() == 'success')
                 {
@@ -1388,5 +1458,50 @@
     }
 
     });
+
+    $('#initialthicknesscheck').click(function() {
+        if($("#initialthicknesscheck").is(":checked"))
+        {
+            $(".it").attr("disabled","disabled");
+            $(".it").css({"border-color": "#d1d3e2"});
+        }
+        else if($("#initialthicknesscheck").is(":not(:checked)")){
+            $(".it").removeAttr("disabled");
+        }
+    });
+
+    $('#inkdotheightcheck').click(function() {
+        if($("#inkdotheightcheck").is(":checked"))
+        {
+            $(".idh").attr("disabled","disabled");
+            $(".idh").css({"border-color": "#d1d3e2"});
+        }
+        else if($("#inkdotheightcheck").is(":not(:checked)")){
+            $(".idh").removeAttr("disabled");
+        }
+    });
+
+    $('#bumpheightcheck').click(function() {
+        if($("#bumpheightcheck").is(":checked"))
+        {
+            $(".bph").attr("disabled","disabled");
+            $(".bph").css({"border-color": "#d1d3e2"});
+        }
+        else if($("#bumpheightcheck").is(":not(:checked)")){
+            $(".bph").removeAttr("disabled");
+        }
+    });
+
+    $('#warpagecheck').click(function() {
+        if($("#warpagecheck").is(":checked"))
+        {
+            $(".wrp").attr("disabled","disabled");
+            $(".wrp").css({"border-color": "#d1d3e2"});
+        }
+        else if($("#warpagecheck").is(":not(:checked)")){
+            $(".wrp").removeAttr("disabled");
+        }
+    });
+
     
 </script>

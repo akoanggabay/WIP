@@ -6,6 +6,7 @@ class efai001 {
 	private $intlot;
     private $wswr;
     private $swrno;
+	private $wafersize;
     private $wafercondition;
     private $wafertype;
 	private $waferboatslotting;
@@ -41,6 +42,11 @@ class efai001 {
     public function setswrno($swrno)
 	{
 		$this->swrno = $swrno;
+	}
+
+	public function setwafersize($wafersize)
+	{
+		$this->wafersize = $wafersize;
 	}
 
     public function setwafercondition($wafercondition)
@@ -108,6 +114,11 @@ class efai001 {
 		return $this->swrno;
 	}
 
+	public function getwafersize()
+	{
+		return $this->wafersize;
+	}
+
     public function getwafercondition()
 	{
 		return $this->wafercondition;
@@ -155,8 +166,8 @@ class efai001 {
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
-            $sql = "INSERT INTO dbo.efai001 (custcode,intlot,wswr,swrno,wafercondition,wafertype,waferboatslotting,highmaginspectionrequired,remarks,lastupdate,lastupdatedby,active) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafercondition(),$this->getwafertype(),$this->getwaferboatslotting(),$this->gethighmaginspectionrequired(),$this->getremarks(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),1);
+            $sql = "INSERT INTO dbo.efai001 (custcode,intlot,wswr,swrno,wafercondition,wafertype,waferboatslotting,highmaginspectionrequired,remarks,lastupdate,lastupdatedby,active,wafersize) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafercondition(),$this->getwafertype(),$this->getwaferboatslotting(),$this->gethighmaginspectionrequired(),$this->getremarks(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),1,$this->getwafersize());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

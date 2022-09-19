@@ -346,6 +346,28 @@ class Roughness {
         return $success;	
 	}
 
+	public static function checkExist()
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM dbo.roughness WHERE lastupdate between CAST( GETDATE() AS Date ) and getdate()");
+
+			if ($conn->has_rows($dataset)) {
+
+				$result = 'true';
+			} else {
+				$result = 'false';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
+		}
+		return $result;
+	}
+
 
 }
 

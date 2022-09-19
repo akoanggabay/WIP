@@ -55,6 +55,7 @@ $efai002->setmachine($data->machine);
 $efai002->setfaicat($data->faicat);
 $efai002->setwswr($data->wswr);
 $efai002->setswrno($data->swrno);
+$efai002->setwafersize($data->wsize);
 $efai002->setwafercondition($data->wcondition);
 $efai002->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai002->setwaferboatslotting($data->waferboatslotting);

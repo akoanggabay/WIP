@@ -8,6 +8,7 @@ class efai002 {
     private $faicat;
     private $wswr;
     private $swrno;
+	private $wafersize;
     private $wafercondition;
     private $wafertype;
 	private $waferboatslotting;
@@ -74,6 +75,11 @@ class efai002 {
     public function setswrno($swrno)
 	{
 		$this->swrno = $swrno;
+	}
+
+	public function setwafersize($wafersize)
+	{
+		$this->wafersize = $wafersize;
 	}
 
     public function setwafercondition($wafercondition)
@@ -256,6 +262,11 @@ class efai002 {
 		return $this->swrno;
 	}
 
+	public function getwafersize()
+	{
+		return $this->wafersize;
+	}
+
     public function getwafercondition()
 	{
 		return $this->wafercondition;
@@ -411,7 +422,7 @@ class efai002 {
             $conn->query("INSERT INTO dbo.efai002 (custcode,intlot,machine,faicat,wswr,swrno,wafercondition,wafertype,waferboatslotting,chucktabletype,
             chucktablecleaning,processmode,changetape,bgtapetype,bgtapeused,bgtapelotno,bgtapeexpdate,notchtype,changeblade,bladetemp,
             bladecount,setupwafer,firstwaferinspection,firstwaferno,mpchucktablecleaning,mpbgtapeinstallation,mpbgtaperollercleaning,mpbladeposition,mplamphourusage,mptechemp,
-            mpqcemp,remarks,lastupdate,lastupdatedby,active) VALUES('".$this->getcustcode()."','".$this->getintlot()."','".$this->getmachine()."','".$this->getfaicat()."','".$this->getwswr()."','".$this->getswrno()."','".$this->getwafercondition()."','".$this->getwafertype()."','".$this->getwaferboatslotting()."','".$this->getchucktabletype()."','".$this->getchucktablecleaning()."','".$this->getprocessmode()."','".$this->getchangetape()."','".$this->getbgtapetype()."','".$this->getbgtapeused()."','".$this->getbgtapelotno()."','".$this->getbgtapeexpdate()."','".$this->getnotchtype()."','".$this->getchangeblade()."','".$this->getbladetemp()."','".$this->getbladecount()."','".$this->getsetupwafer()."','".$this->getfirstwaferinspection()."','".$this->getfirstwaferno()."','".$this->getmpchucktablecleaning()."','".$this->getmpbgtapeinstallation()."','".$this->getmpbgtaperollercleaning()."','".$this->getmpbladeposition()."','".$this->getmplamphourusage()."','".$this->getmptechemp()."','".$this->getmpqcemp()."','".$this->getremarks()."',GETDATE(),'".$this->getlastupdatedby()."',1)");
+            mpqcemp,remarks,lastupdate,lastupdatedby,active,wafersize) VALUES('".$this->getcustcode()."','".$this->getintlot()."','".$this->getmachine()."','".$this->getfaicat()."','".$this->getwswr()."','".$this->getswrno()."','".$this->getwafercondition()."','".$this->getwafertype()."','".$this->getwaferboatslotting()."','".$this->getchucktabletype()."','".$this->getchucktablecleaning()."','".$this->getprocessmode()."','".$this->getchangetape()."','".$this->getbgtapetype()."','".$this->getbgtapeused()."','".$this->getbgtapelotno()."','".$this->getbgtapeexpdate()."','".$this->getnotchtype()."','".$this->getchangeblade()."','".$this->getbladetemp()."','".$this->getbladecount()."','".$this->getsetupwafer()."','".$this->getfirstwaferinspection()."','".$this->getfirstwaferno()."','".$this->getmpchucktablecleaning()."','".$this->getmpbgtapeinstallation()."','".$this->getmpbgtaperollercleaning()."','".$this->getmpbladeposition()."','".$this->getmplamphourusage()."','".$this->getmptechemp()."','".$this->getmpqcemp()."','".$this->getremarks()."',GETDATE(),'".$this->getlastupdatedby()."',1,'".$this->getwafersize()."')");
             /* $params = array($this->getcustcode(),$this->getintlot(),$this->getmachine(),$this->getfaicat(),$this->getwswr(),$this->getswrno(),$this->getwafercondition(),$this->getwafertype(),$this->getwaferboatslotting(),$this->getchucktabletype(),
             $this->getchucktablecleaning(),$this->getprocessmode(),$this->getchangetape(),$this->getbgtapetype(),$this->getbgtapeused(),$this->getbgtapelotno(),$this->getbgtapeexpdate(),$this->getnotchtype(),$this->getchangeblade(),$this->getbladetemp(),
             $this->getbladecount(),$this->getsetupwafer(),$this->getfirstwaferinspection(),$this->getfirstwaferno(),$this->getmpchucktablecleaning(),$this->getmpbgtapeinstallation(),$this->getmpbgtaperollercleaning(),$this->getmpbladeposition(),$this->getmplamphourusage(),$this->getmptechemp(),

@@ -24,7 +24,7 @@ if(isset($_POST['btnSignin']))
             $_SESSION['lname']=$user->getlname();
             $_SESSION['usertype']=$user->getusertype();
             $_SESSION['numberofdays']=$user->getnumberofdays();
-
+            //echo $user->getnumberofdays();
             if(intval($user->getnumberofdays()) <= 14 && intval($user->getnumberofdays()) >= 0)
             {
                 if($user->getalert() == 0)
@@ -34,8 +34,8 @@ if(isset($_POST['btnSignin']))
 
                     $mail = "Operator certification will expire in ".$user->getnumberofdays()." days\n\nID number: ".$_POST['idno']."\nFull name: ".$user->getfname()." " .$user->getlname();
 
-                    //$to = 'ldiaz@kkmworks.com';
-                    $to = 'dalpuerto@suhay.com.ph,ldiaz@kkmworks.com';
+                    $to = 'ldiaz@kkmworks.com';
+                    //$to = 'dalpuerto@suhay.com.ph';
                     $subject = "Operator certification alert";
                     $txt = $mail;
                     $headers = "From: MES Alert <wip.kkmworks@gmail.com>". "\r\n" .

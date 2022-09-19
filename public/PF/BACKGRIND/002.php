@@ -39,9 +39,10 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="faicat" name="faicat">
                                                             <option value=""></option>
-                                                            <option value="setup">Set-up</option>
-                                                            <option value="psc">PSC</option>
-                                                            <option value="monitoring">Monitoring</option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Monitoring">Monitoring</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -53,6 +54,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -70,11 +72,28 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Wafer Size: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req002" id="wsize" name="wsize">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Wafer Condition: *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="wcondition" name="wcondition">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="virgin">Virgin</option>
                                                             <option value="pre-grinded">Pre-grinded</option>
                                                         </select>
@@ -88,6 +107,7 @@
                                                     <div class="col-md-3">
                                                         <select class="form-control req002" id="wtype" name="wtype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
                                                             <option value="standard">Standard</option>
@@ -110,6 +130,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="waferboatslotting" name="waferboatslotting">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
                                                             <option value="Not Ok">Not Ok</option>
                                                         </select>
@@ -123,6 +144,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="chucktabletype" name="chucktabletype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Standard">Standard</option>
                                                             <option value="Overcut">Overcut</option>
                                                         </select>
@@ -136,6 +158,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="chucktablecleaning" name="chucktablecleaning">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -149,6 +172,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="processmode" name="processmode">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
                                                             <option value="Manual">Manual</option>
                                                         </select>
@@ -162,6 +186,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="changetape" name="changetape">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -175,6 +200,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="bgtapetype" name="bgtapetype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="UV">UV</option>
                                                             <option value="Non-UV">Non-UV</option>
                                                         </select>
@@ -204,7 +230,7 @@
                                                         <label>BG Tape expiration date: * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="date" id="bgtapeexpdate" name="bgtapeexpdate"  class="form-control input-sm req002">
+                                                        <input type="text" id="bgtapeexpdate" name="bgtapeexpdate"  class="form-control input-sm req002">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -250,6 +276,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="changeblade" name="changeblade">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -281,6 +308,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="setupwafer" name="setupwafer">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
                                                             <option value="Not Ok">Not Ok</option>
                                                         </select>
@@ -294,6 +322,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="firstwaferinspection" name="firstwaferinspection">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
                                                             <option value="Not Ok">Not Ok</option>
                                                         </select>
@@ -318,6 +347,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="mpchucktablecleaning" name="mpchucktablecleaning">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -331,6 +361,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="mpbgtapeinstallation" name="mpbgtapeinstallation">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
                                                             <option value="Not Ok">Not Ok</option>
                                                         </select>
@@ -344,6 +375,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req002" id="mpbgtaperollercleaning" name="mpbgtaperollercleaning">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -376,7 +408,7 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Technician Employee: *</label>
+                                                        <label>Technician Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="password" id="mptechemp" name="mptechemp"  class="form-control input-sm req002">
@@ -385,7 +417,7 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Quality Control Employee: *</label>
+                                                        <label>Quality Control Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="password" id="mpqcemp" name="mpqcemp"  class="form-control input-sm req002">
@@ -502,7 +534,7 @@
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
     $('#btnDone002').click(function(event) {
-
+        
         var sdwaferno = $('input[name="sdwaferno002[]"]').map(function () {
         return this.value; }).get();
 
@@ -531,6 +563,7 @@
                 val[i].style.borderColor = '#d1d3e2';
             }
         }
+
         if(count > 0)
         {
             //$('#002').animate({scrollTop: '0px'}, 1000);
@@ -543,6 +576,29 @@
             return false;
         }
         //console.log(data)
+
+        if($("#faicat.req002").val() == 'Set-up')
+        {
+            if(($("#mptechemp.req002").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Technician Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+
+            if(($("#mpqcemp.req002").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Quality Control Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
         
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {

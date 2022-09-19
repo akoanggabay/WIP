@@ -6,12 +6,14 @@ class efai012 {
 	private $intlot;
     private $wswr;
     private $swrno;
+	private $wafersize;
     private $tally;
     private $qtyouttally;
     private $detailsattached;
     private $canisterused;
     private $canisternoused;
     private $properlyvacuum;
+	private $totalnoofringsused;
     private $remarks;
     private $lastupdate;
     private $lastupdatedby;
@@ -45,6 +47,10 @@ class efai012 {
 		$this->swrno = $swrno;
 	}
 
+	public function setwafersize($wafersize)
+	{
+		$this->wafersize = $wafersize;
+	}
 
     public function settally($tally)
 	{
@@ -74,6 +80,11 @@ class efai012 {
     public function setproperlyvacuum($properlyvacuum)
 	{
 		$this->properlyvacuum = $properlyvacuum;
+	}
+
+	public function settotalnoofringsused($totalnoofringsused)
+	{
+		$this->totalnoofringsused = $totalnoofringsused;
 	}
 
     public function setremarks($remarks)
@@ -121,6 +132,11 @@ class efai012 {
 		return $this->swrno;
 	}
 
+	public function getwafersize()
+	{
+		return $this->wafersize;
+	}
+
     public function gettally()
 	{
 		return $this->tally;
@@ -151,6 +167,11 @@ class efai012 {
 		return $this->properlyvacuum;
 	}
 
+	public function gettotalnoofringsused()
+	{
+		return $this->totalnoofringsused;
+	}
+
     public function getremarks()
 	{
 		return $this->remarks;
@@ -178,8 +199,8 @@ class efai012 {
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
-            $sql = "INSERT INTO dbo.efai012 (custcode,intlot,wswr,swrno,tally,qtyouttally,detailsattached,canisterused,canisternoused,properlyvacuum,remarks,lastupdate,lastupdatedby,active) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->gettally(),$this->getqtyouttally(),$this->getdetailsattached(),$this->getcanisterused(),$this->getcanisternoused(),$this->getproperlyvacuum(),$this->getremarks(),date("Y-m-d h:i:s"),$this->getlastupdatedby(),1);
+            $sql = "INSERT INTO dbo.efai012 (custcode,intlot,wswr,swrno,tally,qtyouttally,detailsattached,canisterused,canisternoused,properlyvacuum,totalnoofringsused,remarks,lastupdate,lastupdatedby,active,wafersize) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->gettally(),$this->getqtyouttally(),$this->getdetailsattached(),$this->getcanisterused(),$this->getcanisternoused(),$this->getproperlyvacuum(),$this->gettotalnoofringsused(),$this->getremarks(),date("Y-m-d h:i:s"),$this->getlastupdatedby(),1,$this->getwafersize());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

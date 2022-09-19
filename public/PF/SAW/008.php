@@ -1687,6 +1687,28 @@
             return false;
         }
         
+        if($("#faicat.req008").val() == 'Set-up')
+        {
+            if(($("#techemp.req008").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Technician Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+
+            if(($("#qcemp.req008").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Quality Control Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
         
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {

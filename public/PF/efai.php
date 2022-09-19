@@ -213,6 +213,7 @@
         $(".form-control").val("");
         $("#tblreject > tbody").empty();
         $("#tblbh > tbody").empty();
+        $("#tblthickness > tbody").empty();
         $("#tblinitialthickness > tbody").empty();
         $("#tblinkdotheight > tbody").empty();
         $("#tblbumpheight > tbody").empty();
@@ -311,6 +312,21 @@
                             return false;
                         }
                         document.getElementById("bgtapestaging").value = (parseInt(resdata[0].bgtapetime) < 60 ? "0 hour and " + String(resdata[0].bgtapetime) + " minutes": String(Math.floor(parseInt(resdata[0].bgtapetime)/60)) + " hour/s and " + String(parseInt(resdata[0].bgtapetime) % 60 ) + " minute/s");
+                    }
+
+                    if(station == '012')
+                    {
+                        if(resdata[0].processcat == 'SAW')
+                        {
+                            $("#totalnoofringsused.req012").val('');
+                            $("#totalnoofringsused.req012").removeAttr("disabled");
+                            $("#totalnoofringsused.req012").focus();
+                        }
+                        else
+                        {
+                            $("#totalnoofringsused.req012").val('N/A');
+                            $("#totalnoofringsused.req012").attr("disabled","disabled");
+                        }
                     }
                     document.getElementById("intlotno").value = resdata[0].intlot;
                     document.getElementById("custlot").value = resdata[0].custlot;

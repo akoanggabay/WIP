@@ -37,6 +37,7 @@ $efai005->setcustcode($intlotdata2->custcode);
 $efai005->setintlot($intlotno);
 $efai005->setwswr($data->wswr);
 $efai005->setswrno($data->swrno);
+$efai005->setwafersize($data->wsize);
 $efai005->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai005->sethighmaginspection($data->highmaginspection);
 $efai005->setwafernoinspected($data->wafernoinspected);

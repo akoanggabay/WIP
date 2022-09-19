@@ -223,10 +223,7 @@ if(!isset($_SESSION['idno']))
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
-            <?php 
-                if(@$_SESSION['usertype'] != 'Operator') 
-                {
-            ?>
+            
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#EDcollapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -238,16 +235,22 @@ if(!isset($_SESSION['idno']))
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data and Reports:</h6>
+                        <?php 
+                            if(@$_SESSION['usertype'] != 'Operator') 
+                            {
+                        ?>
                         <a class="collapse-item" href="?form=ED&path=po">PO Number</a>
                         <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot Number Logs</a>
                         <a class="collapse-item" href="?form=ED&path=custlotlogs">File Upload Logs</a>
                         <a class="collapse-item" href="?form=ED&path=efailogs">eFAI Logs</a>
+                        <?php } ?>
+                        <a class="collapse-item" href="?form=ED&path=efailogsoperator">eFAI Logs(Operator)</a>
                     </div>
                 </div>
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
-            <?php } ?>
+            
 
             <?php 
                 if(@$_SESSION['usertype'] != 'Guest') 

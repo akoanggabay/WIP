@@ -171,7 +171,7 @@ class partslotno {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * from partslotno where partno = '".$partno."' and status = 'INSTOCK' and active = 1");
+			$dataset =  $conn->query("SELECT * from partslotno where partno = '".$partno."' and status = 'INSTOCK' and active = 1 order by dateexp");
 			$counter = 0;
 			while($reader = $conn->fetch_array($dataset)){
 				$Select = new partslotno();

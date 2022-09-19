@@ -6,6 +6,7 @@ class efai005 {
 	private $intlot;
     private $wswr;
     private $swrno;
+	private $wafersize;
     private $wafertype;
     private $highmaginspection;
     private $wafernoinspected;
@@ -42,6 +43,10 @@ class efai005 {
 		$this->swrno = $swrno;
 	}
 
+	public function setwafersize($wafersize)
+	{
+		$this->wafersize = $wafersize;
+	}
 
     public function setwafertype($wafertype)
 	{
@@ -103,6 +108,11 @@ class efai005 {
 		return $this->swrno;
 	}
 
+	public function getwafersize()
+	{
+		return $this->wafersize;
+	}
+
     public function getwafertype()
 	{
 		return $this->wafertype;
@@ -144,8 +154,8 @@ class efai005 {
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
-            $sql = "INSERT INTO dbo.efai005 (custcode,intlot,wswr,swrno,wafertype,highmaginspection,wafernoinspected,remarks,lastupdate,lastupdatedby,active) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->gethighmaginspection(),$this->getwafernoinspected(),$this->getremarks(),date("Y-m-d h:i:s"),$this->getlastupdatedby(),1);
+            $sql = "INSERT INTO dbo.efai005 (custcode,intlot,wswr,swrno,wafertype,highmaginspection,wafernoinspected,remarks,lastupdate,lastupdatedby,active,wafersize) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->gethighmaginspection(),$this->getwafernoinspected(),$this->getremarks(),date("Y-m-d h:i:s"),$this->getlastupdatedby(),1,$this->getwafersize());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

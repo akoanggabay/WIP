@@ -52,9 +52,10 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req004 auto manual" id="faicat" name="faicat">
                                                             <option value=""></option>
-                                                            <option value="setup">Set-up</option>
-                                                            <option value="psc">PSC</option>
-                                                            <option value="monitoring">Monitoring</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Monitoring">Monitoring</option>
+                                                            <option value="Customer requirement">Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -78,6 +79,22 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="swrno" name="swrno"  class="form-control input-sm req004 auto manual" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Size: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req004" id="wsize" name="wsize">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -150,6 +167,15 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Chuck Table Vacuum Pressure w/ Wafer ( -70 kPa to -90 kPa): *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="chucktablevacuumpressure" name="chucktablevacuumpressure"  class="form-control input-sm req004 manual">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>UV Light: *</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -213,7 +239,7 @@
                                                         <label>De-taping Tape expiration date: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="date" id="detapingtapeexpdate" name="detapingtapeexpdate"  class="form-control input-sm req004 auto">
+                                                        <input type="text" id="detapingtapeexpdate" name="detapingtapeexpdate"  class="form-control input-sm req004 auto">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -348,19 +374,28 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Technician Employee: *</label>
+                                                        <label>Chuck Plate Base Height w/ respect to the detaper table guide ( =/> 5 mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="techemp" name="techemp"  class="form-control input-sm req004 auto">
+                                                        <input type="text" id="chuckplatebaseheight" name="chuckplatebaseheight"  class="form-control input-sm req004 manual">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Quality Control Employee: *</label>
+                                                        <label>Technician Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req004 auto">
+                                                        <input type="password" id="techemp" name="techemp"  class="form-control input-sm req004">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Quality Control Employee (passcode): *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req004">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -515,6 +550,29 @@
             return false;
         }
         //console.log(data)
+
+        if($("#faicat.req004").val() == 'Set-up')
+        {
+            if(($("#techemp.req004").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Technician Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+
+            if(($("#qcemp.req004").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Quality Control Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
         
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -523,7 +581,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                alert(result)
+                //alert(result)
 
                 if(res[0].trim() == 'success')
                 {

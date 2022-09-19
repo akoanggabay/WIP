@@ -352,6 +352,29 @@
             });
             return false;
         }
+
+        if($("#faicat.req009").val() == 'Set-up')
+        {
+            if(($("#techemp.req009").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Technician Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+
+            if(($("#qcemp.req009").val()).toUpperCase() == 'N/A')
+            {
+                swal("not allowed!",{
+                    icon: "warning",
+                    title: "Quality Control Employee passcode is required for Set-up!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
        
 
         var xmlhttp = new XMLHttpRequest();
