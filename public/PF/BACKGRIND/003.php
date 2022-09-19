@@ -1179,7 +1179,7 @@
 
     //alert(countDecimals(document.getElementById("tpoint1").value))
     
-    if(parseInt($('#wqty').val()) > 1)
+    /* if(parseInt($('#wqty').val()) > 1)
     {
         if(tblcount2 > 1)
         {
@@ -1191,9 +1191,9 @@
             return false;
         }
         
-    }
+    } */
     
-    if(parseInt($('#wqty').val())  <= 1 )
+    /* if(parseInt($('#wqty').val())  <= 1 )
     {
         //alert(tblcount)
         if(tblcount2 > 0)
@@ -1206,7 +1206,7 @@
             return false;
         }
         
-    }
+    } */
     
     if(Thickness() == false)
     {
