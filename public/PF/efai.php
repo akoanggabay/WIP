@@ -223,6 +223,7 @@
         $("#tblis015 > tbody").empty();
         $("#tblwp015 > tbody").empty();
         $("#tblrc > tbody").empty();
+        $('tbody').empty();
         $(".efai").attr('hidden',true);
         document.getElementById("intlotno").disabled = false;
         $("#intlotno").focus();

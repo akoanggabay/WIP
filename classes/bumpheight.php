@@ -215,7 +215,7 @@ class BumpHeight {
 			$user = new User;
 			$do;
 			while($reader = $conn->fetch_array($dataset)){
-				$Select = new Thickness();
+				$Select = new BumpHeight();
 				
 				$user->UserData($reader["lastupdatedby"]);
 				$Select->settrackingno($reader["trackingno"]);

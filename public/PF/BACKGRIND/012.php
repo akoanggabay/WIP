@@ -166,7 +166,7 @@
         </div>
     </div>
     <br/>
-    <div class="card border-left-danger">
+    <div class="card border-left-danger" id ="rej012">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-4">
@@ -177,7 +177,7 @@
                             <label>Wafer no: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="dwaferno012" name="dwaferno012"  class="form-control input-sm">
+                            <input type="text" id="dwaferno012" name="dwaferno012"  class="form-control input-sm rej012">
                         </div>
                     </div>
                     <br/>
@@ -186,7 +186,7 @@
                             <label>Defect call-out: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="ddetails012" name="ddetails012"  class="form-control input-sm">
+                            <input type="text" id="ddetails012" name="ddetails012"  class="form-control input-sm rej012">
                         </div>
                     </div>
                     <br/>
@@ -195,7 +195,7 @@
                             <label>Defect quantity: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="number" id="dqty012" name="dqty012"  class="form-control input-sm">
+                            <input type="number" id="dqty012" name="dqty012"  class="form-control input-sm rej012">
                         </div>
                     </div>
                     <br/>
@@ -410,6 +410,7 @@
         });
         dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
         parseInt(dtotal) += parseInt($('#dqty012').val());
+        $(".rej012").css({"border-color": "#d1d3e2"});
     }
 
     });
