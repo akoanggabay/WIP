@@ -193,7 +193,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:s"));
+            $reject->setlastupdate(date("Y-m-d H:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }
@@ -214,7 +214,7 @@ if($success == true)
             $bladeheight->setbh3($sbh3[$x]);
             $bladeheight->setbh4($sbh4[$x]);
             $bladeheight->setbh5($sbh5[$x]);
-            $bladeheight->setlastupdate(date("Y-m-d h:i:s"));
+            $bladeheight->setlastupdate(date("Y-m-d H:i:s"));
             $bladeheight->setlastupdatedby($_SESSION['idno']);
             $bladeheight->AddBladeHeight();
         }
@@ -233,7 +233,7 @@ if($success == true)
             $indexsize->setis3($sis3[$x]);
             $indexsize->setis4($sis4[$x]);
             $indexsize->setis5($sis5[$x]);
-            $indexsize->setlastupdate(date("Y-m-d h:i:s"));
+            $indexsize->setlastupdate(date("Y-m-d H:i:s"));
             $indexsize->setlastupdatedby($_SESSION['idno']);
             $indexsize->Addindexsize();
         }
@@ -247,7 +247,7 @@ if($success == true)
             $ringcut->setintlot($intlotno);
             $ringcut->setwaferno($srcwaferno[$x]);
             $ringcut->setmeasurement($srcmeasurement[$x]);
-            $ringcut->setlastupdate(date("Y-m-d h:i:s"));
+            $ringcut->setlastupdate(date("Y-m-d H:i:s"));
             $ringcut->setlastupdatedby($_SESSION['idno']);
             $ringcut->AddRingCut();
         }
@@ -261,7 +261,7 @@ if($success == true)
             $washparameter->setintlot($intlotno);
             $washparameter->settime($swptime[$x]);
             $washparameter->setrpm($swprpm[$x]);
-            $washparameter->setlastupdate(date("Y-m-d h:i:s"));
+            $washparameter->setlastupdate(date("Y-m-d H:i:s"));
             $washparameter->setlastupdatedby($_SESSION['idno']);
             $washparameter->AddWashParameter();
         }

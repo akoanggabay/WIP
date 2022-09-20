@@ -512,7 +512,7 @@ class efai008 {
             $this->gettechemp(),
             $this->getqcemp(),
             $this->getremarks(),
-            date("Y-m-d h:i:s"),
+            date("Y-m-d H:i:s"),
             $this->getlastupdatedby(),
             1,
             $this->getfeedspeedz1(),

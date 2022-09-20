@@ -145,7 +145,7 @@ class efai011 {
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
             $sql = "INSERT INTO dbo.efai011 (custcode,intlot,wswr,swrno,wafertype,samplingplan,samplingsize,remarks,lastupdate,lastupdatedby,active) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->getsamplingplan(),$this->getsamplingsize(),$this->getremarks(),date("Y-m-d h:i:sa"),$this->getlastupdatedby(),1);
+            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->getsamplingplan(),$this->getsamplingsize(),$this->getremarks(),date("Y-m-d H:i:sa"),$this->getlastupdatedby(),1);
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

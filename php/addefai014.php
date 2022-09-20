@@ -80,7 +80,7 @@ $efai014->setdicingtapeexp($data->dicingtapeexp);
 $efai014->settechemp($data->techemp);
 $efai014->setqcemp($data->qcemp);
 $efai014->setremarks($data->remarks);
-$efai014->setlastupdate(date("Y-m-d h:i:s"));
+$efai014->setlastupdate(date("Y-m-d H:i:s"));
 $efai014->setlastupdatedby($_SESSION['idno']);
 $efai014->setactive(1);
 
@@ -108,7 +108,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:s"));
+            $reject->setlastupdate(date("Y-m-d H:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }

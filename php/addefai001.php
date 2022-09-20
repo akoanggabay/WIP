@@ -104,7 +104,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:s"));
+            $reject->setlastupdate(date("Y-m-d H:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }
@@ -123,7 +123,7 @@ if($success == true)
             $initialthickness->setp3($sinitialthicknessp3[$x]);
             $initialthickness->setp4($sinitialthicknessp4[$x]);
             $initialthickness->setp5($sinitialthicknessp5[$x]);
-            $initialthickness->setlastupdate(date("Y-m-d h:i:s"));
+            $initialthickness->setlastupdate(date("Y-m-d H:i:s"));
             $initialthickness->setlastupdatedby($_SESSION['idno']);
             $initialthickness->AddInitialThickness();
         }
@@ -142,7 +142,7 @@ if($success == true)
             $inkdotheight->setp3($sinkdotheightp3[$x]);
             $inkdotheight->setp4($sinkdotheightp4[$x]);
             $inkdotheight->setp5($sinkdotheightp5[$x]);
-            $inkdotheight->setlastupdate(date("Y-m-d h:i:s"));
+            $inkdotheight->setlastupdate(date("Y-m-d H:i:s"));
             $inkdotheight->setlastupdatedby($_SESSION['idno']);
             $inkdotheight->AddInkDotHeight();
         }
@@ -161,7 +161,7 @@ if($success == true)
             $bumpheight->setp3($sbumpheightp3[$x]);
             $bumpheight->setp4($sbumpheightp4[$x]);
             $bumpheight->setp5($sbumpheightp5[$x]);
-            $bumpheight->setlastupdate(date("Y-m-d h:i:s"));
+            $bumpheight->setlastupdate(date("Y-m-d H:i:s"));
             $bumpheight->setlastupdatedby($_SESSION['idno']);
             $bumpheight->AddBumpHeight();
         }
@@ -180,7 +180,7 @@ if($success == true)
             $warpage->setp3($swarpagep3[$x]);
             $warpage->setp4($swarpagep4[$x]);
             $warpage->setp5($swarpagep5[$x]);
-            $warpage->setlastupdate(date("Y-m-d h:i:s"));
+            $warpage->setlastupdate(date("Y-m-d H:i:s"));
             $warpage->setlastupdatedby($_SESSION['idno']);
             $warpage->AddWarpage();
         }

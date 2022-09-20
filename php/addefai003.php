@@ -124,7 +124,7 @@ $efai003->setmptechemp($data->mptechemp);
 $efai003->setmpqcemp($data->mpqcemp);
 $efai003->setremarks($data->remarks);
 $efai003->setlastupdatedby($_SESSION['idno']);
-$efai003->setlastupdate(date("Y-m-d h:i:s"));
+$efai003->setlastupdate(date("Y-m-d H:i:s"));
 $efai003->setactive(1);
 
 $success = $efai003->AddeFAI003();
@@ -145,7 +145,7 @@ if($success == true)
         $roughness->setr4($rpoint4);
         $roughness->setr5($rpoint5);
         $roughness->setrave($rave);
-        $roughness->setlastupdate(date("Y-m-d h:i:s"));
+        $roughness->setlastupdate(date("Y-m-d H:i:s"));
         $roughness->setlastupdatedby($_SESSION['idno']);
         $roughness->AddRoughness();
     }
@@ -166,7 +166,7 @@ if($success == true)
             $thickness->setp5($stpoint5[$x]);
             $thickness->setpave($spave[$x]);
             $thickness->setttv($sttv[$x]);
-            $thickness->setlastupdate(date("Y-m-d h:i:s"));
+            $thickness->setlastupdate(date("Y-m-d H:i:s"));
             $thickness->setlastupdatedby($_SESSION['idno']);
             $thickness->AddThickness();
         }
@@ -185,7 +185,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:s"));
+            $reject->setlastupdate(date("Y-m-d H:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }

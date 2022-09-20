@@ -157,7 +157,7 @@ class efai016 {
             $this->getmarkingperformedwithuvcuring(),
             $this->gettechemp(),
             $this->getremarks(),
-            date("Y-m-d h:i:s"),
+            date("Y-m-d H:i:s"),
             $this->getlastupdatedby(),
             1);
             $stmt = sqlsrv_query( $con, $sql, $params);

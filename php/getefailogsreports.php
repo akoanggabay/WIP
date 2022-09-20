@@ -3,9 +3,10 @@ include_once("../classes/efailogs.php");
 session_start();
 
 $efailogs = new efailogs;
-$start = date_format(date_create($_GET['start']),"Y-m-d H:i");
-$end = date_format(date_create($_GET['end']),"Y-m-d H:i");
+$start = date_format(date_create($_GET['start']),"Y-m-d H:i:s");
+$end = date_format(date_create($_GET['end']),"Y-m-d H:i:s");
 $station = $_GET['station'];
+
 
 $data = $efailogs->geteFAILogs(substr($station,0,3),$start,$end);
 //print_r($data);

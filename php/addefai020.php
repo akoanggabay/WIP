@@ -61,7 +61,7 @@ $efai020->setlotproperlyvacuumsealed($data->lotproperlyvacuumsealed);
 $efai020->setqcremnantsrejectunitsbeenremoved($data->qcremnantsrejectunitsbeenremoved);
 $efai020->setqcemp($data->qcemp);
 $efai020->setremarks($data->remarks);
-$efai020->setlastupdate(date("Y-m-d h:i:s"));
+$efai020->setlastupdate(date("Y-m-d H:i:s"));
 $efai020->setlastupdatedby($_SESSION['idno']);
 $efai020->setactive(1);
 
@@ -87,7 +87,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:s"));
+            $reject->setlastupdate(date("Y-m-d H:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }

@@ -153,7 +153,7 @@ $efai015->setpanelnoinspected($data->panelnoinspected);
 $efai015->settechemp($data->techemp);
 $efai015->setqcemp($data->qcemp);
 $efai015->setremarks($data->remarks);
-$efai015->setlastupdate(date("Y-m-d h:i:s"));
+$efai015->setlastupdate(date("Y-m-d H:i:s"));
 $efai015->setlastupdatedby($_SESSION['idno']);
 $efai015->setactive(1);
 
@@ -177,7 +177,7 @@ if($success == true)
             $reject->setddetails($sddetails[$x]);
             $reject->setdqty($sdqty[$x]);
             $reject->setremarks($sdremarks[$x]);
-            $reject->setlastupdate(date("Y-m-d h:i:s"));
+            $reject->setlastupdate(date("Y-m-d H:i:s"));
             $reject->setlastupdatedby($_SESSION['idno']);
 
             $successrej = $reject->AddReject();
@@ -200,7 +200,7 @@ if($success == true)
             $indexsize->setis3($sis3[$x]);
             $indexsize->setis4($sis4[$x]);
             $indexsize->setis5(0);
-            $indexsize->setlastupdate(date("Y-m-d h:i:sa"));
+            $indexsize->setlastupdate(date("Y-m-d H:i:sa"));
             $indexsize->setlastupdatedby($_SESSION['idno']);
 
             $successis = $indexsize->Addindexsize();
@@ -215,7 +215,7 @@ if($success == true)
             $washparameter->setintlot($intlotno);
             $washparameter->settime($swptime[$x]);
             $washparameter->setrpm($swprpm[$x]);
-            $washparameter->setlastupdate(date("Y-m-d h:i:sa"));
+            $washparameter->setlastupdate(date("Y-m-d H:i:sa"));
             $washparameter->setlastupdatedby($_SESSION['idno']);
         
             $successwp = $washparameter->AddWashParameter();
