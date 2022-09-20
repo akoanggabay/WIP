@@ -241,7 +241,8 @@ if(!isset($_SESSION['idno']))
                         ?>
                         <a class="collapse-item" href="?form=ED&path=po">PO Number</a>
                         <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot Number Logs</a>
-                        <a class="collapse-item" href="?form=ED&path=custlotlogs">File Upload Logs</a>
+                        <a class="collapse-item" href="?form=ED&path=custlotlogs">File Upload Logs(ILN)</a>
+                        <a class="collapse-item" href="?form=ED&path=partslotlogs">File Upload Logs(Parts)</a>
                         <?php } ?>
                         <a class="collapse-item" href="?form=ED&path=efailogsoperator" hidden>eFAI Logs(Operator)</a>
                         <a class="collapse-item" href="?form=ED&path=efailogs">eFAI Logs</a>
@@ -310,8 +311,7 @@ if(!isset($_SESSION['idno']))
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">List of Logs:</h6>
                         <!-- <a class="collapse-item" href="?form=LM&path=iln">Internal Lot Logs</a> -->
-                        <a class="collapse-item" href="?form=LM&path=bumpheight">Bump height</a>
-                        <a class="collapse-item" href="?form=LM&path=indexsize">Index size</a>
+                        
                         <a class="collapse-item" href="?form=LM&path=thick">Thickness Logs</a>
                         <a class="collapse-item" href="?form=LM&path=rej">Reject Logs</a>
                         <a class="collapse-item" href="?form=LM&path=rough">Roughness Logs</a>

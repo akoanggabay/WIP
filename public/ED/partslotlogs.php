@@ -4,7 +4,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Customer Lot Number Logs</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Parts Lot Number Logs</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -13,8 +13,8 @@
                         <tr>
                             <th>Tracking no</th>
                             <th>Filename</th>
-                            <th>Customer name</th>
-                            <th>Customer Lot number</th>
+                            <th>Part no</th>
+                            <th>Parts Lot number</th>
                             <th>Status</th>
                             <th>Remarks</th>
                             <th>Date Upload</th>
@@ -23,13 +23,13 @@
                     </thead>
                     <tbody>
                         <?php
-                        include_once("../classes/filelotlogs.php");  
-                        $CustLogs = FileLotLogs::GetAllFileLogs();
+                        include_once("../classes/filepartslogs.php");  
+                        $Logs = FilePartsLogs::GetAllFileLogs();
                         $stat ='';
-                        for ($i=0; $i < count($CustLogs); $i++) 
+                        for ($i=0; $i < count($Logs); $i++) 
                             {
                                 
-                            if($CustLogs[$i]->getstatus() == 'SUCCESS') 
+                            if($Logs[$i]->getstatus() == 'SUCCESS') 
                             {
                                 $stat = 'success';
                             }
@@ -40,14 +40,14 @@
                         ?>
                         
                         <tr>
-                            <td><?php echo $CustLogs[$i]->getid(); ?></td>
-                            <td><?php echo $CustLogs[$i]->getfilename(); ?></td>
-                            <td><?php echo $CustLogs[$i]->getcustcode(); ?></td>
-                            <td><?php echo $CustLogs[$i]->getcustlotno(); ?></td>
-                            <td><button type="button" class="btn btn-<?php echo $stat; ?>"><?php echo $CustLogs[$i]->getstatus(); ?></button></td>
-                            <td><?php echo $CustLogs[$i]->getremarks(); ?></td>
-                            <td><?php echo $CustLogs[$i]->getlastupdate()->format('F j, Y, g:i:s a'); ?></td>
-                            <td><?php echo $CustLogs[$i]->getlastupdatedby(); ?></td>
+                            <td><?php echo $Logs[$i]->getid(); ?></td>
+                            <td><?php echo $Logs[$i]->getfilename(); ?></td>
+                            <td><?php echo $Logs[$i]->getpartno(); ?></td>
+                            <td><?php echo $Logs[$i]->getpartslotno(); ?></td>
+                            <td><button type="button" class="btn btn-<?php echo $stat; ?>"><?php echo $Logs[$i]->getstatus(); ?></button></td>
+                            <td><?php echo $Logs[$i]->getremarks(); ?></td>
+                            <td><?php echo $Logs[$i]->getlastupdate()->format('F j, Y, g:i:s a'); ?></td>
+                            <td><?php echo $Logs[$i]->getlastupdatedby(); ?></td>
                             
     
                 

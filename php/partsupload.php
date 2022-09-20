@@ -1,7 +1,7 @@
 <?php
 include_once("../classes/partslotno.php");
 include_once("../classes/partno.php");
-include_once("../classes/filelotlogs.php");
+include_once("../classes/filepartslogs.php");
 session_start();
 
 
@@ -28,7 +28,7 @@ if(!$_SESSION['idno'])
     $dateexp = $_POST["dateexp"];
     $partno = $_POST["partno"];
     
-    $logs = new FileLotLogs;
+    $logs = new FilePartsLogs;
     $csvData = file_get_contents($file);
     $data = explode(PHP_EOL, $csvData);
     
@@ -75,8 +75,8 @@ if(!$_SESSION['idno'])
                     if($uploaded == true)
                     {
                         $logs->setfilename($filename);
-                        $logs->setcustcode(trim($partno));
-                        $logs->setcustlotno(trim($csv[0]));
+                        $logs->setpartno(trim($partno));
+                        $logs->setpartslotno(trim($csv[0]));
                         $logs->setstatus('SUCCESS');
                         $logs->setremarks('');
                         $logs->setlastupdatedby($_SESSION['idno']);
@@ -89,8 +89,8 @@ if(!$_SESSION['idno'])
                     else
                     {
                         $logs->setfilename($filename);
-                        $logs->setcustcode(trim($partno));
-                        $logs->setcustlotno(trim($csv[0]));
+                        $logs->setpartno(trim($partno));
+                        $logs->setpartslotno(trim($csv[0]));
                         $logs->setstatus('FAILED');
                         $logs->setremarks('File format error');
                         $logs->setlastupdatedby($_SESSION['idno']);
@@ -103,8 +103,8 @@ if(!$_SESSION['idno'])
                 else
                 {
                     $logs->setfilename($filename);
-                    $logs->setcustcode(trim($partno));
-                    $logs->setcustlotno(trim($csv[0]));
+                    $logs->setpartno(trim($partno));
+                    $logs->setpartslotno(trim($csv[0]));
                     $logs->setstatus('FAILED');
                     $logs->setremarks('Parts Lot Number already exist');
                     $logs->setlastupdatedby($_SESSION['idno']);
@@ -115,8 +115,8 @@ if(!$_SESSION['idno'])
                 
             } catch (\Throwable $th) {
                 $logs->setfilename($filename);
-                $logs->setcustcode(trim($partno));
-                $logs->setcustlotno(trim($csv[0]));
+                $logs->setpartno(trim($partno));
+                $logs->setpartslotno(trim($csv[0]));
                 $logs->setstatus('FAILED');
                 $logs->setremarks('File format error');
                 $logs->setlastupdatedby($_SESSION['idno']);
