@@ -225,7 +225,7 @@ class Thickness {
 		try{
 			$conn->open();
 			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlotno,a.station,b.description,a.p1,a.p2,a.p3,a.p4,a.p5,a.pave,a.lastupdate,a.lastupdatedby,a.ttv,a.waferno FROM dbo.thickness a inner join station b on a.station = b.station 
-			where intlotno = '".$intlotno."' and a.lastupdate = (SELECT TOP 1 lastupdate FROM thickness where intlotno = '".$intlotno."') order by lastupdate asc");
+			where intlotno = '".$intlotno."' and a.waferno != 'N/A' and a.lastupdate = (SELECT TOP 1 lastupdate FROM thickness where intlotno = '".$intlotno."') order by lastupdate asc");
 			include_once("user.php");
 			$user = new User;
 
