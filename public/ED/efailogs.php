@@ -104,7 +104,7 @@
             if (this.readyState == 4 && this.status == 200) 
             {
                 var result = this.responseText;
-                console.log(result)
+                //console.log(result)
                 if(result == '"false"')
                 {
                     swal("no data!",{
@@ -128,7 +128,6 @@
                 
                 for(var i = 0;i<Object.keys(JSON.parse(result)[0]).length;i++)
                 {
-
                     header+='<th>' +Object.keys(JSON.parse(result)[0])[i] + '</th>';
                 }
 
