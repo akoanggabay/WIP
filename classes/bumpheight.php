@@ -292,8 +292,6 @@ class BumpHeight {
 				'p3'   => number_format((float)$row["p3"], 1, '.', ''),
 				'p4'   => number_format((float)$row["p4"], 1, '.', ''),
 				'p5'   => number_format((float)$row["p5"], 1, '.', ''),
-				'pave'   => number_format((float)$row["pave"], 1, '.', ''),
-				'ttv'   => number_format((float)$row["ttv"], 1, '.', ''),
 				'lastupdate'   => $row["lastupdate"]->format('F j, Y, g:i:s a'),
 				'lastupdatedby'   => $user->getfname().' '.$user->getlname()
 				

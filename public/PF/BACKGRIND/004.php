@@ -53,6 +53,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req004 auto manual" id="faicat" name="faicat">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Set-up">Set-up</option>
                                                             <option value="PSC">PSC</option>
                                                             <option value="Monitoring">Monitoring</option>
@@ -68,6 +69,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req004 auto manual" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -120,6 +122,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req004 auto manual" id="chucktablecleaning" name="chucktablecleaning">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -133,6 +136,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req004 auto manual" id="bgtapetype" name="bgtapetype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="UV">UV</option>
                                                             <option value="Non-UV">Non-UV</option>
                                                         </select>

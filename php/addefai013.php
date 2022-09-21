@@ -2,6 +2,8 @@
 include_once("../classes/efai013.php");
 include_once("../classes/intlotno.php");
 include_once("../classes/reject.php");
+include_once("../classes/processroute.php");
+
 session_start();
 
 $intlotno = $_GET['intlotno'];
@@ -62,7 +64,7 @@ if($success == true)
             $total += (int) $sdqty[$x];
             $reject->setintlotno($intlotno);
             $reject->setcustcode($intlotdata2->custcode);
-            $reject->setstation('013');
+            $reject->setstation($intlotdata2->station === 'REG' ? 'IQC' : '013');
             $reject->setmachine('');
             $reject->setwaferno($sdwaferno[$x]);
             $reject->setddetails($sddetails[$x]);

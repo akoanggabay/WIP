@@ -170,26 +170,25 @@
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         var result = this.responseText;
+        alert(result);
         var res = JSON.parse(result)[0];
 
-        //alert(result);
         document.getElementById("trackingno").innerHTML = res.trackingno;
         document.getElementById("intlotno").innerHTML = '<b>'+res.intlotno;
-        document.getElementById("station").innerHTML = '<b>'+res.station;
+        document.getElementById("waferno").value = res.waferno;
         document.getElementById("lastupdatedby").innerHTML = '<b>'+res.lastupdatedby;
-        document.getElementById("r1").value = res.r1;
-        document.getElementById("r2").value = res.r2;
-        document.getElementById("r3").value = res.r3;
-        document.getElementById("r4").value = res.r4;
-        document.getElementById("r5").value = res.r5;
-        document.getElementById("rave").value = res.rave;
+        document.getElementById("p1").value = res.p1;
+        document.getElementById("p2").value = res.p2;
+        document.getElementById("p3").value = res.p3;
+        document.getElementById("p4").value = res.p4;
+        document.getElementById("p5").value = res.p5;
         $('#ViewModal').modal('show');
         $("#ViewModal").appendTo("body");
             
         }   
         };
 
-        xmlhttp.open("GET", '../php/getroughlogsdetails.php?trackingno='+value,true);
+        xmlhttp.open("GET", '../php/getbumpheightlogsdetails.php?trackingno='+value,true);
         xmlhttp.send();
          
     }

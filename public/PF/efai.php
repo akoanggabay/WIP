@@ -341,7 +341,8 @@
                     document.getElementById("ltype").value = resdata[0].lottype;
                     document.getElementById("processcat").value = resdata[0].processcat;
                     
-                    document.getElementById((resdata[0].nstation.split(":")[0]).substring(0,3)).hidden = false;
+                    var efai = (resdata[0].nstation.split(":")[0]).substring(0,3) === 'IQC' ? '013' : (resdata[0].nstation.split(":")[0]).substring(0,3);
+                    document.getElementById(efai).hidden = false;
                 }
             };
             xmlhttp.open("GET", "../php/getintlotnodetails.php?intlotno=" + document.getElementById("intlotno").value, true);
