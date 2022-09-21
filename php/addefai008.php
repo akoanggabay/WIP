@@ -198,8 +198,8 @@ if($success == true)
             $reject->AddReject();
         }
 
-        $ilot = new IntLotno;
-        $ilot->updateCurrqty2($intlotno,$intlotdata2->custcode,intval($intlotdata2->currqty) - intval($total));
+        /* $ilot = new IntLotno;
+        $ilot->updateCurrqty2($intlotno,$intlotdata2->custcode,intval($intlotdata2->currqty) - intval($total)); */
     }
 
     if(count($sbhch) > 0)

@@ -91,8 +91,8 @@ if($success == true)
             $reject->setlastupdatedby($_SESSION['idno']);
             $reject->AddReject();
         }
-        $ilot = new IntLotno;
-        $ilot->updateCurrqty2($intlotno,$intlotdata2->custcode,intval($intlotdata2->currqty) - intval($total));
+        /* $ilot = new IntLotno;
+        $ilot->updateCurrqty2($intlotno,$intlotdata2->custcode,intval($intlotdata2->currqty) - intval($total)); */
     }
 }
 else
