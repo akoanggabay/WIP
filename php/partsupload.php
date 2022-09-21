@@ -67,7 +67,7 @@ if(!$_SESSION['idno'])
                     $upload->setstatus('INSTOCK');
                     $upload->setdatereceived($datereceived);
                     $upload->setdateexp($dateexp);
-                    $upload->setlastupdate(date("Y-m-d h:i:s"));
+                    $upload->setlastupdate(date("Y-m-d H:i:s"));
                     $upload->setlastupdatedby($_SESSION['idno']);
                     $upload->setactive(1);
                     $uploaded = $upload->AddPartsLotno();

@@ -7,8 +7,9 @@ $start = date_format(date_create($_GET['start']),"Y-m-d H:i:s");
 $end = date_format(date_create($_GET['end']),"Y-m-d H:i:s");
 $station = $_GET['station'];
 
+$efai = substr($station,0,3) === 'IQC' ? '013' : substr($station,0,3);
 
-$data = $efailogs->geteFAILogs(substr($station,0,3),$start,$end);
+$data = $efailogs->geteFAILogs($efai,$start,$end);
 //print_r($data);
 echo (json_encode($data));
 /* $test2 = json_encode($test);

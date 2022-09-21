@@ -27,7 +27,7 @@ if($success)
 {   
     $partslogs->setlotno($lotno);
     $partslogs->setqty($qty);
-    $partslogs->setlastupdate(date("Y-m-d h:i:s"));
+    $partslogs->setlastupdate(date("Y-m-d H:i:s"));
     $partslogs->setlastupdatedby($_SESSION['idno']);
     $partslogs->setremarks('');
     

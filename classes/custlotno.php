@@ -220,7 +220,7 @@ class CustLotno {
 			
             $con = $conn->open();
             $sql = "INSERT INTO dbo.custlotno (custcode,custlotno,deviceno,qty,waferqty,datestart,shipbackdate,waferthickness,requiredthickness,processcat,lottype,dateupload,uploadby,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getcustlotno(),$this->getdeviceno(),$this->getqty(),$this->getwaferqty(),$this->getdatestart(),$this->getshipbackdate(),$this->getwaferthickness(),$this->getrequiredthickness(),$this->getprocesscat(),$this->getlottype(),date("Y-m-d h:i:sa"),$this->getuploadby(),$this->getstatus());
+            $params = array($this->getcustcode(),$this->getcustlotno(),$this->getdeviceno(),$this->getqty(),$this->getwaferqty(),$this->getdatestart(),$this->getshipbackdate(),$this->getwaferthickness(),$this->getrequiredthickness(),$this->getprocesscat(),$this->getlottype(),date("Y-m-d H:i:sa"),$this->getuploadby(),$this->getstatus());
             $stmt = sqlsrv_query( $con, $sql, $params);
             //echo $stmt;
            $row = sqlsrv_rows_affected($stmt);
