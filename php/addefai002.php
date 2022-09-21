@@ -74,6 +74,7 @@ $efai002->setbladecount($data->bladecount);
 $efai002->setsetupwafer($data->setupwafer);
 $efai002->setfirstwaferinspection($data->firstwaferinspection);
 $efai002->setfirstwaferno($data->firstwaferno);
+$efai002->setnoofwafersinspected($data->noofwafersinspected);
 $efai002->setmpchucktablecleaning($data->mpchucktablecleaning);
 $efai002->setmpbgtapeinstallation($data->mpbgtapeinstallation);
 $efai002->setmpbgtaperollercleaning($data->mpbgtaperollercleaning);

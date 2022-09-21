@@ -435,6 +435,15 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>No. of Wafers Inspected (Wafer Nos.): *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="noofwafersinspected" name="noofwafersinspected"  class="form-control input-sm req003" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Technician Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">

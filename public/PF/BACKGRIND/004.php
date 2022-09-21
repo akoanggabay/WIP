@@ -320,6 +320,15 @@
                                                     </div>
                                                 </div>
                                                 <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>No. of Wafers Inspected (Wafer Nos.): *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="noofwafersinspected" name="noofwafersinspected"  class="form-control input-sm req004 auto" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
                                                 <h4 style="text-align:center;">Machine Preparation</h4>
                                                 <br/>
                                                 <div class="row">

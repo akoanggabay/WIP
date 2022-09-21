@@ -46,7 +46,9 @@ $intlotlogs = new IntLotLogs;
 $ilot = new IntLotno;
 $stationdetails->StationDetails($nextstage);
 
-$efaiExist = IntLotno::checkExisteFAI(substr($nextstage,0,3),$intlotno);
+$efai = substr($nextstage,0,3) === 'IQC' ? '013' : substr($nextstage,0,3);
+
+$efaiExist = IntLotno::checkExisteFAI($efai,$intlotno);
 
 if(!@$_SESSION['idno'])
 {

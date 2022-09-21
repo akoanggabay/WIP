@@ -44,6 +44,7 @@ class efai003 {
 	private $setupwafer;
 	private $firstwaferinspection;
 	private $firstwaferno;
+	private $noofwafersinspected;
 	private $mptechemp;
 	private $mpqcemp;
 	private $remarks;
@@ -100,6 +101,7 @@ class efai003 {
 	public function setsetupwafer($setupwafer){$this->setupwafer=$setupwafer;}
 	public function setfirstwaferinspection($firstwaferinspection){$this->firstwaferinspection=$firstwaferinspection;}
 	public function setfirstwaferno($firstwaferno){$this->firstwaferno=$firstwaferno;}
+	public function setnoofwafersinspected($noofwafersinspected){$this->noofwafersinspected=$noofwafersinspected;}
 	public function setmptechemp($mptechemp){$this->mptechemp=$mptechemp;}
 	public function setmpqcemp($mpqcemp){$this->mpqcemp=$mpqcemp;}
 	public function setremarks($remarks){$this->remarks=$remarks;}
@@ -152,6 +154,7 @@ class efai003 {
 	public function getsetupwafer(){return $this->setupwafer;}
 	public function getfirstwaferinspection(){return $this->firstwaferinspection;}
 	public function getfirstwaferno(){return $this->firstwaferno;}
+	public function getnoofwafersinspected(){return $this->noofwafersinspected;}
 	public function getmptechemp(){return $this->mptechemp;}
 	public function getmpqcemp(){return $this->mpqcemp;}
 	public function getremarks(){return $this->remarks;}
@@ -172,13 +175,13 @@ class efai003 {
 			bgtapetype,bgtapeused,bgtapethickness,bgtapestaged,diwatertemp,grindingwheelz1,grindingwheelz2,grindingwheelusabletoothz1,grindingwheelusabletoothz2,aircutz1,
 			aircutz2,spindlerpmz1,spindlerpmz2,feedratep1z1,feedratep1z2,feedratep2z1,feedratep2z2,feedratep3z1,feedratep3z2,chucktableseedp1z1,chucktableseedp1z2,
 			chucktableseedp2z1,chucktableseedp2z2,chucktableseedp3z1,chucktableseedp3z2,setupwafer,firstwaferinspection,firstwaferno,mptechemp,mpqcemp,remarks,lastupdate,lastupdatedby,
-			active,wafersize,dummywafersetup) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			active,wafersize,dummywafersetup,noofwafersinspected) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $params = array($this->getcustcode(),$this->getintlot(),$this->getmachine(),$this->getfaicat(),$this->getwswr(),$this->getswrno(),$this->getrecipeno(),$this->getwtaperequiredfinalthickness(),
 			$this->getwtapeinitialthickness(),$this->getslottingoncassette(),$this->getprocessmode(),$this->getbgtapetype(),$this->getbgtapeused(),$this->getbgtapethickness(),$this->getbgtapestaged(),$this->getdiwatertemp(),
 			$this->getgrindingwheelz1(),$this->getgrindingwheelz2(),$this->getgrindingwheelusabletoothz1(),$this->getgrindingwheelusabletoothz2(),$this->getaircutz1(),$this->getaircutz2(),$this->getspindlerpmz1(),
 			$this->getspindlerpmz2(),$this->getfeedratep1z1(),$this->getfeedratep1z2(),$this->getfeedratep2z1(),$this->getfeedratep2z2(),$this->getfeedratep3z1(),$this->getfeedratep3z2(),$this->getchucktableseedp1z1(),$this->getchucktableseedp1z2(),
 			$this->getchucktableseedp2z1(),$this->getchucktableseedp2z2(),$this->getchucktableseedp3z1(),$this->getchucktableseedp3z2(),$this->getsetupwafer(),$this->getfirstwaferinspection(),
-			$this->getfirstwaferno(),$this->getmptechemp(),$this->getmpqcemp(),$this->getremarks(),$this->getlastupdate(),$this->getlastupdatedby(),$this->getactive(),$this->getwafersize(),$this->getdummywafersetup());
+			$this->getfirstwaferno(),$this->getmptechemp(),$this->getmpqcemp(),$this->getremarks(),$this->getlastupdate(),$this->getlastupdatedby(),$this->getactive(),$this->getwafersize(),$this->getdummywafersetup(),$this->getnoofwafersinspected());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

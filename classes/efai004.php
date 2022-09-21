@@ -26,6 +26,7 @@ class efai004 {
     private $setupwafer;
     private $firstwaferinspection;
     private $firstwaferno;
+	private $noofwafersinspected;
     private $detapingtaperoller;
     private $detapingtapeinstallation;
     private $tapewindingpressure;
@@ -166,6 +167,11 @@ class efai004 {
     public function setfirstwaferno($firstwaferno)
 	{
 		$this->firstwaferno = $firstwaferno;
+	}
+
+	public function setnoofwafersinspected($noofwafersinspected)
+	{
+		$this->noofwafersinspected = $noofwafersinspected;
 	}
 
     public function setdetapingtaperoller($detapingtaperoller)
@@ -356,6 +362,11 @@ class efai004 {
 		return $this->firstwaferno;
 	}
 
+	public function getnoofwafersinspected()
+	{
+		return $this->noofwafersinspected;
+	}
+
     public function getdetapingtaperoller()
 	{
 		return $this->detapingtaperoller;
@@ -431,7 +442,7 @@ class efai004 {
             $conn->query("INSERT INTO dbo.efai004 (custcode,intlot,machine,faicat,wswr,swrno,slotting,chucktablecleaning,processmode,bgtapetype,
             bgtapeused,bgtapestaging,tabletemp,uvlight,changedetapetape,detapingtapeused,detapingtapelotno,detapingtapeexpdate,notchtype,setupwafer,
             firstwaferinspection,firstwaferno,detapingtaperoller,detapingtapeinstallation,tapewindingpressure,tapedeliverypressure,lamphourusage,techemp,qcemp,remarks,
-            lastupdate,lastupdatedby,active,uvirrad,wafersize,chucktablevacuumpressure,chuckplatebaseheight) VALUES('".$this->getcustcode()."','".$this->getintlot()."','".$this->getmachine()."','".$this->getfaicat()."','".$this->getwswr()."','".$this->getswrno()."','".$this->getslotting()."','".$this->getchucktablecleaning()."','".$this->getprocessmode()."','".$this->getbgtapetype()."','".$this->getbgtapeused()."','".$this->getbgtapestaging()."','".$this->gettabletemp()."','".$this->getuvlight()."','".$this->getchangedetapetape()."','".$this->getdetapingtapeused()."','".$this->getdetapingtapelotno()."','".$this->getdetapingtapeexpdate()."','".$this->getnotchtype()."','".$this->getsetupwafer()."','".$this->getfirstwaferinspection()."','".$this->getfirstwaferno()."','".$this->getdetapingtaperoller()."','".$this->getdetapingtapeinstallation()."','".$this->gettapewindingpressure()."','".$this->gettapedeliverypressure()."','".$this->getlamphourusage()."','".$this->gettechemp()."','".$this->getqcemp()."','".$this->getremarks()."',GETDATE(),'".$this->getlastupdatedby()."',1,'".$this->getuvirrad()."','".$this->getwafersize()."','".$this->getchucktablevacuumpressure()."','".$this->getchuckplatebaseheight()."')");
+            lastupdate,lastupdatedby,active,uvirrad,wafersize,chucktablevacuumpressure,chuckplatebaseheight,noofwafersinspected) VALUES('".$this->getcustcode()."','".$this->getintlot()."','".$this->getmachine()."','".$this->getfaicat()."','".$this->getwswr()."','".$this->getswrno()."','".$this->getslotting()."','".$this->getchucktablecleaning()."','".$this->getprocessmode()."','".$this->getbgtapetype()."','".$this->getbgtapeused()."','".$this->getbgtapestaging()."','".$this->gettabletemp()."','".$this->getuvlight()."','".$this->getchangedetapetape()."','".$this->getdetapingtapeused()."','".$this->getdetapingtapelotno()."','".$this->getdetapingtapeexpdate()."','".$this->getnotchtype()."','".$this->getsetupwafer()."','".$this->getfirstwaferinspection()."','".$this->getfirstwaferno()."','".$this->getdetapingtaperoller()."','".$this->getdetapingtapeinstallation()."','".$this->gettapewindingpressure()."','".$this->gettapedeliverypressure()."','".$this->getlamphourusage()."','".$this->gettechemp()."','".$this->getqcemp()."','".$this->getremarks()."',GETDATE(),'".$this->getlastupdatedby()."',1,'".$this->getuvirrad()."','".$this->getwafersize()."','".$this->getchucktablevacuumpressure()."','".$this->getchuckplatebaseheight()."','".$this->getnoofwafersinspected()."')");
             /* $params = array($this->getcustcode(),$this->getintlot(),$this->getmachine(),$this->getfaicat(),$this->getwswr(),$this->getswrno(),$this->getwafercondition(),$this->getwafertype(),$this->getwaferboatslotting(),$this->getchucktabletype(),
             $this->getchucktablecleaning(),$this->getprocessmode(),$this->getchangetape(),$this->getbgtapetype(),$this->getbgtapeused(),$this->getbgtapelotno(),$this->getbgtapeexpdate(),$this->getnotchtype(),$this->getchangeblade(),$this->getbladetemp(),
             $this->getbladecount(),$this->getsetupwafer(),$this->getfirstwaferinspection(),$this->getfirstwaferno(),$this->getmpchucktablecleaning(),$this->getmpbgtapeinstallation(),$this->getmpbgtaperollercleaning(),$this->getmpbladeposition(),$this->getmplamphourusage(),$this->getmptechemp(),

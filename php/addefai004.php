@@ -76,6 +76,7 @@ $efai004->setnotchtype($data->notchtype);
 $efai004->setsetupwafer($data->setupwafer);
 $efai004->setfirstwaferinspection($data->firstwaferinspection);
 $efai004->setfirstwaferno($data->firstwaferno);
+$efai004->setnoofwafersinspected($data->noofwafersinspected);
 $efai004->setdetapingtaperoller($data->detapingtaperoller);
 $efai004->setdetapingtapeinstallation($data->detapingtapeinstallation);
 $efai004->settapewindingpressure($data->tapewindingpressure);

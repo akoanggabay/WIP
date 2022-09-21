@@ -120,6 +120,7 @@ $efai003->setchucktableseedp3z2($data->chucktableseedp3z2);
 $efai003->setsetupwafer($data->setupwafer);
 $efai003->setfirstwaferinspection($data->firstwaferinspection);
 $efai003->setfirstwaferno($data->firstwaferno);
+$efai003->setnoofwafersinspected($data->noofwafersinspected);
 $efai003->setmptechemp($data->mptechemp);
 $efai003->setmpqcemp($data->mpqcemp);
 $efai003->setremarks($data->remarks);
