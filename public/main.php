@@ -110,8 +110,6 @@ if(!isset($_SESSION['idno']))
             <?php } ?>
 
             <?php 
-                if(@$_SESSION['usertype'] != 'Operator' && @$_SESSION['usertype'] != 'Guest') 
-                {
             ?>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#PIcollapsePages" aria-expanded="true"
@@ -124,14 +122,21 @@ if(!isset($_SESSION['idno']))
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Parts Inventory:</h6>
+                        <?php 
+                            if(@$_SESSION['usertype'] != 'Operator')
+                            {
+                        ?>
                         <a class="collapse-item" href="?form=PI&path=partsupload">Parts Upload</a>
+                        <?php 
+                            } 
+                        ?>
                         <a class="collapse-item" href="?form=PI&path=withdraw">Parts Withdrawal</a>
                     </div>
                 </div>
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
-            <?php } ?>
+            
 
             <?php 
                 if(@$_SESSION['usertype'] != 'Operator' && @$_SESSION['usertype'] != 'Guest') 
