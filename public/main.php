@@ -246,6 +246,7 @@ if(!isset($_SESSION['idno']))
                         ?>
                         <a class="collapse-item" href="?form=ED&path=po">PO Number</a>
                         <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot Number Logs</a>
+                        <a class="collapse-item" href="?form=ED&path=partsreport">Parts Inventory</a>
                         <a class="collapse-item" href="?form=ED&path=custlotlogs">File Upload Logs(ILN)</a>
                         <a class="collapse-item" href="?form=ED&path=partslotlogs">File Upload Logs(Parts)</a>
                         <?php } ?>

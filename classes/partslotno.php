@@ -268,6 +268,58 @@ class partslotno {
         return $success;	
 	}
 
+    public static function GetAllPNLotno($partno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT *  from dbo.partslotno where partno = '".$partno."' and active = 1 order by dateexp");
+			if ($conn->has_rows($dataset)) {
+
+				include_once("user.php");
+				include_once("supplier.php");
+				
+				$user = new User;
+				$supplier = new supplier;
+			
+				while ($row = $conn->fetch_array($dataset)) {
+				
+				$user->UserData($row["lastupdatedby"]);
+				$supplier->GetDetails($row["supplier"]);
+				
+				$result[] = array(
+				'lotno'   => $row["lotno"],
+				'pono' => $row["pono"],
+				'processcategory' => $row["processcategory"],
+				'materialcategory' => $row["materialcategory"],
+				'supplier' => $supplier->getdescription(),
+				'description' => $row["description"],
+				'partno' => $row["partno"],
+				'origqty' => $row["origqty"],
+                'currqty' => $row["currqty"],
+                'status' => $row["status"],
+                'datereceived' => $row["datereceived"]->format('F j, Y'),
+                'dateexp' => $row["dateexp"]->format('F j, Y'),
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
+				'lastupdatedby' => $user->getfname().' '.$user->getlname()
+				);
+				}
+			}
+			else
+			{
+				$result = 'false';
+			}
+		
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
 }
 
 ?>
