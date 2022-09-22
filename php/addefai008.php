@@ -53,13 +53,13 @@ if($exist == 'false')
     return false;
 }
 
-if($techexist == 'false')
+if($techexist == 'false' && strtoupper($data->techemp) != 'N/A')
 {
     echo 'error_Error! Technician Employee passcode does not exist!';
     return false;
 }
 
-if($qcexist == 'false')
+if($qcexist == 'false' && strtoupper($data->qcemp) != 'N/A')
 {
     echo 'error_Error! QC Employee passcode does not exist!';
     return false;
@@ -83,6 +83,7 @@ $efai008->setmachine($data->machine);
 $efai008->setfaicat($data->faicat);
 $efai008->setwswr($data->wswr);
 $efai008->setswrno($data->swrno);
+$efai008->setwafersaw($data->wsaw);
 $efai008->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai008->setrequiredwaferthickness($data->requiredwaferthickness);
 $efai008->setactualwaferthickness($data->actualwaferthickness);

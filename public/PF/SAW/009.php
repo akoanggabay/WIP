@@ -39,8 +39,11 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req009" id="faicat" name="faicat">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Set-up">Set-up</option>
                                                             <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Customer requirement">Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -52,6 +55,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req009" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
                                                         </select>
@@ -64,6 +68,23 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="swrno" name="swrno"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Saw: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req009" id="wsaw" name="wsaw">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="12">12</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -96,6 +117,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req009" id="bustedlamp" name="bustedlamp">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -166,6 +188,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control req009" id="reasonuvcuring" name="reasonuvcuring">
                                                                 <option value=""></option>
+                                                                <option value="N/A">N/A</option>
                                                                 <option value="Detected with bubbles after mount">Detected with bubbles after mount</option>
                                                                 <option value="Lot requirement">Lot requirement</option>
                                                             </select>

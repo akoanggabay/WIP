@@ -19,6 +19,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req010" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
                                                         </select>
@@ -35,12 +36,30 @@
                                                 </div>
                                                 <br/>
                                                 <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Saw: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req010" id="wsaw" name="wsaw">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
                                                     <div class="col-md-3">
                                                         <label>Wafer Type: *</label>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <select class="form-control req010" id="wtype" name="wtype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
                                                             <option value="standard">Standard</option>
@@ -63,6 +82,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req010" id="inktype" name="inktype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Electronic Inking">Electronic Inking</option>
                                                             <option value="Manual Inking">Manual Inking</option>
                                                         </select>
@@ -104,7 +124,7 @@
                                                             <label>Ink Expiration date: </label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="date" id="inkexpdate" name="inkexpdate"  class="form-control input-sm" style="text-transform:uppercase">
+                                                            <input type="text" id="inkexpdate" name="inkexpdate"  class="form-control input-sm req010" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -129,6 +149,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control req010" id="inkviresult" name="inkviresult">
                                                                 <option value=""></option>
+                                                                <option value="N/A">N/A</option>
                                                                 <option value="Pass">Pass</option>
                                                                 <option value="Fail">Fail</option>
                                                             </select>
@@ -142,6 +163,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control req010" id="inspectiontype" name="inspectiontype">
                                                                 <option value=""></option>
+                                                                <option value="N/A">N/A</option>
                                                                 <option value="Sampling">Sampling</option>
                                                                 <option value="100% inspection">100% inspection</option>
                                                                 <option value="Re-inspection / Failed 2nd Opt. QA">Re-inspection / Failed 2nd Opt. QA</option>

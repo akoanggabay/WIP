@@ -39,8 +39,11 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req015" id="faicat" name="faicat">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Set-up">Set-up</option>
                                                             <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Customer requirement">Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -52,6 +55,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req015" id="packagetype" name="packagetype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Strip">Strip</option>
                                                             <option value="Panel">Panel</option>
                                                         </select>
@@ -65,6 +69,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req015" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
                                                         </select>

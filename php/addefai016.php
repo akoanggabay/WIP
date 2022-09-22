@@ -24,7 +24,7 @@ if($exist == 'false')
     return false;
 }
 
-if($techexist == 'false')
+if($techexist == 'false' && strtoupper($data->techemp) != 'N/A')
 {
     echo 'error_Error! Technician Employee passcode does not exist!';
     return false;

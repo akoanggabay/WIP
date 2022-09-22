@@ -8,6 +8,7 @@ class efai008 {
     private $faicat;
     private $wswr;
     private $swrno;
+    private $wafersaw;
     private $wafertype;
     private $requiredwaferthickness;
     private $actualwaferthickness;
@@ -116,6 +117,7 @@ class efai008 {
     public function setfaicat($faicat){$this->faicat=$faicat;}
     public function setwswr($wswr){$this->wswr=$wswr;}
     public function setswrno($swrno){$this->swrno=$swrno;}
+    public function setwafersaw($wafersaw){$this->wafersaw=$wafersaw;}
     public function setwafertype($wafertype){$this->wafertype=$wafertype;}
     public function setrequiredwaferthickness($requiredwaferthickness){$this->requiredwaferthickness=$requiredwaferthickness;}
     public function setactualwaferthickness($actualwaferthickness){$this->actualwaferthickness=$actualwaferthickness;}
@@ -218,6 +220,7 @@ class efai008 {
     public function getfaicat(){return $this->faicat;}
     public function getwswr(){return $this->wswr;}
     public function getswrno(){return $this->swrno;}
+    public function getwafersaw(){return $this->wafersaw;}
     public function getwafertype(){return $this->wafertype;}
     public function getrequiredwaferthickness(){return $this->requiredwaferthickness;}
     public function getactualwaferthickness(){return $this->actualwaferthickness;}
@@ -417,8 +420,9 @@ class efai008 {
             active,
             feedspeedz1,
             feedspeedz2,
-            sawtype
-            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            sawtype,
+            wafersaw
+            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $params = array($this->getcustcode(),
             $this->getintlot(),
             $this->getmachine(),
@@ -517,7 +521,8 @@ class efai008 {
             1,
             $this->getfeedspeedz1(),
             $this->getfeedspeedz2(),
-            $this->getsawtype()
+            $this->getsawtype(),
+            $this->getwafersaw()
             );
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);

@@ -6,6 +6,7 @@ class efai010 {
 	private $intlot;
     private $wswr;
     private $swrno;
+	private $wafersaw;
     private $wafertype;
 	private $inktype;
     private $inkused;
@@ -44,6 +45,11 @@ class efai010 {
     public function setswrno($swrno)
 	{
 		$this->swrno = $swrno;
+	}
+
+	public function setwafersaw($wafersaw)
+	{
+		$this->wafersaw = $wafersaw;
 	}
 
     public function setwafertype($wafertype)
@@ -126,6 +132,11 @@ class efai010 {
 		return $this->swrno;
 	}
 
+	public function getwafersaw()
+	{
+		return $this->wafersaw;
+	}
+
     public function getwafertype()
 	{
 		return $this->wafertype;
@@ -188,8 +199,8 @@ class efai010 {
 			//$conn->open();
 			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
 			$con = $conn->open();
-            $sql = "INSERT INTO dbo.efai010 (custcode,intlot,wswr,swrno,wafertype,inktype,inkused,inkexpdate,inkexpired,inkviresult,inspectiontype,remarks,lastupdate,lastupdatedby,active) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->getinktype(),$this->getinkused(),$this->getinkexpdate(),$this->getinkexpired(),$this->getinkviresult(),$this->getinspectiontype(),$this->getremarks(),date("Y-m-d H:i:sa"),$this->getlastupdatedby(),1);
+            $sql = "INSERT INTO dbo.efai010 (custcode,intlot,wswr,swrno,wafertype,inktype,inkused,inkexpdate,inkexpired,inkviresult,inspectiontype,remarks,lastupdate,lastupdatedby,active,wafersaw) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $params = array($this->getcustcode(),$this->getintlot(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->getinktype(),$this->getinkused(),$this->getinkexpdate(),$this->getinkexpired(),$this->getinkviresult(),$this->getinspectiontype(),$this->getremarks(),date("Y-m-d H:i:sa"),$this->getlastupdatedby(),1,$this->getwafersaw());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

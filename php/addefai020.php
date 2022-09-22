@@ -24,7 +24,7 @@ if($exist == 'false')
     return false;
 }
 
-if($qcexist == 'false')
+if($qcexist == 'false' && strtoupper($data->qcemp) != 'N/A')
 {
     echo 'error_Error! QC Employee passcode does not exist!';
     return false;

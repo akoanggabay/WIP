@@ -39,6 +39,7 @@ $efai010->setcustcode($intlotdata2->custcode);
 $efai010->setintlot($intlotno);
 $efai010->setwswr($data->wswr);
 $efai010->setswrno($data->swrno);
+$efai010->setwafersaw($data->wsaw);
 $efai010->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai010->setinktype($data->inktype);
 $efai010->setinkused($data->inkused);

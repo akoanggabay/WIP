@@ -19,6 +19,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req020" id="packagetype" name="packagetype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Strip">Strip</option>
                                                             <option value="Panel">Panel</option>
                                                         </select>
@@ -32,6 +33,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req020" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
                                                         </select>

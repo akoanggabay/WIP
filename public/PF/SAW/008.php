@@ -54,8 +54,11 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="faicat" name="faicat">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Set-up">Set-up</option>
                                                             <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Customer requirement">Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -84,12 +87,30 @@
                                                 </div>
                                                 <br/>
                                                 <div class="row saw ring">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Saw: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req008" id="wsaw" name="wsaw">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row saw ring">
                                                     <div class="col-md-3">
                                                         <label>Wafer Type: *</label>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <select class="form-control req008 saw ring" id="wtype" name="wtype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
                                                             <option value="standard">Standard</option>
@@ -194,6 +215,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="processmode" name="processmode">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
                                                             <option value="Manual">Manual</option>
                                                         </select>
@@ -313,6 +335,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="bladetype" name="bladetype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="HUBLESS">HUBLESS</option>
                                                             <option value="HUB">HUB</option>
                                                         </select>
@@ -677,6 +700,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="surfactant" name="surfactant">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="ON">ON</option>
                                                             <option value="OFF">OFF</option>
                                                         </select>
@@ -690,6 +714,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="surfactantinjectiontype" name="surfactantinjectiontype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Stayclean Injector">Stayclean Injector</option>
                                                             <option value="Iwaki pump">Iwaki pump</option>
                                                         </select>
@@ -758,6 +783,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="purgingdone" name="purgingdone">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
                                                         </select>
@@ -1035,6 +1061,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req008 saw ring" id="vifirstwafer" name="vifirstwafer">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Pass">Pass</option>
                                                             <option value="Fail">Fail</option>
                                                         </select>

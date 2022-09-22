@@ -38,6 +38,7 @@ $efai006->setcustcode($intlotdata2->custcode);
 $efai006->setintlot($intlotno);
 $efai006->setwswr($data->wswr);
 $efai006->setswrno($data->swrno);
+$efai006->setwafersaw($data->wsaw);
 $efai006->setwafercondition($data->wcondition);
 $efai006->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai006->settapetype($data->tapetype);

@@ -19,6 +19,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req011" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
                                                         </select>
@@ -35,12 +36,30 @@
                                                 </div>
                                                 <br/>
                                                 <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Saw: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req011" id="wsaw" name="wsaw">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
                                                     <div class="col-md-3">
                                                         <label>Wafer Type: *</label>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <select class="form-control req011" id="wtype" name="wtype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
                                                             <option value="standard">Standard</option>

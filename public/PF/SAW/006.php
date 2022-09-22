@@ -19,6 +19,7 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req006" id="wswr" name="wswr">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
                                                             <option value="No">NO</option>
                                                         </select>
@@ -36,11 +37,29 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>Wafer Saw: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req006" id="wsaw" name="wsaw">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Wafer Condition: *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <select class="form-control req006" id="wcondition" name="wcondition">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Bare Wafer">Bare Wafer</option>
                                                             <option value="Mounted Wafer (Unsawn)">Mounted Wafer (Unsawn)</option>
                                                         </select>
@@ -54,6 +73,7 @@
                                                     <div class="col-md-3">
                                                         <select class="form-control req006" id="wtype" name="wtype">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
                                                             <option value="standard">Standard</option>
@@ -158,6 +178,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control req006" id="requiredwaferorientation" name="requiredwaferorientation">
                                                                 <option value=""></option>
+                                                                <option value="N/A">N/A</option>
                                                                 <option value="0 deg">0 deg</option>
                                                                 <option value="90 deg">90 deg</option>
                                                                 <option value="180 deg">180 deg</option>
@@ -173,6 +194,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control req006" id="actualwaferorientation" name="actualwaferorientation">
                                                                 <option value=""></option>
+                                                                <option value="N/A">N/A</option>
                                                                 <option value="0 deg">0 deg</option>
                                                                 <option value="90 deg">90 deg</option>
                                                                 <option value="180 deg">180 deg</option>
@@ -188,6 +210,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control req006" id="highmaginspectionrequired" name="highmaginspectionrequired">
                                                                 <option value=""></option>
+                                                                <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
                                                                 <option value="No">No</option>
                                                             </select>

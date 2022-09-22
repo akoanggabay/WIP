@@ -53,8 +53,11 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req007 mount vacuum manual" id="faicat" name="faicat">
                                                             <option value=""></option>
+                                                            <option value="N/A">N/A</option>
                                                             <option value="Set-up">Set-up</option>
                                                             <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Customer requirement">Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -79,6 +82,23 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="swrno" name="swrno"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Saw: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req007" id="wsaw" name="wsaw">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="12">12</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -351,7 +371,7 @@
                                                             <label>Dicing Tape Expiration: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="date" id="dicingtapeexp" name="dicingtapeexp"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
+                                                            <input type="text" id="dicingtapeexp" name="dicingtapeexp"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
