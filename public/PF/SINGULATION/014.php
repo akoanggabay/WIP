@@ -557,7 +557,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                alert(result)
+                //alert(result)
 
                 if(res[0].trim() == 'success')
                 {

@@ -1,5 +1,5 @@
-<div id="020" class="efai" hidden>
-    <h3>Strip/Panel Packing station</h3>
+<div id="018" class="efai" hidden>
+    <h3>Strip/Panel Depanneling station</h3>
     <br/>
     <div class="row">
         <div class="col-lg-6">
@@ -17,7 +17,7 @@
                                                         <label>Package Type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req020" id="packagetype" name="packagetype">
+                                                        <select class="form-control req018" id="packagetype" name="packagetype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Strip">Strip</option>
@@ -31,7 +31,7 @@
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req020" id="wswr" name="wswr">
+                                                        <select class="form-control req018" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
@@ -45,7 +45,7 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req020" style="text-transform:uppercase">
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req018" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -54,7 +54,7 @@
                                                         <label>Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req020" style="text-transform:uppercase">
+                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req018" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -63,7 +63,7 @@
                                                         <label>Package Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req020" style="text-transform:uppercase">
+                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req018" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -72,7 +72,7 @@
                                                         <label>Strip Nos./Panel Nos. : *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="stripno" name="stripno"  class="form-control input-sm req020" style="text-transform:uppercase">
+                                                        <input type="text" id="stripno" name="stripno"  class="form-control input-sm req018" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -81,7 +81,7 @@
                                                         <label>Array Size: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="arraysize" name="arraysize"  class="form-control input-sm req020" style="text-transform:uppercase">
+                                                        <input type="text" id="arraysize" name="arraysize"  class="form-control input-sm req018" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -90,7 +90,21 @@
                                                         <label>Is the lot requiring manual scraping/depanelling? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req020" id="lotrequiringmanualdepanelling" name="lotrequiringmanualdepanelling">
+                                                        <select class="form-control req018" id="lotrequiringmanualdepanelling" name="lotrequiringmanualdepanelling">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Are all strip/panel undergo 100% inspection? *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req018" id="panelundergo100inspection" name="panelundergo100inspection">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -104,7 +118,35 @@
                                                         <label>Are all remnants and reject units been removed? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req020" id="remnantsrejectunitsbeenremoved" name="remnantsrejectunitsbeenremoved">
+                                                        <select class="form-control req018" id="remnantsrejectunitsbeenremoved" name="remnantsrejectunitsbeenremoved">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Is there a canister placed under depanelling guide? *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req018" id="canisterplacedunderdepanellingguide" name="canisterplacedunderdepanellingguide">
+                                                            <option value=""></option>
+                                                            <option value="N/A">N/A</option>
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Is there a foam cushion disk placed inside at the bottom of canister? *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req018" id="foamcushiondiskplacedinside" name="foamcushiondiskplacedinside">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -118,7 +160,7 @@
                                                         <label>Are all good units been scraped from dicing tape? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req020" id="goodunitsbeenscrapedfromdicingtape" name="goodunitsbeenscrapedfromdicingtape">
+                                                        <select class="form-control req018" id="goodunitsbeenscrapedfromdicingtape" name="goodunitsbeenscrapedfromdicingtape">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -148,69 +190,13 @@
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label>Is canister filled with foam cushion? *</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <select class="form-control req020" id="canisterfilledwithfoam" name="canisterfilledwithfoam">
-                                                                <option value=""></option>
-                                                                <option value="N/A">N/A</option>
-                                                                <option value="Yes">Yes</option>
-                                                                <option value="No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <br/>
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label>Is canister properly enclosed with lid? *</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <select class="form-control req020" id="canisterproperlyenclosedwithlid" name="canisterproperlyenclosedwithlid">
-                                                                <option value=""></option>
-                                                                <option value="N/A">N/A</option>
-                                                                <option value="Yes">Yes</option>
-                                                                <option value="No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <br/>
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label>Is packing lot details attached to the canister? *</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <select class="form-control req020" id="packinglotdetailsattached" name="packinglotdetailsattached">
-                                                                <option value=""></option>
-                                                                <option value="N/A">N/A</option>
-                                                                <option value="Yes">Yes</option>
-                                                                <option value="No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <br/>
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label>Is lot properly vacuum sealed inside MBB? *</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <select class="form-control req020" id="lotproperlyvacuumsealed" name="lotproperlyvacuumsealed">
-                                                                <option value=""></option>
-                                                                <option value="N/A">N/A</option>
-                                                                <option value="Yes">Yes</option>
-                                                                <option value="No">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <br/>
-                                                    <h5>QC Inspection Check and Confirmation: (For Lots with Depanelling Process only)</h5>
+                                                    <h5>QC Inspection Check and Confirmation:</h5>
                                                     <div class="row">
                                                         <div class="col-md-5">
                                                             <label>All remnants and rejects units are removed: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req020" id="qcremnantsrejectunitsbeenremoved" name="qcremnantsrejectunitsbeenremoved">
+                                                            <select class="form-control req018" id="qcremnantsrejectunitsbeenremoved" name="qcremnantsrejectunitsbeenremoved">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -224,7 +210,7 @@
                                                             <label>Quality Control Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req020">
+                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req018">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -233,7 +219,7 @@
                                                             <label>Remarks: * </label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <textarea class="form-control req020" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
+                                                            <textarea class="form-control req018" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -261,7 +247,7 @@
                             <label>Wafer no: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="dwaferno020" name="dwaferno020"  class="form-control input-sm">
+                            <input type="text" id="dwaferno018" name="dwaferno018"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
@@ -270,7 +256,7 @@
                             <label>Defect call-out: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="ddetails020" name="ddetails020"  class="form-control input-sm">
+                            <input type="text" id="ddetails018" name="ddetails018"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
@@ -279,7 +265,7 @@
                             <label>Defect quantity: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="number" id="dqty020" name="dqty020"  class="form-control input-sm">
+                            <input type="number" id="dqty018" name="dqty018"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
@@ -288,12 +274,12 @@
                             <label>Remarks: </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" id="dremarks020" name="dremarks020"  class="form-control input-sm">
+                            <input type="text" id="dremarks018" name="dremarks018"  class="form-control input-sm">
                         </div>
                     </div>
                     <br/>
                     <div class="form-group">
-                        <button type="button" class="btn btn-danger" id="btnAddDefect020" name = "btnAddDefect020">Add Reject</button>
+                        <button type="button" class="btn btn-danger" id="btnAddDefect018" name = "btnAddDefect018">Add Reject</button>
                     </div>
                 </div>
 
@@ -311,7 +297,7 @@
             <div class="card border-left-danger">
                 <div class="card-body">
                     <div class="row no-gutters table-responsive">
-                    <table class="table table-bordered" id="tblreject020" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tblreject018" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Wafer number</th>
@@ -332,7 +318,7 @@
     </div>
     <br/>
     <div class="form-group">
-        <button type="button" class="btn btn-success" id="btnDone020" name = "btnDone020" value="done">Done</button>
+        <button type="button" class="btn btn-success" id="btnDone018" name = "btnDone018" value="done">Done</button>
     </div>
 </div>
 <br/>
@@ -342,27 +328,27 @@
     function removeRow(row){
         
         $("#tr"+row).remove();
-        tblcount = $('#tblreject020 > tbody tr').length;
-        $("#dwaferno020").focus();
+        tblcount = $('#tblreject018 > tbody tr').length;
+        $("#dwaferno018").focus();
         //checkRow(tblcount);
     }
 
-    $('#btnDone020').click(function(event) {
+    $('#btnDone018').click(function(event) {
 
-        var sdwaferno = $('input[name="sdwaferno020[]"]').map(function () {
+        var sdwaferno = $('input[name="sdwaferno018[]"]').map(function () {
         return this.value; }).get();
 
-        var sddetails = $('input[name="sddetails020[]"]').map(function () {
+        var sddetails = $('input[name="sddetails018[]"]').map(function () {
         return this.value; }).get();
 
-        var sdqty = $('input[name="sdqty020[]"]').map(function () {
+        var sdqty = $('input[name="sdqty018[]"]').map(function () {
         return this.value; }).get();
 
-        var sdremarks = $('input[name="sdremarks020[]"]').map(function () {
+        var sdremarks = $('input[name="sdremarks018[]"]').map(function () {
         return this.value; }).get();
 
         
-        var val = document.getElementsByClassName("req020");
+        var val = document.getElementsByClassName("req018");
         var data = {};
         var count = 0;
         for(var i = 0;val.length > i; i++)
@@ -382,7 +368,7 @@
         if(count > 0)
         {
             //$('#002').animate({scrollTop: '0px'}, 1000);
-            document.getElementById('020').scrollIntoView();
+            document.getElementById('018').scrollIntoView();
             swal("missing input!",{
                 icon: "warning",
                 title: "Please input required fields!",
@@ -425,7 +411,7 @@
 
         
         
-        xmlhttp.open("GET", "../php/addefai020.php?data=" + JSON.stringify(data)
+        xmlhttp.open("GET", "../php/addefai018.php?data=" + JSON.stringify(data)
         +"&intlotno="+document.getElementById("intlotno").value
         + "&sdwaferno="+JSON.stringify(sdwaferno) 
         + "&sddetails="+ JSON.stringify(sddetails) 
@@ -434,18 +420,18 @@
         xmlhttp.send();
     });
 
-    $( "#btnAddDefect020" ).click(function() {
+    $( "#btnAddDefect018" ).click(function() {
 
     //alert(tblcount)
 
 
-    var sdqty = $('input[name="sdqty020[]"]').map(function () {
+    var sdqty = $('input[name="sdqty018[]"]').map(function () {
     return this.value; }).get();
     var dtotal = sdqty.reduce(function(a, b) { return parseInt(a) + parseInt(b); }, 0);
     //alert((parseInt(dtotal) + parseInt($('#dqty').val())));
 
     //var qty = document.getElementById("processcat").value === 'BACKGRIND' ? parseInt(document.getElementById("wqty").value) : parseInt(document.getElementById("lqty").value)
-    if((parseInt(dtotal) + parseInt($('#dqty020').val())) > parseInt(document.getElementById("currqty").value))
+    if((parseInt(dtotal) + parseInt($('#dqty018').val())) > parseInt(document.getElementById("currqty").value))
     {
         /* document.getElementById("derror").innerHTML = 'Reject quantity exceeding Internal Lot number current quantity!';
         document.getElementById("derror").hidden = false;
@@ -457,14 +443,14 @@
         });
         return false;
     }
-    if($('#dwaferno020').val()== "" ||  $('#dqty020').val()== "" ||  $('#ddetails020').val()== "")
+    if($('#dwaferno018').val()== "" ||  $('#dqty018').val()== "" ||  $('#ddetails018').val()== "")
     {
         //alert("test")
         /* document.getElementById("derror").innerHTML = 'Please complete necessary details!';
         document.getElementById("derror").hidden = false;
         document.getElementById("dsuccess").hidden = true; */
-        document.getElementById('rej020').scrollIntoView();
-        var rejval = document.getElementsByClassName("rej020");
+        document.getElementById('rej018').scrollIntoView();
+        var rejval = document.getElementsByClassName("rej018");
         for(var i = 0;rejval.length > i; i++)
         {
             if(rejval[i].value == '')
@@ -485,19 +471,19 @@
     }
     else
     {
-        $('#tblreject020 > tbody').append('<tr id="tr'+tblcount+'">'+
-                                    '<td><input type="hidden" id = "sdwaferno020[]"  name="sdwaferno020[]" value="'+$('#dwaferno020').val()+'">'+$('#dwaferno020').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sddetails020[]"  name="sddetails020[]" value="'+$('#ddetails020').val()+'">'+$('#ddetails020').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sdqty020[]"  name="sdqty020[]" value="'+$('#dqty020').val()+'">'+$('#dqty020').val()+'</td>'+
-                                    '<td><input type="hidden" id = "sdremarks020[]"  name="sdremarks020[]" value="'+$('#dremarks020').val()+'">'+$('#dremarks020').val()+'</td>'+
+        $('#tblreject018 > tbody').append('<tr id="tr'+tblcount+'">'+
+                                    '<td><input type="hidden" id = "sdwaferno018[]"  name="sdwaferno018[]" value="'+$('#dwaferno018').val()+'">'+$('#dwaferno018').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sddetails018[]"  name="sddetails018[]" value="'+$('#ddetails018').val()+'">'+$('#ddetails018').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdqty018[]"  name="sdqty018[]" value="'+$('#dqty018').val()+'">'+$('#dqty018').val()+'</td>'+
+                                    '<td><input type="hidden" id = "sdremarks018[]"  name="sdremarks018[]" value="'+$('#dremarks018').val()+'">'+$('#dremarks018').val()+'</td>'+
                                     '<td><button type="button" onclick="removeRow('+tblcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
         tblcount++;
-        $('#dwaferno020').val("");
-        $('#ddetails020').val("");
-        $('#dqty020').val("");
-        $('#dremarks020').val("");
+        $('#dwaferno018').val("");
+        $('#ddetails018').val("");
+        $('#dqty018').val("");
+        $('#dremarks018').val("");
         //checkRow(tblcount);
         
         /* document.getElementById("dsuccess").innerHTML = "Reject details successfully added!";
@@ -509,7 +495,7 @@
             closeOnClickOutside: false,
         });
         dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
-        parseInt(dtotal) += parseInt($('#dqty020').val());
+        parseInt(dtotal) += parseInt($('#dqty018').val());
     }
 
     });

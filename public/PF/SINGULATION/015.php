@@ -1246,16 +1246,16 @@
         //checkRow(tblcount);
     }
 
-    function removeisRow(row){
+    function removeis015Row(row){
         
-        $("#tr"+row).remove();
+        $("#tris015"+row).remove();
         iscount = $('#tblis015 > tbody tr').length;
         //checkRow(tblcount);
     }
 
-    function removeWPRow(row){
+    function removeWP015Row(row){
         
-        $("#tr"+row).remove();
+        $("#trwp015"+row).remove();
         wpcount = $('#tblwp015 > tbody tr').length;
         //checkRow(tblcount);
     }
@@ -1358,7 +1358,7 @@
             {
                 var result = this.responseText;
                 var res = result.split("_");
-                alert(result)
+                //alert(result)
 
                 if(res[0].trim() == 'success')
                 {
@@ -1513,10 +1513,10 @@
 
     else
     {
-        $('#tblwp015 > tbody').append('<tr id="tr'+wpcount+'">'+
+        $('#tblwp015 > tbody').append('<tr id="trwp015'+wpcount+'">'+
                                     '<td><input type="hidden" id = "swptime015[]"  name="swptime015[]" value="'+$('#wptime015').val()+'">'+$('#wptime015').val()+'</td>'+
                                     '<td><input type="hidden" id = "swprpm015[]"  name="swprpm015[]" value="'+$('#wprpm015').val()+'">'+$('#wprpm015').val()+'</td>'+
-                                    '<td><button type="button" onclick="removeWPRow('+wpcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '<td><button type="button" onclick="removeWP015Row('+wpcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
         wpcount++;
@@ -1565,13 +1565,13 @@
 
     else
     {
-        $('#tblis015 > tbody').append('<tr id="tr'+iscount+'">'+
+        $('#tblis015 > tbody').append('<tr id="tris015'+iscount+'">'+
                                     '<td><input type="hidden" id = "sisch015[]"  name="sisch015[]" value="'+$('#isch015').val()+'">'+$('#isch015').val()+'</td>'+
                                     '<td><input type="hidden" id = "sis1015[]"  name="sis1015[]" value="'+$('#is1015').val()+'">'+$('#is1015').val()+'</td>'+
                                     '<td><input type="hidden" id = "sis2015[]"  name="sis2015[]" value="'+$('#is2015').val()+'">'+$('#is2015').val()+'</td>'+
                                     '<td><input type="hidden" id = "sis3015[]"  name="sis3015[]" value="'+$('#is3015').val()+'">'+$('#is3015').val()+'</td>'+
                                     '<td><input type="hidden" id = "sis4015[]"  name="sis4015[]" value="'+$('#is4015').val()+'">'+$('#is4015').val()+'</td>'+
-                                    '<td><button type="button" onclick="removeisRow('+iscount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
+                                    '<td><button type="button" onclick="removeis015Row('+iscount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
                                     '</tr>');
 
         iscount++;

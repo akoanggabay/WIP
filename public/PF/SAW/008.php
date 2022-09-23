@@ -263,10 +263,10 @@
                                                             <option value="Z2">Z2</option>
                                                             <option value="Dual">Dual</option>
                                                             <option value="Step">Step</option>
-                                                            <option value="4-CHANNEL" class="saw">4-CHANNEL</option>
-                                                            <option value="ALTERNATE CUT" class="saw" >ALTERNATE CUT</option>
-                                                            <option value="DUAL PASS(Z1)" class="saw" >DUAL PASS(Z1)</option>
-                                                            <option value="DUAL PASS(Z2)" class="saw" >DUAL PASS(Z2)</option>
+                                                            <option value="4-CHANNEL">4-CHANNEL</option>
+                                                            <option value="ALTERNATE CUT">ALTERNATE CUT</option>
+                                                            <option value="DUAL PASS(Z1)">DUAL PASS(Z1)</option>
+                                                            <option value="DUAL PASS(Z2)" >DUAL PASS(Z2)</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1586,28 +1586,28 @@
 
     function removeBHRow(row){
         
-        $("#tr"+row).remove();
+        $("#trbh"+row).remove();
         bhcount = $('#tblbh > tbody tr').length;
         //checkRow(tblcount);
     }
 
     function removeisRow(row){
         
-        $("#tr"+row).remove();
+        $("#tris"+row).remove();
         iscount = $('#tblis > tbody tr').length;
         //checkRow(tblcount);
     }
 
     function removeWPRow(row){
         
-        $("#tr"+row).remove();
+        $("#trwp"+row).remove();
         wpcount = $('#tblwp > tbody tr').length;
         //checkRow(tblcount);
     }
 
     function removeRCRow(row){
         
-        $("#tr"+row).remove();
+        $("#trrc"+row).remove();
         rccount = $('#tblrc > tbody tr').length;
         //checkRow(tblcount);
     }
@@ -1681,7 +1681,82 @@
 
         var srcmeasurement = $('input[name="srcmeasurement[]"]').map(function () {
         return this.value; }).get();
+        
+        if($("#sawtype.req008").val() == 'Saw' && ($("#cutmethod.req008").val() == '4-CHANNEL' || $("#cutmethod.req008").val() == 'ALTERNATE CUT' || $("#cutmethod.req008").val() == 'DUAL PASS(Z1)' || $("#cutmethod.req008").val() == 'DUAL PASS(Z2)'))
+        {
+            if(parseInt($("#wqty").val()) <= 4)
+            {
+                if(bhcount < parseInt($("#wqty").val()))
+                {
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Blade height!",
+                        closeOnClickOutside: false,
+                    });
+                    return false;
+                }
 
+                if(iscount < parseInt($("#wqty").val()))
+                {
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Index size!",
+                        closeOnClickOutside: false,
+                    });
+                    return false;
+                }
+            }
+            else
+            {
+                if(bhcount < 4)
+                {
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Blade height!",
+                        closeOnClickOutside: false,
+                    });
+                    return false;
+                }
+
+                if(iscount < 4)
+                {
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Index size!",
+                        closeOnClickOutside: false,
+                    });
+                    return false;
+                }
+            }
+        }
+
+        if($("#sawtype.req008").val() == 'Saw-Ring Cut')
+        {
+            if(parseInt($("#wqty").val()) <= 5)
+            {
+                if(rccount < parseInt($("#wqty").val()))
+                {
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Ring cut diameter measurement!",
+                        closeOnClickOutside: false,
+                    });
+                    return false;
+                }
+            }
+            else
+            {
+                if(rccount < 5)
+                {
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Ring cut diameter measurement!",
+                        closeOnClickOutside: false,
+                    });
+                    return false;
+                }
+            }
+        }
 
         $(".form-control").css({"border-color": "#d1d3e2"});
         
@@ -1736,7 +1811,7 @@
                 return false;
             }
         }
-        
+
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
             //alert(this.readyState + ' ' + this.status);
@@ -1798,6 +1873,19 @@
 
     //alert(countDecimals(document.getElementById("tpoint1").value))
 
+        if(parseInt($("#wqty").val()) <= 4)
+        {
+            if(parseInt($("#wqty").val()) <= bhcount)
+            {
+                swal("error!",{
+                    icon: "error",
+                    title: "Blade height input reached its maximum limit!",
+                    closeOnClickOutside: false,
+                });
+                return false;
+            }
+        }
+
         var val = document.getElementsByClassName("bh");
         var data = {};
         var count = 0;
@@ -1827,7 +1915,7 @@
 
         else
         {
-            $('#tblbh > tbody').append('<tr id="tr'+bhcount+'">'+
+            $('#tblbh > tbody').append('<tr id="trbh'+bhcount+'">'+
                                         '<td><input type="hidden" id = "sbhch[]"  name="sbhch[]" value="'+$('#bhch').val()+'">'+$('#bhch').val()+'</td>'+
                                         '<td><input type="hidden" id = "sbh1[]"  name="sbh1[]" value="'+$('#bh1').val()+'">'+$('#bh1').val()+'</td>'+
                                         '<td><input type="hidden" id = "sbh2[]"  name="sbh2[]" value="'+$('#bh2').val()+'">'+$('#bh2').val()+'</td>'+
@@ -1838,6 +1926,7 @@
                                         '</tr>');
 
             bhcount++;
+            
             swal("success!",{
                 icon: "success",
                 title: "Blade Height details successfully added!",
@@ -1853,6 +1942,19 @@
     $( "#btnAddis" ).click(function() {
 
     //alert(countDecimals(document.getElementById("tpoint1").value))
+
+    if(parseInt($("#wqty").val()) <= 4)
+    {
+        if(parseInt($("#wqty").val()) <= iscount)
+        {
+            swal("error!",{
+                icon: "error",
+                title: "Index size input reached its maximum limit!",
+                closeOnClickOutside: false,
+            });
+            return false;
+        }
+    }
 
     var val = document.getElementsByClassName("is");
     var data = {};
@@ -1883,7 +1985,7 @@
 
     else
     {
-        $('#tblis > tbody').append('<tr id="tr'+iscount+'">'+
+        $('#tblis > tbody').append('<tr id="tris'+iscount+'">'+
                                     '<td><input type="hidden" id = "sisch[]"  name="sisch[]" value="'+$('#isch').val()+'">'+$('#isch').val()+'</td>'+
                                     '<td><input type="hidden" id = "sis1[]"  name="sis1[]" value="'+$('#is1').val()+'">'+$('#is1').val()+'</td>'+
                                     '<td><input type="hidden" id = "sis2[]"  name="sis2[]" value="'+$('#is2').val()+'">'+$('#is2').val()+'</td>'+
@@ -1939,7 +2041,7 @@
 
     else
     {
-        $('#tblwp > tbody').append('<tr id="tr'+wpcount+'">'+
+        $('#tblwp > tbody').append('<tr id="trwp'+wpcount+'">'+
                                     '<td><input type="hidden" id = "swptime[]"  name="swptime[]" value="'+$('#wptime').val()+'">'+$('#wptime').val()+'</td>'+
                                     '<td><input type="hidden" id = "swprpm[]"  name="swprpm[]" value="'+$('#wprpm').val()+'">'+$('#wprpm').val()+'</td>'+
                                     '<td><button type="button" onclick="removeWPRow('+wpcount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
@@ -1962,6 +2064,18 @@
 
 //alert(countDecimals(document.getElementById("tpoint1").value))
     
+    if(parseInt($("#wqty").val()) <= 5)
+    {
+        if(parseInt($("#wqty").val()) <= rccount)
+        {
+            swal("error!",{
+                icon: "error",
+                title: "Ring cut diameter input reached its maximum limit!",
+                closeOnClickOutside: false,
+            });
+            return false;
+        }
+    }
     
     var val = document.getElementsByClassName("rc");
     var data = {};
@@ -2002,7 +2116,7 @@
 
 
     
-    $('#tblrc > tbody').append('<tr id="tr'+rccount+'">'+
+    $('#tblrc > tbody').append('<tr id="trrc'+rccount+'">'+
                                 '<td><input type="hidden" id = "srcwaferno[]"  name="srcwaferno[]" value="'+$('#rcwaferno').val()+'">'+$('#rcwaferno').val()+'</td>'+
                                 '<td><input type="hidden" id = "srcmeasurement[]"  name="srcmeasurement[]" value="'+$('#rcmeasurement').val()+'">'+$('#rcmeasurement').val()+'</td>'+
                                 '<td><button type="button" onclick="removeRCRow('+rccount+')" type="button" class="btn btn-danger btn-sm">Remove</button></td>'+
