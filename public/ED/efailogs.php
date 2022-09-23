@@ -138,9 +138,17 @@
                 JSON.parse(result).forEach(obj => {
                     temptd = ""
                     Object.entries(obj).forEach(([key, value]) => {
-                        temptd+="<td>"+
-                        (typeof value ==='object' ? value.date : value)
-                        +"</td>"
+                        if(value == null)
+                        {
+                            temptd+="<td></td>"
+                        }
+                        else
+                        {
+                            temptd+="<td>"+
+                            (typeof value ==='object' ? value.date : value)
+                            +"</td>"
+                        }
+                        
                     })
                     datarows+="<tr>"+temptd+"</tr>";
                 });

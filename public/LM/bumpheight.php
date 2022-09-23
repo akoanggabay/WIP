@@ -56,7 +56,7 @@
                             <td><?php echo $logs[$i]->getlastupdate(); ?></td>
                             <td><?php echo $logs[$i]->getlastupdatedby(); ?></td>
                             <td>
-                                <button class="btn btn-success btn-circle" value="<?php echo $logs[$i]->gettrackingno(); ?>" onclick="Action(value)"><i class="fas fa-edit" alt="Edit"></i></button>Edit    
+                                <button class="btn btn-success btn-circle" value="<?php echo $logs[$i]->gettrackingno(); ?>" onclick="Action(value)"><i class="fas fa-edit" alt="Edit"></i></button>    
                             </td>
                 
                         <?php } ?>
@@ -110,7 +110,7 @@
                     <label>Wafer no:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="text" id="waferno" name="waferno"  class="form-control input-sm"><br>
+                    <input type="text" id="waferno" name="waferno"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="row">
@@ -118,7 +118,7 @@
                     <label>Point 1:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="text" id="p1" name="p1"  class="form-control input-sm"><br>
+                    <input type="text" id="p1" name="p1"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="row">
@@ -126,7 +126,7 @@
                     <label>Point 2:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="text" id="p2" name="p2"  class="form-control input-sm"><br>
+                    <input type="text" id="p2" name="p2"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="row">
@@ -134,7 +134,7 @@
                     <label>Point 3:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="number" id="p3" name="p3"  class="form-control input-sm"><br>
+                    <input type="number" id="p3" name="p3"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="row">
@@ -142,7 +142,7 @@
                     <label>Point 4:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="number" id="p4" name="p4"  class="form-control input-sm"><br>
+                    <input type="number" id="p4" name="p4"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="row">
@@ -150,7 +150,7 @@
                     <label>Point 5:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="number" id="p5" name="p5"  class="form-control input-sm"><br>
+                    <input type="number" id="p5" name="p5"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="modal-footer">
@@ -195,19 +195,33 @@
 
     $("#btnSave").click(function() {
 
-
-        if(document.getElementById("r1").value != '' || document.getElementById("r2").value != '' || document.getElementById("r3").value != '' || document.getElementById("r4").value != '' || document.getElementById("r5").value != '')
+        var val = document.getElementsByClassName("req");
+        var data = {};
+        var count = 0;
+        for(var i = 0;val.length > i; i++)
         {
-            if(countDecimals(document.getElementById("r1").value) != 5 || countDecimals(document.getElementById("r2").value) != 5 || countDecimals(document.getElementById("r3").value) != 5 || countDecimals(document.getElementById("r4").value) != 5 || countDecimals(document.getElementById("r5").value) != 5)
+            data[val[i].name] = val[i].value;
+            if(val[i].value == '')
             {
-                //alert('You have input Roughness with more or less than 5 decimal');
-                document.getElementById("rerror").innerHTML = "You have input Thickness with more or less than 5 decimal!";
-                document.getElementById("rerror").hidden = false;
-                document.getElementById("rsuccess").hidden = true;
-                return false;
+                val[i].style.borderColor = 'red';
+                count+=1;
+            }
+            else
+            {
+                val[i].style.borderColor = '#d1d3e2';
             }
         }
-
+        if(count > 0)
+        {
+            //$('#002').animate({scrollTop: '0px'}, 1000);
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please input required fields!",
+                closeOnClickOutside: false,
+            });
+            return false;
+        }
+        
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -237,7 +251,8 @@
         }   
         };
 
-        xmlhttp.open("GET", '../php/updateroughlogsdetails.php?trackingno='+document.getElementById("trackingno").innerHTML+'&r1='+document.getElementById("r1").value+'&r2='+document.getElementById("r2").value+'&r3='+document.getElementById("r3").value+'&r4='+document.getElementById("r4").value+'&r5='+document.getElementById("r5").value+'&rave='+document.getElementById("rave").value,true);
+        xmlhttp.open("GET", '../php/updatebumpheightlogsdetails.php?trackingno='+document.getElementById("trackingno").innerHTML
+        +'&data=' + JSON.stringify(data),true);
         xmlhttp.send();
 
     });
