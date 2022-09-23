@@ -204,6 +204,15 @@
                                                         </div>
                                                     </div>
                                                     <br/>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>Vacuum Sealer Pressure (-30 kPa to -70 kPa): *</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <input type="text" id="vacuumsealerpressure" name="vacuumsealerpressure"  class="form-control input-sm req020" style="text-transform:uppercase">
+                                                        </div>
+                                                    </div>
+                                                    <br/>
                                                     <h5>QC Inspection Check and Confirmation: (For Lots with Depanelling Process only)</h5>
                                                     <div class="row">
                                                         <div class="col-md-5">

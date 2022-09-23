@@ -19,6 +19,7 @@ class efai020 {
     private $canisterproperlyenclosedwithlid;
     private $packinglotdetailsattached;
     private $lotproperlyvacuumsealed;
+    private $vacuumsealerpressure;
     private $qcremnantsrejectunitsbeenremoved;
     private $qcemp;
     private $remarks;
@@ -50,6 +51,7 @@ class efai020 {
     public function setcanisterproperlyenclosedwithlid($canisterproperlyenclosedwithlid){$this->canisterproperlyenclosedwithlid=$canisterproperlyenclosedwithlid;}
     public function setpackinglotdetailsattached($packinglotdetailsattached){$this->packinglotdetailsattached=$packinglotdetailsattached;}
     public function setlotproperlyvacuumsealed($lotproperlyvacuumsealed){$this->lotproperlyvacuumsealed=$lotproperlyvacuumsealed;}
+    public function setvacuumsealerpressure($vacuumsealerpressure){$this->vacuumsealerpressure=$vacuumsealerpressure;}
     public function setqcremnantsrejectunitsbeenremoved($qcremnantsrejectunitsbeenremoved){$this->qcremnantsrejectunitsbeenremoved=$qcremnantsrejectunitsbeenremoved;}
     public function setqcemp($qcemp){$this->qcemp=$qcemp;}
     public function setremarks($remarks){$this->remarks=$remarks;}
@@ -76,6 +78,7 @@ class efai020 {
     public function getcanisterproperlyenclosedwithlid(){return $this->canisterproperlyenclosedwithlid;}
     public function getpackinglotdetailsattached(){return $this->packinglotdetailsattached;}
     public function getlotproperlyvacuumsealed(){return $this->lotproperlyvacuumsealed;}
+    public function getvacuumsealerpressure(){return $this->vacuumsealerpressure;}
     public function getqcremnantsrejectunitsbeenremoved(){return $this->qcremnantsrejectunitsbeenremoved;}
     public function getqcemp(){return $this->qcemp;}
     public function getremarks(){return $this->remarks;}
@@ -113,7 +116,7 @@ class efai020 {
             remarks,
             lastupdate,
             lastupdatedby,
-            active) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            active,vacuumsealerpressure) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $params = array($this->getcustcode(),
             $this->getintlot(),
             $this->getwswr(),
@@ -135,7 +138,8 @@ class efai020 {
             $this->getremarks(),
             $this->getlastupdate(),
             $this->getlastupdatedby(),
-            $this->getactive());
+            $this->getactive(),
+            $this->getvacuumsealerpressure());
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

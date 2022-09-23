@@ -58,6 +58,7 @@ $efai020->setcanisterfilledwithfoam($data->canisterfilledwithfoam);
 $efai020->setcanisterproperlyenclosedwithlid($data->canisterproperlyenclosedwithlid);
 $efai020->setpackinglotdetailsattached($data->packinglotdetailsattached);
 $efai020->setlotproperlyvacuumsealed($data->lotproperlyvacuumsealed);
+$efai020->setvacuumsealerpressure($data->vacuumsealerpressure);
 $efai020->setqcremnantsrejectunitsbeenremoved($data->qcremnantsrejectunitsbeenremoved);
 $efai020->setqcemp($data->qcemp);
 $efai020->setremarks($data->remarks);
