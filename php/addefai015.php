@@ -26,7 +26,7 @@ $sis4 = json_decode($_GET['sis4']);
 
 //json wash parameter
 $swptime = json_decode($_GET['swptime']);
-//$swprpm = json_decode($_GET['swprpm']);
+$swprpm = json_decode($_GET['swprpm']);
 $total = 0;
 
 $exist = IntLotno::checkExist($intlotno);
@@ -163,6 +163,7 @@ $success = $efai015->Addefai015();
 
 if($success == true)
 {
+    echo 'success_Success! '.$intlotno.' eFAI details successfully added!';
     if(count($sdwaferno) > 0)
     {
         $reject = new Reject;
