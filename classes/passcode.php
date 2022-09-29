@@ -82,13 +82,35 @@ class passcode {
 		return $result;
 	}
 
-    public function PasscodeData($passcode)
+	public static function getPasscodeIdno($passcode,$type)
+	{
+		$conn = new Connection();
+		$result = 'false';
+
+		try {
+			$conn->open();
+			$dataset = $conn->query("SELECT * FROM dbo.passcode WHERE passcode ='" . $passcode . "' and type = '".$type."' and active = 1");
+
+			if ($conn->has_rows($dataset)) {
+				$reader = $conn->fetch_array($dataset);
+				$result = $reader['idno'];
+			} else {
+				$result = 'false';
+			}
+
+			$conn->close();
+		} catch (Exception $e) {
+		}
+		return $result;
+	}
+
+    public function PasscodeData($passcode,$type)
 	{
 		$conn = new Connection();
 		
 		try {
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM passcode WHERE passcode ='" .$passcode."' and active = 1");
+			$dataset =  $conn->query("SELECT * FROM passcode WHERE passcode ='" .$passcode."' and type = '".$type."' and active = 1");
 
 			if ($conn->has_rows($dataset)) {
 				$reader = $conn->fetch_array($dataset);
