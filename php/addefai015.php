@@ -64,6 +64,9 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+
 //echo $intlotdata2->custcode;
 $efai015 = new efai015();
 
@@ -150,8 +153,8 @@ $efai015->setduringcutting($data->duringcutting);
 $efai015->setpackagedimensionrecordedspc($data->packagedimensionrecordedspc);
 $efai015->setvifirstpanel($data->vifirstpanel);
 $efai015->setpanelnoinspected($data->panelnoinspected);
-$efai015->settechemp($data->techemp);
-$efai015->setqcemp($data->qcemp);
+$efai015->settechemp($techidno);
+$efai015->setqcemp($qcidno);
 $efai015->setremarks($data->remarks);
 $efai015->setlastupdate(date("Y-m-d H:i:s"));
 $efai015->setlastupdatedby($_SESSION['idno']);

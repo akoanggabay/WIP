@@ -46,6 +46,9 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+
 //echo $intlotdata2->custcode;
 $efai014 = new efai014();
 
@@ -77,8 +80,8 @@ $efai014->setdicingtapetype($data->dicingtapetype);
 $efai014->setdicingtapeused($data->dicingtapeused);
 $efai014->setdicingtapelotno($data->dicingtapelotno);
 $efai014->setdicingtapeexp($data->dicingtapeexp);
-$efai014->settechemp($data->techemp);
-$efai014->setqcemp($data->qcemp);
+$efai014->settechemp($techidno);
+$efai014->setqcemp($qcidno);
 $efai014->setremarks($data->remarks);
 $efai014->setlastupdate(date("Y-m-d H:i:s"));
 $efai014->setlastupdatedby($_SESSION['idno']);

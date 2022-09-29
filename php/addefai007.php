@@ -46,6 +46,9 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+
 //echo $intlotdata2->custcode;
 $efai007 = new efai007();
 
@@ -92,8 +95,8 @@ $efai007->setpreheatingtime($_GET['preheatingtime']);
 $efai007->setmainairpressure($data->mainairpressure);
 $efai007->setsetupwafer($data->setupwafer);
 $efai007->setrollerpressure($data->rollerpressure);
-$efai007->settechemp($data->techemp);
-$efai007->setqcemp($data->qcemp);
+$efai007->settechemp($techidno);
+$efai007->setqcemp($qcidno);
 $efai007->setremarks($data->remarks);
 $efai007->setlastupdatedby($_SESSION['idno']);
 $success = $efai007->AddeFAI007();

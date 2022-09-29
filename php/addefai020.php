@@ -39,6 +39,8 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+
 //echo $intlotdata2->custcode;
 $efai020 = new efai020();
 
@@ -60,7 +62,7 @@ $efai020->setpackinglotdetailsattached($data->packinglotdetailsattached);
 $efai020->setlotproperlyvacuumsealed($data->lotproperlyvacuumsealed);
 $efai020->setvacuumsealerpressure($data->vacuumsealerpressure);
 $efai020->setqcremnantsrejectunitsbeenremoved($data->qcremnantsrejectunitsbeenremoved);
-$efai020->setqcemp($data->qcemp);
+$efai020->setqcemp($qcidno);
 $efai020->setremarks($data->remarks);
 $efai020->setlastupdate(date("Y-m-d H:i:s"));
 $efai020->setlastupdatedby($_SESSION['idno']);

@@ -46,6 +46,9 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+
 //echo $intlotdata2->custcode;
 $efai009 = new efai009();
 
@@ -62,8 +65,8 @@ $efai009->setrequireduvdosage($data->requireduvdosage);
 $efai009->setactualuvdosage($data->actualuvdosage);
 $efai009->setwafernouvcuring($data->wafernouvcuring);
 $efai009->setreasonuvcuring($data->reasonuvcuring);
-$efai009->settechemp($data->techemp);
-$efai009->setqcemp($data->qcemp);
+$efai009->settechemp($techidno);
+$efai009->setqcemp($qcidno);
 $efai009->setremarks($data->remarks);
 $efai009->setmachine($data->machine);
 $efai009->setfaicat($data->faicat);

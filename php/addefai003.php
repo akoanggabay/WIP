@@ -75,6 +75,9 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->mpqcemp,'qc');
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->mptechemp,'tech');
+
 $bgtapetime = IntLotLogs::ILNLogsTapingtoBG($intlotno);
 //echo $intlotdata2->custcode;
 $efai003 = new efai003();
@@ -121,8 +124,8 @@ $efai003->setsetupwafer($data->setupwafer);
 $efai003->setfirstwaferinspection($data->firstwaferinspection);
 $efai003->setfirstwaferno($data->firstwaferno);
 $efai003->setnoofwafersinspected($data->noofwafersinspected);
-$efai003->setmptechemp($data->mptechemp);
-$efai003->setmpqcemp($data->mpqcemp);
+$efai003->setmptechemp($techidno);
+$efai003->setmpqcemp($qcidno);
 $efai003->setremarks($data->remarks);
 $efai003->setlastupdatedby($_SESSION['idno']);
 $efai003->setlastupdate(date("Y-m-d H:i:s"));

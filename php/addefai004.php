@@ -47,6 +47,9 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+
 $bgtapetime = IntLotLogs::ILNLogsTapingtoBG($intlotno);
 
 //echo $intlotdata2->custcode;
@@ -83,8 +86,8 @@ $efai004->settapewindingpressure($data->tapewindingpressure);
 $efai004->settapedeliverypressure($data->tapedeliverypressure);
 $efai004->setlamphourusage($data->lamphourusage);
 $efai004->setchuckplatebaseheight($data->chuckplatebaseheight);
-$efai004->settechemp($data->techemp);
-$efai004->setqcemp($data->qcemp);
+$efai004->settechemp($techidno);
+$efai004->setqcemp($qcidno);
 $efai004->setremarks($data->remarks);
 $efai004->setuvirrad($data->uvirrad);
 $efai004->setlastupdatedby($_SESSION['idno']);

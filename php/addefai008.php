@@ -74,6 +74,9 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+
 //echo $intlotdata2->custcode;
 $efai008 = new efai008();
 
@@ -168,8 +171,8 @@ $efai008->setkerfwidthmonitoring($data->kerfwidthmonitoring);
 $efai008->setsetupwaferdone($data->setupwaferdone);
 $efai008->setvifirstwafer($data->vifirstwafer);
 $efai008->setwafernoinspected($data->wafernoinspected);
-$efai008->settechemp($data->techemp);
-$efai008->setqcemp($data->qcemp);
+$efai008->settechemp($techidno);
+$efai008->setqcemp($qcidno);
 $efai008->setremarks($data->remarks);
 $efai008->setlastupdatedby($_SESSION['idno']);
 $efai008->setfeedspeedz1($data->feedspeedz1);

@@ -39,6 +39,8 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+
 //echo $intlotdata2->custcode;
 $efai016 = new efai016();
 
@@ -60,7 +62,7 @@ $efai016->setuvtapedescription($data->uvtapedescription);
 $efai016->setuvirradtime($data->uvirradtime);
 $efai016->setringnoundergoneuvcuring($data->ringnoundergoneuvcuring);
 $efai016->setmarkingperformedwithuvcuring($data->markingperformedwithuvcuring);
-$efai016->settechemp($data->techemp);
+$efai016->settechemp($techidno);
 $efai016->setremarks($data->remarks);
 $efai016->setlastupdatedby($_SESSION['idno']);
 

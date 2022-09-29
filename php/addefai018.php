@@ -39,6 +39,8 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
+$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+
 //echo $intlotdata2->custcode;
 $efai018 = new efai018();
 
@@ -58,7 +60,7 @@ $efai018->setcanisterplacedunderdepanellingguide($data->canisterplacedunderdepan
 $efai018->setfoamcushiondiskplacedinside($data->foamcushiondiskplacedinside);
 $efai018->setgoodunitsbeenscrapedfromdicingtape($data->goodunitsbeenscrapedfromdicingtape);
 $efai018->setqcremnantsrejectunitsbeenremoved($data->qcremnantsrejectunitsbeenremoved);
-$efai018->setqcemp($data->qcemp);
+$efai018->setqcemp($qcidno);
 $efai018->setremarks($data->remarks);
 $efai018->setlastupdate(date("Y-m-d H:i:s"));
 $efai018->setlastupdatedby($_SESSION['idno']);
