@@ -14,6 +14,22 @@
                                             <div class="col-lg-12">
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>FAI Category: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req009" id="faicat" name="faicat">
+                                                            <option value=""></option>
+                                                            <option value="N/A" hidden>N/A</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC" hidden>PSC</option>
+                                                            <option value="Customer requirement" hidden>Customer requirement</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Machine No: *</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -34,26 +50,10 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>FAI Category: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control req009" id="faicat" name="faicat">
-                                                            <option value=""></option>
-                                                            <option value="N/A">N/A</option>
-                                                            <option value="Set-up">Set-up</option>
-                                                            <option value="Monitoring">Monitoring</option>
-                                                            <option value="PSC">PSC</option>
-                                                            <option value="Customer requirement">Customer requirement</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req009" id="wswr" name="wswr">
+                                                        <select class="form-control req009 su mon" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
@@ -67,16 +67,16 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req009 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Saw: *</label>
+                                                        <label>Wafer Size: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req009" id="wsaw" name="wsaw">
+                                                        <select class="form-control req009 su" id="wsize" name="wsize">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="4">4</option>
@@ -93,7 +93,7 @@
                                                         <label>Loader Plate Clean? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req009" id="loaderplateclean" name="loaderplateclean">
+                                                        <select class="form-control req009 su mon" id="loaderplateclean" name="loaderplateclean">
                                                             <option value=""></option>
                                                             <option value="Yes">Yes</option>
                                                             <option value="No">No</option>
@@ -106,7 +106,7 @@
                                                         <label>UV Irradiation Time(<b>in seconds</b>): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="uvirradtime" name="uvirradtime"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="uvirradtime" name="uvirradtime"  class="form-control input-sm req009 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -115,7 +115,7 @@
                                                         <label>Is there a busted lamp? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req009" id="bustedlamp" name="bustedlamp">
+                                                        <select class="form-control req009 su mon" id="bustedlamp" name="bustedlamp">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -129,7 +129,7 @@
                                                         <label>Lamp Hour Usage: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req009 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -138,7 +138,7 @@
                                                         <label>Required UV Dosage: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="requireduvdosage" name="requireduvdosage"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="requireduvdosage" name="requireduvdosage"  class="form-control input-sm req009 su" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -147,7 +147,7 @@
                                                         <label>Actual UV Dosage: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="actualuvdosage" name="actualuvdosage"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                        <input type="text" id="actualuvdosage" name="actualuvdosage"  class="form-control input-sm req009 su" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -177,7 +177,7 @@
                                                             <label>Wafer no. undergone UV curing: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="wafernouvcuring" name="wafernouvcuring"  class="form-control input-sm req009" style="text-transform:uppercase">
+                                                            <input type="text" id="wafernouvcuring" name="wafernouvcuring"  class="form-control input-sm req009 su mon" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -186,7 +186,7 @@
                                                             <label>Reason in performing UV curing: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req009" id="reasonuvcuring" name="reasonuvcuring">
+                                                            <select class="form-control req009 su mon" id="reasonuvcuring" name="reasonuvcuring">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Detected with bubbles after mount">Detected with bubbles after mount</option>
@@ -200,7 +200,7 @@
                                                             <label>Technician Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="password" id="techemp" name="techemp"  class="form-control input-sm req009">
+                                                            <input type="password" id="techemp" name="techemp"  class="form-control input-sm req009 su">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -209,7 +209,7 @@
                                                             <label>Quality Control Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req009">
+                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req009 su">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -535,5 +535,34 @@
     }
 
     });
+
+    $('#faicat.req009').change(function (){
+        
+        //console.log($(this).val())
+        $('.form-control').css({"border-color": "#d1d3e2"})
+
+        if($(this).val() == 'Monitoring')
+        {
+            $(".req009.su").attr("disabled",true);
+            $(".req009.mon").attr("disabled",false);
+            $("input.req009.su[type=text]").val("N/A");
+            $("input.req009.su[type=password]").val("N/A");
+            $("select.req009.su").val("N/A");
+            $("input.req009.mon[type=text]").val("");
+            $("input.req009.mon[type=password]").val("");
+            $("select.req009.mon").val("");
+        }
+        else
+        {   
+            $(".req009.su").attr("disabled",false);
+            $("input.req009.su[type=text]").val("");
+            $("input.req009.su[type=password]").val("");
+            $("select.req009.su").val("");
+        }
+
+        
+
+    });
+
     
 </script>

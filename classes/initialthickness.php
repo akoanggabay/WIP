@@ -208,14 +208,14 @@ class InitialThickness {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * from dbo.initialthickness order by lastupdate asc");
+			$dataset =  $conn->query("SELECT * from dbo.initialthickness order by lastupdate desc");
 			$counter = 0;
 			include_once("user.php");
 			
 			$user = new User;
 			$do;
 			while($reader = $conn->fetch_array($dataset)){
-				$Select = new Thickness();
+				$Select = new InitialThickness();
 				
 				$user->UserData($reader["lastupdatedby"]);
 				$Select->settrackingno($reader["trackingno"]);
@@ -287,13 +287,11 @@ class InitialThickness {
 				'custcode'   => $row["custcode"],
 				'intlotno'   => $row["intlotno"],
 				'waferno'   => $row["waferno"],
-				'p1'   => number_format((float)$row["p1"], 1, '.', ''),
-				'p2'   => number_format((float)$row["p2"], 1, '.', ''),
-				'p3'   => number_format((float)$row["p3"], 1, '.', ''),
-				'p4'   => number_format((float)$row["p4"], 1, '.', ''),
-				'p5'   => number_format((float)$row["p5"], 1, '.', ''),
-				'pave'   => number_format((float)$row["pave"], 1, '.', ''),
-				'ttv'   => number_format((float)$row["ttv"], 1, '.', ''),
+				'p1'   => $row["p1"],
+				'p2'   => $row["p2"],
+				'p3'   => $row["p3"],
+				'p4'   => $row["p4"],
+				'p5'   => $row["p5"],
 				'lastupdate'   => $row["lastupdate"]->format('F j, Y, g:i:s a'),
 				'lastupdatedby'   => $user->getfname().' '.$user->getlname()
 				

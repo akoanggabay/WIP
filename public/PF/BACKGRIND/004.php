@@ -19,9 +19,24 @@
                                                     <div class="col-md-7">
                                                         <select class="form-control req004" id="processmode" name="processmode">
                                                             <option value=""></option>
-                                                            <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
                                                             <option value="Manual">Manual</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>FAI Category: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req004" id="faicat" name="faicat">
+                                                            <option value=""></option>
+                                                            <option value="N/A" hidden>N/A</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Monitoring">Monitoring</option>
+                                                            <option value="Customer requirement" hidden>Customer requirement</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -31,7 +46,7 @@
                                                         <label>Machine No: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto manual" id="machine" name="machine">
+                                                        <select class="form-control req004" id="machine" name="machine">
                                                         <option value=""></option>
                                                         <?php 
                                                         include_once("../classes/machine.php");
@@ -48,26 +63,10 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>FAI Category: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control req004 auto manual" id="faicat" name="faicat">
-                                                            <option value=""></option>
-                                                            <option value="N/A">N/A</option>
-                                                            <option value="Set-up">Set-up</option>
-                                                            <option value="PSC">PSC</option>
-                                                            <option value="Monitoring">Monitoring</option>
-                                                            <option value="Customer requirement">Customer requirement</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto manual" id="wswr" name="wswr">
+                                                        <select class="form-control req004 auto manual autopsc automon" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -81,7 +80,7 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req004 auto manual" style="text-transform:uppercase">
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req004 auto manual autopsc automon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -90,7 +89,7 @@
                                                         <label>Wafer Size: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004" id="wsize" name="wsize">
+                                                        <select class="form-control req004 auto manual autopsc automon" id="wsize" name="wsize">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="4">4</option>
@@ -106,7 +105,7 @@
                                                         <label>Slotting: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto" id="slotting auto" name="slotting">
+                                                        <select class="form-control req004 auto autopsc automon" id="slotting" name="slotting">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -120,7 +119,7 @@
                                                         <label>Chuck table cleaning done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto manual" id="chucktablecleaning" name="chucktablecleaning">
+                                                        <select class="form-control req004 auto manual autopsc automon" id="chucktablecleaning" name="chucktablecleaning">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -166,7 +165,7 @@
                                                         <label>Table Temperature (50-70deg.C): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="tabletemp" name="tabletemp"  class="form-control input-sm req004 auto manual">
+                                                        <input type="text" id="tabletemp" name="tabletemp"  class="form-control input-sm req004 auto manual autopsc automon manualpsc manualmon">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -212,7 +211,7 @@
                                                         <label>Change detape tape? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto" id="changedetapetape" name="changedetapetape">
+                                                        <select class="form-control req004 auto autopsc automon" id="changedetapetape" name="changedetapetape">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -244,7 +243,7 @@
                                                         <label>De-taping Tape expiration date: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="detapingtapeexpdate" name="detapingtapeexpdate"  class="form-control input-sm req004 auto">
+                                                        <input type="text" id="detapingtapeexpdate" name="detapingtapeexpdate"  class="form-control input-sm req004 auto autopsc automon">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -273,7 +272,7 @@
                                                         <label>Notch Type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto" id="notchtype" name="notchtype">
+                                                        <select class="form-control req004 auto su" id="notchtype" name="notchtype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="V">V</option>
@@ -288,7 +287,7 @@
                                                         <label>Set up wafer: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto" id="setupwafer" name="setupwafer">
+                                                        <select class="form-control req004 auto manual" id="setupwafer" name="setupwafer">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -302,7 +301,7 @@
                                                         <label>1st Wafer Inspection result: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto" id="firstwaferinspection" name="firstwaferinspection">
+                                                        <select class="form-control req004 auto su" id="firstwaferinspection" name="firstwaferinspection">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -316,7 +315,7 @@
                                                         <label>1st Wafer No. Inspected: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req004 auto" style="text-transform:uppercase" value=0>
+                                                        <input type="text" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req004 auto su" style="text-transform:uppercase" value=0>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -325,7 +324,7 @@
                                                         <label>No. of Wafers Inspected (Wafer Nos.): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="noofwafersinspected" name="noofwafersinspected"  class="form-control input-sm req004 auto" style="text-transform:uppercase">
+                                                        <input type="text" id="noofwafersinspected" name="noofwafersinspected"  class="form-control input-sm req004 auto autopsc automon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -336,7 +335,7 @@
                                                         <label>De-Taping Tape roller: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req004 auto" id="detapingtaperoller" name="detapingtaperoller">
+                                                        <select class="form-control req004 auto autopsc" id="detapingtaperoller" name="detapingtaperoller">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -364,7 +363,7 @@
                                                         <label>Tape winding pressure (0.18 - 0.25 MPa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="tapewindingpressure" name="tapewindingpressure"  class="form-control input-sm req004 auto" value=0>
+                                                        <input type="text" id="tapewindingpressure" name="tapewindingpressure"  class="form-control input-sm req004 auto autopsc" value=0>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -373,7 +372,7 @@
                                                         <label>Tape Delivery pressure (0.10 - 0.15 MPa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="tapedeliverypressure" name="tapedeliverypressure"  class="form-control input-sm req004 auto" value=0>
+                                                        <input type="text" id="tapedeliverypressure" name="tapedeliverypressure"  class="form-control input-sm req004 auto autopsc" value=0>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -382,7 +381,7 @@
                                                         <label>Lamp Hour Usage (2000 hours max): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req004 auto">
+                                                        <input type="text" id="lamphourusage" name="lamphourusage"  class="form-control input-sm req004 auto autopsc">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -400,7 +399,7 @@
                                                         <label>Technician Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="techemp" name="techemp"  class="form-control input-sm req004">
+                                                        <input type="password" id="techemp" name="techemp"  class="form-control input-sm req004 auto manual autopsc manualpsc manualmon">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -409,7 +408,7 @@
                                                         <label>Quality Control Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req004">
+                                                        <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req004 auto manual manualpsc manualmon">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -522,6 +521,11 @@
 <br/>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
+
+    $(document).ready(function(){
+        
+    });
+    
     $('#btnDone004').click(function(event) {
 
         var sdwaferno = $('input[name="sdwaferno004[]"]').map(function () {
@@ -730,6 +734,95 @@
         dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
         parseInt(dtotal) += parseInt($('#dqty004').val());
     }
+
+    });
+
+    $('#faicat.req004').change(function (){
+        
+        //console.log($(this).val())
+        $('.form-control').css({"border-color": "#d1d3e2"})
+        if($("#processmode.req004").val() == "")
+        {
+            swal("missing input!",{
+                icon: "warning",
+                title: "Kindly select process mode!",
+                closeOnClickOutside: false,
+            });
+            $(this).val("");
+            return false
+        }
+
+        if($("#processmode.req004").val() == "Auto")
+        {
+            if($(this).val() == 'PSC')
+            {
+                
+                $("input.auto[type=text]").val("N/A");
+                $("input.auto[type=password]").val("N/A");
+                $("select.auto").val("N/A");
+                $(".auto").attr("disabled",true);
+                $(".auto.autopsc").attr("disabled",false);
+                $("input.auto.autopsc[type=text]").val("");
+                $("input.auto.autopsc[type=password]").val("");
+                $("select.auto.autopsc").val("");
+            }
+
+            else if($(this).val() == 'Monitoring')
+            {
+                
+                $("input.auto[type=text]").val("N/A");
+                $("input.auto[type=password]").val("N/A");
+                $("select.auto").val("N/A");
+                $(".auto").attr("disabled",true);
+                $(".auto.automon").attr("disabled",false);
+                $("input.auto.automon[type=text]").val("");
+                $("input.auto.automon[type=password]").val("");
+                $("select.auto.automon").val("");
+            }
+            else
+            {
+                $(".auto").attr("disabled",false);
+                $("input.auto[type=text]").val("");
+                $("input.auto[type=password]").val("");
+                $("select.auto").val("");
+            }
+        }
+        else if($("#processmode.req004").val() == "Manual")
+        {
+            if($(this).val() == 'PSC')
+            {
+                
+                $("input.manual[type=text]").val("N/A");
+                $("input.manual[type=password]").val("N/A");
+                $("select.manual").val("N/A");
+                $(".manual").attr("disabled",true);
+                $(".manual.manualpsc").attr("disabled",false);
+                $("input.manual.manualpsc[type=text]").val("");
+                $("input.manual.manualpsc[type=password]").val("");
+                $("select.manual.manualpsc").val("");
+            }
+
+            else if($(this).val() == 'Monitoring')
+            {
+                
+                $("input.manual[type=text]").val("N/A");
+                $("input.manual[type=password]").val("N/A");
+                $("select.manual").val("N/A");
+                $(".manual").attr("disabled",true);
+                $(".manual.manualmon").attr("disabled",false);
+                $("input.manual.manualmon[type=text]").val("");
+                $("input.manual.manualmon[type=password]").val("");
+                $("select.manual.manualmon").val("");
+            }
+            else
+            {
+                $(".manual").attr("disabled",false);
+                $("input.manual[type=text]").val("");
+                $("input.manual[type=password]").val("");
+                $("select.manual").val("");
+            }
+        }
+        
 
     });
     

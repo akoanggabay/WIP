@@ -38,7 +38,7 @@ $efai011->setcustcode($intlotdata2->custcode);
 $efai011->setintlot($intlotno);
 $efai011->setwswr($data->wswr);
 $efai011->setswrno($data->swrno);
-$efai011->setwafersaw($data->wsaw);
+$efai011->setwafersize($data->wsize);
 $efai011->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai011->setsamplingplan($data->samplingplan);
 $efai011->setsamplingsize($data->samplingsize);

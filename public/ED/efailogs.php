@@ -125,10 +125,14 @@
                 var header = "";
                 var datarows = "";
                 var temptd = "";
+                var notincluded=["intlot", "active", "trackingno"];  
                 
                 for(var i = 0;i<Object.keys(JSON.parse(result)[0]).length;i++)
                 {
-                    header+='<th>' +Object.keys(JSON.parse(result)[0])[i] + '</th>';
+                    if(notincluded.indexOf(Object.keys(JSON.parse(result)[0])[i]) === -1)
+                    {
+                        header+='<th>' +Object.keys(JSON.parse(result)[0])[i] + '</th>';
+                    }
                 }
 
                 /* Object.keys(JSON.parse(result)[0]).forEach(thead => {
@@ -138,16 +142,21 @@
                 JSON.parse(result).forEach(obj => {
                     temptd = ""
                     Object.entries(obj).forEach(([key, value]) => {
-                        if(value == null)
+                        //console.log(key)
+                        if(notincluded.indexOf(key) === -1)
                         {
-                            temptd+="<td></td>"
+                            if(value == null)
+                            {
+                                temptd+="<td></td>"
+                            }
+                            else
+                            {
+                                temptd+="<td>"+
+                                (typeof value ==='object' ? value.date : value)
+                                +"</td>"
+                            }
                         }
-                        else
-                        {
-                            temptd+="<td>"+
-                            (typeof value ==='object' ? value.date : value)
-                            +"</td>"
-                        }
+                        
                         
                     })
                     datarows+="<tr>"+temptd+"</tr>";

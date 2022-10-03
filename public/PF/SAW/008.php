@@ -88,10 +88,10 @@
                                                 <br/>
                                                 <div class="row saw ring">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Saw: *</label>
+                                                        <label>Wafer Size: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008" id="wsaw" name="wsaw">
+                                                        <select class="form-control req008" id="wsize" name="wsize">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="4">4</option>

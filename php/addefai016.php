@@ -39,7 +39,7 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
-$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+$techidno = strtoupper($data->techemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
 
 //echo $intlotdata2->custcode;
 $efai016 = new efai016();

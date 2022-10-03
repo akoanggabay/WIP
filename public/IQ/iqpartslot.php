@@ -241,7 +241,7 @@ $(document).ready(function(){
                 $("input[type=text]").val('');
                 swal("No Data Available!",{
                     icon: "error",
-                    title: 'No Data available for Internal Lot number: <b>'+document.getElementById("partslotno").value,
+                    title: 'No Data available for Internal Lot number: '+document.getElementById("partslotno").value,
                     closeOnClickOutside: false,
                 });
             }

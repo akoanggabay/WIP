@@ -9,7 +9,8 @@ class efai007 {
 	private $faicat;
 	private $wswr;
 	private $swrno;
-	private $wafersaw;
+	private $devicenameused;
+	private $wafersize;
 	private $wafertype;
 	private $requiredwaferthickness;
 	private $actualwaferthickness;
@@ -61,7 +62,8 @@ class efai007 {
 	public function setfaicat($faicat){$this->faicat=$faicat;}
 	public function setwswr($wswr){$this->wswr=$wswr;}
 	public function setswrno($swrno){$this->swrno=$swrno;}
-	public function setwafersaw($wafersaw){$this->wafersaw=$wafersaw;}
+	public function setdevicenameused($devicenameused){$this->devicenameused=$devicenameused;}
+	public function setwafersize($wafersize){$this->wafersize=$wafersize;}
 	public function setwafertype($wafertype){$this->wafertype=$wafertype;}
 	public function setrequiredwaferthickness($requiredwaferthickness){$this->requiredwaferthickness=$requiredwaferthickness;}
 	public function setactualwaferthickness($actualwaferthickness){$this->actualwaferthickness=$actualwaferthickness;}
@@ -111,7 +113,8 @@ class efai007 {
 	public function getfaicat(){return $this->faicat;}
 	public function getwswr(){return $this->wswr;}
 	public function getswrno(){return $this->swrno;}
-	public function getwafersaw(){return $this->wafersaw;}
+	public function getdevicenameused(){return $this->devicenameused;}
+	public function getwafersize(){return $this->wafersize;}
 	public function getwafertype(){return $this->wafertype;}
 	public function getrequiredwaferthickness(){return $this->requiredwaferthickness;}
 	public function getactualwaferthickness(){return $this->actualwaferthickness;}
@@ -199,9 +202,10 @@ class efai007 {
 			lastupdate,
 			lastupdatedby,
 			active,
-			wafersaw
-			) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			$params = array($this->getcustcode(),$this->getintlot(),$this->getmounttype(),$this->getmachine(),$this->getfaicat(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->getrequiredwaferthickness(),$this->getactualwaferthickness(),$this->getrequiredwaferorientation(),$this->getactualwaferorientation(),$this->getprocessmode(),$this->getchucktablechange(),$this->getchuckplateclean(),$this->getchucktabletype(),$this->getchucktabletemp(),$this->getchucktablesize(),$this->getdicingtapechange(),$this->getdicingtapetype(),$this->getdicingtapesize(),$this->getdicingtapeinstallation(),$this->getdicingtapeused(),$this->getdicingtapelotno(),$this->getdicingtapeexp(),$this->getbladechange(),$this->getbladecount(),$this->getbladeposition(),$this->getringframeclean(),$this->getlotpreheatprocess(),$this->gettabletemprequired(),$this->gettabletempactual(),$this->getpreheatingtime(),$this->getmainairpressure(),$this->getsetupwafer(),$this->getrollerpressure(),$this->gettechemp(),$this->getqcemp(),$this->getremarks(),date("Y-m-d H:i:s"),$this->getlastupdatedby(),1,$this->getwafersaw());
+			wafersize,
+			devicenameused
+			) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			$params = array($this->getcustcode(),$this->getintlot(),$this->getmounttype(),$this->getmachine(),$this->getfaicat(),$this->getwswr(),$this->getswrno(),$this->getwafertype(),$this->getrequiredwaferthickness(),$this->getactualwaferthickness(),$this->getrequiredwaferorientation(),$this->getactualwaferorientation(),$this->getprocessmode(),$this->getchucktablechange(),$this->getchuckplateclean(),$this->getchucktabletype(),$this->getchucktabletemp(),$this->getchucktablesize(),$this->getdicingtapechange(),$this->getdicingtapetype(),$this->getdicingtapesize(),$this->getdicingtapeinstallation(),$this->getdicingtapeused(),$this->getdicingtapelotno(),$this->getdicingtapeexp(),$this->getbladechange(),$this->getbladecount(),$this->getbladeposition(),$this->getringframeclean(),$this->getlotpreheatprocess(),$this->gettabletemprequired(),$this->gettabletempactual(),$this->getpreheatingtime(),$this->getmainairpressure(),$this->getsetupwafer(),$this->getrollerpressure(),$this->gettechemp(),$this->getqcemp(),$this->getremarks(),date("Y-m-d H:i:s"),$this->getlastupdatedby(),1,$this->getwafersize(),$this->getdevicenameused());
 			$stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);
             if($row == true)

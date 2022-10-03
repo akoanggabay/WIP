@@ -134,7 +134,7 @@
                     <label>Point 3:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="number" id="p3" name="p3"  class="form-control input-sm req"><br>
+                    <input type="text" id="p3" name="p3"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="row">
@@ -142,7 +142,7 @@
                     <label>Point 4:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="number" id="p4" name="p4"  class="form-control input-sm req"><br>
+                    <input type="text" id="p4" name="p4"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="row">
@@ -150,7 +150,7 @@
                     <label>Point 5:</label>
                 </div>
                 <div class="col-md-7">
-                    <input type="number" id="p5" name="p5"  class="form-control input-sm req"><br>
+                    <input type="text" id="p5" name="p5"  class="form-control input-sm req"><br>
                 </div>
             </div>
             <div class="modal-footer">
@@ -170,7 +170,7 @@
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         var result = this.responseText;
-        alert(result);
+        //alert(result);
         var res = JSON.parse(result)[0];
 
         document.getElementById("trackingno").innerHTML = res.trackingno;

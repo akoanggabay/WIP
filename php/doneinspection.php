@@ -79,7 +79,7 @@ if($intlotdata2->status == 'ON PROCESS')
         }
         else
         {
-            $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,'',$_SESSION['idno']);
+            $intlotlogs->DoneInspect('HOLD',intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,'',$_SESSION['idno']);
         }
         
         $ilot->setstation($intlotdata2->station);
@@ -95,7 +95,7 @@ if($intlotdata2->status == 'ON PROCESS')
         }
         else
         {
-            $intlotlogs->DoneInspect('DONE',intval($intlotdata2->currqty) - intval($total),$intlotdata2->custcode,$intlotno,$nextstage,'',$_SESSION['idno']);
+            $intlotlogs->DoneInspect('DONE',intval($intlotdata2->currqty),$intlotdata2->custcode,$intlotno,$nextstage,'',$_SESSION['idno']);
             
             if((intval($intlotdata2->currqty) - intval($total)) == 0)
             {

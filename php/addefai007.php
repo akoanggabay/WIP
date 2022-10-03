@@ -46,8 +46,8 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
-$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
-$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+$qcidno = strtoupper($data->qcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->techemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
 
 //echo $intlotdata2->custcode;
 $efai007 = new efai007();
@@ -59,7 +59,8 @@ $efai007->setmachine($data->machine);
 $efai007->setfaicat($data->faicat);
 $efai007->setwswr($data->wswr);
 $efai007->setswrno($data->swrno);
-$efai007->setwafersaw($data->wsaw);
+$efai007->setdevicenameused($data->devicenameused);
+$efai007->setwafersize($data->wsize);
 $efai007->setwafertype($data->wtype === 'others' ? $_GET['wtypeothers'] : $data->wtype);
 $efai007->setrequiredwaferthickness($data->requiredwaferthickness);
 $efai007->setactualwaferthickness($data->actualwaferthickness);

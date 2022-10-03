@@ -14,6 +14,22 @@
                                             <div class="col-lg-12">
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>FAI Category: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req002" id="faicat" name="faicat">
+                                                            <option value=""></option>
+                                                            <option value="N/A" hidden>N/A</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="PSC">PSC</option>
+                                                            <option value="Monitoring">Monitoring</option>
+                                                            <option value="Customer requirement" hidden>Customer requirement</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Machine No: *</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -34,26 +50,10 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>FAI Category: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control req002" id="faicat" name="faicat">
-                                                            <option value=""></option>
-                                                            <option value="N/A">N/A</option>
-                                                            <option value="Set-up">Set-up</option>
-                                                            <option value="PSC">PSC</option>
-                                                            <option value="Monitoring">Monitoring</option>
-                                                            <option value="Customer requirement">Customer requirement</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="wswr" name="wswr">
+                                                        <select class="form-control req002 su psc mon" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -67,7 +67,7 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req002 su psc mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -76,7 +76,7 @@
                                                         <label>Wafer Size: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="wsize" name="wsize">
+                                                        <select class="form-control req002 su psc mon" id="wsize" name="wsize">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="4">4</option>
@@ -92,7 +92,7 @@
                                                         <label>Wafer Condition: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="wcondition" name="wcondition">
+                                                        <select class="form-control req002 su psc" id="wcondition" name="wcondition">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="virgin">Virgin</option>
@@ -106,7 +106,7 @@
                                                         <label>Wafer Type: *</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <select class="form-control req002" id="wtype" name="wtype">
+                                                        <select class="form-control req002 su psc" id="wtype" name="wtype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
@@ -129,7 +129,7 @@
                                                         <label>Wafer Boat Slotting: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="waferboatslotting" name="waferboatslotting">
+                                                        <select class="form-control req002 su psc mon" id="waferboatslotting" name="waferboatslotting">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -143,7 +143,7 @@
                                                         <label>Chuck table type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="chucktabletype" name="chucktabletype">
+                                                        <select class="form-control req002 su psc mon" id="chucktabletype" name="chucktabletype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Standard">Standard</option>
@@ -157,7 +157,7 @@
                                                         <label>Chuck table cleaning done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="chucktablecleaning" name="chucktablecleaning">
+                                                        <select class="form-control req002 su psc mon" id="chucktablecleaning" name="chucktablecleaning">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -171,7 +171,7 @@
                                                         <label>Process mode: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="processmode" name="processmode">
+                                                        <select class="form-control req002 su psc mon" id="processmode" name="processmode">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
@@ -185,7 +185,7 @@
                                                         <label>Change tape? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="changetape" name="changetape">
+                                                        <select class="form-control req002 su psc mon" id="changetape" name="changetape">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -199,7 +199,7 @@
                                                         <label>BG Tape type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="bgtapetype" name="bgtapetype">
+                                                        <select class="form-control req002 su psc" id="bgtapetype" name="bgtapetype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="UV">UV</option>
@@ -213,7 +213,7 @@
                                                         <label>BG Tape used: * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="bgtapeused" name="bgtapeused"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="bgtapeused" name="bgtapeused"  class="form-control input-sm req002 su psc" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -222,7 +222,7 @@
                                                         <label>BG Tape Lot number: * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="bgtapelotno" name="bgtapelotno"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="bgtapelotno" name="bgtapelotno"  class="form-control input-sm req002 su psc" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -231,7 +231,7 @@
                                                         <label>BG Tape expiration date: * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="bgtapeexpdate" name="bgtapeexpdate"  class="form-control input-sm req002">
+                                                        <input type="text" id="bgtapeexpdate" name="bgtapeexpdate"  class="form-control input-sm req002 su psc">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -240,7 +240,7 @@
                                                         <label>Notch type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="notchtype" name="notchtype">
+                                                        <select class="form-control req002 su" id="notchtype" name="notchtype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="V">V</option>
@@ -275,7 +275,7 @@
                                                         <label>Change blade? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="changeblade" name="changeblade">
+                                                        <select class="form-control req002 su" id="changeblade" name="changeblade">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -289,7 +289,7 @@
                                                         <label>Blade Temperature (140 ± 20 °C): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="bladetemp" name="bladetemp"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="bladetemp" name="bladetemp"  class="form-control input-sm req002 su psc mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -298,7 +298,7 @@
                                                         <label>Blade count (350 cuts max): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req002 su psc mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -307,7 +307,7 @@
                                                         <label>Set up wafer: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="setupwafer" name="setupwafer">
+                                                        <select class="form-control req002 su psc" id="setupwafer" name="setupwafer">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -321,7 +321,7 @@
                                                         <label>1st Wafer Inspection result: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="firstwaferinspection" name="firstwaferinspection">
+                                                        <select class="form-control req002 su" id="firstwaferinspection" name="firstwaferinspection">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -335,7 +335,7 @@
                                                         <label>1st Wafer No. Inspected: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="firstwaferno" name="firstwaferno"  class="form-control input-sm req002 su" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -344,7 +344,7 @@
                                                         <label>No. of Wafers Inspected (Wafer Nos.): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="noofwafersinspected" name="noofwafersinspected"  class="form-control input-sm req002" style="text-transform:uppercase">
+                                                        <input type="text" id="noofwafersinspected" name="noofwafersinspected"  class="form-control input-sm req002 su psc mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -355,7 +355,7 @@
                                                         <label>Chuck table cleaning done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="mpchucktablecleaning" name="mpchucktablecleaning">
+                                                        <select class="form-control req002 su psc mon" id="mpchucktablecleaning" name="mpchucktablecleaning">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -369,7 +369,7 @@
                                                         <label>BG Tape installation: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="mpbgtapeinstallation" name="mpbgtapeinstallation">
+                                                        <select class="form-control req002 su" id="mpbgtapeinstallation" name="mpbgtapeinstallation">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Ok">Ok</option>
@@ -383,7 +383,7 @@
                                                         <label>BG Tape roller cleaning done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="mpbgtaperollercleaning" name="mpbgtaperollercleaning">
+                                                        <select class="form-control req002 su psc mon" id="mpbgtaperollercleaning" name="mpbgtaperollercleaning">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -397,7 +397,7 @@
                                                         <label>Blade Position: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req002" id="mpbladeposition" name="mpbladeposition">
+                                                        <select class="form-control req002 su psc" id="mpbladeposition" name="mpbladeposition">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="5">5</option>
@@ -412,7 +412,7 @@
                                                         <label>Lamp Hour Usage (2000 hours max): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="mplamphourusage" name="mplamphourusage"  class="form-control input-sm req002">
+                                                        <input type="text" id="mplamphourusage" name="mplamphourusage"  class="form-control input-sm req002 su psc">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -421,7 +421,7 @@
                                                         <label>Technician Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="mptechemp" name="mptechemp"  class="form-control input-sm req002">
+                                                        <input type="password" id="mptechemp" name="mptechemp"  class="form-control input-sm req002 su psc">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -430,7 +430,7 @@
                                                         <label>Quality Control Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="mpqcemp" name="mpqcemp"  class="form-control input-sm req002">
+                                                        <input type="password" id="mpqcemp" name="mpqcemp"  class="form-control input-sm req002 su">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -741,6 +741,46 @@
         dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
         parseInt(dtotal) += parseInt($('#dqty002').val());
     }
+
+    });
+
+    $('#faicat.req002').change(function (){
+        
+        //console.log($(this).val())
+        $('.form-control').css({"border-color": "#d1d3e2"})
+
+        if($(this).val() == 'PSC')
+        {
+            $(".req002.su,.mon").attr("disabled",true);
+            $(".req002.psc").attr("disabled",false);
+            $("input.req002.su[type=text]").val("N/A");
+            $("input.req002.su[type=password]").val("N/A");
+            $("select.req002.su").val("N/A");
+            $("input.req002.psc[type=text]").val("");
+            $("input.req002.psc[type=password]").val("");
+            $("select.req002.psc").val("");
+        }
+
+        else if($(this).val() == 'Monitoring')
+        {
+            $(".req002.su,.psc").attr("disabled",true);
+            $(".req002.mon").attr("disabled",false);
+            $("input.req002.su[type=text]").val("N/A");
+            $("input.req002.su[type=password]").val("N/A");
+            $("select.req002.su").val("N/A");
+            $("input.req002.mon[type=text]").val("");
+            $("input.req002.mon[type=password]").val("");
+            $("select.req002.mon").val("");
+        }
+        else
+        {   
+            $(".req002.su").attr("disabled",false);
+            $("input.req002.su[type=text]").val("");
+            $("input.req002.su[type=password]").val("");
+            $("select.req002.su").val("");
+        }
+
+        
 
     });
     

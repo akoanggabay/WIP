@@ -8,7 +8,7 @@ class efai008 {
     private $faicat;
     private $wswr;
     private $swrno;
-    private $wafersaw;
+    private $wafersize;
     private $wafertype;
     private $requiredwaferthickness;
     private $actualwaferthickness;
@@ -117,7 +117,7 @@ class efai008 {
     public function setfaicat($faicat){$this->faicat=$faicat;}
     public function setwswr($wswr){$this->wswr=$wswr;}
     public function setswrno($swrno){$this->swrno=$swrno;}
-    public function setwafersaw($wafersaw){$this->wafersaw=$wafersaw;}
+    public function setwafersize($wafersize){$this->wafersize=$wafersize;}
     public function setwafertype($wafertype){$this->wafertype=$wafertype;}
     public function setrequiredwaferthickness($requiredwaferthickness){$this->requiredwaferthickness=$requiredwaferthickness;}
     public function setactualwaferthickness($actualwaferthickness){$this->actualwaferthickness=$actualwaferthickness;}
@@ -220,7 +220,7 @@ class efai008 {
     public function getfaicat(){return $this->faicat;}
     public function getwswr(){return $this->wswr;}
     public function getswrno(){return $this->swrno;}
-    public function getwafersaw(){return $this->wafersaw;}
+    public function getwafersize(){return $this->wafersize;}
     public function getwafertype(){return $this->wafertype;}
     public function getrequiredwaferthickness(){return $this->requiredwaferthickness;}
     public function getactualwaferthickness(){return $this->actualwaferthickness;}
@@ -421,7 +421,7 @@ class efai008 {
             feedspeedz1,
             feedspeedz2,
             sawtype,
-            wafersaw
+            wafersize
             ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $params = array($this->getcustcode(),
             $this->getintlot(),
@@ -522,7 +522,7 @@ class efai008 {
             $this->getfeedspeedz1(),
             $this->getfeedspeedz2(),
             $this->getsawtype(),
-            $this->getwafersaw()
+            $this->getwafersize()
             );
             $stmt = sqlsrv_query( $con, $sql, $params);
             $row = sqlsrv_rows_affected($stmt);

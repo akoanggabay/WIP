@@ -319,9 +319,12 @@ if(!isset($_SESSION['idno']))
                         <!-- <a class="collapse-item" href="?form=LM&path=iln">Internal Lot Logs</a> -->
                         <a class="collapse-item" href="?form=LM&path=bumpheight">Bump height</a>
                         <a class="collapse-item" href="?form=LM&path=indexsize">Index size</a>
+                        <a class="collapse-item" href="?form=LM&path=initialthickness">Initial thickness</a>
+                        <a class="collapse-item" href="?form=LM&path=inkdotheight">Ink dot height</a>
                         <a class="collapse-item" href="?form=LM&path=thick">Thickness Logs</a>
                         <a class="collapse-item" href="?form=LM&path=rej">Reject Logs</a>
                         <a class="collapse-item" href="?form=LM&path=rough">Roughness Logs</a>
+                        <a class="collapse-item" href="?form=LM&path=warpage">Warpage</a>
                     </div>
                 </div>
             </li>

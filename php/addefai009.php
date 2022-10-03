@@ -46,8 +46,8 @@ $lotdata = IntLotno::GetDetails($intlotno);
 $intlotdata = json_encode($lotdata[0]);
 $intlotdata2 = json_decode($intlotdata);
 
-$qcidno = strtoupper($data->mpqcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
-$techidno = strtoupper($data->mptechemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
+$qcidno = strtoupper($data->qcemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->qcemp,'qc');
+$techidno = strtoupper($data->techemp) === 'N/A' ? "N/A" : passcode::getPasscodeIdno($data->techemp,'tech');
 
 //echo $intlotdata2->custcode;
 $efai009 = new efai009();
@@ -56,7 +56,7 @@ $efai009->setcustcode($intlotdata2->custcode);
 $efai009->setintlot($intlotno);
 $efai009->setwswr($data->wswr);
 $efai009->setswrno($data->swrno);
-$efai009->setwafersaw($data->wsaw);
+$efai009->setwafersize($data->wsize);
 $efai009->setloaderplateclean($data->loaderplateclean);
 $efai009->setuvirradtime($data->uvirradtime);
 $efai009->setbustedlamp($data->bustedlamp);

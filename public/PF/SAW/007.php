@@ -28,10 +28,26 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>FAI Category: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req007" id="faicat" name="faicat">
+                                                            <option value=""></option>
+                                                            <option value="N/A" hidden>N/A</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC" hidden>PSC</option>
+                                                            <option value="Customer requirement" hidden>Customer requirement</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Machine No: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum manual" id="machine" name="machine">
+                                                        <select class="form-control req007" id="machine" name="machine">
                                                         <option value=""></option>
                                                         <?php 
                                                         include_once("../classes/machine.php");
@@ -48,26 +64,10 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>FAI Category: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum manual" id="faicat" name="faicat">
-                                                            <option value=""></option>
-                                                            <option value="N/A">N/A</option>
-                                                            <option value="Set-up">Set-up</option>
-                                                            <option value="Monitoring">Monitoring</option>
-                                                            <option value="PSC">PSC</option>
-                                                            <option value="Customer requirement">Customer requirement</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum" id="wswr" name="wswr">
+                                                        <select class="form-control req007 mount mountsu mountmon" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
@@ -81,16 +81,25 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req007 mount mountsu mountmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Wafer Saw: *</label>
+                                                        <label>Device name used: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007" id="wsaw" name="wsaw">
+                                                        <input type="text" id="devicenameused" name="devicenameused"  class="form-control input-sm req007 vacuum vacuumsu" style="text-transform:uppercase">
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>Wafer Size: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req007 mount vacuum manual mountsu vacuumsu manualsu" id="wsize" name="wsize">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="4">4</option>
@@ -107,7 +116,7 @@
                                                         <label>Wafer Type: *</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <select class="form-control req007 mount vacuum manual" id="wtype" name="wtype">
+                                                        <select class="form-control req007 mount vacuum manual mountsu mountmon vacuumsu vacuummon manualsu manualmon" id="wtype" name="wtype">
                                                             <option value=""></option>
                                                             <option value="inked">Inked</option>
                                                             <option value="bumped">Bumped</option>
@@ -129,7 +138,7 @@
                                                         <label>Required: Wafer Thickess (in microns): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req007 mount vacuum mountsu mountmon vacuumsu vacuummon manualsu manualmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -138,7 +147,7 @@
                                                         <label>Actual: Wafer Thickess (in microns): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
+                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req007 mount manual mountsu mountmon manualsu manualmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -158,7 +167,7 @@
                                                         <label>Required: Wafer Orientation: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum manual" id="requiredwaferorientation" name="requiredwaferorientation">
+                                                        <select class="form-control req007 mount vacuum manual mountsu mountmon vacuumsu vacuummon manualsu manualmon" id="requiredwaferorientation" name="requiredwaferorientation">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="0 deg">0 deg</option>
@@ -174,7 +183,7 @@
                                                         <label>Actual: Wafer Orientation: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum manual" id="actualwaferorientation" name="actualwaferorientation">
+                                                        <select class="form-control req007 mount vacuum manual mountsu mountmon vacuumsu vacuummon manualsu manualmon" id="actualwaferorientation" name="actualwaferorientation">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="0 deg">0 deg</option>
@@ -190,7 +199,7 @@
                                                         <label>Process mode: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum" id="processmode" name="processmode">
+                                                        <select class="form-control req007 mount vacuum mountsu mountmon vacuumsu vacuummon" id="processmode" name="processmode">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
@@ -205,7 +214,7 @@
                                                         <label>Chuck Table Change? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum" id="chucktablechange" name="chucktablechange">
+                                                        <select class="form-control req007 mount vacuum mountsu vacuumsu" id="chucktablechange" name="chucktablechange">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -219,7 +228,7 @@
                                                         <label>Chuck Plate Clean? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum manual" id="chuckplateclean" name="chuckplateclean">
+                                                        <select class="form-control req007 mount vacuum manual mountsu mountmon vacuumsu vacuummon manualsu manualmon" id="chuckplateclean" name="chuckplateclean">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -233,7 +242,7 @@
                                                         <label>Chuck Table Type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum manual" id="chucktabletype" name="chucktabletype">
+                                                        <select class="form-control req007 mount vacuum manual mountsu vacuumsu manualsu" id="chucktabletype" name="chucktabletype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Contact">Contact</option>
@@ -247,7 +256,7 @@
                                                         <label>Chuck Table Temperature(<b>in ℃</b>): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="chucktabletemp" name="chucktabletemp"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
+                                                        <input type="text" id="chucktabletemp" name="chucktabletemp"  class="form-control input-sm req007 mount vacuum manual mountsu vacuumsu manualsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -256,7 +265,7 @@
                                                         <label>Chuck Table size *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req007 mount vacuum manual" id="chucktablesize" name="chucktablesize">
+                                                        <select class="form-control req007 mount vacuum manual mountsu vacuumsu manualsu" id="chucktablesize" name="chucktablesize">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="4 inch">4 inch</option>
@@ -273,7 +282,7 @@
                                                         <label>Roller pressure(3-5 bar or 0.3to 0.5 Mpa or 3.06-5.09 kg/cm2) *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="rollerpressure" name="rollerpressure"  class="form-control input-sm req007 manual" style="text-transform:uppercase">
+                                                        <input type="text" id="rollerpressure" name="rollerpressure"  class="form-control input-sm req007 manual manualsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -303,7 +312,7 @@
                                                             <label>Dicing Tape Change? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount vacuum manual" id="dicingtapechange" name="dicingtapechange">
+                                                            <select class="form-control req007 mount vacuum manual mountsu mountmon vacuumsu vacuummon manualsu manualmon" id="dicingtapechange" name="dicingtapechange">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -317,7 +326,7 @@
                                                             <label>Dicing Tape Type? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount vacuum manual" id="dicingtapetype" name="dicingtapetype">
+                                                            <select class="form-control req007 mount vacuum manual mountsu vacuumsu manualsu" id="dicingtapetype" name="dicingtapetype">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="UV">UV</option>
@@ -333,7 +342,7 @@
                                                             <label>Dicing Tape size *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount vacuum manual" id="dicingtapesize" name="dicingtapesize">
+                                                            <select class="form-control req007 mount vacuum manual mountsu vacuumsu manualsu" id="dicingtapesize" name="dicingtapesize">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="6 inch">6 inch</option>
@@ -348,7 +357,7 @@
                                                             <label>Dicing Tape Installation: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount vacuum manual" id="dicingtapeinstallation" name="dicingtapeinstallation">
+                                                            <select class="form-control req007 mount vacuum manual mountsu vacuumsu manualsu" id="dicingtapeinstallation" name="dicingtapeinstallation">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Ok">Ok</option>
@@ -362,7 +371,7 @@
                                                             <label>Dicing Tape used: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="dicingtapeused" name="dicingtapeused"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
+                                                            <input type="text" id="dicingtapeused" name="dicingtapeused"  class="form-control input-sm req007 mount vacuum manual mountsu vacuumsu manualsu" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -371,7 +380,7 @@
                                                             <label>Dicing Tape Expiration: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="dicingtapeexp" name="dicingtapeexp"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
+                                                            <input type="text" id="dicingtapeexp" name="dicingtapeexp"  class="form-control input-sm req007 mount vacuum manual mountsu mountmon vacuumsu vacuummon manualsu" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -380,7 +389,7 @@
                                                             <label>Dicing Tape Lot no.: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="dicingtapelotno" name="dicingtapelotno"  class="form-control input-sm req007 mount vacuum manual" style="text-transform:uppercase">
+                                                            <input type="text" id="dicingtapelotno" name="dicingtapelotno"  class="form-control input-sm req007 mount vacuum manual mountsu vacuumsu manualsu" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -389,7 +398,7 @@
                                                             <label>Blade Change? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount vacuum" id="bladechange" name="bladechange">
+                                                            <select class="form-control req007 mount vacuum mountsu mountmon vacuumsu vacuummon" id="bladechange" name="bladechange">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -403,7 +412,7 @@
                                                             <label>Blade Count <span id="007bladecount"></span>: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req007 mount vacuum" style="text-transform:uppercase">
+                                                            <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req007 mount vacuum mountsu mountmon vacuumsu vacuummon" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -412,7 +421,7 @@
                                                             <label>Blade Position(inch) *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount vacuum" id="bladeposition" name="bladeposition">
+                                                            <select class="form-control req007 mount vacuum mountsu vacuumsu" id="bladeposition" name="bladeposition">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="6 inch">6 inch</option>
@@ -427,7 +436,7 @@
                                                             <label>Is ring frame used clean? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount vacuum" id="ringframeclean" name="ringframeclean">
+                                                            <select class="form-control req007 mount vacuum mountsu mountmon vacuumsu vacuummon" id="ringframeclean" name="ringframeclean">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -441,7 +450,7 @@
                                                             <label>Is lot requiring pre-heat process? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 mount" id="lotpreheatprocess" name="lotpreheatprocess">
+                                                            <select class="form-control req007 mount mountsu mountmon" id="lotpreheatprocess" name="lotpreheatprocess">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -455,7 +464,7 @@
                                                             <label>Required: Table Temperature(<b>in ℃</b>): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="tabletemprequired" name="tabletemprequired"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
+                                                            <input type="text" id="tabletemprequired" name="tabletemprequired"  class="form-control input-sm req007 mount mountsu" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -464,7 +473,7 @@
                                                             <label>Actual: Table Temperature(<b>in ℃</b>): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="tabletempactual" name="tabletempactual"  class="form-control input-sm req007 mount" style="text-transform:uppercase">
+                                                            <input type="text" id="tabletempactual" name="tabletempactual"  class="form-control input-sm req007 mount mountsu" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -482,7 +491,7 @@
                                                             <label>Main Air Pressure/Bars/0.5 kPa (min): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="mainairpressure" name="mainairpressure"  class="form-control input-sm req007 vacuum" style="text-transform:uppercase">
+                                                            <input type="text" id="mainairpressure" name="mainairpressure"  class="form-control input-sm req007 vacuum vacuumsu" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -491,7 +500,7 @@
                                                             <label>Set-up Wafer result: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req007 vacuum manual mount" id="setupwafer" name="setupwafer">
+                                                            <select class="form-control req007 vacuum manual vacuumsu manualsu" id="setupwafer" name="setupwafer">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Ok">Ok</option>
@@ -505,7 +514,7 @@
                                                             <label>Technician Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="password" id="techemp" name="techemp"  class="form-control input-sm req007 mount vacuum manual">
+                                                            <input type="password" id="techemp" name="techemp"  class="form-control input-sm req007 mount vacuum manual mountsu vacuumsu manualsu">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -514,7 +523,7 @@
                                                             <label>Quality Control Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req007 mount vacuum manual">
+                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req007 mount vacuum manual mountsu vacuumsu manualsu">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -523,7 +532,7 @@
                                                             <label>Remarks: * </label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <textarea class="form-control req007 mount vacuum manual" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
+                                                            <textarea class="form-control req007" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -769,6 +778,7 @@
         //console.log($(this).val())
         $('.form-control').css({"border-color": "#d1d3e2"})
         $('input[name*="wtypeothers"]').attr("disabled",true);
+        $('#faicat.req007').val("");
         if($(this).val() == 'Manual Mount')
         {
             
@@ -886,5 +896,90 @@
     }
 
     });
+
+    $('#faicat.req007').change(function (){
+        
+        //console.log($(this).val())
+        $('.form-control').css({"border-color": "#d1d3e2"})
+        if($("#mounttype.req007").val() == "")
+        {
+            swal("missing input!",{
+                icon: "warning",
+                title: "Kindly select Mount type!",
+                closeOnClickOutside: false,
+            });
+            $(this).val("");
+            return false
+        }
+
+        if($("#mounttype.req007").val() == "Mount (Semi-auto)")
+        {
+            if($(this).val() == 'Monitoring')
+            {
+                
+                $("input.mount[type=text]").val("N/A");
+                $("input.mount[type=password]").val("N/A");
+                $("select.mount").val("N/A");
+                $(".mount").attr("disabled",true);
+                $(".mount.mountmon").attr("disabled",false);
+                $("input.mount.mountmon[type=text]").val("");
+                $("input.mount.mountmon[type=password]").val("");
+                $("select.mount.mountmon").val("");
+            }
+            else
+            {
+                $(".mount").attr("disabled",false);
+                $("input.mount[type=text]").val("");
+                $("input.mount[type=password]").val("");
+                $("select.mount").val("");
+            }
+        }
+        else if($("#mounttype.req007").val() == "Vacuum Mount")
+        {
+            if($(this).val() == 'Monitoring')
+            {
+                
+                $("input.vacuum[type=text]").val("N/A");
+                $("input.vacuum[type=password]").val("N/A");
+                $("select.vacuum").val("N/A");
+                $(".vacuum").attr("disabled",true);
+                $(".vacuum.vacuummon").attr("disabled",false);
+                $("input.vacuum.vacuummon[type=text]").val("");
+                $("input.vacuum.vacuummon[type=password]").val("");
+                $("select.vacuum.vacuummon").val("");
+            }
+            else
+            {
+                $(".vacuum").attr("disabled",false);
+                $("input.vacuum[type=text]").val("");
+                $("input.vacuum[type=password]").val("");
+                $("select.vacuum").val("");
+            }
+        }
+        else if($("#mounttype.req007").val() == "Manual Mount")
+        {
+            if($(this).val() == 'Monitoring')
+            {
+                
+                $("input.manual[type=text]").val("N/A");
+                $("input.manual[type=password]").val("N/A");
+                $("select.manual").val("N/A");
+                $(".manual").attr("disabled",true);
+                $(".manual.manualmon").attr("disabled",false);
+                $("input.manual.manualmon[type=text]").val("");
+                $("input.manual.manualmon[type=password]").val("");
+                $("select.manual.manualmon").val("");
+            }
+            else
+            {
+                $(".manual").attr("disabled",false);
+                $("input.manual[type=text]").val("");
+                $("input.manual[type=password]").val("");
+                $("select.manual").val("");
+            }
+        }
+
+    });
+    
     
 </script>
