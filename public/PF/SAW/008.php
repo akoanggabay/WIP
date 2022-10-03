@@ -921,7 +921,7 @@
                                                 <br/>
                                                 <div class="row saw ring">
                                                     <div class="col-md-5">
-                                                        <label>DI Water Resistivity (mega Ohm): *</label>
+                                                        <label>DI Water Resistivity (0.1 - 1 Mohm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <input type="text" id="diwaterresistivity" name="diwaterresistivity"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
