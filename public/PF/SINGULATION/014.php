@@ -14,6 +14,22 @@
                                             <div class="col-lg-12">
                                                 <div class="row">
                                                     <div class="col-md-5">
+                                                        <label>FAI Category: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req014" id="faicat" name="faicat">
+                                                            <option value=""></option>
+                                                            <option value="N/A" hidden>N/A</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC" hidden>PSC</option>
+                                                            <option value="Customer requirement" hidden>Customer requirement</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-5">
                                                         <label>Machine No: *</label>
                                                     </div>
                                                     <div class="col-md-7">
@@ -34,26 +50,10 @@
                                                 <br/>
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>FAI Category: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control req014" id="faicat" name="faicat">
-                                                            <option value=""></option>
-                                                            <option value="N/A">N/A</option>
-                                                            <option value="Set-up">Set-up</option>
-                                                            <option value="Monitoring">Monitoring</option>
-                                                            <option value="PSC">PSC</option>
-                                                            <option value="Customer requirement">Customer requirement</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-md-5">
                                                         <label>Package Type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req014" id="packagetype" name="packagetype">
+                                                        <select class="form-control req014 su mon" id="packagetype" name="packagetype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Strip">Strip</option>
@@ -67,7 +67,7 @@
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req014" id="wswr" name="wswr">
+                                                        <select class="form-control req014 su mon" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">YES</option>
@@ -81,7 +81,7 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req014 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -90,7 +90,7 @@
                                                         <label>Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="packagethickness" name="packagethickness"  class="form-control input-sm req014 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -99,7 +99,7 @@
                                                         <label>Package Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="packagesize" name="packagesize"  class="form-control input-sm req014 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -108,7 +108,7 @@
                                                         <label>Strip Nos./Panel Nos. : *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="stripno" name="stripno"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="stripno" name="stripno"  class="form-control input-sm req014 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -117,7 +117,7 @@
                                                         <label>Array Size: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="arraysize" name="arraysize"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="arraysize" name="arraysize"  class="form-control input-sm req014 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -126,7 +126,7 @@
                                                         <label>Required: Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="requiredpackagethickness" name="requiredpackagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredpackagethickness" name="requiredpackagethickness"  class="form-control input-sm req014 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -135,7 +135,7 @@
                                                         <label>Actual: Package Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="actualpackagethickness" name="actualpackagethickness"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="actualpackagethickness" name="actualpackagethickness"  class="form-control input-sm req014 su mon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -144,7 +144,7 @@
                                                         <label>Required: Strip/Panel Mounting Orientation: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req014" id="requiredmountingorientation" name="requiredmountingorientation">
+                                                        <select class="form-control req014 su" id="requiredmountingorientation" name="requiredmountingorientation">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Live Bug">Live Bug</option>
@@ -158,7 +158,7 @@
                                                         <label>Actual: Strip/Panel Mounting Orientation: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req014" id="actualmountingorientation" name="actualmountingorientation">
+                                                        <select class="form-control req014 su" id="actualmountingorientation" name="actualmountingorientation">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Live Bug">Live Bug</option>
@@ -172,7 +172,7 @@
                                                         <label>Process mode: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req014" id="processmode" name="processmode">
+                                                        <select class="form-control req014 su" id="processmode" name="processmode">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Semi-Auto">Semi-Auto</option>
@@ -186,7 +186,7 @@
                                                         <label>Table Vacuum Pressure (-60kPa min): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="tablevacuumpressure" name="tablevacuumpressure"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                        <input type="text" id="tablevacuumpressure" name="tablevacuumpressure"  class="form-control input-sm req014 su" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -195,7 +195,7 @@
                                                         <label>Ring Frame Size Set-up: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req014" id="ringframesizesetup" name="ringframesizesetup">
+                                                        <select class="form-control req014 su" id="ringframesizesetup" name="ringframesizesetup">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="6">6</option>
@@ -209,7 +209,7 @@
                                                         <label>Table Size Set-up: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req014" id="tablesizesetup" name="tablesizesetup">
+                                                        <select class="form-control req014 su" id="tablesizesetup" name="tablesizesetup">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="6">6</option>
@@ -244,7 +244,7 @@
                                                             <label>Cutter Blade Position Set-up:  *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req014" id="cutterbladepositionsetup" name="cutterbladepositionsetup">
+                                                            <select class="form-control req014 su" id="cutterbladepositionsetup" name="cutterbladepositionsetup">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="6">6</option>
@@ -258,7 +258,7 @@
                                                             <label>Change in Cutter blade?  *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req014" id="changeincutterblade" name="changeincutterblade">
+                                                            <select class="form-control req014 su" id="changeincutterblade" name="changeincutterblade">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -272,7 +272,7 @@
                                                             <label>Blade Count (300 cuts max): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                            <input type="text" id="bladecount" name="bladecount"  class="form-control input-sm req014 su" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -281,7 +281,7 @@
                                                             <label>Is Chuck Plate Clean? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req014" id="chuckplateclean" name="chuckplateclean">
+                                                            <select class="form-control req014 su" id="chuckplateclean" name="chuckplateclean">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -295,7 +295,7 @@
                                                             <label>Dicing Tape Change? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req014" id="dicingtapechange" name="dicingtapechange">
+                                                            <select class="form-control req014 su" id="dicingtapechange" name="dicingtapechange">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="Yes">Yes</option>
@@ -309,7 +309,7 @@
                                                             <label>Dicing Tape Type? *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <select class="form-control req014" id="dicingtapetype" name="dicingtapetype">
+                                                            <select class="form-control req014 su" id="dicingtapetype" name="dicingtapetype">
                                                                 <option value=""></option>
                                                                 <option value="N/A">N/A</option>
                                                                 <option value="UV">UV</option>
@@ -323,7 +323,7 @@
                                                             <label>Dicing Tape Used: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="dicingtapeused" name="dicingtapeused"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                            <input type="text" id="dicingtapeused" name="dicingtapeused"  class="form-control input-sm req014 su" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -332,7 +332,7 @@
                                                             <label>Dicing Tape Lot no.: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="dicingtapelotno" name="dicingtapelotno"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                            <input type="text" id="dicingtapelotno" name="dicingtapelotno"  class="form-control input-sm req014 su" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -341,7 +341,7 @@
                                                             <label>Dicing Tape Expiration: *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="text" id="dicingtapeexp" name="dicingtapeexp"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                            <input type="text" id="dicingtapeexp" name="dicingtapeexp"  class="form-control input-sm req014 su" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -350,7 +350,7 @@
                                                             <label>Technician Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="password" id="techemp" name="techemp"  class="form-control input-sm req014" style="text-transform:uppercase">
+                                                            <input type="password" id="techemp" name="techemp"  class="form-control input-sm req014 su" style="text-transform:uppercase">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -359,7 +359,7 @@
                                                             <label>Quality Control Employee (passcode): *</label>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req014">
+                                                            <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req014 su">
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -669,6 +669,34 @@
         dtotal = sdqty.reduce(function(a, b) { return a + b; }, 0);
         parseInt(dtotal) += parseInt($('#dqty014').val());
     }
+
+    });
+
+    $('#faicat.req014').change(function (){
+        
+        //console.log($(this).val())
+        $('.form-control').css({"border-color": "#d1d3e2"})
+
+        if($(this).val() == 'Monitoring')
+        {
+            $(".req014.su").attr("disabled",true);
+            $(".req014.mon").attr("disabled",false);
+            $("input.req014.su[type=text]").val("N/A");
+            $("input.req014.su[type=password]").val("N/A");
+            $("select.req014.su").val("N/A");
+            $("input.req014.mon[type=text]").val("");
+            $("input.req014.mon[type=password]").val("");
+            $("select.req014.mon").val("");
+        }
+        else
+        {   
+            $(".req014.su").attr("disabled",false);
+            $("input.req014.su[type=text]").val("");
+            $("input.req014.su[type=password]").val("");
+            $("select.req014.su").val("");
+        }
+
+        
 
     });
     

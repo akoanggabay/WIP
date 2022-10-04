@@ -71,7 +71,7 @@ class efai015 {
     private $cleaningspinnertabledone;
     private $dryparamtime;
     private $dryparamrpm;
-    private $spinnerwaterpressure;
+    private $atomizingcleanairpressure;
     private $spinnertablewith;
     private $spinnertablewithout;
     private $diwatertemp;
@@ -170,7 +170,7 @@ class efai015 {
     public function setcleaningspinnertabledone($cleaningspinnertabledone){$this->cleaningspinnertabledone=$cleaningspinnertabledone;}
     public function setdryparamtime($dryparamtime){$this->dryparamtime=$dryparamtime;}
     public function setdryparamrpm($dryparamrpm){$this->dryparamrpm=$dryparamrpm;}
-    public function setspinnerwaterpressure($spinnerwaterpressure){$this->spinnerwaterpressure=$spinnerwaterpressure;}
+    public function setatomizingcleanairpressure($atomizingcleanairpressure){$this->atomizingcleanairpressure=$atomizingcleanairpressure;}
     public function setspinnertablewith($spinnertablewith){$this->spinnertablewith=$spinnertablewith;}
     public function setspinnertablewithout($spinnertablewithout){$this->spinnertablewithout=$spinnertablewithout;}
     public function setdiwatertemp($diwatertemp){$this->diwatertemp=$diwatertemp;}
@@ -264,7 +264,7 @@ class efai015 {
     public function getcleaningspinnertabledone(){return $this->cleaningspinnertabledone;}
     public function getdryparamtime(){return $this->dryparamtime;}
     public function getdryparamrpm(){return $this->dryparamrpm;}
-    public function getspinnerwaterpressure(){return $this->spinnerwaterpressure;}
+    public function getatomizingcleanairpressure(){return $this->atomizingcleanairpressure;}
     public function getspinnertablewith(){return $this->spinnertablewith;}
     public function getspinnertablewithout(){return $this->spinnertablewithout;}
     public function getdiwatertemp(){return $this->diwatertemp;}
@@ -365,7 +365,7 @@ class efai015 {
             cleaningspinnertabledone,
             dryparamtime,
             dryparamrpm,
-            spinnerwaterpressure,
+            atomizingcleanairpressure,
             spinnertablewith,
             spinnertablewithout,
             diwatertemp,
@@ -454,7 +454,7 @@ class efai015 {
             $this->getcleaningspinnertabledone(),
             $this->getdryparamtime(),
             $this->getdryparamrpm(),
-            $this->getspinnerwaterpressure(),
+            $this->getatomizingcleanairpressure(),
             $this->getspinnertablewith(),
             $this->getspinnertablewithout(),
             $this->getdiwatertemp(),

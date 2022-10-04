@@ -2326,7 +2326,7 @@
         {
             swal("missing input!",{
                 icon: "warning",
-                title: "Kindly select process mode!",
+                title: "Kindly select Saw type!",
                 closeOnClickOutside: false,
             });
             $(this).val("");

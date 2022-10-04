@@ -140,7 +140,7 @@ $efai015->setreadingncs2($data->readingncs2);
 $efai015->setcleaningspinnertabledone($data->cleaningspinnertabledone);
 $efai015->setdryparamtime($data->dryparamtime);
 $efai015->setdryparamrpm($data->dryparamrpm);
-$efai015->setspinnerwaterpressure($data->spinnerwaterpressure);
+$efai015->setatomizingcleanairpressure($data->atomizingcleanairpressure);
 $efai015->setspinnertablewith($data->spinnertablewith);
 $efai015->setspinnertablewithout($data->spinnertablewithout);
 $efai015->setdiwatertemp($data->diwatertemp);
@@ -203,7 +203,7 @@ if($success == true)
             $indexsize->setis2($sis2[$x]);
             $indexsize->setis3($sis3[$x]);
             $indexsize->setis4($sis4[$x]);
-            $indexsize->setis5(0);
+            $indexsize->setis5("N/A");
             $indexsize->setlastupdate(date("Y-m-d H:i:sa"));
             $indexsize->setlastupdatedby($_SESSION['idno']);
 
