@@ -1122,7 +1122,7 @@
                                                                 <label>Time(secs): </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="text" id="wptime015" name="wptime015"  class="form-control input-sm wp015">
+                                                                <input type="text" id="wptime015" name="wptime015"  class="form-control input-sm wp015 su">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1131,7 +1131,7 @@
                                                                 <label>RPM: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="text" id="wprpm015" name="wprpm015"  class="form-control input-sm wp015">
+                                                                <input type="text" id="wprpm015" name="wprpm015"  class="form-control input-sm wp015 su">
                                                             </div>
                                                         </div>
                                                         <br/>
