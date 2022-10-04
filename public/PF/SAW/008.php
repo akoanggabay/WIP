@@ -29,10 +29,26 @@
                                                 <br/>
                                                 <div class="row saw ring">
                                                     <div class="col-md-5">
+                                                        <label>FAI Category: *</label>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control req008" id="faicat" name="faicat">
+                                                            <option value=""></option>
+                                                            <option value="N/A" hidden>N/A</option>
+                                                            <option value="Set-up">Set-up</option>
+                                                            <option value="Monitoring">Monitoring</option>
+                                                            <option value="PSC" hidden>PSC</option>
+                                                            <option value="Customer requirement" hidden>Customer requirement</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row saw ring">
+                                                    <div class="col-md-5">
                                                         <label>Machine No: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="machine" name="machine">
+                                                        <select class="form-control req008" id="machine" name="machine">
                                                         <option value=""></option>
                                                         <?php 
                                                         include_once("../classes/machine.php");
@@ -47,28 +63,12 @@
                                                     </div>
                                                 </div>
                                                 <br/>
-                                                <div class="row saw ring">
-                                                    <div class="col-md-5">
-                                                        <label>FAI Category: *</label>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="faicat" name="faicat">
-                                                            <option value=""></option>
-                                                            <option value="N/A">N/A</option>
-                                                            <option value="Set-up">Set-up</option>
-                                                            <option value="Monitoring">Monitoring</option>
-                                                            <option value="PSC">PSC</option>
-                                                            <option value="Customer requirement">Customer requirement</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <br/>
                                                 <div class="row saw">
                                                     <div class="col-md-5">
                                                         <label>With SWR: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw" id="wswr" name="wswr">
+                                                        <select class="form-control req008 saw sawsu sawmon" id="wswr" name="wswr">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -82,7 +82,7 @@
                                                         <label>SWR no: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="swrno" name="swrno"  class="form-control input-sm req008 saw sawsu sawmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -91,7 +91,7 @@
                                                         <label>Wafer Size: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008" id="wsize" name="wsize">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="wsize" name="wsize">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="4">4</option>
@@ -108,7 +108,7 @@
                                                         <label>Wafer Type: *</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <select class="form-control req008 saw ring" id="wtype" name="wtype">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="wtype" name="wtype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="inked">Inked</option>
@@ -132,7 +132,7 @@
                                                         <label>Required: Wafer Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="requiredwaferthickness" name="requiredwaferthickness"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -141,7 +141,7 @@
                                                         <label>Actual: Wafer Thickness (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="actualwaferthickness" name="actualwaferthickness"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -150,7 +150,7 @@
                                                         <label>Street width (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="streetwidth" name="streetwidth"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="streetwidth" name="streetwidth"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -159,7 +159,7 @@
                                                         <label>ACTUAL: Die Size (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="actualdiesize" name="actualdiesize"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="actualdiesize" name="actualdiesize"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -179,7 +179,7 @@
                                                         <label>Required: Wafer Orientation: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="requiredwaferorientation" name="requiredwaferorientation">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="requiredwaferorientation" name="requiredwaferorientation">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="0 deg">0 deg</option>
@@ -195,7 +195,7 @@
                                                         <label>Actual: Wafer Orientation: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="actualwaferorientation" name="actualwaferorientation">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="actualwaferorientation" name="actualwaferorientation">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="0 deg">0 deg</option>
@@ -213,7 +213,7 @@
                                                         <label>Process mode: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="processmode" name="processmode">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="processmode" name="processmode">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Auto">Auto</option>
@@ -227,7 +227,7 @@
                                                         <label>Cut mode: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="cutmode" name="cutmode">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="cutmode" name="cutmode">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="A-NORMAL">A-NORMAL</option>
@@ -242,7 +242,7 @@
                                                         <label>Cutting position: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 ring" id="cuttingposition" name="cuttingposition">
+                                                        <select class="form-control req008 ring ringsu" id="cuttingposition" name="cuttingposition">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="NEAR">NEAR</option>
@@ -256,7 +256,7 @@
                                                         <label>Cut method: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="cutmethod" name="cutmethod">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="cutmethod" name="cutmethod">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Z1">Z1</option>
@@ -276,7 +276,7 @@
                                                         <label>Chopper Speed (mm/s): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="chopperseed" name="chopperseed"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="chopperseed" name="chopperseed"  class="form-control input-sm req008 ring ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -285,7 +285,7 @@
                                                         <label>Cutting CHANNEL Sequence: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw" id="cuttingchannelseq" name="cuttingchannelseq">
+                                                        <select class="form-control req008 saw sawsu" id="cuttingchannelseq" name="cuttingchannelseq">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="12">12</option>
@@ -302,13 +302,13 @@
                                                         <label>CH 1: * </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="ch1" name="ch1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="ch1" name="ch1"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>CH 2: * </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="ch2" name="ch2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="ch2" name="ch2"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -317,13 +317,13 @@
                                                         <label>CH 3: * </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="ch3" name="ch3"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="ch3" name="ch3"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>CH 4: * </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="ch4" name="ch4"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="ch4" name="ch4"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -333,7 +333,7 @@
                                                         <label>Type of Blade: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="bladetype" name="bladetype">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="bladetype" name="bladetype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="HUBLESS">HUBLESS</option>
@@ -350,13 +350,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="flangsizez1" name="flangsizez1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="flangsizez1" name="flangsizez1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="flangsizez2" name="flangsizez2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="flangsizez2" name="flangsizez2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -368,13 +368,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladepartnousedz1" name="bladepartnousedz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladepartnousedz1" name="bladepartnousedz1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladepartnousedz2" name="bladepartnousedz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladepartnousedz2" name="bladepartnousedz2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -386,13 +386,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladelotnoz1" name="bladelotnoz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladelotnoz1" name="bladelotnoz1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladelotnoz2" name="bladelotnoz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladelotnoz2" name="bladelotnoz2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -401,7 +401,7 @@
                                                         <label>Blade Height (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="bladeheight" name="bladeheight"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheight" name="bladeheight"  class="form-control input-sm req008 ring ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -413,13 +413,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheightz1" name="bladeheightz1"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeheightz2" name="bladeheightz2"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -431,13 +431,13 @@
                                                         <label>CH1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="indexsizech1" name="indexsizech1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="indexsizech1" name="indexsizech1"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>CH2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="indexsizech2" name="indexsizech2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="indexsizech2" name="indexsizech2"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -449,13 +449,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeexposurez1" name="bladeexposurez1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladeexposurez2" name="bladeexposurez2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -467,13 +467,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecutlengthz1" name="bladecutlengthz1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecutlengthz2" name="bladecutlengthz2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -485,13 +485,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spindlerevz1" name="spindlerevz1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spindlerevz2" name="spindlerevz2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -500,7 +500,7 @@
                                                         <label>Feed speed (degree per sec): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="feedspeed" name="feedspeed"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeed" name="feedspeed"  class="form-control input-sm req008 ring ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -512,13 +512,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeedz1" name="feedspeedz1"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="feedspeedz2" name="feedspeedz2"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -527,7 +527,7 @@
                                                         <label>Cut Width (mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="cutwidth" name="cutwidth"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="cutwidth" name="cutwidth"  class="form-control input-sm req008 ring ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -536,7 +536,7 @@
                                                         <label>Size Data Selection: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 ring" id="sizedataselection" name="sizedataselection">
+                                                        <select class="form-control req008 ring ringsu" id="sizedataselection" name="sizedataselection">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Align Result">Align Result</option>
@@ -550,7 +550,7 @@
                                                         <label>Specified Data: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="specificdata" name="specificdata"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="specificdata" name="specificdata"  class="form-control input-sm req008 ring ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -563,13 +563,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladecoolerz1" name="bladecoolerz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecoolerz1" name="bladecoolerz1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="bladecoolerz2" name="bladecoolerz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="bladecoolerz2" name="bladecoolerz2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -581,13 +581,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="showerz1" name="showerz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="showerz1" name="showerz1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="showerz2" name="showerz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="showerz2" name="showerz2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -599,13 +599,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="sprayz1" name="sprayz1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="sprayz1" name="sprayz1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="sprayz2" name="sprayz2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="sprayz2" name="sprayz2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -636,7 +636,7 @@
                                                         <label>Dicing Tape Type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="dicingtapetype" name="dicingtapetype">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="dicingtapetype" name="dicingtapetype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="UV">UV</option>
@@ -652,7 +652,7 @@
                                                         <label>Dicing Tape used: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="dicingtapeused" name="dicingtapeused"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="dicingtapeused" name="dicingtapeused"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -661,7 +661,7 @@
                                                         <label>Dicing Tape Thickness(mm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="dicingtapethickness" name="dicingtapethickness"  class="form-control input-sm req008 saw ring sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -670,7 +670,7 @@
                                                         <label>UV Curing Time: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="uvcuringtime" name="uvcuringtime"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="uvcuringtime" name="uvcuringtime"  class="form-control input-sm req008 saw sawsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -680,7 +680,7 @@
                                                         <label>Chuck table Work (w/ Wafer) (Accept =/> -65Kpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="chucktableworkwith" name="chucktableworkwith"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="chucktableworkwith" name="chucktableworkwith"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -689,7 +689,7 @@
                                                         <label>Chuck table Work (w/o Wafer) (Accept < -10Kpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="chucktableworkwithout" name="chucktableworkwithout"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="chucktableworkwithout" name="chucktableworkwithout"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -698,7 +698,7 @@
                                                         <label>Surfactant: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="surfactant" name="surfactant">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="surfactant" name="surfactant">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="ON">ON</option>
@@ -712,7 +712,7 @@
                                                         <label>Surfactant Injector Type: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="surfactantinjectiontype" name="surfactantinjectiontype">
+                                                        <select class="form-control req008 saw ring sawsu" id="surfactantinjectiontype" name="surfactantinjectiontype">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Stayclean Injector">Stayclean Injector</option>
@@ -726,7 +726,7 @@
                                                         <label>Stroke Rate (%) (applicable for Iwaki pump only): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="strokerate" name="strokerate"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="strokerate" name="strokerate"  class="form-control input-sm req008 saw ring sawsu sawmon ringsu ringmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -735,7 +735,7 @@
                                                         <label>Stroke Length (%) (applicable for Iwaki pump only): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="strokelength" name="strokelength"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="strokelength" name="strokelength"  class="form-control input-sm req008 saw ring sawsu sawmon ringsu ringmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -744,7 +744,7 @@
                                                         <label>Stayclean Concentration (ppm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="staycleanconcentration" name="staycleanconcentration"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="staycleanconcentration" name="staycleanconcentration"  class="form-control input-sm req008 saw ring sawsu sawmon ringsu ringmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -753,7 +753,7 @@
                                                         <label>Atomizing Clean Air pressure: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="atomcleanairpressure" name="atomcleanairpressure"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="atomcleanairpressure" name="atomcleanairpressure"  class="form-control input-sm req008 saw ring sawsu sawmon ringsu ringmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -762,7 +762,7 @@
                                                         <label>Spinner Table Work(w/ Wafer) (Accept = / > -65 Kpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="spinnertableworkwith" name="spinnertableworkwith"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spinnertableworkwith" name="spinnertableworkwith"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -771,7 +771,7 @@
                                                         <label>Spinner Table Work(w/o Wafer) (Accept < -10Kpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="spinnertableworkwithout" name="spinnertableworkwithout"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="spinnertableworkwithout" name="spinnertableworkwithout"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -781,7 +781,7 @@
                                                         <label>Is Purging done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="purgingdone" name="purgingdone">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="purgingdone" name="purgingdone">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -795,7 +795,7 @@
                                                         <label>Is Cleaning of BBD Sensor done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="cleaningbbdsensordone" name="cleaningbbdsensordone">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="cleaningbbdsensordone" name="cleaningbbdsensordone">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -812,13 +812,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="readingz1close" name="readingz1close"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingz1close" name="readingz1close"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="readingz2close" name="readingz2close"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingz2close" name="readingz2close"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -830,13 +830,13 @@
                                                         <label>Z1: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="readingz1open" name="readingz1open"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingz1open" name="readingz1open"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <label>Z2: </label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input type="text" id="readingz2open" name="readingz2open"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingz2open" name="readingz2open"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -845,7 +845,7 @@
                                                         <label>Is Cleaning of NCS Sensor done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="cleaningncssensordone" name="cleaningncssensordone">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="cleaningncssensordone" name="cleaningncssensordone">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -859,7 +859,7 @@
                                                         <label>Reading NCS1(V): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="readingncs1" name="readingncs1"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingncs1" name="readingncs1"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -868,7 +868,7 @@
                                                         <label>Reading NCS2(V): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="readingncs2" name="readingncs2"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="readingncs2" name="readingncs2"  class="form-control input-sm req008 saw ring sawsu ringsu" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -877,7 +877,7 @@
                                                         <label>Is Cleaning of Wheel mount done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="cleaningwheelmountdone" name="cleaningwheelmountdone">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="cleaningwheelmountdone" name="cleaningwheelmountdone">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -891,7 +891,7 @@
                                                         <label>Is sensor calibration done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="sensorcalibrationdone" name="sensorcalibrationdone">
+                                                        <select class="form-control req008 saw ring sawsu ringsu" id="sensorcalibrationdone" name="sensorcalibrationdone">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -906,7 +906,7 @@
                                                         <label>DI Water Temperature (°C): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="diwatertemp" name="diwatertemp"  class="form-control input-sm req008 saw ring sawsu sawmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -915,7 +915,7 @@
                                                         <label>DI Water Pressure (Mpa): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="diwaterpressure" name="diwaterpressure"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="diwaterpressure" name="diwaterpressure"  class="form-control input-sm req008 saw ring sawsu sawmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -924,7 +924,7 @@
                                                         <label>DI Water Resistivity (0.1 - 1 Mohm): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="diwaterresistivity" name="diwaterresistivity"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="diwaterresistivity" name="diwaterresistivity"  class="form-control input-sm req008 saw ring sawsu sawmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -934,7 +934,7 @@
                                                         <label>Is Cleaning of cutting Table done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="cleaningcuttingtabledone" name="cleaningcuttingtabledone">
+                                                        <select class="form-control req008 saw ring sawsu sawmon ringsu ringmon" id="cleaningcuttingtabledone" name="cleaningcuttingtabledone">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -948,7 +948,7 @@
                                                         <label>Is Cleaning of Spinner Table done? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="cleaningspinnertabledone" name="cleaningspinnertabledone">
+                                                        <select class="form-control req008 saw ring sawsu sawmon ringsu ringmon" id="cleaningspinnertabledone" name="cleaningspinnertabledone">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -962,7 +962,7 @@
                                                         <label>Kerf Check on Wafers: First Cut Line: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw" id="firstcutline" name="firstcutline">
+                                                        <select class="form-control req008 saw sawsu sawmon" id="firstcutline" name="firstcutline">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="DONE">DONE</option>
@@ -976,7 +976,7 @@
                                                         <label>Hair Line & Cut Position Adjust: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw" id="hairline" name="hairline">
+                                                        <select class="form-control req008 saw sawsu" id="hairline" name="hairline">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="DONE">DONE</option>
@@ -990,7 +990,7 @@
                                                         <label>Is 100% Index Checked (Both Ch) Prior Cutting? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw" id="priorcutting" name="priorcutting">
+                                                        <select class="form-control req008 saw sawsu" id="priorcutting" name="priorcutting">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -1004,7 +1004,7 @@
                                                         <label>Is 100% Index Checked (Both Ch) During Cutting? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw" id="duringcutting" name="duringcutting">
+                                                        <select class="form-control req008 saw sawsu" id="duringcutting" name="duringcutting">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -1021,13 +1021,13 @@
                                                         <label>X: </label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="text" id="backsidechipoutx" name="backsidechipoutx"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="backsidechipoutx" name="backsidechipoutx"  class="form-control input-sm req008 saw sawsu sawmon" style="text-transform:uppercase">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label>Y: </label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="text" id="backsidechipouty" name="backsidechipouty"  class="form-control input-sm req008 saw" style="text-transform:uppercase">
+                                                        <input type="text" id="backsidechipouty" name="backsidechipouty"  class="form-control input-sm req008 saw sawsu sawmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1036,7 +1036,7 @@
                                                         <label>Is Kerfwidth Monitoring Recorded in SPC? *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw" id="kerfwidthmonitoring" name="kerfwidthmonitoring">
+                                                        <select class="form-control req008 saw sawsu sawmon" id="kerfwidthmonitoring" name="kerfwidthmonitoring">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Yes">Yes</option>
@@ -1050,7 +1050,7 @@
                                                         <label>Set-up wafer done: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="setupwaferdone" name="setupwaferdone"  class="form-control input-sm req008 ring" style="text-transform:uppercase">
+                                                        <input type="text" id="setupwaferdone" name="setupwaferdone"  class="form-control input-sm req008 ring ringsu ringmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1059,7 +1059,7 @@
                                                         <label>Visual Inspection on 1st Wafer: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <select class="form-control req008 saw ring" id="vifirstwafer" name="vifirstwafer">
+                                                        <select class="form-control req008 saw ring sawsu sawmon ringsu ringmon" id="vifirstwafer" name="vifirstwafer">
                                                             <option value=""></option>
                                                             <option value="N/A">N/A</option>
                                                             <option value="Pass">Pass</option>
@@ -1073,7 +1073,7 @@
                                                         <label>Wafer No. Inspected: *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="text" id="wafernoinspected" name="wafernoinspected"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                        <input type="text" id="wafernoinspected" name="wafernoinspected"  class="form-control input-sm req008 saw ring sawsu sawmon ringsu ringmon" style="text-transform:uppercase">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1082,7 +1082,7 @@
                                                         <label>Technician Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="techemp" name="techemp"  class="form-control input-sm req008 saw ring">
+                                                        <input type="password" id="techemp" name="techemp"  class="form-control input-sm req008 saw ring sawsu ringsu">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1091,7 +1091,7 @@
                                                         <label>Quality Control Employee (passcode): *</label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req008 saw ring">
+                                                        <input type="password" id="qcemp" name="qcemp"  class="form-control input-sm req008 saw ring sawsu ringsu">
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1100,7 +1100,7 @@
                                                         <label>Remarks: * </label>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <textarea class="form-control req008 saw ring" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
+                                                        <textarea class="form-control req008 saw ring sawsu sawmon ringsu ringmon" name="remarks" id="remarks" rows="3" onkeyup="this.value = this.value.replace(/[''#&*<>]/g, '')"></textarea>
                                                     </div>
                                                 </div>
                                                 <br/>
@@ -1350,13 +1350,13 @@
                                                                 <label>Time: </label>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <input type="text" id="dryparamtime" name="dryparamtime"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                                <input type="text" id="dryparamtime" name="dryparamtime"  class="form-control input-sm req008 saw ring ringsu sawsu" style="text-transform:uppercase">
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <label>RPM: </label>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <input type="text" id="dryparamrpm" name="dryparamrpm"  class="form-control input-sm req008 saw ring" style="text-transform:uppercase">
+                                                                <input type="text" id="dryparamrpm" name="dryparamrpm"  class="form-control input-sm req008 saw ring ringsu sawsu" style="text-transform:uppercase">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1681,52 +1681,65 @@
 
         var srcmeasurement = $('input[name="srcmeasurement[]"]').map(function () {
         return this.value; }).get();
-        
-        if($("#sawtype.req008").val() == 'Saw' && ($("#cutmethod.req008").val() == '4-CHANNEL' || $("#cutmethod.req008").val() == 'ALTERNATE CUT' || $("#cutmethod.req008").val() == 'DUAL PASS(Z1)' || $("#cutmethod.req008").val() == 'DUAL PASS(Z2)'))
-        {
-            if(parseInt($("#wqty").val()) <= 4)
-            {
-                if(bhcount < parseInt($("#wqty").val()))
-                {
-                    swal("missing input!",{
-                        icon: "warning",
-                        title: "Please input Blade height!",
-                        closeOnClickOutside: false,
-                    });
-                    return false;
-                }
 
-                if(iscount < parseInt($("#wqty").val()))
+        if($("#sawtype.req008").val() == 'Saw' && $("#faicat.req008").val() == 'Set-up')
+        {
+            if($("#cutmethod.req008").val() == '4-CHANNEL' || $("#cutmethod.req008").val() == 'ALTERNATE CUT' || $("#cutmethod.req008").val() == 'DUAL PASS(Z1)' || $("#cutmethod.req008").val() == 'DUAL PASS(Z2)')
+            {
+                if(parseInt($("#wqty").val()) <= 4)
                 {
-                    swal("missing input!",{
-                        icon: "warning",
-                        title: "Please input Index size!",
-                        closeOnClickOutside: false,
-                    });
-                    return false;
+                    if(bhcount < parseInt($("#wqty").val()))
+                    {
+                        swal("missing input!",{
+                            icon: "warning",
+                            title: "Please input Blade height!",
+                            closeOnClickOutside: false,
+                        });
+                        return false;
+                    }
+
+                    if(iscount < parseInt($("#wqty").val()))
+                    {
+                        swal("missing input!",{
+                            icon: "warning",
+                            title: "Please input Index size!",
+                            closeOnClickOutside: false,
+                        });
+                        return false;
+                    }
+                }
+                else
+                {
+                    if(bhcount < 4)
+                    {
+                        swal("missing input!",{
+                            icon: "warning",
+                            title: "Please input Blade height!",
+                            closeOnClickOutside: false,
+                        });
+                        return false;
+                    }
+
+                    if(iscount < 4)
+                    {
+                        swal("missing input!",{
+                            icon: "warning",
+                            title: "Please input Index size!",
+                            closeOnClickOutside: false,
+                        });
+                        return false;
+                    }
                 }
             }
-            else
-            {
-                if(bhcount < 4)
-                {
-                    swal("missing input!",{
-                        icon: "warning",
-                        title: "Please input Blade height!",
-                        closeOnClickOutside: false,
-                    });
-                    return false;
-                }
 
-                if(iscount < 4)
-                {
-                    swal("missing input!",{
-                        icon: "warning",
-                        title: "Please input Index size!",
-                        closeOnClickOutside: false,
-                    });
-                    return false;
-                }
+            if(wpcount < 5)
+            {
+                swal("missing input!",{
+                    icon: "warning",
+                    title: "Please input Wash parameter!",
+                    closeOnClickOutside: false,
+                });
+                return false;
             }
         }
 
@@ -1751,6 +1764,19 @@
                     swal("missing input!",{
                         icon: "warning",
                         title: "Please input Ring cut diameter measurement!",
+                        closeOnClickOutside: false,
+                    });
+                    return false;
+                }
+            }
+
+            if($("#faicat.req008").val() == 'Set-up')
+            {
+                if(wpcount < 5)
+                {
+                    swal("missing input!",{
+                        icon: "warning",
+                        title: "Please input Wash parameter!",
                         closeOnClickOutside: false,
                     });
                     return false;
@@ -2219,6 +2245,7 @@
         //console.log($(this).val())
         $('.form-control').css({"border-color": "#d1d3e2"})
         $('input[name*="wtypeothers"]').attr("disabled",true);
+        $("#faicat.req008").val("");
         if($(this).val() == 'Saw')
         {
             
@@ -2289,6 +2316,80 @@
             $("#flangsizez1.req008").attr("disabled","disabled");
         }
         
+    });
+
+    $('#faicat.req008').change(function (){
+        
+        //console.log($(this).val())
+        $('.form-control').css({"border-color": "#d1d3e2"})
+        if($("#sawtype.req008").val() == "")
+        {
+            swal("missing input!",{
+                icon: "warning",
+                title: "Kindly select process mode!",
+                closeOnClickOutside: false,
+            });
+            $(this).val("");
+            return false
+        }
+
+        if($("#sawtype.req008").val() == "Saw-Ring Cut")
+        {
+            if($(this).val() == 'Set-up')
+            {
+                
+                $("input.ring[type=text]").val("N/A");
+                $("input.ring[type=password]").val("N/A");
+                $("select.ring").val("N/A");
+                $(".ring").attr("disabled",true);
+                $(".ring.ringsu").attr("disabled",false);
+                $("input.ring.ringsu[type=text]").val("");
+                $("input.ring.ringsu[type=password]").val("");
+                $("select.ring.ringsu").val("");
+            }
+
+            else if($(this).val() == 'Monitoring')
+            {
+                
+                $("input.ring[type=text]").val("N/A");
+                $("input.ring[type=password]").val("N/A");
+                $("select.ring").val("N/A");
+                $(".ring").attr("disabled",true);
+                $(".ring.ringmon").attr("disabled",false);
+                $("input.ring.ringmon[type=text]").val("");
+                $("input.ring.ringmon[type=password]").val("");
+                $("select.ring.ringmon").val("");
+            }
+        }
+        else if($("#sawtype.req008").val() == "Saw")
+        {
+            if($(this).val() == 'Set-up')
+            {
+                
+                $("input.saw[type=text]").val("N/A");
+                $("input.saw[type=password]").val("N/A");
+                $("select.saw").val("N/A");
+                $(".saw").attr("disabled",true);
+                $(".saw.sawsu").attr("disabled",false);
+                $("input.saw.sawsu[type=text]").val("");
+                $("input.saw.sawsu[type=password]").val("");
+                $("select.saw.sawsu").val("");
+            }
+
+            else if($(this).val() == 'Monitoring')
+            {
+                
+                $("input.saw[type=text]").val("N/A");
+                $("input.saw[type=password]").val("N/A");
+                $("select.saw").val("N/A");
+                $(".saw").attr("disabled",true);
+                $(".saw.sawmon").attr("disabled",false);
+                $("input.saw.sawmon[type=text]").val("");
+                $("input.saw.sawmon[type=password]").val("");
+                $("select.saw.sawmon").val("");
+            }
+        }
+
     });
     
 </script>

@@ -635,6 +635,7 @@
         
         //console.log($(this).val())
         $('.form-control').css({"border-color": "#d1d3e2"})
+        $("#faicat.req004").val("");
         if($(this).val() == 'Manual')
         {
             
