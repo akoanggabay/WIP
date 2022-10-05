@@ -177,6 +177,7 @@
 <script>
     function Action(value)
     {
+        $('.form-control').css({"border-color": "#d1d3e2"})
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
