@@ -25,7 +25,7 @@ if($_SESSION['idno'])
     }
     else
     {
-        echo 'error_Failed to update Bump height logs!';
+        echo 'error_Failed to update Warpage logs!';
     }
 
     //echo $success;

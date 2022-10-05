@@ -247,6 +247,7 @@ if(!isset($_SESSION['idno']))
                         <a class="collapse-item" href="?form=ED&path=po">PO Number</a>
                         <a class="collapse-item" href="?form=ED&path=ilnlogs">Internal Lot Number Logs</a>
                         <a class="collapse-item" href="?form=ED&path=partsreport">Parts Inventory</a>
+                        <a class="collapse-item" href="?form=ED&path=partslog">Parts Logs</a>
                         <a class="collapse-item" href="?form=ED&path=custlotlogs">File Upload Logs(ILN)</a>
                         <a class="collapse-item" href="?form=ED&path=partslotlogs">File Upload Logs(Parts)</a>
                         <?php } ?>
@@ -323,8 +324,10 @@ if(!isset($_SESSION['idno']))
                         <a class="collapse-item" href="?form=LM&path=inkdotheight">Ink dot height</a>
                         <a class="collapse-item" href="?form=LM&path=thick">Thickness Logs</a>
                         <a class="collapse-item" href="?form=LM&path=rej">Reject Logs</a>
+                        <a class="collapse-item" href="?form=LM&path=ringcut">Ring cut Logs</a>
                         <a class="collapse-item" href="?form=LM&path=rough">Roughness Logs</a>
                         <a class="collapse-item" href="?form=LM&path=warpage">Warpage</a>
+                        <a class="collapse-item" href="?form=LM&path=washparameter">Wash parameter</a>
                     </div>
                 </div>
             </li>

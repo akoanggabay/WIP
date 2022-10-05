@@ -28,7 +28,7 @@ if($_SESSION['idno'])
     }
     else
     {
-        echo 'error_Failed to update Reject logs!';
+        echo 'error_Failed to update user details!';
     }
 
     //echo $success;

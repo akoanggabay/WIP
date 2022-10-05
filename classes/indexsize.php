@@ -2,6 +2,7 @@
 include_once("connection.php");
 
 class indexsize {
+    private $trackingno;
     private $intlot;
     private $ch;
     private $station;
@@ -21,6 +22,7 @@ class indexsize {
 
 	//setter
 
+    public function settrackingno($trackingno){$this->trackingno=$trackingno;}
     public function setintlot($intlot){$this->intlot=$intlot;}
     public function setch($ch){$this->ch=$ch;}
     public function setstation($station){$this->station=$station;}
@@ -36,6 +38,7 @@ class indexsize {
 
 	//Getter
 
+    public function gettrackingno(){return $this->trackingno;}
     public function getintlot(){return $this->intlot;}
     public function getch(){return $this->ch;}
     public function getstation(){return $this->station;}
@@ -73,6 +76,116 @@ class indexsize {
             $success = false;
 		}
         return $success;	
+	}
+
+    public static function GetAllLogs()
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.indexsize order by lastupdate desc");
+			$counter = 0;
+			include_once("user.php");
+			
+			$user = new User;
+			$do;
+			while($reader = $conn->fetch_array($dataset)){
+				$Select = new indexsize();
+				
+				$user->UserData($reader["lastupdatedby"]);
+				$Select->settrackingno($reader["trackingno"]);
+                $Select->setintlot($reader["intlot"]);
+                $Select->setch($reader["ch"]);
+				$Select->setis1($reader["is1"]);
+                $Select->setis2($reader["is2"]);
+                $Select->setis3($reader["is3"]);
+                $Select->setis4($reader["is4"]);
+                $Select->setis5($reader["is5"]);
+				$Select->setstation($reader["station"]);
+				$Select->setlastupdate($reader["lastupdate"]->format('F j, Y g:i:s a'));
+				$Select->setlastupdatedby($user->getfname().' '.$user->getlname());
+				$result[$counter] = $Select;
+				$counter++;
+			}
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
+	public function UpdateIndexsize($trackingno){
+		$conn = new Connection();
+        $success = true;
+		try{
+			//$conn->open();
+			//$result = $conn->query("INSERT INTO dbo.PO (pono,custcode,qty,processcat,subprocesscat,status,lastupdate,lastupdatedby,active) VALUES('".$this->getpono()."','".$this->getcustcode()."','".$this->getqty()."','".$this->getprocesscat()."','".$this->getsubprocesscat()."','".$this->getstatus()."',NOW(),'".$this->getlastupdatedby()."',1)");
+			$con = $conn->open();
+            $sql = "UPDATE dbo.indexsize set ch = ?, is1 = ?, is2 = ?, is3 = ?, is4 = ?, is5 = ? WHERE trackingno = ?";
+            $params = array($this->getch(),$this->getis1(),$this->getis2(),$this->getis3(),$this->getis4(),$this->getis5(),$trackingno);
+            $stmt = sqlsrv_query( $con, $sql, $params);
+            $row = sqlsrv_rows_affected($stmt);
+            if($row == true)
+            {
+                $success = true;
+            }
+            else
+            {
+                $success = false;
+            }
+			//$conn->close();
+		}catch(Exception $e){
+            $success = false;
+		}
+        return $success;	
+	}
+
+	public static function TrackGetDetails($trackingno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * from dbo.indexsize where trackingno = '".$trackingno."'");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+                include_once("station.php");
+				$user = new User;
+				$station = new Station;
+				$row = $conn->fetch_array($dataset);
+				$user->UserData($row["lastupdatedby"]);
+                $station->StationDetails($row["station"]);
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'intlotno'   => $row["intlot"],
+				'ch'   => $row["ch"],
+                'station'   => $station->getstation().':'.$station->getdescription(),
+				'is1'   => $row["is1"],
+				'is2'   => $row["is2"],
+                'is3'   => $row["is3"],
+                'is4'   => $row["is4"],
+                'is5'   => $row["is5"],
+				'lastupdate'   => $row["lastupdate"]->format('F j, Y, g:i:s a'),
+				'lastupdatedby'   => $user->getfname().' '.$user->getlname()
+				
+				);
+			}
+			else
+			{
+				$result = 'false';
+			}
+			$conn->close();
+			
+		}catch(Exception $e){
+			$result = 'false';
+			echo $e;
+		}
+		return $result;
 	}
 
 }

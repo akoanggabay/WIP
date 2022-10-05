@@ -1365,7 +1365,7 @@
                                                                 <label>Time(secs): </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="text" id="wptime" name="wptime"  class="form-control input-sm wp ringsu sawsu">
+                                                                <input type="text" id="wptime" name="wptime"  class="form-control input-sm wp saw ring ringsu sawsu">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -1374,7 +1374,7 @@
                                                                 <label>RPM: </label>
                                                             </div>
                                                             <div class="col-md-7">
-                                                                <input type="text" id="wprpm" name="wprpm"  class="form-control input-sm wp ringsu sawsu">
+                                                                <input type="text" id="wprpm" name="wprpm"  class="form-control input-sm wp saw ring ringsu sawsu">
                                                             </div>
                                                         </div>
                                                         <br/>
@@ -2130,7 +2130,7 @@
         return false;
     }
 
-    if(document.getElementById("rcmeasurement").value < 187.4)
+    if(parseFloat(document.getElementById("rcmeasurement").value) < 187.4)
     {
         swal("below minimum!",{
             icon: "warning",

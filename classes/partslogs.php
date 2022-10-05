@@ -94,6 +94,46 @@ class partslogs {
 		return $result;
 	}
 
+	public static function GetAllPartsLogsReports($start,$end)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT * FROM dbo.partslogs where lastupdate between '".$start."' and '".$end."' order by lastupdate desc");
+			if ($conn->has_rows($dataset)) {
+				include_once("user.php");
+		
+				$user = new User;
+				
+				while ($row = $conn->fetch_array($dataset)) {
+				
+				
+				$user->UserData($row["lastupdatedby"]);
+				//$intlot->GetDetails($row["intlot"]);
+				$result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'intlot'   => $row["lotno"],
+				'qty' => $row["qty"],
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
+				'lastupdatedby' => $user->getfname().' '.$user->getlname()
+				);
+				}
+			}
+			else
+			{
+				$result = 'false';
+			}
+		
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
 }
 
 ?>
