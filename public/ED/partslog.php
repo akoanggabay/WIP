@@ -65,8 +65,8 @@
 <script>
     $("#btnGen").click(function() {
         
-        $('#IntLotLogs').DataTable().destroy();
-        $("#IntLotLogs > tbody").empty();
+        $('#PartLotLogs').DataTable().destroy();
+        $("#PartLotLogs > tbody").empty();
         //alert(new Date(document.getElementById("start").value).toString().split("GMT")[0])
         if(document.getElementById("start").value == '' || document.getElementById("end").value == '')
         {
@@ -81,7 +81,7 @@
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
-            console.log(result)
+            //console.log(result)
             var res = JSON.parse(result);
             
             
@@ -97,7 +97,6 @@
             document.getElementById("error").hidden = true;
             for(var i = 0;i<res.length;i++)
             {
-                console.log(res[i].dateout + " " + res[i].dateoutshift)
                 $('#PartLotLogs > tbody').append('<tr id="tr'+res[i].trackingno+'">'+
                 '<td><input type="hidden">'+res[i].trackingno+'</td>'+
                 '<td><input type="hidden">'+res[i].intlot+'</td>'+
@@ -107,7 +106,7 @@
                 '</tr>');
             }
 
-            $('#PartsLotLogs').DataTable({
+            $('#PartLotLogs').DataTable({
                 dom: 'Bfrtip',
                 lengthMenu: [
                     [ 10, 25, 50, -1 ],
@@ -126,7 +125,7 @@
                     },
                     'print'
                 ],
-                "order": [[ 2, "desc" ],[ 10, "desc" ]]
+                "order": [ 2, "desc" ]
             });
             }
         };
