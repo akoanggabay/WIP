@@ -476,9 +476,6 @@ if(!isset($_SESSION['idno']))
     <script src="../js/demo/datatables.js"></script>
 
     <script>
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
         
         if(<?php echo $_SESSION['alert']; ?> == 1)
         {

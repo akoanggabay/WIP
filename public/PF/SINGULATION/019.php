@@ -287,7 +287,8 @@
             return false;
         }
        
-
+        $(this).attr("disabled","disabled");
+        
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
             //alert(this.readyState + ' ' + this.status);

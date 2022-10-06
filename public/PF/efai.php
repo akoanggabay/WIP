@@ -228,6 +228,7 @@
         $(".efai").attr('hidden',true);
         document.getElementById("intlotno").disabled = false;
         $("#intlotno").focus();
+        $("button").attr("disabled",false);
         tblcount = 0;
         bhcount = 0;
         iscount = 0;
