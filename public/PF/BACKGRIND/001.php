@@ -1023,7 +1023,7 @@
             
     });
 
-    $('#btnDone001').click(function(event) {
+    $('#btnDone001').click(async function(event) {
 
         //Reject
 
@@ -1284,7 +1284,11 @@
         }
 
         //
-        //$(this).attr("disabled","disabled");
+        $(this).attr("disabled","disabled");
+
+        await sleep(1000)
+
+        $(this).removeAttr("disabled");
 
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {

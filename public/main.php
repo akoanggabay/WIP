@@ -476,7 +476,9 @@ if(!isset($_SESSION['idno']))
     <script src="../js/demo/datatables.js"></script>
 
     <script>
-        
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
         if(<?php echo $_SESSION['alert']; ?> == 1)
         {
             swal("notification!",{
@@ -487,9 +489,6 @@ if(!isset($_SESSION['idno']))
         }
 
         <?php $_SESSION['alert'] = 0; ?>
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
     </script>
 
 </body>

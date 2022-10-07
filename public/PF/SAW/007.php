@@ -646,7 +646,7 @@
         //checkRow(tblcount);
     }
 
-    $('#btnDone007').click(function(event) {
+    $('#btnDone007').click(async function(event) {
 
         var sdwaferno = $('input[name="sdwaferno007[]"]').map(function () {
         return this.value; }).get();
@@ -714,6 +714,10 @@
         }
 
         $(this).attr("disabled","disabled");
+
+        await sleep(1000)
+
+        $(this).removeAttr("disabled");
 
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {

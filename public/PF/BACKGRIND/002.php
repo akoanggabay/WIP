@@ -543,7 +543,7 @@
 <br/>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
-    $('#btnDone002').click(function(event) {
+    $('#btnDone002').click(async function(event) {
         
         var sdwaferno = $('input[name="sdwaferno002[]"]').map(function () {
         return this.value; }).get();
@@ -610,7 +610,11 @@
             }
         }
 
-        //$(this).attr("disabled","disabled");
+        $(this).attr("disabled","disabled");
+
+        await sleep(1000)
+
+        $(this).removeAttr("disabled");
         
         var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
