@@ -136,7 +136,7 @@
         if(result == '"false"')
         {
             swal({
-                title: 'No available data for PO number: '+value,
+                title: 'No available data for Part number: '+value,
                 text: 'error',
                 showConfirmButton: true,
                 button: true,
