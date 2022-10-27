@@ -16,6 +16,12 @@ if($exist == 'false')
     return false;
 }
 
+if(!$_SESSION['idno'])
+{
+    echo 'error_Login session timeout!';
+    return false;
+}
+
 $lotdata = IntLotno::GetDetails($_GET['intlotno']);
 $Intlotlogs = IntLotLogs::GetAllIntLogs($_GET['intlotno']);
 $Intrlogs = Roughness::GetAllRoughnessLogs($_GET['intlotno']);
