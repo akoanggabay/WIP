@@ -1682,6 +1682,37 @@
         var srcmeasurement = $('input[name="srcmeasurement[]"]').map(function () {
         return this.value; }).get();
 
+        $(".form-control").css({"border-color": "#d1d3e2"});
+        
+        var val = document.getElementsByClassName("req008");
+        var data = {};
+        var count = 0;
+        for(var i = 0;val.length > i; i++)
+        {
+            data[val[i].name] = val[i].value;
+            if(val[i].value == '')
+            {
+                val[i].style.borderColor = 'red';
+                count+=1;
+            }
+            else
+            {
+                val[i].style.borderColor = '#d1d3e2';
+            }
+        }
+        
+        if(count > 0)
+        {
+            //$('#002').animate({scrollTop: '0px'}, 1000);
+            document.getElementById('008').scrollIntoView();
+            swal("missing input!",{
+                icon: "warning",
+                title: "Please input required fields!",
+                closeOnClickOutside: false,
+            });
+            return false;
+        }
+
         if($("#sawtype.req008").val() == 'Saw' && $("#faicat.req008").val() == 'Set-up')
         {
             if($("#cutmethod.req008").val() == '4-CHANNEL' || $("#cutmethod.req008").val() == 'ALTERNATE CUT' || $("#cutmethod.req008").val() == 'DUAL PASS(Z1)' || $("#cutmethod.req008").val() == 'DUAL PASS(Z2)')
@@ -1782,37 +1813,6 @@
                     return false;
                 }
             }
-        }
-
-        $(".form-control").css({"border-color": "#d1d3e2"});
-        
-        var val = document.getElementsByClassName("req008");
-        var data = {};
-        var count = 0;
-        for(var i = 0;val.length > i; i++)
-        {
-            data[val[i].name] = val[i].value;
-            if(val[i].value == '')
-            {
-                val[i].style.borderColor = 'red';
-                count+=1;
-            }
-            else
-            {
-                val[i].style.borderColor = '#d1d3e2';
-            }
-        }
-        
-        if(count > 0)
-        {
-            //$('#002').animate({scrollTop: '0px'}, 1000);
-            document.getElementById('008').scrollIntoView();
-            swal("missing input!",{
-                icon: "warning",
-                title: "Please input required fields!",
-                closeOnClickOutside: false,
-            });
-            return false;
         }
         
         if($("#faicat.req008").val() == 'Set-up')
