@@ -1763,7 +1763,7 @@
                 }
             }
 
-            if(wpcount < 5)
+            if(wpcount < 1)
             {
                 swal("missing input!",{
                     icon: "warning",
