@@ -22,15 +22,15 @@ if(!$_SESSION['idno'])
     return false;
 }
 
-$lotdata = IntLotno::GetDetails($_GET['intlotno']);
-$Intlotlogs = IntLotLogs::GetAllIntLogs($_GET['intlotno']);
-$Intrlogs = Roughness::GetAllRoughnessLogs($_GET['intlotno']);
-$Inttlogs = Thickness::GetAllThicknessLogs($_GET['intlotno']);
-$Intrejlogs = Reject::GetAllIntRejLogs($_GET['intlotno']);
-$intlotdata = json_encode($lotdata[0]);
-$intlotdata2 = json_decode($intlotdata);
+$lotdata = IntLotno::GetDetails($_GET['intlotno']); // Internal lot number details
+$Intlotlogs = IntLotLogs::GetAllIntLogs($_GET['intlotno']); // Internal lot number logs details
+$Intrlogs = Roughness::GetAllRoughnessLogs($_GET['intlotno']); // Internal lot number roughness logs details
+$Inttlogs = Thickness::GetAllThicknessLogs($_GET['intlotno']); // Internal lot number thickness logs details
+$Intrejlogs = Reject::GetAllIntRejLogs($_GET['intlotno']); // Internal lot number reject details
+$intlotdata = json_encode($lotdata[0]); // Internal lot number details Json encoding 
+$intlotdata2 = json_decode($intlotdata); // Internal lot number details json decoding 
 
-$processroute = new ProcessRoute;
+$processroute = new ProcessRoute; // Instantiate ProcessRoute class
 
 $processroute->setstation($intlotdata2->station);
 $processroute->setprocess($intlotdata2->processcat);
