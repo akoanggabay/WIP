@@ -45,6 +45,7 @@
                     <thead>
                         <tr>
                             <th>Tracking no</th>
+                            <th>Parts no</th>
                             <th>Parts Lot no</th>
                             <th>Quantity</th>
                             <th>Processed date</th>
@@ -99,7 +100,8 @@
             {
                 $('#PartLotLogs > tbody').append('<tr id="tr'+res[i].trackingno+'">'+
                 '<td><input type="hidden">'+res[i].trackingno+'</td>'+
-                '<td><input type="hidden">'+res[i].intlot+'</td>'+
+                '<td><input type="hidden">'+res[i].partno+'</td>'+
+                '<td><input type="hidden">'+res[i].partslotno+'</td>'+
                 '<td><input type="hidden">'+res[i].qty+'</td>'+
                 '<td><input type="hidden">'+res[i].lastupdate+'</td>'+
                 '<td><input type="hidden">'+res[i].lastupdatedby+'</td>'+

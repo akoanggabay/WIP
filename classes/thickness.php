@@ -257,6 +257,46 @@ class Thickness {
 		return $result;
 	}
 
+	public static function GetAllThicknessLogsWithDummy($intlotno)
+	{
+		$conn = new Connection();
+		$result = array();
+
+		try{
+			$conn->open();
+			$dataset =  $conn->query("SELECT a.trackingno,a.custcode,a.intlotno,a.station,b.description,a.p1,a.p2,a.p3,a.p4,a.p5,a.pave,a.lastupdate,a.lastupdatedby,a.ttv,a.waferno FROM dbo.thickness a inner join station b on a.station = b.station 
+			where intlotno = '".$intlotno."' order by lastupdate asc");
+			include_once("user.php");
+			$user = new User;
+
+            while ($row = $conn->fetch_array($dataset)) {
+			$user->UserData($row["lastupdatedby"]);
+            $result[] = array(
+				'trackingno'   => $row["trackingno"],
+				'custcode'   => $row["custcode"],
+				'intlotno'   => $row["intlotno"],
+				'station' => $row["station"].':'.$row["description"],
+				'p1' => $row["p1"],
+				'p2' => $row["p2"],
+				'p3' => $row["p3"],
+				'p4' => $row["p4"],
+				'p5' => $row["p5"],
+				'pave' => $row["pave"],
+				'ttv' => $row["ttv"],
+				'waferno' => $row["waferno"],
+				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
+				'lastupdatedby' => $user->getfname().' '.$user->getlname()
+            );
+            }
+					
+			$conn->close();
+			
+		}catch(Exception $e){
+			echo $e;
+		}
+		return $result;
+	}
+
 	public static function GetAllLogs()
 	{
 		$conn = new Connection();

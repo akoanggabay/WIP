@@ -101,7 +101,7 @@ class partslogs {
 
 		try{
 			$conn->open();
-			$dataset =  $conn->query("SELECT * FROM dbo.partslogs where lastupdate between '".$start."' and '".$end."' order by lastupdate desc");
+			$dataset =  $conn->query("SELECT b.partno,a.* FROM dbo.partslogs a inner join partslotno b on a.lotno = b.lotno where a.lastupdate between '".$start."' and '".$end."' order by lastupdate desc");
 			if ($conn->has_rows($dataset)) {
 				include_once("user.php");
 		
@@ -114,7 +114,8 @@ class partslogs {
 				//$intlot->GetDetails($row["intlot"]);
 				$result[] = array(
 				'trackingno'   => $row["trackingno"],
-				'intlot'   => $row["lotno"],
+				'partno'   => $row["partno"],
+				'partslotno'   => $row["lotno"],
 				'qty' => $row["qty"],
 				'lastupdate' => $row["lastupdate"]->format('F j, Y g:i:s a'),
 				'lastupdatedby' => $user->getfname().' '.$user->getlname()
