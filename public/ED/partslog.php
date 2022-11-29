@@ -45,7 +45,7 @@
                     <thead>
                         <tr>
                             <th>Tracking no</th>
-                            <th>Parts no</th>
+                            <th>Part no</th>
                             <th>Parts Lot no</th>
                             <th>Quantity</th>
                             <th>Processed date</th>
